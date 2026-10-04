@@ -476,6 +476,7 @@ export function FrutilotaMascot({
   const touchTimerRef = useRef<NodeJS.Timeout | null>(null);
   const touchStartPosRef = useRef<{ x: number; y: number } | null>(null);
   const isTouchDraggingRef = useRef(false);
+  const hasTouchMovedRef = useRef(false);
   const lastTouchTimeRef = useRef<number>(0);
 
   const [sidebarEntitySearch, setSidebarEntitySearch] = useState("");
@@ -561,14 +562,23 @@ export function FrutilotaMascot({
     const touch = e.touches[0];
     touchStartPosRef.current = { x: touch.clientX, y: touch.clientY };
     isTouchDraggingRef.current = false;
+    hasTouchMovedRef.current = false;
     
-    if (touchTimerRef.current) clearTimeout(touchTimerRef.current);
+    if (touchTimerRef.current) {
+      clearTimeout(touchTimerRef.current);
+      touchTimerRef.current = null;
+    }
+
+    // 380ms de pulsación sostenida (long-press) activa el modo de reordenamiento
     touchTimerRef.current = setTimeout(() => {
       isTouchDraggingRef.current = true;
       setDraggedEntityAcronym(acronym);
       haptic.medium();
       sound.playHoverKey();
-    }, 200); // 200ms de pulsación sostenida activa el modo arrastre
+      if (typeof navigator !== "undefined" && navigator.vibrate) {
+        try { navigator.vibrate([40, 30, 40]); } catch {}
+      }
+    }, 380);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
@@ -578,19 +588,41 @@ export function FrutilotaMascot({
     const deltaX = Math.abs(touch.clientX - touchStartPosRef.current.x);
     const deltaY = Math.abs(touch.clientY - touchStartPosRef.current.y);
 
-    if (!isTouchDraggingRef.current && (deltaX > 8 || deltaY > 8)) {
-      if (touchTimerRef.current) clearTimeout(touchTimerRef.current);
+    // Si el usuario desliza más de 10px antes de que se cumpla el long-press, es un SCROLL
+    if (!isTouchDraggingRef.current) {
+      if (deltaX > 10 || deltaY > 10) {
+        hasTouchMovedRef.current = true;
+        if (touchTimerRef.current) {
+          clearTimeout(touchTimerRef.current);
+          touchTimerRef.current = null;
+        }
+      }
       return;
     }
 
+    // Si ya está activo el modo arrastre (long-press completado):
     if (isTouchDraggingRef.current && draggedEntityAcronym) {
-      if (e.cancelable) e.preventDefault();
-      const el = document.elementFromPoint(touch.clientX, touch.clientY);
-      const cardEl = el?.closest("[data-entity-acronym]") as HTMLElement | null;
-      const targetAcronym = cardEl?.getAttribute("data-entity-acronym");
+      if (e.cancelable) e.preventDefault(); // Prevenir scroll mientras se reordena
 
-      if (targetAcronym && targetAcronym.toUpperCase() !== draggedEntityAcronym.toUpperCase()) {
-        swapEntities(draggedEntityAcronym, targetAcronym);
+      // Bounding box hit testing para reordenar fluidamente en móviles
+      const cards = document.querySelectorAll<HTMLElement>("[data-entity-acronym]");
+      for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        const targetAcronym = card.getAttribute("data-entity-acronym");
+        if (!targetAcronym || targetAcronym.toUpperCase() === draggedEntityAcronym.toUpperCase()) {
+          continue;
+        }
+
+        const rect = card.getBoundingClientRect();
+        if (
+          touch.clientX >= rect.left &&
+          touch.clientX <= rect.right &&
+          touch.clientY >= rect.top &&
+          touch.clientY <= rect.bottom
+        ) {
+          swapEntities(draggedEntityAcronym, targetAcronym);
+          break;
+        }
       }
     }
   };
@@ -603,13 +635,14 @@ export function FrutilotaMascot({
     }
 
     if (isTouchDraggingRef.current) {
+      // Fin del arrastre
       isTouchDraggingRef.current = false;
       setDraggedEntityAcronym(null);
       haptic.success();
       sound.playClick();
-      toast.success("Posición de entidad guardada");
-    } else {
-      // Tap normal sin arrastre: selecciona la entidad
+      toast.success("Posición guardada");
+    } else if (!hasTouchMovedRef.current) {
+      // Tap normal intencional (el usuario tocó sin deslizar / sin hacer scroll)
       sound.playClick();
       haptic.selection();
       setEntity(acronym);
@@ -618,7 +651,22 @@ export function FrutilotaMascot({
         setChatSidebarOpen(false);
       }
     }
+
     touchStartPosRef.current = null;
+    hasTouchMovedRef.current = false;
+  };
+
+  const handleTouchCancel = () => {
+    if (touchTimerRef.current) {
+      clearTimeout(touchTimerRef.current);
+      touchTimerRef.current = null;
+    }
+    if (isTouchDraggingRef.current) {
+      isTouchDraggingRef.current = false;
+      setDraggedEntityAcronym(null);
+    }
+    touchStartPosRef.current = null;
+    hasTouchMovedRef.current = false;
   };
 
   const handleTogglePin = (acronym: string, e?: React.MouseEvent) => {
@@ -1525,7 +1573,9 @@ export function FrutilotaMascot({
             gridTemplateColumns: "repeat(2, 1fr)",
             gap: 7,
             alignContent: "start",
-            touchAction: "pan-y"
+            touchAction: draggedEntityAcronym ? "none" : "pan-y",
+            userSelect: "none",
+            WebkitUserSelect: "none"
           }}>
             {displayEntitiesList.map((c) => {
               const isSelected = entity.toUpperCase() === c.acronym.toUpperCase();
@@ -1550,23 +1600,24 @@ export function FrutilotaMascot({
                   onTouchStart={(e) => handleTouchStart(c.acronym, e as unknown as React.TouchEvent)}
                   onTouchMove={(e) => handleTouchMove(e as unknown as React.TouchEvent)}
                   onTouchEnd={() => handleTouchEnd(c.acronym)}
-                  onTouchCancel={() => handleTouchEnd(c.acronym)}
+                  onTouchCancel={handleTouchCancel}
                   style={{
                     position: "relative",
                     zIndex: isBeingDragged ? 50 : 1,
-                    transform: isBeingDragged ? "scale(1.06)" : "scale(1)",
-                    opacity: isBeingDragged ? 0.92 : 1,
-                    transition: "transform 0.15s ease, opacity 0.15s ease",
+                    transform: isBeingDragged ? "scale(1.08)" : "scale(1)",
+                    opacity: isBeingDragged ? 0.95 : 1,
+                    transition: isBeingDragged ? "none" : "transform 0.15s ease, opacity 0.15s ease",
                     cursor: isBeingDragged ? "grabbing" : "grab",
                     userSelect: "none",
-                    WebkitUserSelect: "none"
+                    WebkitUserSelect: "none",
+                    touchAction: isBeingDragged ? "none" : "pan-y"
                   }}
                 >
                   <button 
                     type="button"
                     onMouseEnter={() => sound.playHoverKey()}
                     onClick={() => {
-                      if (Date.now() - lastTouchTimeRef.current < 450) return;
+                      if (Date.now() - lastTouchTimeRef.current < 500) return;
                       sound.playClick();
                       haptic.selection();
                       setEntity(c.acronym);
@@ -1591,7 +1642,7 @@ export function FrutilotaMascot({
                         ? `2px solid ${isDarkMode ? "#38BDF8" : catColor}` 
                         : `1px solid ${D.border}`,
                       background: isBeingDragged
-                        ? (isDarkMode ? "rgba(56, 189, 248, 0.22)" : "#E0F2FE")
+                        ? (isDarkMode ? "rgba(56, 189, 248, 0.28)" : "#E0F2FE")
                         : isSelected 
                         ? (isDarkMode ? "rgba(56, 189, 248, 0.12)" : bgLight) 
                         : (isDarkMode ? "#262626" : "#FFFFFF"),
@@ -1599,13 +1650,16 @@ export function FrutilotaMascot({
                       textAlign: "center",
                       transition: "background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease",
                       boxShadow: isBeingDragged
-                        ? (isDarkMode ? "0 10px 25px rgba(0,0,0,0.6)" : "0 10px 25px rgba(2,132,199,0.25)")
+                        ? (isDarkMode ? "0 12px 30px rgba(0,0,0,0.8), 0 0 0 2px #38BDF8" : "0 12px 30px rgba(2,132,199,0.35), 0 0 0 2px #0284C7")
                         : isSelected 
                         ? `0 4px 12px ${catColor}25` 
                         : (isDarkMode ? "none" : "0 1px 3px rgba(0,0,0,0.03)"),
                       position: "relative",
                       boxSizing: "border-box",
                       minHeight: 86,
+                      pointerEvents: isBeingDragged ? "none" : "auto",
+                      WebkitUserSelect: "none",
+                      userSelect: "none"
                     }}
                   >
                     {/* Logo / Badge de la Entidad */}
