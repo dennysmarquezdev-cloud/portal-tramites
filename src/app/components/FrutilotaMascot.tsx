@@ -443,9 +443,7 @@ export function FrutilotaMascot({
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [activeFooterDoc, setActiveFooterDoc] = useState<{ title: string; badge: string; content: React.ReactNode } | null>(null);
 
-  const [topRightMenuOpen, setTopRightMenuOpen] = useState(false);
   const [sidebarProfileMenuOpen, setSidebarProfileMenuOpen] = useState(false);
-  const topRightMenuRef = useRef<HTMLDivElement>(null);
   const sidebarProfileMenuRef = useRef<HTMLDivElement>(null);
 
   const isDarkMode = theme === "dark";
@@ -460,26 +458,22 @@ export function FrutilotaMascot({
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (topRightMenuRef.current && !topRightMenuRef.current.contains(e.target as Node)) {
-        setTopRightMenuOpen(false);
-      }
       if (sidebarProfileMenuRef.current && !sidebarProfileMenuRef.current.contains(e.target as Node)) {
         setSidebarProfileMenuOpen(false);
       }
     };
-    if (topRightMenuOpen || sidebarProfileMenuOpen) {
+    if (sidebarProfileMenuOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [topRightMenuOpen, sidebarProfileMenuOpen]);
+  }, [sidebarProfileMenuOpen]);
 
   const handlePerformLogout = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     haptic.medium();
     sound.playClick();
-    setTopRightMenuOpen(false);
     setSidebarProfileMenuOpen(false);
     if (onLogout) {
       onLogout();
@@ -2080,301 +2074,7 @@ export function FrutilotaMascot({
           </button>
         )}
 
-        {/* Top-Right Header en el Chat: Solo visible si el usuario está autenticado */}
-        {user ? (
-          <div 
-            ref={topRightMenuRef}
-            style={{
-              position: "absolute",
-              top: 12,
-              right: 14,
-              zIndex: 35,
-              display: "flex",
-              alignItems: "center",
-              gap: 8
-            }}
-          >
-            {/* Botón de Perfil con Avatar / Iniciales / Google Photo */}
-            <div style={{ position: "relative" }}>
-              <div
-                onClick={() => {
-                  sound.playHoverKey();
-                  haptic.selection();
-                  setTopRightMenuOpen(prev => !prev);
-                }}
-                className={`avatar-btn ${topRightMenuOpen ? "avatar-btn--active" : ""}`}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 7,
-                  cursor: "pointer",
-                  userSelect: "none",
-                  padding: "4px 10px 4px 4px",
-                  borderRadius: 10,
-                  background: isDarkMode ? "#101928" : "#FFFFFF",
-                  border: `1.5px solid ${isDarkMode ? "rgba(255,255,255,0.12)" : D.border}`,
-                  boxShadow: isDarkMode ? "0 2px 8px rgba(0,0,0,0.4)" : "0 2px 6px rgba(0,0,0,0.04)"
-                }}
-              >
-                <div 
-                  className="avatar-circle"
-                  style={{
-                    width: 26,
-                    height: 26,
-                    borderRadius: "50%",
-                    overflow: "hidden",
-                    position: "relative",
-                    background: isPlus 
-                      ? "linear-gradient(135deg, #2563EB 0%, #7C3AED 100%)" 
-                      : "linear-gradient(135deg, #0284C7 0%, #38BDF8 100%)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "#FFFFFF",
-                    fontSize: 11,
-                    fontWeight: 750
-                  }}
-                >
-                  {user?.photoURL ? (
-                    <img 
-                      src={user.photoURL} 
-                      alt={displayName || "Google Avatar"} 
-                      referrerPolicy="no-referrer"
-                      onError={(e) => {
-                        (e.currentTarget as HTMLElement).style.display = 'none';
-                      }}
-                      style={{ width: "100%", height: "100%", objectFit: "cover" }} 
-                    />
-                  ) : null}
-                  <span style={{ display: user?.photoURL ? "none" : "block" }}>{initial}</span>
-                </div>
 
-                <span style={{ fontFamily: G, fontSize: 12.5, fontWeight: 700, color: D.text }}>
-                  {displayName}
-                </span>
-
-                {isPlus ? (
-                  <span style={{
-                    fontSize: 8.5,
-                    fontWeight: 800,
-                    color: "#7C3AED",
-                    background: "#F5F3FF",
-                    padding: "1px 5px",
-                    borderRadius: 6
-                  }}>
-                    PLUS
-                  </span>
-                ) : (
-                  <span 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setShowPaywallModal(true);
-                    }}
-                    style={{
-                      fontSize: 8.5,
-                      fontWeight: 700,
-                      color: "#0284C7",
-                      background: isDarkMode ? "rgba(2,132,199,0.2)" : "#E0F2FE",
-                      padding: "1px 5px",
-                      borderRadius: 6
-                    }}
-                  >
-                    GRATIS
-                  </span>
-                )}
-
-                <ChevronDownRegular 
-                  fontSize={12} 
-                  style={{ 
-                    color: D.muted,
-                    transform: topRightMenuOpen ? "rotate(180deg)" : "rotate(0deg)",
-                    transition: "transform 0.2s ease"
-                  }} 
-                />
-              </div>
-
-              {/* Menú Desplegable Flotante Simplificado (Solo Modo Oscuro/Claro y Cerrar Sesión) */}
-              <AnimatePresence>
-                {topRightMenuOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95, y: 6 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.95, y: 6 }}
-                    transition={{ duration: 0.15 }}
-                    style={{
-                      position: "absolute",
-                      top: "calc(100% + 8px)",
-                      right: 0,
-                      width: 250,
-                      borderRadius: 14,
-                      background: isDarkMode ? "#0F172A" : "#FFFFFF",
-                      border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.14)" : "1.5px solid #E2E8F0",
-                      boxShadow: isDarkMode ? "0 16px 44px rgba(0,0,0,0.8)" : "0 12px 36px rgba(11,30,56,0.12)",
-                      padding: 8,
-                      zIndex: 1000,
-                      fontFamily: "'Inter', sans-serif"
-                    }}
-                  >
-                    {/* Header Usuario */}
-                    <div 
-                      style={{
-                        padding: "10px",
-                        borderRadius: 10,
-                        background: isDarkMode ? "rgba(255,255,255,0.03)" : "#F8FAFC",
-                        border: isDarkMode ? "1px solid rgba(255,255,255,0.06)" : "1px solid #F1F5F9",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 10,
-                        marginBottom: 6
-                      }}
-                    >
-                      <div 
-                        style={{
-                          width: 38,
-                          height: 38,
-                          borderRadius: "50%",
-                          overflow: "hidden",
-                          flexShrink: 0,
-                          background: isPlus 
-                            ? "linear-gradient(135deg, #2563EB 0%, #7C3AED 100%)" 
-                            : "linear-gradient(135deg, #0284C7 0%, #38BDF8 100%)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          color: "#FFFFFF",
-                          fontWeight: 750,
-                          fontSize: 15
-                        }}
-                      >
-                        {user?.photoURL ? (
-                          <img 
-                            src={user.photoURL} 
-                            alt={displayName || "Google Avatar"} 
-                            referrerPolicy="no-referrer"
-                            onError={(e) => {
-                              (e.currentTarget as HTMLElement).style.display = 'none';
-                            }}
-                            style={{ width: "100%", height: "100%", objectFit: "cover" }} 
-                          />
-                        ) : null}
-                        <span style={{ display: user?.photoURL ? "none" : "block" }}>{initial}</span>
-                      </div>
-
-                      <div style={{ minWidth: 0, flex: 1 }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                          <span style={{ fontSize: 13, fontWeight: 750, color: isDarkMode ? "#F8FAFC" : "#0F172A", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                            {fullDisplayName}
-                          </span>
-                          {isPlus ? (
-                            <span style={{ fontSize: 9, fontWeight: 800, color: "#7C3AED", background: "#F5F3FF", padding: "1px 5px", borderRadius: 6 }}>
-                              PLUS
-                            </span>
-                          ) : (
-                            <span style={{ fontSize: 9, fontWeight: 700, color: "#64748B", background: isDarkMode ? "rgba(255,255,255,0.1)" : "#E2E8F0", padding: "1px 5px", borderRadius: 6 }}>
-                              GRATIS
-                            </span>
-                          )}
-                        </div>
-                        <span style={{ fontSize: 11, color: isDarkMode ? "#94A3B8" : "#64748B", display: "block", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                          {user?.email || ""}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Opciones: Modo Oscuro/Claro y Cerrar Sesión */}
-                    <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                      {/* Botón Modo Claro / Oscuro */}
-                      {toggleTheme && (
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            haptic.selection();
-                            sound.playHoverKey();
-                            toggleTheme();
-                            toast.success(isDarkMode ? "Modo Claro activado" : "Modo Oscuro activado");
-                          }}
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "space-between",
-                            gap: 9,
-                            padding: "8px 10px",
-                            borderRadius: 8,
-                            background: "transparent",
-                            border: "none",
-                            color: isDarkMode ? "#E2E8F0" : "#1E293B",
-                            fontSize: 12.5,
-                            fontWeight: 600,
-                            cursor: "pointer",
-                            textAlign: "left",
-                            width: "100%",
-                            transition: "background 0.15s ease"
-                          }}
-                          onMouseEnter={(e) => (e.currentTarget.style.background = isDarkMode ? "rgba(255, 255, 255, 0.06)" : "#F1F5F9")}
-                          onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-                        >
-                          <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
-                            <AnimatedThemeIcon isDark={!isDarkMode} size={16} />
-                            <span>{isDarkMode ? "Modo Claro" : "Modo Oscuro"}</span>
-                          </div>
-                          <span style={{
-                            fontSize: 10,
-                            fontWeight: 700,
-                            padding: "2px 7px",
-                            borderRadius: 6,
-                            background: isDarkMode ? "rgba(255,255,255,0.12)" : "#E2E8F0",
-                            color: isDarkMode ? "#CBD5E1" : "#475569"
-                          }}>
-                            {isDarkMode ? "Oscuro" : "Claro"}
-                          </span>
-                        </button>
-                      )}
-
-                      <div style={{ height: 1, background: isDarkMode ? "rgba(255,255,255,0.08)" : "#F1F5F9", margin: "4px 0" }} />
-
-                      {/* Botón Salir / Cerrar Sesión */}
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          haptic.medium();
-                          sound.playClick();
-                          setTopRightMenuOpen(false);
-                          if (onLogout) {
-                            onLogout();
-                            toast.success("Has cerrado sesión exitosamente.");
-                          }
-                        }}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 9,
-                          padding: "8px 10px",
-                          borderRadius: 8,
-                          background: "transparent",
-                          border: "none",
-                          color: "#EF4444",
-                          fontSize: 12.5,
-                          fontWeight: 650,
-                          cursor: "pointer",
-                          textAlign: "left",
-                          width: "100%",
-                          transition: "background 0.15s ease"
-                        }}
-                        onMouseEnter={(e) => (e.currentTarget.style.background = isDarkMode ? "rgba(239, 68, 68, 0.12)" : "#FEF2F2")}
-                        onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-                      >
-                        <SignOutRegular fontSize={16} style={{ color: "#EF4444" }} />
-                        <span>Cerrar sesión</span>
-                      </button>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </div>
-        ) : null}
 
         {/* ── Área de Conversación o Estado Vacío (Guiado y Dinámico) ── */}
         {messages.length === 0 ? (
