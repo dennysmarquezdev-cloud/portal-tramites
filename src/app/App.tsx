@@ -94,11 +94,18 @@ export const LIMA_BG = "https://images.unsplash.com/photo-1577587230708-187fdbef
 
 export const GLOBAL_CSS = `
 :root {
-  /* Harmonious Theme Colors */
-  --colorNeutralBackground1: #EDF3FA;
-  --colorNeutralBackground2: #F7FBFF;
-  --colorNeutralBackground3: #DCE9F8;
-  --colorNeutralStroke1: #C9DDEF;
+  /* ChatGPT Light Theme */
+  --colorNeutralBackground1: #FFFFFF;
+  --colorNeutralBackground2: #F9F9F9;
+  --colorNeutralBackground3: #F4F4F4;
+  --colorNeutralBackground4: #FFFFFF;
+  --colorNeutralForeground1: #0D0D0D;
+  --colorNeutralForeground2: #737373;
+  --colorNeutralForeground3: #8E8E93;
+  --colorNeutralStroke1: #E5E5E5;
+  --colorNeutralStroke2: #ECECEC;
+  --colorBrandBackground: #10A37F;
+  --colorBrandForeground1: #10A37F;
 
   /* Fluent 2 Shapes (Border Radius) */
   --borderRadiusNone: 0;
@@ -120,14 +127,14 @@ export const GLOBAL_CSS = `
   --spacing8: 32px;
 
   /* Fluent 2 Elevation (Light) */
-  --elevation2: 0 2px 4px rgba(0,0,0,0.04), 0 0 2px rgba(0,0,0,0.06);
-  --elevation4: 0 4px 8px rgba(0,0,0,0.04), 0 0 2px rgba(0,0,0,0.06);
-  --elevation8: 0 8px 16px rgba(0,0,0,0.04), 0 0 2px rgba(0,0,0,0.06);
-  --elevation16: 0 16px 32px rgba(0,0,0,0.04), 0 0 2px rgba(0,0,0,0.06);
+  --elevation2: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.04);
+  --elevation4: 0 4px 6px -1px rgba(0,0,0,0.06), 0 2px 4px -1px rgba(0,0,0,0.04);
+  --elevation8: 0 10px 15px -3px rgba(0,0,0,0.06), 0 4px 6px -2px rgba(0,0,0,0.03);
+  --elevation16: 0 20px 25px -5px rgba(0,0,0,0.06), 0 10px 10px -5px rgba(0,0,0,0.02);
 
   /* Fluent 2 Material (Light) */
-  --materialAcrylic: rgba(247, 251, 255, 0.85);
-  --materialMica: rgba(237, 243, 250, 0.95);
+  --materialAcrylic: rgba(255, 255, 255, 0.85);
+  --materialMica: rgba(249, 249, 249, 0.95);
 }
 
 .dark {
@@ -135,7 +142,14 @@ export const GLOBAL_CSS = `
   --colorNeutralBackground1: #212121;
   --colorNeutralBackground2: #171717;
   --colorNeutralBackground3: #2F2F2F;
+  --colorNeutralBackground4: #212121;
+  --colorNeutralForeground1: #ECECEC;
+  --colorNeutralForeground2: #B4B4B4;
+  --colorNeutralForeground3: #8E8E93;
   --colorNeutralStroke1: #303030;
+  --colorNeutralStroke2: rgba(255, 255, 255, 0.12);
+  --colorBrandBackground: #10A37F;
+  --colorBrandForeground1: #10A37F;
 
   /* Fluent 2 Elevation (Dark) */
   --elevation2: 0 2px 4px rgba(0,0,0,0.35), 0 0 2px rgba(0,0,0,0.3);

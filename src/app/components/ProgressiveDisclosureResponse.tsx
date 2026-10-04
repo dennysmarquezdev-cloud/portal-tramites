@@ -413,7 +413,7 @@ export function ProgressiveDisclosureResponse({
       fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
       fontSize: 15.5,
       lineHeight: 1.68,
-      color: isLight ? "#1E293B" : "#F1F5F9"
+      color: isLight ? "#0D0D0D" : "#ECECEC"
     }}>
       
       {/* ── CASO 1: PRESENTACIÓN EDITORIAL INSTITUCIONAL (SIN INSIGNIAS DE COLORES ARTIFICIALES) ── */}
@@ -426,7 +426,7 @@ export function ProgressiveDisclosureResponse({
               <h3 style={{ 
                 fontSize: 20, 
                 fontWeight: 800, 
-                color: isLight ? "#0F172A" : "#FFFFFF", 
+                color: isLight ? "#0D0D0D" : "#ECECEC", 
                 margin: "0 0 2px", 
                 letterSpacing: "-0.02em",
                 lineHeight: 1.3
@@ -441,16 +441,16 @@ export function ProgressiveDisclosureResponse({
             <div style={{
               fontSize: 15.5,
               lineHeight: 1.7,
-              color: isLight ? "#334155" : "#E2E8F0"
+              color: isLight ? "#262626" : "#D4D4D4"
             }}>
               <ReactMarkdown 
                 remarkPlugins={[remarkGfm]}
                 components={{
                   p: ({ node, ...props }) => (
-                    <p style={{ margin: "0 0 10px", fontSize: 15.5, lineHeight: 1.7, color: isLight ? "#334155" : "#E2E8F0" }} {...props} />
+                    <p style={{ margin: "0 0 10px", fontSize: 15.5, lineHeight: 1.7, color: isLight ? "#262626" : "#D4D4D4" }} {...props} />
                   ),
                   strong: ({ node, ...props }) => (
-                    <strong style={{ fontWeight: 750, color: isLight ? "#0F172A" : "#FFFFFF" }} {...props} />
+                    <strong style={{ fontWeight: 750, color: isLight ? "#0D0D0D" : "#ECECEC" }} {...props} />
                   )
                 }}
               >
@@ -465,7 +465,7 @@ export function ProgressiveDisclosureResponse({
               <span style={{ 
                 fontSize: 15.5, 
                 fontWeight: 750, 
-                color: isLight ? "#0F172A" : "#FFFFFF",
+                color: isLight ? "#0D0D0D" : "#ECECEC",
                 letterSpacing: "-0.01em"
               }}>
                 Requisitos necesarios:
@@ -477,10 +477,10 @@ export function ProgressiveDisclosureResponse({
                     alignItems: "flex-start",
                     gap: 9,
                     fontSize: 15,
-                    color: isLight ? "#334155" : "#E2E8F0",
+                    color: isLight ? "#262626" : "#D4D4D4",
                     lineHeight: 1.62
                   }}>
-                    <span style={{ color: isLight ? "#0284C7" : "#38BDF8", fontWeight: 700, flexShrink: 0, fontSize: 16 }}>•</span>
+                    <span style={{ color: isLight ? "#10A37F" : "#38BDF8", fontWeight: 700, flexShrink: 0, fontSize: 16 }}>•</span>
                     <span>{req}</span>
                   </div>
                 ))}
@@ -494,14 +494,14 @@ export function ProgressiveDisclosureResponse({
               <span style={{ 
                 fontSize: 15.5, 
                 fontWeight: 750, 
-                color: isLight ? "#0F172A" : "#FFFFFF",
+                color: isLight ? "#0D0D0D" : "#ECECEC",
                 letterSpacing: "-0.01em"
               }}>
                 Pasos para realizar el trámite:
               </span>
               <ol style={{ margin: 0, paddingLeft: 20, display: "flex", flexDirection: "column", gap: 6 }}>
                 {parsed.steps.map((step, sIdx) => (
-                  <li key={sIdx} style={{ fontSize: 15, lineHeight: 1.62, color: isLight ? "#334155" : "#E2E8F0" }}>
+                  <li key={sIdx} style={{ fontSize: 15, lineHeight: 1.62, color: isLight ? "#262626" : "#D4D4D4" }}>
                     {step}
                   </li>
                 ))}
@@ -514,8 +514,11 @@ export function ProgressiveDisclosureResponse({
             <div style={{
               padding: "12px 16px",
               borderRadius: 10,
-              background: isLight ? "#F8FAFC" : "rgba(255, 255, 255, 0.03)",
-              borderLeft: `3.5px solid ${isLight ? "#0284C7" : "#38BDF8"}`,
+              background: isLight ? "#F9F9F9" : "#2F2F2F",
+              borderLeft: `3.5px solid ${isLight ? "#10A37F" : "#38BDF8"}`,
+              borderTop: `1px solid ${isLight ? "#E5E5E5" : "rgba(255,255,255,0.06)"}`,
+              borderRight: `1px solid ${isLight ? "#E5E5E5" : "rgba(255,255,255,0.06)"}`,
+              borderBottom: `1px solid ${isLight ? "#E5E5E5" : "rgba(255,255,255,0.06)"}`,
               display: "flex",
               flexDirection: "column",
               gap: 6
@@ -523,7 +526,7 @@ export function ProgressiveDisclosureResponse({
               <span style={{ 
                 fontSize: 12, 
                 fontWeight: 750, 
-                color: isLight ? "#0284C7" : "#38BDF8", 
+                color: isLight ? "#10A37F" : "#38BDF8", 
                 textTransform: "uppercase", 
                 letterSpacing: "0.04em" 
               }}>
@@ -531,7 +534,7 @@ export function ProgressiveDisclosureResponse({
               </span>
               <ul style={{ margin: 0, paddingLeft: 18, display: "flex", flexDirection: "column", gap: 5 }}>
                 {parsed.notes.map((note, nIdx) => (
-                  <li key={nIdx} style={{ fontSize: 14.5, lineHeight: 1.58, color: isLight ? "#475569" : "#CBD5E1" }}>
+                  <li key={nIdx} style={{ fontSize: 14.5, lineHeight: 1.58, color: isLight ? "#525252" : "#B4B4B4" }}>
                     {note}
                   </li>
                 ))}
@@ -551,7 +554,7 @@ export function ProgressiveDisclosureResponse({
                   fontSize: 20, 
                   fontWeight: 800, 
                   margin: "14px 0 8px", 
-                  color: isLight ? "#0F172A" : "#FFFFFF", 
+                  color: isLight ? "#0D0D0D" : "#ECECEC", 
                   letterSpacing: "-0.02em",
                   lineHeight: 1.3
                 }} {...props} />
@@ -561,9 +564,9 @@ export function ProgressiveDisclosureResponse({
                   fontSize: 17.5, 
                   fontWeight: 750, 
                   margin: "14px 0 8px", 
-                  color: isLight ? "#0F172A" : "#FFFFFF", 
+                  color: isLight ? "#0D0D0D" : "#ECECEC", 
                   letterSpacing: "-0.015em",
-                  borderLeft: `3.5px solid ${isLight ? "#0284C7" : "#38BDF8"}`,
+                  borderLeft: `3.5px solid ${isLight ? "#10A37F" : "#38BDF8"}`,
                   paddingLeft: 10,
                   lineHeight: 1.35
                 }} {...props} />
@@ -573,7 +576,7 @@ export function ProgressiveDisclosureResponse({
                   fontSize: 16, 
                   fontWeight: 700, 
                   margin: "12px 0 6px", 
-                  color: isLight ? "#0284C7" : "#38BDF8", 
+                  color: isLight ? "#10A37F" : "#38BDF8", 
                   lineHeight: 1.4
                 }} {...props} />
               ),
@@ -582,7 +585,7 @@ export function ProgressiveDisclosureResponse({
                   margin: "0 0 10px", 
                   fontSize: 15.5,
                   lineHeight: 1.7, 
-                  color: isLight ? "#1E293B" : "#F1F5F9" 
+                  color: isLight ? "#0D0D0D" : "#ECECEC" 
                 }} {...props} />
               ),
               ul: ({ node, ...props }) => (
@@ -590,7 +593,7 @@ export function ProgressiveDisclosureResponse({
                   margin: "0 0 12px", 
                   paddingLeft: 20, 
                   listStyleType: "disc", 
-                  color: isLight ? "#0284C7" : "#38BDF8", 
+                  color: isLight ? "#10A37F" : "#38BDF8", 
                   display: "flex", 
                   flexDirection: "column", 
                   gap: 6 
@@ -601,7 +604,7 @@ export function ProgressiveDisclosureResponse({
                   margin: "0 0 12px", 
                   paddingLeft: 20, 
                   listStyleType: "decimal", 
-                  color: isLight ? "#0284C7" : "#38BDF8", 
+                  color: isLight ? "#10A37F" : "#38BDF8", 
                   display: "flex", 
                   flexDirection: "column", 
                   gap: 6 
@@ -611,13 +614,13 @@ export function ProgressiveDisclosureResponse({
                 <li style={{ 
                   fontSize: 15.5,
                   lineHeight: 1.68, 
-                  color: isLight ? "#334155" : "#E2E8F0" 
+                  color: isLight ? "#262626" : "#D4D4D4" 
                 }} {...props} />
               ),
               strong: ({ node, ...props }) => (
                 <strong style={{ 
                   fontWeight: 750, 
-                  color: isLight ? "#0F172A" : "#FFFFFF" 
+                  color: isLight ? "#0D0D0D" : "#ECECEC" 
                 }} {...props} />
               ),
               blockquote: ({ node, ...props }) => (
@@ -625,9 +628,9 @@ export function ProgressiveDisclosureResponse({
                   margin: "10px 0 12px",
                   padding: "10px 14px",
                   borderRadius: 8,
-                  background: isLight ? "rgba(2, 132, 199, 0.05)" : "rgba(56, 189, 248, 0.08)",
-                  borderLeft: `3.5px solid ${isLight ? "#0284C7" : "#38BDF8"}`,
-                  color: isLight ? "#0C4A6E" : "#BAE6FD",
+                  background: isLight ? "#F9F9F9" : "#2F2F2F",
+                  borderLeft: `3.5px solid ${isLight ? "#10A37F" : "#38BDF8"}`,
+                  color: isLight ? "#262626" : "#D4D4D4",
                   fontSize: 14.5,
                   lineHeight: 1.6
                 }} {...props} />
@@ -638,7 +641,7 @@ export function ProgressiveDisclosureResponse({
                   target="_blank" 
                   rel="noopener noreferrer" 
                   style={{ 
-                    color: isLight ? "#0284C7" : "#38BDF8", 
+                    color: isLight ? "#10A37F" : "#38BDF8", 
                     fontWeight: 650, 
                     textDecoration: "underline",
                     textUnderlineOffset: 3
@@ -656,25 +659,25 @@ export function ProgressiveDisclosureResponse({
                     fontSize: 14,
                     borderRadius: 8,
                     overflow: "hidden",
-                    border: isLight ? "1px solid #E2E8F0" : "1px solid rgba(255, 255, 255, 0.08)"
+                    border: isLight ? "1px solid #E5E5E5" : "1px solid rgba(255, 255, 255, 0.08)"
                   }} {...props} />
                 </div>
               ),
               th: ({ node, ...props }) => (
                 <th style={{
                   padding: "8px 12px",
-                  background: isLight ? "#F1F5F9" : "rgba(255, 255, 255, 0.06)",
+                  background: isLight ? "#F4F4F4" : "rgba(255, 255, 255, 0.06)",
                   fontWeight: 700,
                   textAlign: "left",
-                  borderBottom: isLight ? "1px solid #E2E8F0" : "1px solid rgba(255, 255, 255, 0.08)",
-                  color: isLight ? "#0F172A" : "#FFFFFF"
+                  borderBottom: isLight ? "1px solid #E5E5E5" : "1px solid rgba(255, 255, 255, 0.08)",
+                  color: isLight ? "#0D0D0D" : "#ECECEC"
                 }} {...props} />
               ),
               td: ({ node, ...props }) => (
                 <td style={{
                   padding: "8px 12px",
-                  borderBottom: isLight ? "1px solid #F1F5F9" : "1px solid rgba(255, 255, 255, 0.04)",
-                  color: isLight ? "#334155" : "#E2E8F0"
+                  borderBottom: isLight ? "1px solid #F4F4F4" : "1px solid rgba(255, 255, 255, 0.04)",
+                  color: isLight ? "#262626" : "#D4D4D4"
                 }} {...props} />
               )
             }}
@@ -686,7 +689,7 @@ export function ProgressiveDisclosureResponse({
             <motion.span
               animate={{ opacity: [1, 0, 1] }}
               transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
-              style={{ color: "#0284C7", fontWeight: 700, fontSize: 18, marginLeft: 2 }}
+              style={{ color: isLight ? "#10A37F" : "#38BDF8", fontWeight: 700, fontSize: 18, marginLeft: 2 }}
             >
               ▌
             </motion.span>
@@ -700,21 +703,21 @@ export function ProgressiveDisclosureResponse({
           <span style={{ 
             fontSize: 10.5, 
             fontWeight: 750, 
-            color: isLight ? "#64748B" : "#94A3B8", 
+            color: isLight ? "#737373" : "#B4B4B4", 
             textTransform: "uppercase", 
             letterSpacing: "0.05em", 
             display: "flex", 
             alignItems: "center", 
             gap: 5 
           }}>
-            <SparkleRegular fontSize={12} color="#0284C7" />
+            <SparkleRegular fontSize={12} color={isLight ? "#10A37F" : "#38BDF8"} />
             <span>Consultas sugeridas:</span>
           </span>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
             {followUps.map((prompt, pIdx) => (
               <motion.button
                 key={pIdx}
-                whileHover={{ scale: 1.01, borderColor: isLight ? "#0284C7" : "#38BDF8" }}
+                whileHover={{ scale: 1.01, borderColor: isLight ? "#10A37F" : "#38BDF8" }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => {
                   haptic.light();
@@ -726,9 +729,9 @@ export function ProgressiveDisclosureResponse({
                   gap: 6,
                   padding: "5px 10px",
                   borderRadius: 8,
-                  background: isLight ? "#FFFFFF" : "rgba(255, 255, 255, 0.04)",
-                  border: isLight ? "1px solid #E2E8F0" : "1px solid rgba(255, 255, 255, 0.08)",
-                  color: isLight ? "#0F172A" : "#F8FAFC",
+                  background: isLight ? "#F4F4F4" : "rgba(255, 255, 255, 0.04)",
+                  border: isLight ? "1px solid #E5E5E5" : "1px solid rgba(255, 255, 255, 0.08)",
+                  color: isLight ? "#0D0D0D" : "#ECECEC",
                   fontSize: 12,
                   fontWeight: 550,
                   cursor: "pointer",
@@ -739,7 +742,7 @@ export function ProgressiveDisclosureResponse({
                 }}
               >
                 <span>{prompt}</span>
-                <ArrowRightRegular fontSize={11} color={isLight ? "#0284C7" : "#38BDF8"} />
+                <ArrowRightRegular fontSize={11} color={isLight ? "#10A37F" : "#38BDF8"} />
               </motion.button>
             ))}
           </div>

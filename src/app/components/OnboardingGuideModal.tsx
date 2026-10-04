@@ -85,27 +85,26 @@ export function OnboardingGuideModal({
 
   const steps = [
     {
-      badge: "Paso 1 de 4 • Tu Espacio Ciudadano",
+      badge: "Paso 1 de 3 • Tu Espacio Ciudadano",
       title: "¡Bienvenido a AhorraTiempo.pe!",
       subtitle: "Tu buscador ciudadano y asistente inteligente con IA para trámites del Estado.",
-      icon: <SparkleRegular fontSize={30} style={{ color: "#38BDF8" }} />,
+      icon: <SparkleRegular fontSize={30} style={{ color: isDarkMode ? "#38BDF8" : "#10A37F" }} />,
       illustration: (
         <div style={{
-          background: isDarkMode ? "#171717" : "#F1F5F9",
+          background: isDarkMode ? "#171717" : "#F9F9F9",
           borderRadius: 16,
           padding: "18px",
-          border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`,
+          border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E5E5"}`,
           display: "flex",
           flexDirection: "column",
           gap: 12
         }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#10B981", boxShadow: "0 0 8px #10B981" }} />
-            <span style={{ fontSize: 12.5, fontWeight: 700, color: isDarkMode ? "#ECECEC" : "#0F172A" }}>
+          <div>
+            <span style={{ fontSize: 13, fontWeight: 750, color: isDarkMode ? "#ECECEC" : "#0D0D0D", letterSpacing: "-0.01em" }}>
               Tú tienes el control total de tu experiencia
             </span>
           </div>
-          <p style={{ margin: 0, fontSize: 13, lineHeight: 1.5, color: isDarkMode ? "#B4B4B4" : "#475569" }}>
+          <p style={{ margin: 0, fontSize: 13, lineHeight: 1.5, color: isDarkMode ? "#B4B4B4" : "#737373" }}>
             Centralizamos los requisitos, tasas del Banco de la Nación y guías oficiales de más de <strong>30 entidades públicas</strong>. No somos intermediarios ni tramitadores: te orientamos con transparencia y te conectamos directo a las sedes oficiales (.gob.pe).
           </p>
           <div style={{
@@ -120,14 +119,14 @@ export function OnboardingGuideModal({
               { label: "Enlaces Seguros", sub: "Directo a gob.pe" },
             ].map((box, i) => (
               <div key={i} style={{
-                background: isDarkMode ? "#212121" : "#FFFFFF",
+                background: isDarkMode ? "#2F2F2F" : "#FFFFFF",
                 borderRadius: 10,
                 padding: "10px 8px",
                 textAlign: "center",
-                border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.06)" : "#E2E8F0"}`
+                border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E5E5"}`
               }}>
-                <div style={{ fontSize: 12, fontWeight: 750, color: isDarkMode ? "#ECECEC" : "#1E293B" }}>{box.label}</div>
-                <div style={{ fontSize: 10.5, color: isDarkMode ? "#8E8E93" : "#64748B", marginTop: 2 }}>{box.sub}</div>
+                <div style={{ fontSize: 12, fontWeight: 750, color: isDarkMode ? "#ECECEC" : "#0D0D0D" }}>{box.label}</div>
+                <div style={{ fontSize: 10.5, color: isDarkMode ? "#B4B4B4" : "#737373", marginTop: 2 }}>{box.sub}</div>
               </div>
             ))}
           </div>
@@ -135,21 +134,21 @@ export function OnboardingGuideModal({
       )
     },
     {
-      badge: "Paso 2 de 4 • Personalización",
+      badge: "Paso 2 de 3 • Personalización",
       title: "Acomoda tus Entidades en el Sidebar",
       subtitle: "Organiza y fija con un clic las instituciones que más consultas.",
       icon: <PinRegular fontSize={30} style={{ color: "#F59E0B" }} />,
       illustration: (
         <div style={{
-          background: isDarkMode ? "#171717" : "#F1F5F9",
+          background: isDarkMode ? "#171717" : "#F9F9F9",
           borderRadius: 16,
           padding: "18px",
-          border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`,
+          border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E5E5"}`,
           display: "flex",
           flexDirection: "column",
           gap: 12
         }}>
-          <p style={{ margin: 0, fontSize: 13, lineHeight: 1.5, color: isDarkMode ? "#B4B4B4" : "#475569" }}>
+          <p style={{ margin: 0, fontSize: 13, lineHeight: 1.5, color: isDarkMode ? "#B4B4B4" : "#737373" }}>
             En la barra lateral izquierda puedes <strong>fijar como favorita (📌)</strong> tus entidades más consultadas y <strong>reordenarlas libremente manteniendo presionada cualquier tarjeta y cambiándole de posición</strong>.
           </p>
           <div style={{
@@ -165,53 +164,53 @@ export function OnboardingGuideModal({
               { name: "MTC", pinned: false, color: "#DC2626" }
             ].map((ent, i) => (
               <div key={i} style={{
-                background: isDarkMode ? "#212121" : "#FFFFFF",
+                background: isDarkMode ? "#2F2F2F" : "#FFFFFF",
                 borderRadius: 10,
                 padding: "8px 12px",
-                border: `1.5px solid ${ent.pinned ? (isDarkMode ? "#38BDF8" : ent.color) : (isDarkMode ? "rgba(255, 255, 255, 0.1)" : "#E2E8F0")}`,
+                border: `1.5px solid ${ent.pinned ? (isDarkMode ? "#38BDF8" : "#10A37F") : (isDarkMode ? "rgba(255, 255, 255, 0.1)" : "#E5E5E5")}`,
                 display: "flex",
                 alignItems: "center",
                 gap: 6,
                 flexShrink: 0
               }}>
-                <span style={{ fontSize: 12, fontWeight: 750, color: isDarkMode ? "#ECECEC" : "#1E293B" }}>{ent.name}</span>
+                <span style={{ fontSize: 12, fontWeight: 750, color: isDarkMode ? "#ECECEC" : "#0D0D0D" }}>{ent.name}</span>
                 {ent.pinned && <span style={{ fontSize: 11 }}>📌</span>}
               </div>
             ))}
           </div>
-          <div style={{ fontSize: 11.5, color: isDarkMode ? "#38BDF8" : "#0284C7", fontWeight: 600 }}>
+          <div style={{ fontSize: 11.5, color: isDarkMode ? "#38BDF8" : "#10A37F", fontWeight: 600 }}>
             ✨ Tu orden personalizado se guarda automáticamente en tu navegador.
           </div>
         </div>
       )
     },
     {
-      badge: "Paso 3 de 4 • Inteligencia Cívica",
+      badge: "Paso 3 de 3 • Inteligencia Cívica",
       title: "Pregúntale a LOTA AI por Texto o Voz",
       subtitle: "Respuestas directas, requisitos exactos y cálculo de tasas oficiales.",
-      icon: <MicRegular fontSize={30} style={{ color: "#10B981" }} />,
+      icon: <MicRegular fontSize={30} style={{ color: isDarkMode ? "#38BDF8" : "#10A37F" }} />,
       illustration: (
         <div style={{
-          background: isDarkMode ? "#171717" : "#F1F5F9",
+          background: isDarkMode ? "#171717" : "#F9F9F9",
           borderRadius: 16,
           padding: "18px",
-          border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`,
+          border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E5E5"}`,
           display: "flex",
           flexDirection: "column",
           gap: 12
         }}>
           <div style={{
-            background: isDarkMode ? "#212121" : "#FFFFFF",
+            background: isDarkMode ? "#2F2F2F" : "#FFFFFF",
             borderRadius: 12,
             padding: "10px 14px",
-            border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.1)" : "#E2E8F0"}`,
+            border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.1)" : "#E5E5E5"}`,
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between"
           }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <SearchRegular fontSize={14} style={{ color: isDarkMode ? "#8E8E93" : "#94A3B8" }} />
-              <span style={{ fontSize: 12.5, color: isDarkMode ? "#ECECEC" : "#1E293B", fontStyle: "italic" }}>
+              <SearchRegular fontSize={14} style={{ color: isDarkMode ? "#B4B4B4" : "#737373" }} />
+              <span style={{ fontSize: 12.5, color: isDarkMode ? "#ECECEC" : "#0D0D0D", fontStyle: "italic" }}>
                 "¿Cómo renuevo mi DNI vencido y cuánto cuesta la tasa?"
               </span>
             </div>
@@ -219,8 +218,8 @@ export function OnboardingGuideModal({
               width: 28,
               height: 28,
               borderRadius: "50%",
-              background: isDarkMode ? "rgba(56, 189, 248, 0.2)" : "#E0F2FE",
-              color: isDarkMode ? "#38BDF8" : "#0284C7",
+              background: isDarkMode ? "rgba(56, 189, 248, 0.2)" : "rgba(16, 163, 127, 0.12)",
+              color: isDarkMode ? "#38BDF8" : "#10A37F",
               display: "flex",
               alignItems: "center",
               justifyContent: "center"
@@ -228,49 +227,9 @@ export function OnboardingGuideModal({
               <MicRegular fontSize={15} />
             </div>
           </div>
-          <p style={{ margin: 0, fontSize: 12.5, lineHeight: 1.5, color: isDarkMode ? "#B4B4B4" : "#475569" }}>
+          <p style={{ margin: 0, fontSize: 12.5, lineHeight: 1.5, color: isDarkMode ? "#B4B4B4" : "#737373" }}>
             Pulsa el micrófono para dictar con tu voz o escribe en el prompt. LOTA AI te explicará los requisitos oficiales, el código de tasa para pagar en Págalo.pe / Banco de la Nación y el enlace oficial para reservar tu cita.
           </p>
-        </div>
-      )
-    },
-    {
-      badge: "Paso 4 de 4 • Experiencia & Confort",
-      title: "Tema Oscuro ChatGPT & Catálogo Completo",
-      subtitle: "Interfaz visual cuidada al milímetro para el día y la noche.",
-      icon: <WeatherMoonRegular fontSize={30} style={{ color: "#A855F7" }} />,
-      illustration: (
-        <div style={{
-          background: isDarkMode ? "#171717" : "#F1F5F9",
-          borderRadius: 16,
-          padding: "18px",
-          border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`,
-          display: "flex",
-          flexDirection: "column",
-          gap: 12
-        }}>
-          <p style={{ margin: 0, fontSize: 13, lineHeight: 1.5, color: isDarkMode ? "#B4B4B4" : "#475569" }}>
-            Disfruta del nuevo <strong>tema oscuro con la paleta de ChatGPT</strong> (tonos grafito neutros que descansan tu vista) o cambia a modo claro cuando lo desees desde el menú de perfil o el selector lateral.
-          </p>
-          <div style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-around",
-            padding: "10px",
-            background: isDarkMode ? "#212121" : "#FFFFFF",
-            borderRadius: 12,
-            border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`
-          }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-              <span style={{ fontSize: 14 }}>🌓</span>
-              <span style={{ fontSize: 12, fontWeight: 700, color: isDarkMode ? "#ECECEC" : "#1E293B" }}>Modo Oscuro ChatGPT</span>
-            </div>
-            <div style={{ width: 1, height: 16, background: isDarkMode ? "rgba(255, 255, 255, 0.15)" : "#E2E8F0" }} />
-            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-              <span style={{ fontSize: 14 }}>📚</span>
-              <span style={{ fontSize: 12, fontWeight: 700, color: isDarkMode ? "#ECECEC" : "#1E293B" }}>3,000+ Trámites</span>
-            </div>
-          </div>
         </div>
       )
     }
@@ -311,10 +270,10 @@ export function OnboardingGuideModal({
           width: "100%",
           background: isDarkMode ? "#212121" : "#FFFFFF",
           borderRadius: 20,
-          border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #E2E8F0",
+          border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #E5E5E5",
           boxShadow: isDarkMode 
             ? "0 24px 60px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.2)" 
-            : "0 20px 50px rgba(15, 23, 42, 0.15)",
+            : "0 20px 50px rgba(0, 0, 0, 0.1)",
           padding: "24px 24px 20px",
           display: "flex",
           flexDirection: "column",
@@ -337,9 +296,9 @@ export function OnboardingGuideModal({
             width: 32,
             height: 32,
             borderRadius: "50%",
-            border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid #E2E8F0",
-            background: isDarkMode ? "#2F2F2F" : "#F8FAFC",
-            color: isDarkMode ? "#B4B4B4" : "#64748B",
+            border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid #E5E5E5",
+            background: isDarkMode ? "#2F2F2F" : "#F4F4F4",
+            color: isDarkMode ? "#B4B4B4" : "#737373",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -356,8 +315,8 @@ export function OnboardingGuideModal({
             width: 48,
             height: 48,
             borderRadius: 14,
-            background: isDarkMode ? "#2F2F2F" : "#F1F5F9",
-            border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid #E2E8F0",
+            background: isDarkMode ? "#2F2F2F" : "#F4F4F4",
+            border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid #E5E5E5",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -371,7 +330,7 @@ export function OnboardingGuideModal({
               fontWeight: 750,
               textTransform: "uppercase",
               letterSpacing: "0.05em",
-              color: isDarkMode ? "#38BDF8" : "#0284C7"
+              color: isDarkMode ? "#38BDF8" : "#10A37F"
             }}>
               {step.badge}
             </span>
@@ -379,7 +338,7 @@ export function OnboardingGuideModal({
               margin: 0,
               fontSize: 18,
               fontWeight: 800,
-              color: isDarkMode ? "#ECECEC" : "#0F172A",
+              color: isDarkMode ? "#ECECEC" : "#0D0D0D",
               lineHeight: 1.25,
               letterSpacing: "-0.015em"
             }}>
@@ -388,7 +347,7 @@ export function OnboardingGuideModal({
             <p style={{
               margin: 0,
               fontSize: 13,
-              color: isDarkMode ? "#B4B4B4" : "#64748B",
+              color: isDarkMode ? "#B4B4B4" : "#737373",
               lineHeight: 1.4
             }}>
               {step.subtitle}
@@ -415,7 +374,7 @@ export function OnboardingGuideModal({
           alignItems: "center",
           justifyContent: "space-between",
           paddingTop: 8,
-          borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9"}`
+          borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E5E5"}`
         }}>
           {/* Indicador de Dots */}
           <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
@@ -433,8 +392,8 @@ export function OnboardingGuideModal({
                   height: 7,
                   borderRadius: 99,
                   background: currentStep === idx 
-                    ? (isDarkMode ? "#38BDF8" : "#0284C7") 
-                    : (isDarkMode ? "rgba(255, 255, 255, 0.2)" : "#CBD5E1"),
+                    ? (isDarkMode ? "#38BDF8" : "#10A37F") 
+                    : (isDarkMode ? "rgba(255, 255, 255, 0.2)" : "#E5E5E5"),
                   border: "none",
                   padding: 0,
                   cursor: "pointer",
@@ -453,9 +412,9 @@ export function OnboardingGuideModal({
                 style={{
                   padding: "8px 14px",
                   borderRadius: 10,
-                  border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#CBD5E1"}`,
+                  border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E5E5E5"}`,
                   background: "transparent",
-                  color: isDarkMode ? "#ECECEC" : "#334155",
+                  color: isDarkMode ? "#ECECEC" : "#0D0D0D",
                   fontSize: 13,
                   fontWeight: 650,
                   cursor: "pointer",
@@ -476,7 +435,7 @@ export function OnboardingGuideModal({
                   borderRadius: 10,
                   border: "none",
                   background: "transparent",
-                  color: isDarkMode ? "#8E8E93" : "#64748B",
+                  color: isDarkMode ? "#B4B4B4" : "#737373",
                   fontSize: 12.5,
                   fontWeight: 600,
                   cursor: "pointer"
@@ -494,9 +453,9 @@ export function OnboardingGuideModal({
                 borderRadius: 10,
                 border: "none",
                 background: currentStep === steps.length - 1
-                  ? "#10B981"
-                  : (isDarkMode ? "#38BDF8" : "#0284C7"),
-                color: currentStep === steps.length - 1 ? "#FFFFFF" : (isDarkMode ? "#0F172A" : "#FFFFFF"),
+                  ? "#10A37F"
+                  : (isDarkMode ? "#ECECEC" : "#0D0D0D"),
+                color: currentStep === steps.length - 1 ? "#FFFFFF" : (isDarkMode ? "#0D0D0D" : "#FFFFFF"),
                 fontSize: 13,
                 fontWeight: 750,
                 cursor: "pointer",
@@ -504,8 +463,8 @@ export function OnboardingGuideModal({
                 alignItems: "center",
                 gap: 6,
                 boxShadow: currentStep === steps.length - 1
-                  ? "0 4px 14px rgba(16, 185, 129, 0.35)"
-                  : (isDarkMode ? "0 4px 14px rgba(56, 189, 248, 0.35)" : "0 4px 14px rgba(2, 132, 199, 0.3)")
+                  ? "0 4px 14px rgba(16, 163, 127, 0.35)"
+                  : (isDarkMode ? "0 4px 14px rgba(0, 0, 0, 0.4)" : "0 4px 14px rgba(0, 0, 0, 0.15)")
               }}
             >
               <span>{currentStep === steps.length - 1 ? "¡Empezar a ahorrar tiempo!" : "Siguiente"}</span>

@@ -725,32 +725,38 @@ export function FrutilotaMascot({
     }
   };
 
-  // ── Paleta Exacta Estilo ChatGPT (Dark Canvas #212121, Sidebar #171717, Card #2F2F2F) ──
+  // ── Paleta Exacta Estilo ChatGPT (Dark Canvas #212121, Sidebar #171717, Card #2F2F2F | Light Canvas #FFFFFF, Sidebar #F9F9F9, Card #FFFFFF) ──
   const D = useMemo(() => {
     return isDarkMode ? {
-      bg:      "#212121",   // ChatGPT Canvas
-      sidebar: "#171717",   // ChatGPT Sidebar
-      cardBg:  "#2F2F2F",   // ChatGPT Card
-      text:    "#ECECEC",   // ChatGPT High-contrast Text
-      muted:   "#B4B4B4",   // ChatGPT Muted Text
-      border:  "#303030",   // ChatGPT Clean Border
-      ink:     "#ECECEC",
-      inputBg: "#2F2F2F",   // ChatGPT Input Box
-      itemHov: "#2A2A2A",
-      chip:    "#2F2F2F",
-      chipAct: "#10A37F",
+      bg:          "#212121",   // ChatGPT Canvas Dark
+      sidebar:     "#171717",   // ChatGPT Sidebar Dark
+      cardBg:      "#2F2F2F",   // ChatGPT Card / Bubble Dark
+      text:        "#ECECEC",   // ChatGPT High-contrast Text Dark
+      muted:       "#B4B4B4",   // ChatGPT Muted Text Dark
+      border:      "#303030",   // ChatGPT Clean Border Dark
+      ink:         "#ECECEC",
+      inputBg:     "#2F2F2F",   // ChatGPT Input Box Dark
+      itemHov:     "#2A2A2A",
+      chip:        "#2F2F2F",
+      chipAct:     "#10A37F",
+      userMsgBg:   "#2F2F2F",
+      userMsgText: "#ECECEC",
+      userMsgBorder: "rgba(255, 255, 255, 0.1)",
     } : {
-      bg:      T.sand,
-      sidebar: T.cream,
-      cardBg:  T.cream,
-      text:    T.strong,
-      muted:   T.muted,
-      border:  T.border,
-      ink:     T.ink,
-      inputBg: T.sand,
-      itemHov: T.lilac,
-      chip:    T.sand,
-      chipAct: T.violet,
+      bg:          "#FFFFFF",   // ChatGPT Canvas Light
+      sidebar:     "#F9F9F9",   // ChatGPT Sidebar Light
+      cardBg:      "#FFFFFF",   // ChatGPT Card Light
+      text:        "#0D0D0D",   // ChatGPT Text Light
+      muted:       "#737373",   // ChatGPT Muted Text Light
+      border:      "#E5E5E5",   // ChatGPT Border Light
+      ink:         "#0D0D0D",
+      inputBg:     "#F4F4F4",   // ChatGPT Input Box Light
+      itemHov:     "#ECECEC",   // ChatGPT Hover Light
+      chip:        "#F4F4F4",
+      chipAct:     "#0D0D0D",
+      userMsgBg:   "#F4F4F4",   // ChatGPT User Bubble Light
+      userMsgText: "#0D0D0D",
+      userMsgBorder: "#E5E5E5",
     };
   }, [isDarkMode]);
 
@@ -2658,6 +2664,7 @@ export function FrutilotaMascot({
                 onStop={stopGeneration}
                 D={D}
                 activeEntity={activeEntity}
+                isDarkMode={isDarkMode}
               />
             </div>
 
@@ -2737,15 +2744,15 @@ export function FrutilotaMascot({
                       <div style={{
                         maxWidth: "76%",
                         padding: "12px 18px",
-                        background: isDarkMode ? "#2F2F2F" : T.violet,
-                        borderRadius: "16px 16px 4px 16px",
-                        border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
+                        background: D.userMsgBg,
+                        borderRadius: "18px 18px 4px 18px",
+                        border: `1px solid ${D.userMsgBorder}`,
                         fontFamily: I,
                         fontSize: 15,
                         fontWeight: 500,
-                        color: isDarkMode ? "#ECECEC" : "#FFFFFF",
+                        color: D.userMsgText,
                         lineHeight: 1.6,
-                        boxShadow: isDarkMode ? "0 2px 8px rgba(0,0,0,0.3)" : "0 2px 10px rgba(47,108,181,0.25)"
+                        boxShadow: isDarkMode ? "0 2px 8px rgba(0,0,0,0.3)" : "0 1px 3px rgba(0,0,0,0.03)"
                       }}>
                         {msg.content}
                       </div>
@@ -3453,6 +3460,7 @@ interface ChatInputCardProps {
   onStop: () => void;
   D: any;
   activeEntity?: any;
+  isDarkMode?: boolean;
 }
 
 function ChatInputCard({
@@ -3472,6 +3480,7 @@ function ChatInputCard({
   onStop,
   D,
   activeEntity,
+  isDarkMode = false,
 }: ChatInputCardProps) {
   const [dropdown, setDropdown] = useState(false);
   const [cardFilter, setCardFilter] = useState("");
@@ -3926,18 +3935,19 @@ function ChatInputCard({
                   style={{
                     width: 32,
                     height: 32,
-                    borderRadius: 8,
+                    borderRadius: "50%",
                     border: "none",
-                    background: T.strong,
-                    color: "#fff",
+                    background: isDarkMode ? "#ECECEC" : "#0D0D0D",
+                    color: isDarkMode ? "#0D0D0D" : "#FFFFFF",
                     cursor: "pointer",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    flexShrink: 0
+                    flexShrink: 0,
+                    transition: "all 0.15s ease"
                   }}
                 >
-                  <div style={{ width: 10, height: 10, borderRadius: 2, background: "#fff" }} />
+                  <div style={{ width: 10, height: 10, borderRadius: 2, background: isDarkMode ? "#0D0D0D" : "#FFFFFF" }} />
                 </button>
               ) : (
                 <button
@@ -3947,19 +3957,27 @@ function ChatInputCard({
                   style={{
                     width: 32,
                     height: 32,
-                    borderRadius: 8,
+                    borderRadius: "50%",
                     border: "none",
-                    background: value.trim() ? (activeColor || T.violet) : D.border,
+                    background: value.trim() 
+                      ? (isDarkMode ? "#ECECEC" : "#0D0D0D") 
+                      : (isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E5E5"),
                     cursor: value.trim() ? "pointer" : "default",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    transition: "background 0.15s",
+                    transition: "all 0.15s ease",
                     flexShrink: 0
                   }}
                 >
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <path d="M12 7H2M7 2l5 5-5 5" stroke={value.trim() ? "#fff" : D.muted} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path 
+                      d="M7 12V2M7 2L2.5 6.5M7 2L11.5 6.5" 
+                      stroke={value.trim() ? (isDarkMode ? "#0D0D0D" : "#FFFFFF") : (isDarkMode ? "#737373" : "#A3A3A3")} 
+                      strokeWidth="2" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 </button>
               )}
