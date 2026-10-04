@@ -377,7 +377,7 @@ const FOOTER_DOCS: Record<string, { title: string; badge: string; content: React
             <strong>1. Selecciona la entidad o escribe tu trámite:</strong> Elige SUNAT, RENIEC, MTC u otra institución, o formula una consulta en tus propias palabras.
           </div>
           <div style={{ padding: "8px 12px", background: "rgba(2, 132, 199, 0.06)", borderRadius: 8, borderLeft: "3px solid #0284C7" }}>
-            <strong>2. LOTA AI procesa los requisitos oficiales:</strong> Extrae la normativa vigente, costos de tasas oficiales, tiempos y modalidades (digital o presencial).
+            <strong>2. LOTA AI te orienta con los requisitos oficiales:</strong> Sintetiza los requisitos clave, pasos a seguir, tiempos y modalidades (digital o presencial).
           </div>
           <div style={{ padding: "8px 12px", background: "rgba(2, 132, 199, 0.06)", borderRadius: 8, borderLeft: "3px solid #0284C7" }}>
             <strong>3. Accede al canal oficial:</strong> Sigue el paso a paso estructurado y haz clic en el botón directo para iniciar el trámite en el portal del Estado.
@@ -2301,8 +2301,6 @@ export function FrutilotaMascot({
                         className="catalog-twocol-grid"
                       >
                         {currentPageItems.map((t, idx) => {
-                          const isGratuito = !t.costo || /gratuito|gratis|s\/\s*0(?:\.00)?/i.test(t.costo);
-
                           return (
                             <div
                               key={t.id || idx}
@@ -2331,25 +2329,9 @@ export function FrutilotaMascot({
                               className="catalog-card-notion"
                             >
                               <div>
-                                {/* Fila Superior: Badges (Costo y Modalidad) y Número de Trámite */}
+                                {/* Fila Superior: Badges (Modalidad) y Número de Trámite */}
                                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 9, gap: 6 }}>
                                   <div style={{ display: "flex", alignItems: "center", gap: 5, flexWrap: "wrap", flex: "1 1 auto", minWidth: 0 }}>
-                                    <span style={{
-                                      fontFamily: I,
-                                      fontSize: 10.5,
-                                      fontWeight: 700,
-                                      color: isGratuito ? notion.pillGreenText : notion.pillAmberText,
-                                      background: isGratuito ? notion.pillGreenBg : notion.pillAmberBg,
-                                      border: `1px solid ${isGratuito ? notion.pillGreenBorder : notion.pillAmberBorder}`,
-                                      padding: "2px 7px",
-                                      borderRadius: 5,
-                                      whiteSpace: "nowrap",
-                                      letterSpacing: "0.01em",
-                                      WebkitFontSmoothing: "antialiased"
-                                    }}>
-                                      {t.costo || "Gratuito"}
-                                    </span>
-
                                     {t.acceso && (
                                       <span style={{
                                         fontFamily: I,

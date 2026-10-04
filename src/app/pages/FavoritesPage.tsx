@@ -157,9 +157,6 @@ export default function FavoritesPage({
             >
               <div className="catalogo-item-top" style={{ marginBottom: 4 }}>
                 <span className="catalogo-item-entidad">{t.entity || "OFICIAL"}</span>
-                <span className={`catalogo-item-costo ${(t.price && t.price !== "Gratuito" && t.price !== "Gratis" && t.isPaid) ? "catalogo-item-costo--paid" : ""}`}>
-                  {t.price || (t.isPaid ? "De pago" : "Gratuito")}
-                </span>
               </div>
               <div className="catalogo-item-titulo">{t.title}</div>
             </div>

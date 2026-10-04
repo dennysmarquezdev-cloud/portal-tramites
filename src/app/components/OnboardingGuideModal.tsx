@@ -251,7 +251,7 @@ export function OnboardingGuideModal({
         lineHeight: 1.45,
         color: C.textSecondary
       }}>
-        En <strong>ahorratiempo.pe</strong> encuentras todas las entidades del Estado reunidas en un solo lugar. Puedes consultar gratis requisitos, costos de tasas oficiales y acceder a los enlaces directos de las sedes <strong>.gob.pe</strong>.
+        En <strong>ahorratiempo.pe</strong> encuentras el enlace a todas las entidades públicas nacionales reunidas en un solo lugar para consultar requisitos oficiales y acceder directamente a las sedes <strong>.gob.pe</strong>.
       </p>
     </div>
   );
@@ -393,7 +393,7 @@ export function OnboardingGuideModal({
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
               <span style={{ color: C.sage, fontSize: 11 }}>✓</span>
-              <span>Enlaces a sedes .gob.pe</span>
+              <span>Enlace a todas las entidades públicas nacionales</span>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
               <span style={{ color: C.sage, fontSize: 11 }}>✓</span>
@@ -444,11 +444,11 @@ export function OnboardingGuideModal({
           <div style={{ display: "flex", flexDirection: "column", gap: 5, fontSize: 11, color: isDarkMode ? "#E2E8F0" : "#4B5563" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
               <span style={{ color: C.iris, fontSize: 11 }}>✦</span>
-              <span>Orientación guiada 24/7</span>
+              <span>Orientación interactiva 24/7</span>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
               <span style={{ color: C.iris, fontSize: 11 }}>✦</span>
-              <span>Cálculo de tasas Págalo.pe</span>
+              <span>Chat sobre un trámite específico para averiguar más</span>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
               <span style={{ color: C.iris, fontSize: 11 }}>✦</span>
@@ -478,7 +478,7 @@ export function OnboardingGuideModal({
         lineHeight: 1.45,
         color: C.textSecondary
       }}>
-        Si necesitas un asistente que resuelva tus dudas paso a paso o calcule los montos exactos a pagar en el Banco de la Nación, puedes usar <strong>LOTA AI</strong> mediante el Plan PLUS tras tus consultas gratuitas.
+        Si necesitas un orientador que te ayude a profundizar en un trámite en específico y resolver tus dudas paso a paso, puedes usar <strong>LOTA AI</strong> mediante el Plan PLUS tras tus consultas gratuitas.
       </p>
     </div>
   );
@@ -501,7 +501,7 @@ export function OnboardingGuideModal({
     {
       badge: "Paso 3 de 3 / Orientación con IA",
       title: "LOTA AI: Orientación ciudadana 24/7",
-      subtitle: "Tu asistente guiado para calcular tasas oficiales y resolver dudas con el Plan LOTA AI PLUS.",
+      subtitle: "Tu asistente guiado para tener un chat con un trámite en específico y averiguar más con el Plan LOTA AI PLUS.",
       icon: <UniqueAiConstellationIcon size={22} color={C.iris} />,
       illustration: Step3Illustration
     }

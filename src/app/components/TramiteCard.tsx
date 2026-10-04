@@ -58,7 +58,7 @@ export function TramiteCard({
     "Revisa la Ficha RUC con la información de domicilio fiscal, actividad económica y comprobantes autorizados."
   ],
   officialLinks = [
-    { title: "Consultar RUC (Acceso Directo SUNAT)", url: "https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/FrameCriterioBusquedaWeb.jsp", sub: "Plataforma oficial en línea · Costo: Gratuito" },
+    { title: "Consultar RUC (Acceso Directo SUNAT)", url: "https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/FrameCriterioBusquedaWeb.jsp", sub: "Plataforma oficial en línea" },
     { title: "Guía Oficial Gob.pe: Consultar RUC", url: "https://www.gob.pe/278-consultar-ruc", sub: "Guía y requisitos del Estado peruano" }
   ],
   suggestedQueries = [
@@ -123,7 +123,6 @@ export function TramiteCard({
   const handleCopy = () => {
     haptic.success();
     const textToCopy = `📌 ${title} (${entidad})
-Costo: ${costo}
 ${description}
 
 📋 REQUISITOS:
@@ -147,7 +146,7 @@ ${steps.map((s, i) => `${i + 1}. ${s}`).join("\n")}
       stopLotaSpeech();
       setIsSpeaking(false);
     } else {
-      const speechText = `${title}. Entidad ${entidad}. Costo: ${costo}. ${description}. Requisitos: ${requirements.join(". ")}. Pasos principales: ${steps.join(". ")}`;
+      const speechText = `${title}. Entidad ${entidad}. ${description}. Requisitos: ${requirements.join(". ")}. Pasos principales: ${steps.join(". ")}`;
       setIsSpeaking(true);
       playLotaSpeech(speechText, {
         onEnd: () => setIsSpeaking(false),
@@ -199,22 +198,6 @@ ${steps.map((s, i) => `${i + 1}. ${s}`).join("\n")}
               color: isLight ? "#0056AC" : "#93C5FD"
             }}>
               <BuildingRegular fontSize={13} /> {entidad}
-            </span>
-          )}
-          {costo && (
-            <span style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 5,
-              padding: "3.5px 10px",
-              borderRadius: 100,
-              background: isLight ? "#EDF3FA" : "rgba(255, 255, 255, 0.06)",
-              border: isLight ? "1px solid #C9DDEF" : "1px solid rgba(255, 255, 255, 0.10)",
-              fontSize: 11.5,
-              fontWeight: 650,
-              color: isLight ? "#10B981" : "#6EE7B7"
-            }}>
-              <StarRegular fontSize={13} /> Costo: {costo}
             </span>
           )}
           {requiereClaveSol && (

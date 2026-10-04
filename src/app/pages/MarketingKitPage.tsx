@@ -1493,7 +1493,7 @@ export default function MarketingKitPage({ onBack, theme: initialTheme = "light"
                             paddingTop: 6,
                             textAlign: "center"
                           }}>
-                            "Requisitos actualizados, tasas oficiales y enlaces directos."
+                            "Requisitos actualizados, orientación paso a paso y enlaces directos."
                           </div>
                         </div>
                       </motion.div>
@@ -1824,7 +1824,7 @@ export default function MarketingKitPage({ onBack, theme: initialTheme = "light"
 
                 {/* Feature Pills */}
                 <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-                  {["✓ Requisitos en 1 Clic", "✓ Tasas Págalo.pe", "✓ Modo Offline"].map((pill, i) => (
+                  {["✓ Requisitos en 1 Clic", "✓ Guía y Enlaces Oficiales", "✓ Modo Offline"].map((pill, i) => (
                     <span key={i} style={{
                       fontSize: 12,
                       fontWeight: 650,
