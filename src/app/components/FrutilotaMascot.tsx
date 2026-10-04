@@ -766,17 +766,55 @@ export function FrutilotaMascot({
             padding: 4px 2px 10px;
             margin-bottom: 10px;
           }
+        @keyframes slowEyeBlink {
+          0%, 60% {
+            opacity: 1;
+            transform: scaleY(1) scaleX(1);
+            filter: brightness(1);
+          }
+          70% {
+            opacity: 0.65;
+            transform: scaleY(0.84) scaleX(0.99);
+            filter: brightness(0.93);
+          }
+          76% {
+            opacity: 0.36;
+            transform: scaleY(0.68) scaleX(0.975);
+            filter: brightness(0.86);
+          }
+          83% {
+            opacity: 0.72;
+            transform: scaleY(0.92) scaleX(0.992);
+            filter: brightness(0.96);
+          }
+          90%, 100% {
+            opacity: 1;
+            transform: scaleY(1) scaleX(1);
+            filter: brightness(1);
+          }
         }
         .prompt-chip-btn {
-          transition: background 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-                      border-color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-                      color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-                      box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+          animation: slowEyeBlink 4s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+          transform-origin: center center;
+          transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
+                      border-color 0.2s ease, 
+                      background-color 0.2s ease, 
+                      box-shadow 0.2s ease, 
+                      opacity 0.2s ease;
+          will-change: transform, opacity, filter;
         }
         .prompt-chip-btn:hover {
-          border-color: ${isDarkMode ? "rgba(56, 189, 248, 0.45)" : "rgba(2, 132, 199, 0.35)"} !important;
-          background: ${isDarkMode ? "rgba(56, 189, 248, 0.08)" : "rgba(2, 132, 199, 0.05)"} !important;
-          color: ${isDarkMode ? "#38BDF8" : "#0284C7"} !important;
+          animation-play-state: paused !important;
+          opacity: 1 !important;
+          transform: translateY(-2px) scale(1.02) !important;
+          filter: brightness(1.03) !important;
+          border-color: ${isDarkMode ? "rgba(56, 189, 248, 0.5)" : "#0284C7"} !important;
+          box-shadow: ${isDarkMode 
+            ? "0 4px 14px rgba(56, 189, 248, 0.2), 0 0 8px rgba(56, 189, 248, 0.15)" 
+            : "0 4px 14px rgba(2, 132, 199, 0.16), 0 1px 3px rgba(0, 0, 0, 0.05)"} !important;
+        }
+        .prompt-chip-btn:active {
+          transform: translateY(0px) scale(0.98) !important;
         }
       `}</style>
       
@@ -2170,80 +2208,49 @@ export function FrutilotaMascot({
               />
             </div>
 
-            {/* Atajos de Consultas Populares de la Entidad Activa con Animación Fluida */}
+            {/* Atajos de Consultas Populares de la Entidad Activa */}
             {activeEntity.popularProcedures && activeEntity.popularProcedures.length > 0 && (
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeEntity.acronym}
-                  initial={{ opacity: 0, y: 7 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -5 }}
-                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-                  style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", maxWidth: 660, marginTop: 6 }}
-                >
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.96 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.18 }}
-                    style={{ display: "flex", alignItems: "center", marginBottom: 8 }}
-                  >
-                    <span style={{ fontFamily: I, fontSize: 12, fontWeight: 650, color: D.muted }}>
-                      Consultas frecuentes de {activeEntity.acronym}:
-                    </span>
-                  </motion.div>
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", maxWidth: 660, marginTop: 4 }}>
+                <div style={{ display: "flex", alignItems: "center", marginBottom: 8 }}>
+                  <span style={{ fontFamily: I, fontSize: 12, fontWeight: 650, color: D.muted }}>
+                    Consultas frecuentes de {activeEntity.acronym}:
+                  </span>
+                </div>
 
-                  <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 8, width: "100%" }}>
-                    {activeEntity.popularProcedures.slice(0, 3).map((proc, pIdx) => (
-                      <motion.button
-                        key={`${activeEntity.acronym}-${pIdx}`}
-                        initial={{ opacity: 0, scale: 0.92, y: 6 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.95, y: -4 }}
-                        transition={{ 
-                          duration: 0.22, 
-                          delay: pIdx * 0.04, 
-                          ease: [0.16, 1, 0.3, 1] 
-                        }}
-                        whileHover={{ 
-                          y: -2.5, 
-                          scale: 1.025,
-                          boxShadow: isDarkMode 
-                            ? "0 6px 16px rgba(0, 0, 0, 0.45)" 
-                            : "0 6px 16px rgba(2, 132, 199, 0.12)"
-                        }}
-                        whileTap={{ scale: 0.96 }}
-                        onClick={() => {
-                          sound.playClick();
-                          haptic.medium();
-                          executeQuery(`Deseo consultar requisitos, procedimiento oficial y accesos para: "${proc.title}"`);
-                        }}
-                        onMouseEnter={() => sound.playHoverKey()}
-                        className="prompt-chip-btn"
-                        style={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: 6,
-                          padding: "6.5px 13px",
-                          background: isDarkMode ? "rgba(255, 255, 255, 0.04)" : "#FFFFFF",
-                          border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.09)" : "#E2E8F0"}`,
-                          borderRadius: 9,
-                          fontFamily: I,
-                          fontSize: 12,
-                          fontWeight: 550,
-                          color: D.text,
-                          cursor: "pointer",
-                          boxShadow: isDarkMode ? "none" : "0 1px 3px rgba(0,0,0,0.03)",
-                          maxWidth: "100%",
-                          textAlign: "left",
-                          outline: "none"
-                        }}
-                      >
-                        <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{proc.title}</span>
-                      </motion.button>
-                    ))}
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+                <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 7, width: "100%" }}>
+                  {activeEntity.popularProcedures.slice(0, 3).map((proc, pIdx) => (
+                    <button
+                      key={pIdx}
+                      onClick={() => {
+                        sound.playClick();
+                        haptic.medium();
+                        executeQuery(`Deseo consultar requisitos, procedimiento oficial y accesos para: "${proc.title}"`);
+                      }}
+                      onMouseEnter={() => sound.playHoverKey()}
+                      className="prompt-chip-btn"
+                      style={{
+                        animationDelay: `${pIdx * 0.45}s`,
+                        display: "inline-flex",
+                        alignItems: "center",
+                        padding: "6px 12px",
+                        background: isDarkMode ? "rgba(255, 255, 255, 0.04)" : "#FFFFFF",
+                        border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`,
+                        borderRadius: 8,
+                        fontFamily: I,
+                        fontSize: 12,
+                        fontWeight: 550,
+                        color: D.text,
+                        cursor: "pointer",
+                        boxShadow: isDarkMode ? "none" : "0 1px 2px rgba(0,0,0,0.03)",
+                        maxWidth: "100%",
+                        textAlign: "left"
+                      }}
+                    >
+                      <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{proc.title}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
             )}
           </div>
         ) : (
