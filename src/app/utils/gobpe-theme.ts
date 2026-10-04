@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ═══════════════════════════════════════════════════════════════
  * GOB.PE OFFICIAL DESIGN SYSTEM — COLOR PALETTE & SEMANTIC TOKENS
  * Secretaría de Gobierno y Transformación Digital (PCM / Gob.pe)
@@ -28,8 +28,8 @@ export const GOBPE_COLORS = {
     100: "#FFFFFF",
   },
   neutral: {
-    800: "#0D1028",
-    700: "#3D4053",
+    800: "#171717",
+    700: "#262626",
     600: "#555869", // Texto secundario alternativo
     550: "#656A8A",
     500: "#8A94A2",

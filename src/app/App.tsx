@@ -131,21 +131,21 @@ export const GLOBAL_CSS = `
 }
 
 .dark {
-  /* Harmonious Theme Colors (Dark Slate) */
-  --colorNeutralBackground1: #0D1521;
-  --colorNeutralBackground2: #101928;
-  --colorNeutralBackground3: #162848;
-  --colorNeutralStroke1: #1C2D42;
+  /* ChatGPT Dark Theme */
+  --colorNeutralBackground1: #212121;
+  --colorNeutralBackground2: #171717;
+  --colorNeutralBackground3: #2F2F2F;
+  --colorNeutralStroke1: #303030;
 
   /* Fluent 2 Elevation (Dark) */
-  --elevation2: 0 2px 4px rgba(0,0,0,0.25), 0 0 2px rgba(0,0,0,0.2);
-  --elevation4: 0 4px 8px rgba(0,0,0,0.25), 0 0 2px rgba(0,0,0,0.2);
-  --elevation8: 0 8px 16px rgba(0,0,0,0.25), 0 0 2px rgba(0,0,0,0.2);
-  --elevation16: 0 16px 32px rgba(0,0,0,0.25), 0 0 2px rgba(0,0,0,0.2);
+  --elevation2: 0 2px 4px rgba(0,0,0,0.35), 0 0 2px rgba(0,0,0,0.3);
+  --elevation4: 0 4px 8px rgba(0,0,0,0.35), 0 0 2px rgba(0,0,0,0.3);
+  --elevation8: 0 8px 16px rgba(0,0,0,0.35), 0 0 2px rgba(0,0,0,0.3);
+  --elevation16: 0 16px 32px rgba(0,0,0,0.35), 0 0 2px rgba(0,0,0,0.3);
 
   /* Fluent 2 Material (Dark) */
-  --materialAcrylic: rgba(16, 25, 40, 0.85);
-  --materialMica: rgba(13, 21, 33, 0.95);
+  --materialAcrylic: rgba(33, 33, 33, 0.85);
+  --materialMica: rgba(23, 23, 23, 0.95);
 }
 
 /* Fluent 2 Iconography Standardization */
@@ -875,12 +875,12 @@ export default function App() {
         width: "100vw",
         overflow: "hidden",
         fontFamily: "'Inter', sans-serif",
-        background: theme === 'dark' ? "#0D1521" : "#EDF3FA",
-        color: theme === 'dark' ? "#EEF2F9" : "#0B1E38"
+        background: theme === 'dark' ? "#212121" : "#EDF3FA",
+        color: theme === 'dark' ? "#ECECEC" : "#0B1E38"
       }}>
         <AdminCMSContext.Provider value={{ isAdmin, onEditCms: (type, data) => setEditingCms({ type, data }) }}>
           {page === "frutilota" ? (
-            <div style={{ position: "fixed", inset: 0, zIndex: 100, background: theme === "dark" ? "#030712" : "#F8FAFC", display: "flex", flexDirection: "column", height: "100dvh", width: "100vw", overflow: "hidden" }}>
+            <div style={{ position: "fixed", inset: 0, zIndex: 100, background: theme === "dark" ? "#212121" : "#F8FAFC", display: "flex", flexDirection: "column", height: "100dvh", width: "100vw", overflow: "hidden" }}>
               <FrutilotaMascot 
                 initialEntity={aiEntity}
                 initialQuery={aiQuery} 
@@ -907,7 +907,7 @@ export default function App() {
               <AnimatePresence>
                 {sidebarOpen && (
                   <motion.div initial={{ opacity:0 }} animate={{ opacity:1 }} exit={{ opacity:0 }} style={{ position:"fixed",inset:0,zIndex:200,display:"flex" }} onClick={() => setSidebarOpen(false)}>
-                    <div style={{ background: theme === "dark" ? "rgba(4,13,24,.8)" : "rgba(15,23,42,.4)", position:"absolute", inset:0, backdropFilter:"blur(4px)" }} />
+                    <div style={{ background: theme === "dark" ? "rgba(0,0,0,.7)" : "rgba(15,23,42,.4)", position:"absolute", inset:0, backdropFilter:"blur(4px)" }} />
                     <motion.div initial={{ x:-320 }} animate={{ x:0 }} exit={{ x:-320 }} transition={{ type:"spring",damping:28,stiffness:280 }} style={{ position:"relative",zIndex:1,height:"100%" }} onClick={e => e.stopPropagation()}>
                       <Sidebar 
                         page={page} 
@@ -944,7 +944,7 @@ export default function App() {
               />
 
               {/* Main Content Area */}
-              <main className="main-content" style={{ flex: 1, overflowY: "auto", position: "relative", display: "flex", flexDirection: "column", minHeight: 0, background: theme === "dark" ? "#0D1521" : "#EDF3FA" }}>
+              <main className="main-content" style={{ flex: 1, overflowY: "auto", position: "relative", display: "flex", flexDirection: "column", minHeight: 0, background: theme === "dark" ? "#212121" : "#EDF3FA" }}>
                 <div style={{ flex: "1 0 auto", display: "flex", flexDirection: "column", width: "100%" }}>
                   <AnimatePresence mode="wait">
                     <Suspense fallback={

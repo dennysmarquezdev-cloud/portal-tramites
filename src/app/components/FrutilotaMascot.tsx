@@ -34,7 +34,13 @@ import {
   BuildingBankRegular,
   ChevronDownRegular,
   PersonRegular,
-  GridRegular
+  GridRegular,
+  PinRegular,
+  PinFilled,
+  ArrowUpRegular,
+  ArrowDownRegular,
+  ArrowSortRegular,
+  SettingsRegular
 } from '@fluentui/react-icons';
 import { useFrutilotaAI } from "../hooks/useFrutilotaAI";
 import { useSpeechRecognition } from "../hooks/useSpeechRecognition";
@@ -45,6 +51,7 @@ import { getConcordantOfficialLinks } from "../utils/officialLinkMatcher";
 import { ProgressiveDisclosureResponse } from "./ProgressiveDisclosureResponse";
 import { ThinkingIndicator } from "./ThinkingIndicator";
 import { PaywallView } from "./PaywallView";
+import { OnboardingGuideModal } from "./OnboardingGuideModal";
 import { CIVIC_ENTITIES, findCivicEntity, buildEntityWelcomeMessage, getEntityVoiceExample } from "../data/civicEntities";
 import { getEntityLogo } from "../data/entityLogos";
 import multiCatalogRaw from "../data/multi_entidades_catalogo.json";
@@ -448,6 +455,133 @@ export function FrutilotaMascot({
 
   const isDarkMode = theme === "dark";
 
+  // Entidades fijadas y orden personalizado en Sidebar
+  const [pinnedEntities, setPinnedEntities] = useState<string[]>(() => {
+    try {
+      const saved = localStorage.getItem("ahorratiempo_sidebar_pinned");
+      if (saved) return JSON.parse(saved);
+    } catch {}
+    return ["SUNAT", "RENIEC", "MIGRACIONES", "MTC"];
+  });
+
+  const [customOrder, setCustomOrder] = useState<string[]>(() => {
+    try {
+      const saved = localStorage.getItem("ahorratiempo_sidebar_order");
+      if (saved) return JSON.parse(saved);
+    } catch {}
+    return CIVIC_ENTITIES.map(e => e.acronym);
+  });
+
+  const [isReorderingEntities, setIsReorderingEntities] = useState(false);
+  const [sidebarEntitySearch, setSidebarEntitySearch] = useState("");
+  const [showOnboardingModal, setShowOnboardingModal] = useState(() => {
+    try {
+      return !localStorage.getItem("ahorratiempo_onboarding_v1");
+    } catch {
+      return false;
+    }
+  });
+
+  const savePinnedEntities = (newList: string[]) => {
+    setPinnedEntities(newList);
+    try {
+      localStorage.setItem("ahorratiempo_sidebar_pinned", JSON.stringify(newList));
+    } catch {}
+  };
+
+  const saveCustomOrder = (newOrder: string[]) => {
+    setCustomOrder(newOrder);
+    try {
+      localStorage.setItem("ahorratiempo_sidebar_order", JSON.stringify(newOrder));
+    } catch {}
+  };
+
+  const handleTogglePin = (acronym: string, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    haptic.selection();
+    sound.playClick();
+    const isPinned = pinnedEntities.includes(acronym);
+    let nextPinned: string[];
+    if (isPinned) {
+      nextPinned = pinnedEntities.filter(a => a !== acronym);
+      toast.info(`${acronym} desfijada del inicio`);
+    } else {
+      nextPinned = [acronym, ...pinnedEntities.filter(a => a !== acronym)];
+      toast.success(`📌 ${acronym} fijada al inicio`);
+    }
+    savePinnedEntities(nextPinned);
+  };
+
+  const handleMoveEntity = (acronym: string, direction: "up" | "down", e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    haptic.selection();
+    sound.playClick();
+    const list = [...displayEntitiesList];
+    const currentIndex = list.findIndex(c => c.acronym.toUpperCase() === acronym.toUpperCase());
+    if (currentIndex === -1) return;
+    const targetIndex = direction === "up" ? currentIndex - 1 : currentIndex + 1;
+    if (targetIndex < 0 || targetIndex >= list.length) return;
+
+    // Swap
+    const temp = list[currentIndex];
+    list[currentIndex] = list[targetIndex];
+    list[targetIndex] = temp;
+
+    const newOrder = list.map(c => c.acronym);
+    saveCustomOrder(newOrder);
+  };
+
+  const handleResetEntityOrder = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    haptic.medium();
+    sound.playClick();
+    const defaultPinned = ["SUNAT", "RENIEC", "MIGRACIONES", "MTC"];
+    const defaultOrder = CIVIC_ENTITIES.map(c => c.acronym);
+    savePinnedEntities(defaultPinned);
+    saveCustomOrder(defaultOrder);
+    toast.success("Orden de entidades restablecido por defecto");
+  };
+
+  const displayEntitiesList = useMemo(() => {
+    const entityMap = new Map(CIVIC_ENTITIES.map(c => [c.acronym.toUpperCase(), c]));
+    const ordered: typeof CIVIC_ENTITIES = [];
+    const added = new Set<string>();
+
+    // 1. Pinned entities primero
+    pinnedEntities.forEach(acr => {
+      const ent = entityMap.get(acr.toUpperCase());
+      if (ent && !added.has(ent.acronym.toUpperCase())) {
+        ordered.push(ent);
+        added.add(ent.acronym.toUpperCase());
+      }
+    });
+
+    // 2. Custom ordered entities restantes
+    customOrder.forEach(acr => {
+      const ent = entityMap.get(acr.toUpperCase());
+      if (ent && !added.has(ent.acronym.toUpperCase())) {
+        ordered.push(ent);
+        added.add(ent.acronym.toUpperCase());
+      }
+    });
+
+    // 3. Cualquier entidad en CIVIC_ENTITIES que falte
+    CIVIC_ENTITIES.forEach(ent => {
+      if (!added.has(ent.acronym.toUpperCase())) {
+        ordered.push(ent);
+        added.add(ent.acronym.toUpperCase());
+      }
+    });
+
+    // 4. Filtrar por búsqueda si existe
+    if (sidebarEntitySearch.trim()) {
+      const q = cleanText(sidebarEntitySearch);
+      return ordered.filter(c => cleanText(c.acronym).includes(q) || cleanText(c.name || "").includes(q) || cleanText(c.description || "").includes(q));
+    }
+
+    return ordered;
+  }, [pinnedEntities, customOrder, sidebarEntitySearch]);
+
   const displayName = useMemo(() => {
     if (user?.displayName) return user.displayName.trim().split(" ")[0];
     if (user?.email) return user.email.split("@")[0];
@@ -491,19 +625,20 @@ export function FrutilotaMascot({
     }
   };
 
+  // ── Paleta Exacta Estilo ChatGPT (Dark Canvas #212121, Sidebar #171717, Card #2F2F2F) ──
   const D = useMemo(() => {
     return isDarkMode ? {
-      bg:      "#0D1521",
-      sidebar: "#101928",
-      cardBg:  "#111E30",
-      text:    "#EEF2F9",
-      muted:   "#7A93B2",
-      border:  "#1C2D42",
-      ink:     "#D8E4F2",
-      inputBg: "#162032",
-      itemHov: "#162848",
-      chip:    "#162032",
-      chipAct: T.violet,
+      bg:      "#212121",   // ChatGPT Canvas
+      sidebar: "#171717",   // ChatGPT Sidebar
+      cardBg:  "#2F2F2F",   // ChatGPT Card
+      text:    "#ECECEC",   // ChatGPT High-contrast Text
+      muted:   "#B4B4B4",   // ChatGPT Muted Text
+      border:  "#303030",   // ChatGPT Clean Border
+      ink:     "#ECECEC",
+      inputBg: "#2F2F2F",   // ChatGPT Input Box
+      itemHov: "#2A2A2A",
+      chip:    "#2F2F2F",
+      chipAct: "#10A37F",
     } : {
       bg:      T.sand,
       sidebar: T.cream,
@@ -1123,138 +1258,368 @@ export function FrutilotaMascot({
             </div>
           )}
 
-          {/* Entidades Header Grande */}
-          <div style={{ padding: "16px 14px 10px", flexShrink: 0 }}>
-            <h2 style={{
-              margin: 0,
-              fontFamily: G,
-              fontSize: 18,
-              fontWeight: 800,
-              color: D.text,
-              letterSpacing: "-0.02em"
-            }}>
-              Entidades
-            </h2>
+          {/* Entidades Header con Buscador y Control de Reordenamiento */}
+          <div style={{ padding: "14px 14px 10px", flexShrink: 0, display: "flex", flexDirection: "column", gap: 8 }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                <h2 style={{
+                  margin: 0,
+                  fontFamily: G,
+                  fontSize: 16,
+                  fontWeight: 800,
+                  color: D.text,
+                  letterSpacing: "-0.02em"
+                }}>
+                  Entidades
+                </h2>
+                <span style={{
+                  fontSize: 10,
+                  fontWeight: 700,
+                  padding: "1px 6px",
+                  borderRadius: 100,
+                  background: isDarkMode ? "rgba(255,255,255,0.08)" : "#E2E8F0",
+                  color: D.muted
+                }}>
+                  {displayEntitiesList.length}
+                </span>
+              </div>
+
+              {/* Botones de Modo Acomodar / Reset */}
+              <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                {isReorderingEntities && (
+                  <button
+                    type="button"
+                    onClick={handleResetEntityOrder}
+                    title="Restablecer orden por defecto"
+                    style={{
+                      background: "transparent",
+                      border: "none",
+                      color: D.muted,
+                      cursor: "pointer",
+                      padding: "3px 5px",
+                      borderRadius: 6,
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 3,
+                      fontSize: 11,
+                      fontFamily: I,
+                      fontWeight: 600,
+                      transition: "color 0.15s ease"
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#EF4444")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = D.muted)}
+                  >
+                    <ArrowResetRegular fontSize={12} />
+                    <span>Reset</span>
+                  </button>
+                )}
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    haptic.selection();
+                    sound.playHoverKey();
+                    setIsReorderingEntities(prev => !prev);
+                  }}
+                  title={isReorderingEntities ? "Guardar y finalizar orden" : "Acomodar y ordenar entidades"}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 4,
+                    padding: "3px 8px",
+                    borderRadius: 8,
+                    border: `1px solid ${isReorderingEntities ? (isDarkMode ? "#38BDF8" : "#0284C7") : D.border}`,
+                    background: isReorderingEntities ? (isDarkMode ? "rgba(56, 189, 248, 0.15)" : "#E0F2FE") : "transparent",
+                    color: isReorderingEntities ? (isDarkMode ? "#38BDF8" : "#0284C7") : D.muted,
+                    fontSize: 11,
+                    fontFamily: I,
+                    fontWeight: 700,
+                    cursor: "pointer",
+                    transition: "all 0.15s ease"
+                  }}
+                >
+                  <ArrowSortRegular fontSize={12} />
+                  <span>{isReorderingEntities ? "Listo" : "Acomodar"}</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Buscador Rápido de Entidades en Sidebar */}
+            <div style={{ position: "relative", width: "100%" }}>
+              <SearchRegular 
+                style={{ 
+                  position: "absolute", 
+                  left: 8, 
+                  top: "50%", 
+                  transform: "translateY(-50%)", 
+                  color: D.muted,
+                  pointerEvents: "none" 
+                }} 
+                fontSize={12} 
+              />
+              <input 
+                value={sidebarEntitySearch}
+                onChange={e => setSidebarEntitySearch(e.target.value)}
+                placeholder="Buscar entidad (ej. SUNAT, RENIEC)..."
+                style={{
+                  width: "100%",
+                  height: 28,
+                  padding: "0 22px 0 26px",
+                  borderRadius: 7,
+                  border: `1px solid ${D.border}`,
+                  background: isDarkMode ? "#262626" : "#FFFFFF",
+                  color: D.text,
+                  fontFamily: I,
+                  fontSize: 11,
+                  outline: "none",
+                  boxSizing: "border-box"
+                }}
+              />
+              {sidebarEntitySearch && (
+                <button
+                  type="button"
+                  onClick={() => setSidebarEntitySearch("")}
+                  style={{
+                    position: "absolute",
+                    right: 6,
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    color: D.muted,
+                    padding: 0
+                  }}
+                >
+                  <DismissRegular fontSize={11} />
+                </button>
+              )}
+            </div>
+
+            {isReorderingEntities && (
+              <div style={{
+                fontSize: 10.5,
+                color: isDarkMode ? "#38BDF8" : "#0284C7",
+                background: isDarkMode ? "rgba(56, 189, 248, 0.1)" : "#F0F9FF",
+                padding: "4px 8px",
+                borderRadius: 6,
+                lineHeight: 1.3
+              }}>
+                💡 Usa <strong>📌</strong> para fijar arriba o <strong>⬆️ ⬇️</strong> para mover posiciones.
+              </div>
+            )}
           </div>
 
-          {/* Lista de Entidades en Formato Cuadrícula de Cubos */}
+          {/* Lista de Entidades en Formato Cuadrícula de Cubos con Reordenamiento */}
           <div style={{ 
-            padding: "0 12px",
+            padding: "0 10px",
             display: "grid",
             gridTemplateColumns: "repeat(2, 1fr)",
-            gap: 8,
+            gap: 7,
             alignContent: "start"
           }}>
-            {CIVIC_ENTITIES.map((c) => {
+            {displayEntitiesList.map((c, idx) => {
               const isSelected = entity.toUpperCase() === c.acronym.toUpperCase();
+              const isPinned = pinnedEntities.includes(c.acronym);
               const catColor = c.categoryColor || c.color || T.violet;
               const bgLight = c.categoryBgLight || "#F1F5F9";
               const logoSrc = getEntityLogo(c.acronym);
               const badgeText = formatBadgeAcronym(c.acronym);
 
               return (
-                <button 
-                  key={c.id} 
-                  onMouseEnter={() => sound.playHoverKey()}
-                  onClick={() => {
-                    sound.playClick();
-                    haptic.selection();
-                    setEntity(c.acronym);
-                    clearChat();
-                    if (typeof window !== "undefined" && window.innerWidth <= 768) {
-                      setChatSidebarOpen(false);
-                    }
-                  }}
-                  className="chat-collection-cube-btn"
-                  title={c.name || c.acronym}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    padding: "12px 6px 10px",
-                    borderRadius: 12,
-                    border: isSelected 
-                      ? `2px solid ${catColor}` 
-                      : `1px solid ${D.border}`,
-                    background: isSelected 
-                      ? (isDarkMode ? "rgba(255, 255, 255, 0.08)" : bgLight) 
-                      : (isDarkMode ? "rgba(255, 255, 255, 0.02)" : "#FFFFFF"),
-                    cursor: "pointer",
-                    textAlign: "center",
-                    transition: "all 0.18s ease",
-                    boxShadow: isSelected 
-                      ? `0 4px 12px ${catColor}25` 
-                      : (isDarkMode ? "none" : "0 1px 3px rgba(0,0,0,0.03)"),
-                    position: "relative",
-                    boxSizing: "border-box",
-                    minHeight: 90,
-                  }}
+                <div
+                  key={c.id || c.acronym}
+                  style={{ position: "relative" }}
                 >
-                  {/* Logo / Badge de la Entidad */}
-                  <div style={{
-                    width: 44,
-                    height: 44,
-                    minWidth: 44,
-                    minHeight: 44,
-                    borderRadius: 10,
-                    background: isDarkMode ? "rgba(255,255,255,0.95)" : "#FFFFFF",
-                    border: `1px solid ${catColor}35`,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    padding: 4,
-                    marginBottom: 8,
-                    boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
-                    boxSizing: "border-box",
-                    overflow: "hidden"
-                  }}>
-                    {logoSrc ? (
-                      <img
-                        src={logoSrc}
-                        alt={c.acronym}
-                        style={{ 
-                          maxHeight: "100%", 
-                          maxWidth: "100%", 
-                          width: "auto", 
-                          height: "auto", 
-                          objectFit: "contain", 
-                          display: "block" 
-                        }}
-                        loading="lazy"
-                      />
-                    ) : (
-                      <span style={{
-                        color: catColor,
-                        fontWeight: 800,
-                        fontFamily: G,
-                        fontSize: 11,
-                        textAlign: "center",
-                        letterSpacing: badgeText.length > 4 ? "-0.03em" : "0",
-                      }}>
-                        {badgeText}
-                      </span>
-                    )}
-                  </div>
+                  <button 
+                    onMouseEnter={() => sound.playHoverKey()}
+                    onClick={() => {
+                      if (isReorderingEntities) return;
+                      sound.playClick();
+                      haptic.selection();
+                      setEntity(c.acronym);
+                      clearChat();
+                      if (typeof window !== "undefined" && window.innerWidth <= 768) {
+                        setChatSidebarOpen(false);
+                      }
+                    }}
+                    className="chat-collection-cube-btn"
+                    title={c.name || c.acronym}
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "10px 4px 8px",
+                      borderRadius: 12,
+                      border: isSelected 
+                        ? `2px solid ${isDarkMode ? "#38BDF8" : catColor}` 
+                        : isPinned
+                        ? `1.5px solid ${isDarkMode ? "rgba(245, 158, 11, 0.4)" : "#FDE68A"}`
+                        : `1px solid ${D.border}`,
+                      background: isSelected 
+                        ? (isDarkMode ? "rgba(56, 189, 248, 0.12)" : bgLight) 
+                        : isPinned
+                        ? (isDarkMode ? "#262626" : "#FFFDF5")
+                        : (isDarkMode ? "#262626" : "#FFFFFF"),
+                      cursor: isReorderingEntities ? "default" : "pointer",
+                      textAlign: "center",
+                      transition: "all 0.18s ease",
+                      boxShadow: isSelected 
+                        ? `0 4px 12px ${catColor}25` 
+                        : (isDarkMode ? "none" : "0 1px 3px rgba(0,0,0,0.03)"),
+                      position: "relative",
+                      boxSizing: "border-box",
+                      minHeight: 86,
+                    }}
+                  >
+                    {/* Botón Pin de Fijado Rápido */}
+                    <button
+                      type="button"
+                      onClick={(e) => handleTogglePin(c.acronym, e)}
+                      title={isPinned ? `Desfijar ${c.acronym} del inicio` : `Fijar ${c.acronym} al inicio`}
+                      style={{
+                        position: "absolute",
+                        top: 4,
+                        right: 4,
+                        zIndex: 2,
+                        background: isPinned 
+                          ? (isDarkMode ? "rgba(245, 158, 11, 0.25)" : "#FEF3C7") 
+                          : "transparent",
+                        border: "none",
+                        borderRadius: 4,
+                        padding: "2px",
+                        cursor: "pointer",
+                        color: isPinned ? "#F59E0B" : (isDarkMode ? "rgba(255,255,255,0.25)" : "#94A3B8"),
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        transition: "all 0.15s ease"
+                      }}
+                    >
+                      {isPinned ? <PinFilled fontSize={11} /> : <PinRegular fontSize={11} />}
+                    </button>
 
-                  {/* Acrónimo / Nombre Prominente */}
-                  <span style={{ 
-                    fontFamily: G, 
-                    fontSize: 12, 
-                    color: isSelected ? (isDarkMode ? "#38BDF8" : catColor) : D.text, 
-                    fontWeight: isSelected ? 800 : 650, 
-                    lineHeight: 1.2,
-                    textAlign: "center",
-                    maxWidth: "100%",
-                    overflow: "hidden", 
-                    textOverflow: "ellipsis", 
-                    whiteSpace: "nowrap",
-                    display: "block",
-                    padding: "0 2px"
-                  }}>
-                    {c.acronym}
-                  </span>
-                </button>
+                    {/* Logo / Badge de la Entidad */}
+                    <div style={{
+                      width: 40,
+                      height: 40,
+                      minWidth: 40,
+                      minHeight: 40,
+                      borderRadius: 9,
+                      background: isDarkMode ? "rgba(255,255,255,0.95)" : "#FFFFFF",
+                      border: `1px solid ${catColor}35`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: 4,
+                      marginBottom: 6,
+                      boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
+                      boxSizing: "border-box",
+                      overflow: "hidden"
+                    }}>
+                      {logoSrc ? (
+                        <img
+                          src={logoSrc}
+                          alt={c.acronym}
+                          style={{ 
+                            maxHeight: "100%", 
+                            maxWidth: "100%", 
+                            width: "auto", 
+                            height: "auto", 
+                            objectFit: "contain", 
+                            display: "block" 
+                          }}
+                          loading="lazy"
+                        />
+                      ) : (
+                        <span style={{
+                          color: catColor,
+                          fontWeight: 800,
+                          fontFamily: G,
+                          fontSize: 10.5,
+                          textAlign: "center",
+                          letterSpacing: badgeText.length > 4 ? "-0.03em" : "0",
+                        }}>
+                          {badgeText}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Acrónimo / Nombre Prominente */}
+                    <span style={{ 
+                      fontFamily: G, 
+                      fontSize: 11.5, 
+                      color: isSelected ? (isDarkMode ? "#38BDF8" : catColor) : D.text, 
+                      fontWeight: isSelected ? 800 : 650, 
+                      lineHeight: 1.2,
+                      textAlign: "center",
+                      maxWidth: "100%",
+                      overflow: "hidden", 
+                      textOverflow: "ellipsis", 
+                      whiteSpace: "nowrap",
+                      display: "block",
+                      padding: "0 2px"
+                    }}>
+                      {c.acronym}
+                    </span>
+                  </button>
+
+                  {/* Controles de Subir/Bajar en Modo Reordenamiento */}
+                  {isReorderingEntities && (
+                    <div style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: 4,
+                      marginTop: 4
+                    }}>
+                      <button
+                        type="button"
+                        onClick={(e) => handleMoveEntity(c.acronym, "up", e)}
+                        disabled={idx === 0}
+                        title="Mover hacia arriba"
+                        style={{
+                          flex: 1,
+                          height: 20,
+                          borderRadius: 4,
+                          border: `1px solid ${D.border}`,
+                          background: isDarkMode ? "#2F2F2F" : "#F1F5F9",
+                          color: idx === 0 ? (isDarkMode ? "#555" : "#CBD5E1") : D.text,
+                          cursor: idx === 0 ? "not-allowed" : "pointer",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontSize: 10
+                        }}
+                      >
+                        <ArrowUpRegular fontSize={10} />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => handleMoveEntity(c.acronym, "down", e)}
+                        disabled={idx === displayEntitiesList.length - 1}
+                        title="Mover hacia abajo"
+                        style={{
+                          flex: 1,
+                          height: 20,
+                          borderRadius: 4,
+                          border: `1px solid ${D.border}`,
+                          background: isDarkMode ? "#2F2F2F" : "#F1F5F9",
+                          color: idx === displayEntitiesList.length - 1 ? (isDarkMode ? "#555" : "#CBD5E1") : D.text,
+                          cursor: idx === displayEntitiesList.length - 1 ? "not-allowed" : "pointer",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontSize: 10
+                        }}
+                      >
+                        <ArrowDownRegular fontSize={10} />
+                      </button>
+                    </div>
+                  )}
+                </div>
               );
             })}
           </div>
@@ -1269,6 +1634,38 @@ export function FrutilotaMascot({
 
           {/* ── Footer Informativo y Legal Estilo YouTube ── */}
           <div style={{ padding: "0 14px 24px", display: "flex", flexDirection: "column", gap: 11, flexShrink: 0 }}>
+            {/* Botón Destacado: Ver Guía Interactiva de Bienvenida */}
+            <button
+              type="button"
+              onClick={() => {
+                sound.playClick();
+                haptic.selection();
+                setShowOnboardingModal(true);
+              }}
+              style={{
+                width: "100%",
+                padding: "8px 10px",
+                borderRadius: 9,
+                border: `1px solid ${isDarkMode ? "rgba(56, 189, 248, 0.35)" : "rgba(2, 132, 199, 0.3)"}`,
+                background: isDarkMode ? "rgba(56, 189, 248, 0.08)" : "#F0F9FF",
+                color: isDarkMode ? "#38BDF8" : "#0284C7",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                cursor: "pointer",
+                fontFamily: G,
+                fontSize: 11.5,
+                fontWeight: 700,
+                transition: "all 0.15s ease"
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                <SparkleRegular fontSize={13} />
+                <span>¿Cómo usar AhorraTiempo?</span>
+              </div>
+              <ArrowRightRegular fontSize={11} />
+            </button>
+
             {/* Grupo 1: Información, Derechos de autor, Contactar, Creadores */}
             <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 9px" }}>
               {[
@@ -1301,7 +1698,7 @@ export function FrutilotaMascot({
               ))}
             </div>
 
-            {/* Grupo 2: Términos, Privacidad, Política y Seguridad, Cómo funciona ahorratiempo */}
+            {/* Grupo 2: Términos, Privacidad, Política y Seguridad, Cómo funciona */}
             <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 9px" }}>
               {[
                 { label: "Términos", docKey: "terminos" },
@@ -2279,19 +2676,20 @@ export function FrutilotaMascot({
                 <div key={msg.id} style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                   
                   {msg.role === 'user' ? (
-                    /* Burbuja del Usuario */
+                    /* Burbuja del Usuario Estilo ChatGPT */
                     <div style={{ display: "flex", justifyContent: "flex-end" }}>
                       <div style={{
                         maxWidth: "76%",
-                        padding: "13px 18px",
-                        background: T.violet,
+                        padding: "12px 18px",
+                        background: isDarkMode ? "#2F2F2F" : T.violet,
                         borderRadius: "16px 16px 4px 16px",
+                        border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
                         fontFamily: I,
-                        fontSize: 15.5,
+                        fontSize: 15,
                         fontWeight: 500,
-                        color: "#fff",
-                        lineHeight: 1.62,
-                        boxShadow: "0 2px 10px rgba(47,108,181,0.25)"
+                        color: isDarkMode ? "#ECECEC" : "#FFFFFF",
+                        lineHeight: 1.6,
+                        boxShadow: isDarkMode ? "0 2px 8px rgba(0,0,0,0.3)" : "0 2px 10px rgba(47,108,181,0.25)"
                       }}>
                         {msg.content}
                       </div>
@@ -2320,7 +2718,7 @@ export function FrutilotaMascot({
                             return (
                               <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 7 }}>
                                 <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11, fontWeight: 700, color: D.muted, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                                  <GlobeRegular fontSize={13} color={T.violet} />
+                                  <GlobeRegular fontSize={13} color={isDarkMode ? "#38BDF8" : T.violet} />
                                   <span>Accesos oficiales para este trámite:</span>
                                 </div>
                                 {concordantLinks.map((link, lIdx) => {
@@ -2338,8 +2736,8 @@ export function FrutilotaMascot({
                                         alignItems: "center",
                                         justifyContent: "space-between",
                                         padding: "10px 14px",
-                                        background: isDarkMode ? "rgba(30, 41, 59, 0.45)" : "#FFFFFF",
-                                        border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`,
+                                        background: isDarkMode ? "#262626" : "#FFFFFF",
+                                        border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.1)" : "#E2E8F0"}`,
                                         borderRadius: 10,
                                         textDecoration: "none",
                                         color: D.text,
@@ -2602,7 +3000,7 @@ export function FrutilotaMascot({
               transition={{ duration: 0.2, ease: "easeOut" }}
               onClick={e => e.stopPropagation()}
               style={{
-                background: isDarkMode ? "#0F172A" : "#FFFFFF",
+                background: isDarkMode ? "#212121" : "#FFFFFF",
                 border: `1px solid ${isDarkMode ? "rgba(255,255,255,0.12)" : "#E2E8F0"}`,
                 borderRadius: 18,
                 width: "100%",
@@ -2611,7 +3009,7 @@ export function FrutilotaMascot({
                 overflow: "hidden",
                 display: "flex",
                 flexDirection: "column",
-                boxShadow: "0 20px 50px rgba(0,0,0,0.35)",
+                boxShadow: isDarkMode ? "0 20px 50px rgba(0,0,0,0.8)" : "0 20px 50px rgba(0,0,0,0.15)",
               }}
             >
               {/* Header del Modal */}
@@ -2621,7 +3019,7 @@ export function FrutilotaMascot({
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
-                background: isDarkMode ? "rgba(255,255,255,0.02)" : "#F8FAFC"
+                background: isDarkMode ? "#171717" : "#F8FAFC"
               }}>
                 <div>
                   <span style={{
@@ -2641,7 +3039,7 @@ export function FrutilotaMascot({
                     fontFamily: G,
                     fontSize: 17,
                     fontWeight: 750,
-                    color: D.ink
+                    color: D.text
                   }}>
                     {activeFooterDoc.title}
                   </h3>
@@ -2688,7 +3086,7 @@ export function FrutilotaMascot({
                 borderTop: `1px solid ${isDarkMode ? "rgba(255,255,255,0.08)" : "#F1F5F9"}`,
                 display: "flex",
                 justifyContent: "flex-end",
-                background: isDarkMode ? "rgba(255,255,255,0.02)" : "#F8FAFC"
+                background: isDarkMode ? "#171717" : "#F8FAFC"
               }}>
                 <button
                   onClick={() => {
@@ -2699,7 +3097,7 @@ export function FrutilotaMascot({
                     padding: "7px 16px",
                     borderRadius: 8,
                     border: `1px solid ${isDarkMode ? "rgba(255,255,255,0.15)" : "#CBD5E1"}`,
-                    background: isDarkMode ? "rgba(255,255,255,0.08)" : "#0F172A",
+                    background: isDarkMode ? "#2F2F2F" : "#0F172A",
                     color: "#FFFFFF",
                     fontFamily: I,
                     fontSize: 12.5,
@@ -2714,6 +3112,17 @@ export function FrutilotaMascot({
           </div>
         )}
       </AnimatePresence>
+
+      {/* ── Modal de Guía de Onboarding para Nuevos Usuarios / Invitados ── */}
+      <OnboardingGuideModal 
+        isOpen={showOnboardingModal}
+        onClose={() => setShowOnboardingModal(false)}
+        theme={theme}
+        onOpenEntityReorder={() => {
+          setChatSidebarOpen(true);
+          setIsReorderingEntities(true);
+        }}
+      />
 
     </div>
   );
@@ -3302,11 +3711,11 @@ function ChatInputCard({
             exit={{ opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.18 }}
             style={{
-              background: D.sidebar,
+              background: D.inputBg,
               border: `1.5px solid ${D.border}`,
               borderRadius: 16,
               overflow: "hidden",
-              boxShadow: "0 2px 14px rgba(11,30,56,0.06)",
+              boxShadow: "0 2px 14px rgba(0,0,0,0.08)",
             }}
           >
             <textarea
