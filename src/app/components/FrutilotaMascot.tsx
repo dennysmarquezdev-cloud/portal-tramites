@@ -948,6 +948,30 @@ export function FrutilotaMascot({
     ];
   }, [messages]);
 
+  // ── Temporizador de 10 Segundos de Inactividad para Consultas Frecuentes ──
+  const [showFrequentQueries, setShowFrequentQueries] = useState(false);
+
+  useEffect(() => {
+    // Si hay mensajes en la conversación o el usuario está escribiendo o usando el micrófono, ocultamos
+    if (
+      messages.length > 0 || 
+      input.trim().length > 0 || 
+      isListening || 
+      (interimTranscript && interimTranscript.trim().length > 0)
+    ) {
+      setShowFrequentQueries(false);
+      return;
+    }
+
+    // Iniciar conteo de 10 segundos de inactividad
+    setShowFrequentQueries(false);
+    const timer = setTimeout(() => {
+      setShowFrequentQueries(true);
+    }, 10000); // 10 segundos exactos
+
+    return () => clearTimeout(timer);
+  }, [messages.length, input, isListening, interimTranscript, entity]);
+
   return (
     <div style={{ display: "flex", height: "100%", width: "100%", overflow: "hidden", background: D.bg, fontFamily: I }}>
       <style>{`
@@ -1617,19 +1641,18 @@ export function FrutilotaMascot({
 
                     {/* Logo / Badge de la Entidad */}
                     <div style={{
-                      width: 40,
-                      height: 40,
-                      minWidth: 40,
-                      minHeight: 40,
-                      borderRadius: 9,
-                      background: isDarkMode ? "rgba(255,255,255,0.95)" : "#FFFFFF",
-                      border: `1px solid ${catColor}35`,
+                      width: "82%",
+                      maxWidth: 64,
+                      height: 36,
+                      borderRadius: 8,
+                      background: "#FFFFFF",
+                      border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #E2E8F0",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      padding: 4,
+                      padding: "3px 6px",
                       marginBottom: 6,
-                      boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
+                      boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.4)" : "0 1px 2px rgba(0,0,0,0.05)",
                       boxSizing: "border-box",
                       overflow: "hidden",
                       pointerEvents: "none"
@@ -1644,6 +1667,7 @@ export function FrutilotaMascot({
                             width: "auto", 
                             height: "auto", 
                             objectFit: "contain", 
+                            imageRendering: "-webkit-optimize-contrast",
                             display: "block" 
                           }}
                           loading="lazy"
@@ -2668,50 +2692,64 @@ export function FrutilotaMascot({
               />
             </div>
 
-            {/* Atajos de Consultas Populares de la Entidad Activa */}
-            {activeEntity.popularProcedures && activeEntity.popularProcedures.length > 0 && (
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", maxWidth: 660, marginTop: 4 }}>
-                <div style={{ display: "flex", alignItems: "center", marginBottom: 8 }}>
-                  <span style={{ fontFamily: I, fontSize: 12, fontWeight: 650, color: D.muted }}>
-                    Consultas frecuentes de {activeEntity.acronym}:
-                  </span>
-                </div>
+            {/* Atajos de Consultas Populares de la Entidad Activa (Aparecen tras 10s de inactividad) */}
+            <AnimatePresence>
+              {showFrequentQueries && activeEntity.popularProcedures && activeEntity.popularProcedures.length > 0 && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", maxWidth: 660, marginTop: 4 }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
+                    <SparkleRegular fontSize={13} style={{ color: isDarkMode ? "#38BDF8" : "#10A37F" }} />
+                    <span style={{ fontFamily: I, fontSize: 12, fontWeight: 650, color: D.muted }}>
+                      Consultas frecuentes de {activeEntity.acronym}:
+                    </span>
+                  </div>
 
-                <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 7, width: "100%" }}>
-                  {activeEntity.popularProcedures.slice(0, 3).map((proc, pIdx) => (
-                    <button
-                      key={pIdx}
-                      onClick={() => {
-                        sound.playClick();
-                        haptic.medium();
-                        executeQuery(`Deseo consultar requisitos, procedimiento oficial y accesos para: "${proc.title}"`);
-                      }}
-                      onMouseEnter={() => sound.playHoverKey()}
-                      className="prompt-chip-btn"
-                      style={{
-                        animationDelay: `${pIdx * 0.45}s`,
-                        display: "inline-flex",
-                        alignItems: "center",
-                        padding: "6px 12px",
-                        background: isDarkMode ? "rgba(255, 255, 255, 0.04)" : "#FFFFFF",
-                        border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`,
-                        borderRadius: 8,
-                        fontFamily: I,
-                        fontSize: 12,
-                        fontWeight: 550,
-                        color: D.text,
-                        cursor: "pointer",
-                        boxShadow: isDarkMode ? "none" : "0 1px 2px rgba(0,0,0,0.03)",
-                        maxWidth: "100%",
-                        textAlign: "left"
-                      }}
-                    >
-                      <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{proc.title}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
+                  <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 7, width: "100%" }}>
+                    {activeEntity.popularProcedures.slice(0, 3).map((proc, pIdx) => (
+                      <motion.button
+                        key={pIdx}
+                        initial={{ opacity: 0, y: 4 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: pIdx * 0.06, duration: 0.22 }}
+                        whileHover={{ scale: 1.025, y: -1 }}
+                        whileTap={{ scale: 0.97 }}
+                        onClick={() => {
+                          sound.playClick();
+                          haptic.medium();
+                          executeQuery(`Deseo consultar requisitos, procedimiento oficial y accesos para: "${proc.title}"`);
+                        }}
+                        onMouseEnter={() => sound.playHoverKey()}
+                        className="prompt-chip-btn"
+                        style={{
+                          animationDelay: `${pIdx * 0.45}s`,
+                          display: "inline-flex",
+                          alignItems: "center",
+                          padding: "7px 14px",
+                          background: isDarkMode ? "#262626" : "#FFFFFF",
+                          border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.1)" : "#E5E5E5"}`,
+                          borderRadius: 10,
+                          fontFamily: I,
+                          fontSize: 12,
+                          fontWeight: 550,
+                          color: D.text,
+                          cursor: "pointer",
+                          boxShadow: isDarkMode ? "0 2px 6px rgba(0,0,0,0.2)" : "0 2px 6px rgba(0,0,0,0.04)",
+                          maxWidth: "100%",
+                          textAlign: "left"
+                        }}
+                      >
+                        <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{proc.title}</span>
+                      </motion.button>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         ) : (
           /* Stream de Conversación Activa */
@@ -3286,13 +3324,13 @@ function EmbeddedEntitiesCarousel({
               top: "50%",
               transform: "translateY(-50%)",
               zIndex: 10,
-              width: 32,
-              height: 32,
+              width: 34,
+              height: 34,
               borderRadius: "50%",
-              background: isDarkMode ? "rgba(16, 25, 40, 0.96)" : "rgba(255, 255, 255, 0.96)",
-              border: `1.5px solid ${isDarkMode ? "rgba(255, 255, 255, 0.18)" : D.border}`,
-              color: isDarkMode ? "#F8FAFC" : T.strong,
-              boxShadow: isDarkMode ? "0 4px 16px rgba(0,0,0,0.6)" : "0 4px 14px rgba(11,30,56,0.14)",
+              background: isDarkMode ? "#262626" : "#FFFFFF",
+              border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.15)" : "#E5E5E5"}`,
+              color: isDarkMode ? "#ECECEC" : "#0D0D0D",
+              boxShadow: isDarkMode ? "0 4px 16px rgba(0,0,0,0.6)" : "0 4px 14px rgba(0,0,0,0.12)",
               cursor: "pointer",
               display: "flex",
               alignItems: "center",
@@ -3322,8 +3360,8 @@ function EmbeddedEntitiesCarousel({
           display: "flex",
           width: "100%",
           overflowX: "auto",
-          gap: 8,
-          padding: "4px 2px 8px",
+          gap: 10,
+          padding: "6px 2px 10px",
           margin: 0,
           scrollbarWidth: "none",
           cursor: "grab",
@@ -3352,47 +3390,69 @@ function EmbeddedEntitiesCarousel({
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                padding: "8px 12px 7px",
-                minWidth: 76,
-                borderRadius: 12,
+                padding: "8px 8px 7px",
+                minWidth: 88,
+                borderRadius: 14,
                 background: isSelected 
-                  ? (isDarkMode ? "rgba(56, 189, 248, 0.15)" : "rgba(2, 132, 199, 0.08)") 
-                  : (isDarkMode ? "#101928" : "#FFFFFF"),
+                  ? (isDarkMode ? "#1F2937" : "#F0FDF4") 
+                  : (isDarkMode ? "#262626" : "#FFFFFF"),
                 border: isSelected 
-                  ? `2px solid ${isDarkMode ? "#38BDF8" : catColor}` 
-                  : `1.5px solid ${D.border}`,
+                  ? `2px solid ${isDarkMode ? "#38BDF8" : "#10A37F"}` 
+                  : `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E5E5E5"}`,
                 cursor: "pointer",
                 flexShrink: 0,
                 boxShadow: isSelected 
-                  ? `0 3px 10px ${catColor}25` 
-                  : "0 1px 4px rgba(0,0,0,0.03)",
-                transition: "all 0.18s ease"
+                  ? (isDarkMode ? "0 0 0 2px rgba(56, 189, 248, 0.25), 0 4px 14px rgba(0,0,0,0.5)" : "0 0 0 2px rgba(16, 163, 127, 0.18), 0 4px 12px rgba(16, 163, 127, 0.15)")
+                  : (isDarkMode ? "0 2px 6px rgba(0,0,0,0.3)" : "0 2px 6px rgba(0,0,0,0.04)"),
+                transition: "all 0.18s cubic-bezier(0.16, 1, 0.3, 1)"
               }}
             >
+              {/* Contenedor del Logo Institucional con Fondo Blanco Puro y Proporción Rectangular Clara */}
               <div style={{
-                width: 32,
-                height: 32,
-                borderRadius: 7,
-                background: isDarkMode ? "rgba(255,255,255,0.95)" : "#FFFFFF",
-                border: `1px solid ${catColor}30`,
+                width: 64,
+                height: 38,
+                borderRadius: 8,
+                background: "#FFFFFF",
+                border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #E2E8F0",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                padding: 3,
-                marginBottom: 4,
-                overflow: "hidden"
+                padding: "3px 6px",
+                marginBottom: 5,
+                boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.4)" : "0 1px 2px rgba(0,0,0,0.05)",
+                overflow: "hidden",
+                boxSizing: "border-box"
               }}>
                 {logoSrc ? (
-                  <img src={logoSrc} alt={c.acronym} style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", imageRendering: "-webkit-optimize-contrast" }} />
+                  <img 
+                    src={logoSrc} 
+                    alt={c.acronym} 
+                    style={{ 
+                      maxWidth: "100%", 
+                      maxHeight: "100%", 
+                      width: "auto", 
+                      height: "auto", 
+                      objectFit: "contain", 
+                      imageRendering: "-webkit-optimize-contrast",
+                      display: "block" 
+                    }} 
+                  />
                 ) : (
-                  <span style={{ fontWeight: 800, fontSize: 9.5, color: catColor }}>{badgeText}</span>
+                  <span style={{ fontWeight: 850, fontSize: 10, color: catColor, letterSpacing: "-0.01em" }}>
+                    {badgeText}
+                  </span>
                 )}
               </div>
+
+              {/* Nombre / Acrónimo de la Entidad */}
               <span style={{
-                fontFamily: G,
-                fontSize: 10.5,
-                fontWeight: 750,
-                color: isSelected ? (isDarkMode ? "#38BDF8" : catColor) : D.text,
+                fontFamily: I,
+                fontSize: 11,
+                fontWeight: 800,
+                color: isSelected 
+                  ? (isDarkMode ? "#38BDF8" : "#10A37F") 
+                  : (isDarkMode ? "#ECECEC" : "#0D0D0D"),
+                letterSpacing: "-0.01em",
                 whiteSpace: "nowrap"
               }}>
                 {c.acronym}
@@ -3420,13 +3480,13 @@ function EmbeddedEntitiesCarousel({
               top: "50%",
               transform: "translateY(-50%)",
               zIndex: 10,
-              width: 32,
-              height: 32,
+              width: 34,
+              height: 34,
               borderRadius: "50%",
-              background: isDarkMode ? "rgba(16, 25, 40, 0.96)" : "rgba(255, 255, 255, 0.96)",
-              border: `1.5px solid ${isDarkMode ? "rgba(255, 255, 255, 0.18)" : D.border}`,
-              color: isDarkMode ? "#F8FAFC" : T.strong,
-              boxShadow: isDarkMode ? "0 4px 16px rgba(0,0,0,0.6)" : "0 4px 14px rgba(11,30,56,0.14)",
+              background: isDarkMode ? "#262626" : "#FFFFFF",
+              border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.15)" : "#E5E5E5"}`,
+              color: isDarkMode ? "#ECECEC" : "#0D0D0D",
+              boxShadow: isDarkMode ? "0 4px 16px rgba(0,0,0,0.6)" : "0 4px 14px rgba(0,0,0,0.12)",
               cursor: "pointer",
               display: "flex",
               alignItems: "center",
