@@ -150,7 +150,7 @@ export function OnboardingGuideModal({
           gap: 12
         }}>
           <p style={{ margin: 0, fontSize: 13, lineHeight: 1.5, color: isDarkMode ? "#B4B4B4" : "#475569" }}>
-            En la barra lateral izquierda puedes <strong>fijar con pin (📌)</strong> tus entidades favoritas (SUNAT, RENIEC, Migraciones, MTC, etc.) y <strong>reordenarlas a tu gusto</strong> arrastrándolas o con los botones de posición.
+            En la barra lateral izquierda puedes <strong>fijar como favorita (📌)</strong> tus entidades más consultadas y <strong>reordenarlas libremente manteniendo presionada cualquier tarjeta y cambiándole de posición</strong>.
           </p>
           <div style={{
             display: "flex",

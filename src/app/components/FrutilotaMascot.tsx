@@ -472,7 +472,12 @@ export function FrutilotaMascot({
     return CIVIC_ENTITIES.map(e => e.acronym);
   });
 
-  const [isReorderingEntities, setIsReorderingEntities] = useState(false);
+  const [draggedEntityAcronym, setDraggedEntityAcronym] = useState<string | null>(null);
+  const touchTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const touchStartPosRef = useRef<{ x: number; y: number } | null>(null);
+  const isTouchDraggingRef = useRef(false);
+  const lastTouchTimeRef = useRef<number>(0);
+
   const [sidebarEntitySearch, setSidebarEntitySearch] = useState("");
   const [showOnboardingModal, setShowOnboardingModal] = useState(() => {
     try {
@@ -481,6 +486,14 @@ export function FrutilotaMascot({
       return false;
     }
   });
+
+  const isCustomizedOrder = useMemo(() => {
+    try {
+      return !!localStorage.getItem("ahorratiempo_sidebar_order");
+    } catch {
+      return false;
+    }
+  }, [customOrder]);
 
   const savePinnedEntities = (newList: string[]) => {
     setPinnedEntities(newList);
@@ -496,6 +509,118 @@ export function FrutilotaMascot({
     } catch {}
   };
 
+  const swapEntities = (sourceAcr: string, targetAcr: string) => {
+    if (!sourceAcr || !targetAcr || sourceAcr.toUpperCase() === targetAcr.toUpperCase()) return;
+    
+    // Obtenemos la lista completa ordenada actual
+    const currentOrder = [...customOrder];
+    CIVIC_ENTITIES.forEach(e => {
+      if (!currentOrder.some(a => a.toUpperCase() === e.acronym.toUpperCase())) {
+        currentOrder.push(e.acronym);
+      }
+    });
+
+    const sourceIdx = currentOrder.findIndex(a => a.toUpperCase() === sourceAcr.toUpperCase());
+    const targetIdx = currentOrder.findIndex(a => a.toUpperCase() === targetAcr.toUpperCase());
+    if (sourceIdx === -1 || targetIdx === -1) return;
+
+    const [moved] = currentOrder.splice(sourceIdx, 1);
+    currentOrder.splice(targetIdx, 0, moved);
+
+    saveCustomOrder(currentOrder);
+    haptic.selection();
+    sound.playHoverKey();
+  };
+
+  const handleDragStart = (acronym: string, e: React.DragEvent) => {
+    setDraggedEntityAcronym(acronym);
+    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.setData("text/plain", acronym);
+    haptic.selection();
+    sound.playHoverKey();
+  };
+
+  const handleDragOver = (targetAcronym: string, e: React.DragEvent) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+    if (draggedEntityAcronym && draggedEntityAcronym.toUpperCase() !== targetAcronym.toUpperCase()) {
+      swapEntities(draggedEntityAcronym, targetAcronym);
+    }
+  };
+
+  const handleDragEnd = () => {
+    if (draggedEntityAcronym) {
+      setDraggedEntityAcronym(null);
+      haptic.success();
+      sound.playClick();
+      toast.success("Posición guardada");
+    }
+  };
+
+  const handleTouchStart = (acronym: string, e: React.TouchEvent) => {
+    const touch = e.touches[0];
+    touchStartPosRef.current = { x: touch.clientX, y: touch.clientY };
+    isTouchDraggingRef.current = false;
+    
+    if (touchTimerRef.current) clearTimeout(touchTimerRef.current);
+    touchTimerRef.current = setTimeout(() => {
+      isTouchDraggingRef.current = true;
+      setDraggedEntityAcronym(acronym);
+      haptic.medium();
+      sound.playHoverKey();
+    }, 200); // 200ms de pulsación sostenida activa el modo arrastre
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    const touch = e.touches[0];
+    if (!touchStartPosRef.current) return;
+    
+    const deltaX = Math.abs(touch.clientX - touchStartPosRef.current.x);
+    const deltaY = Math.abs(touch.clientY - touchStartPosRef.current.y);
+
+    if (!isTouchDraggingRef.current && (deltaX > 8 || deltaY > 8)) {
+      if (touchTimerRef.current) clearTimeout(touchTimerRef.current);
+      return;
+    }
+
+    if (isTouchDraggingRef.current && draggedEntityAcronym) {
+      if (e.cancelable) e.preventDefault();
+      const el = document.elementFromPoint(touch.clientX, touch.clientY);
+      const cardEl = el?.closest("[data-entity-acronym]") as HTMLElement | null;
+      const targetAcronym = cardEl?.getAttribute("data-entity-acronym");
+
+      if (targetAcronym && targetAcronym.toUpperCase() !== draggedEntityAcronym.toUpperCase()) {
+        swapEntities(draggedEntityAcronym, targetAcronym);
+      }
+    }
+  };
+
+  const handleTouchEnd = (acronym: string) => {
+    lastTouchTimeRef.current = Date.now();
+    if (touchTimerRef.current) {
+      clearTimeout(touchTimerRef.current);
+      touchTimerRef.current = null;
+    }
+
+    if (isTouchDraggingRef.current) {
+      isTouchDraggingRef.current = false;
+      setDraggedEntityAcronym(null);
+      haptic.success();
+      sound.playClick();
+      toast.success("Posición de entidad guardada");
+    } else {
+      // Tap normal sin arrastre: selecciona la entidad
+      sound.playClick();
+      haptic.selection();
+      setEntity(acronym);
+      clearChat();
+      if (typeof window !== "undefined" && window.innerWidth <= 768) {
+        setChatSidebarOpen(false);
+      }
+    }
+    touchStartPosRef.current = null;
+  };
+
   const handleTogglePin = (acronym: string, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     haptic.selection();
@@ -504,31 +629,12 @@ export function FrutilotaMascot({
     let nextPinned: string[];
     if (isPinned) {
       nextPinned = pinnedEntities.filter(a => a !== acronym);
-      toast.info(`${acronym} desfijada del inicio`);
+      toast.info(`${acronym} desfijada`);
     } else {
       nextPinned = [acronym, ...pinnedEntities.filter(a => a !== acronym)];
-      toast.success(`📌 ${acronym} fijada al inicio`);
+      toast.success(`📌 ${acronym} fijada como favorita`);
     }
     savePinnedEntities(nextPinned);
-  };
-
-  const handleMoveEntity = (acronym: string, direction: "up" | "down", e?: React.MouseEvent) => {
-    if (e) e.stopPropagation();
-    haptic.selection();
-    sound.playClick();
-    const list = [...displayEntitiesList];
-    const currentIndex = list.findIndex(c => c.acronym.toUpperCase() === acronym.toUpperCase());
-    if (currentIndex === -1) return;
-    const targetIndex = direction === "up" ? currentIndex - 1 : currentIndex + 1;
-    if (targetIndex < 0 || targetIndex >= list.length) return;
-
-    // Swap
-    const temp = list[currentIndex];
-    list[currentIndex] = list[targetIndex];
-    list[targetIndex] = temp;
-
-    const newOrder = list.map(c => c.acronym);
-    saveCustomOrder(newOrder);
   };
 
   const handleResetEntityOrder = (e?: React.MouseEvent) => {
@@ -539,6 +645,9 @@ export function FrutilotaMascot({
     const defaultOrder = CIVIC_ENTITIES.map(c => c.acronym);
     savePinnedEntities(defaultPinned);
     saveCustomOrder(defaultOrder);
+    try {
+      localStorage.removeItem("ahorratiempo_sidebar_order");
+    } catch {}
     toast.success("Orden de entidades restablecido por defecto");
   };
 
@@ -547,16 +656,7 @@ export function FrutilotaMascot({
     const ordered: typeof CIVIC_ENTITIES = [];
     const added = new Set<string>();
 
-    // 1. Pinned entities primero
-    pinnedEntities.forEach(acr => {
-      const ent = entityMap.get(acr.toUpperCase());
-      if (ent && !added.has(ent.acronym.toUpperCase())) {
-        ordered.push(ent);
-        added.add(ent.acronym.toUpperCase());
-      }
-    });
-
-    // 2. Custom ordered entities restantes
+    // 1. Sigue el customOrder exacto
     customOrder.forEach(acr => {
       const ent = entityMap.get(acr.toUpperCase());
       if (ent && !added.has(ent.acronym.toUpperCase())) {
@@ -565,7 +665,7 @@ export function FrutilotaMascot({
       }
     });
 
-    // 3. Cualquier entidad en CIVIC_ENTITIES que falte
+    // 2. Agrega cualquier entidad restante
     CIVIC_ENTITIES.forEach(ent => {
       if (!added.has(ent.acronym.toUpperCase())) {
         ordered.push(ent);
@@ -573,14 +673,14 @@ export function FrutilotaMascot({
       }
     });
 
-    // 4. Filtrar por búsqueda si existe
+    // 3. Filtro de búsqueda
     if (sidebarEntitySearch.trim()) {
       const q = cleanText(sidebarEntitySearch);
       return ordered.filter(c => cleanText(c.acronym).includes(q) || cleanText(c.name || "").includes(q) || cleanText(c.description || "").includes(q));
     }
 
     return ordered;
-  }, [pinnedEntities, customOrder, sidebarEntitySearch]);
+  }, [customOrder, sidebarEntitySearch]);
 
   const displayName = useMemo(() => {
     if (user?.displayName) return user.displayName.trim().split(" ")[0];
@@ -1258,8 +1358,8 @@ export function FrutilotaMascot({
             </div>
           )}
 
-          {/* Entidades Header con Buscador y Control de Reordenamiento */}
-          <div style={{ padding: "14px 14px 10px", flexShrink: 0, display: "flex", flexDirection: "column", gap: 8 }}>
+          {/* Entidades Header con Buscador */}
+          <div style={{ padding: "14px 14px 8px", flexShrink: 0, display: "flex", flexDirection: "column", gap: 8 }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
                 <h2 style={{
@@ -1284,64 +1384,40 @@ export function FrutilotaMascot({
                 </span>
               </div>
 
-              {/* Botones de Modo Acomodar / Reset */}
-              <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                {isReorderingEntities && (
-                  <button
-                    type="button"
-                    onClick={handleResetEntityOrder}
-                    title="Restablecer orden por defecto"
-                    style={{
-                      background: "transparent",
-                      border: "none",
-                      color: D.muted,
-                      cursor: "pointer",
-                      padding: "3px 5px",
-                      borderRadius: 6,
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 3,
-                      fontSize: 11,
-                      fontFamily: I,
-                      fontWeight: 600,
-                      transition: "color 0.15s ease"
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#EF4444")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = D.muted)}
-                  >
-                    <ArrowResetRegular fontSize={12} />
-                    <span>Reset</span>
-                  </button>
-                )}
-
+              {/* Botón Reset si el usuario personalizó el orden */}
+              {isCustomizedOrder && (
                 <button
                   type="button"
-                  onClick={() => {
-                    haptic.selection();
-                    sound.playHoverKey();
-                    setIsReorderingEntities(prev => !prev);
-                  }}
-                  title={isReorderingEntities ? "Guardar y finalizar orden" : "Acomodar y ordenar entidades"}
+                  onClick={handleResetEntityOrder}
+                  title="Restablecer orden por defecto"
                   style={{
-                    display: "inline-flex",
+                    background: "transparent",
+                    border: `1px solid ${D.border}`,
+                    color: D.muted,
+                    cursor: "pointer",
+                    padding: "2px 7px",
+                    borderRadius: 6,
+                    display: "flex",
                     alignItems: "center",
                     gap: 4,
-                    padding: "3px 8px",
-                    borderRadius: 8,
-                    border: `1px solid ${isReorderingEntities ? (isDarkMode ? "#38BDF8" : "#0284C7") : D.border}`,
-                    background: isReorderingEntities ? (isDarkMode ? "rgba(56, 189, 248, 0.15)" : "#E0F2FE") : "transparent",
-                    color: isReorderingEntities ? (isDarkMode ? "#38BDF8" : "#0284C7") : D.muted,
-                    fontSize: 11,
+                    fontSize: 10.5,
                     fontFamily: I,
-                    fontWeight: 700,
-                    cursor: "pointer",
+                    fontWeight: 600,
                     transition: "all 0.15s ease"
                   }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "#EF4444";
+                    e.currentTarget.style.borderColor = "rgba(239, 68, 68, 0.4)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = D.muted;
+                    e.currentTarget.style.borderColor = D.border;
+                  }}
                 >
-                  <ArrowSortRegular fontSize={12} />
-                  <span>{isReorderingEntities ? "Listo" : "Acomodar"}</span>
+                  <ArrowResetRegular fontSize={11} />
+                  <span>Restablecer</span>
                 </button>
-              </div>
+              )}
             </div>
 
             {/* Buscador Rápido de Entidades en Sidebar */}
@@ -1396,45 +1472,71 @@ export function FrutilotaMascot({
               )}
             </div>
 
-            {isReorderingEntities && (
-              <div style={{
-                fontSize: 10.5,
-                color: isDarkMode ? "#38BDF8" : "#0284C7",
-                background: isDarkMode ? "rgba(56, 189, 248, 0.1)" : "#F0F9FF",
-                padding: "4px 8px",
-                borderRadius: 6,
-                lineHeight: 1.3
-              }}>
-                💡 Usa <strong>📌</strong> para fijar arriba o <strong>⬆️ ⬇️</strong> para mover posiciones.
-              </div>
-            )}
+            {/* Hint sutil de arrastre y pulsación */}
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 4,
+              fontSize: 10,
+              color: D.muted,
+              padding: "1px 2px",
+              lineHeight: 1.2,
+              userSelect: "none"
+            }}>
+              <span>💡</span>
+              <span>Mantén presionada una entidad para moverla de lugar.</span>
+            </div>
           </div>
 
-          {/* Lista de Entidades en Formato Cuadrícula de Cubos con Reordenamiento */}
+          {/* Lista de Entidades en Formato Cuadrícula de Cubos con Reordenamiento por Presión / Arrastre */}
           <div style={{ 
             padding: "0 10px",
             display: "grid",
             gridTemplateColumns: "repeat(2, 1fr)",
             gap: 7,
-            alignContent: "start"
+            alignContent: "start",
+            touchAction: "pan-y"
           }}>
-            {displayEntitiesList.map((c, idx) => {
+            {displayEntitiesList.map((c) => {
               const isSelected = entity.toUpperCase() === c.acronym.toUpperCase();
               const isPinned = pinnedEntities.includes(c.acronym);
+              const isBeingDragged = draggedEntityAcronym?.toUpperCase() === c.acronym.toUpperCase();
               const catColor = c.categoryColor || c.color || T.violet;
               const bgLight = c.categoryBgLight || "#F1F5F9";
               const logoSrc = getEntityLogo(c.acronym);
               const badgeText = formatBadgeAcronym(c.acronym);
 
               return (
-                <div
+                <motion.div
                   key={c.id || c.acronym}
-                  style={{ position: "relative" }}
+                  layout
+                  layoutId={`entity-card-${c.acronym}`}
+                  transition={{ type: "spring", stiffness: 450, damping: 32 }}
+                  data-entity-acronym={c.acronym}
+                  draggable={true}
+                  onDragStart={(e) => handleDragStart(c.acronym, e as unknown as React.DragEvent)}
+                  onDragOver={(e) => handleDragOver(c.acronym, e as unknown as React.DragEvent)}
+                  onDragEnd={handleDragEnd}
+                  onTouchStart={(e) => handleTouchStart(c.acronym, e as unknown as React.TouchEvent)}
+                  onTouchMove={(e) => handleTouchMove(e as unknown as React.TouchEvent)}
+                  onTouchEnd={() => handleTouchEnd(c.acronym)}
+                  onTouchCancel={() => handleTouchEnd(c.acronym)}
+                  style={{
+                    position: "relative",
+                    zIndex: isBeingDragged ? 50 : 1,
+                    transform: isBeingDragged ? "scale(1.06)" : "scale(1)",
+                    opacity: isBeingDragged ? 0.92 : 1,
+                    transition: "transform 0.15s ease, opacity 0.15s ease",
+                    cursor: isBeingDragged ? "grabbing" : "grab",
+                    userSelect: "none",
+                    WebkitUserSelect: "none"
+                  }}
                 >
                   <button 
+                    type="button"
                     onMouseEnter={() => sound.playHoverKey()}
                     onClick={() => {
-                      if (isReorderingEntities) return;
+                      if (Date.now() - lastTouchTimeRef.current < 450) return;
                       sound.playClick();
                       haptic.selection();
                       setEntity(c.acronym);
@@ -1444,7 +1546,7 @@ export function FrutilotaMascot({
                       }
                     }}
                     className="chat-collection-cube-btn"
-                    title={c.name || c.acronym}
+                    title={`Arrastra o mantén presionado para mover ${c.name || c.acronym}`}
                     style={{
                       width: "100%",
                       display: "flex",
@@ -1453,20 +1555,26 @@ export function FrutilotaMascot({
                       justifyContent: "center",
                       padding: "10px 4px 8px",
                       borderRadius: 12,
-                      border: isSelected 
+                      border: isBeingDragged
+                        ? `2px solid ${isDarkMode ? "#38BDF8" : "#0284C7"}`
+                        : isSelected 
                         ? `2px solid ${isDarkMode ? "#38BDF8" : catColor}` 
                         : isPinned
                         ? `1.5px solid ${isDarkMode ? "rgba(245, 158, 11, 0.4)" : "#FDE68A"}`
                         : `1px solid ${D.border}`,
-                      background: isSelected 
+                      background: isBeingDragged
+                        ? (isDarkMode ? "rgba(56, 189, 248, 0.22)" : "#E0F2FE")
+                        : isSelected 
                         ? (isDarkMode ? "rgba(56, 189, 248, 0.12)" : bgLight) 
                         : isPinned
                         ? (isDarkMode ? "#262626" : "#FFFDF5")
                         : (isDarkMode ? "#262626" : "#FFFFFF"),
-                      cursor: isReorderingEntities ? "default" : "pointer",
+                      cursor: "inherit",
                       textAlign: "center",
-                      transition: "all 0.18s ease",
-                      boxShadow: isSelected 
+                      transition: "background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease",
+                      boxShadow: isBeingDragged
+                        ? (isDarkMode ? "0 10px 25px rgba(0,0,0,0.6)" : "0 10px 25px rgba(2,132,199,0.25)")
+                        : isSelected 
                         ? `0 4px 12px ${catColor}25` 
                         : (isDarkMode ? "none" : "0 1px 3px rgba(0,0,0,0.03)"),
                       position: "relative",
@@ -1478,7 +1586,7 @@ export function FrutilotaMascot({
                     <button
                       type="button"
                       onClick={(e) => handleTogglePin(c.acronym, e)}
-                      title={isPinned ? `Desfijar ${c.acronym} del inicio` : `Fijar ${c.acronym} al inicio`}
+                      title={isPinned ? `Desfijar ${c.acronym}` : `Fijar ${c.acronym} como favorita`}
                       style={{
                         position: "absolute",
                         top: 4,
@@ -1517,7 +1625,8 @@ export function FrutilotaMascot({
                       marginBottom: 6,
                       boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
                       boxSizing: "border-box",
-                      overflow: "hidden"
+                      overflow: "hidden",
+                      pointerEvents: "none"
                     }}>
                       {logoSrc ? (
                         <img
@@ -1560,66 +1669,13 @@ export function FrutilotaMascot({
                       textOverflow: "ellipsis", 
                       whiteSpace: "nowrap",
                       display: "block",
-                      padding: "0 2px"
+                      padding: "0 2px",
+                      pointerEvents: "none"
                     }}>
                       {c.acronym}
                     </span>
                   </button>
-
-                  {/* Controles de Subir/Bajar en Modo Reordenamiento */}
-                  {isReorderingEntities && (
-                    <div style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: 4,
-                      marginTop: 4
-                    }}>
-                      <button
-                        type="button"
-                        onClick={(e) => handleMoveEntity(c.acronym, "up", e)}
-                        disabled={idx === 0}
-                        title="Mover hacia arriba"
-                        style={{
-                          flex: 1,
-                          height: 20,
-                          borderRadius: 4,
-                          border: `1px solid ${D.border}`,
-                          background: isDarkMode ? "#2F2F2F" : "#F1F5F9",
-                          color: idx === 0 ? (isDarkMode ? "#555" : "#CBD5E1") : D.text,
-                          cursor: idx === 0 ? "not-allowed" : "pointer",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          fontSize: 10
-                        }}
-                      >
-                        <ArrowUpRegular fontSize={10} />
-                      </button>
-                      <button
-                        type="button"
-                        onClick={(e) => handleMoveEntity(c.acronym, "down", e)}
-                        disabled={idx === displayEntitiesList.length - 1}
-                        title="Mover hacia abajo"
-                        style={{
-                          flex: 1,
-                          height: 20,
-                          borderRadius: 4,
-                          border: `1px solid ${D.border}`,
-                          background: isDarkMode ? "#2F2F2F" : "#F1F5F9",
-                          color: idx === displayEntitiesList.length - 1 ? (isDarkMode ? "#555" : "#CBD5E1") : D.text,
-                          cursor: idx === displayEntitiesList.length - 1 ? "not-allowed" : "pointer",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          fontSize: 10
-                        }}
-                      >
-                        <ArrowDownRegular fontSize={10} />
-                      </button>
-                    </div>
-                  )}
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -3120,7 +3176,6 @@ export function FrutilotaMascot({
         theme={theme}
         onOpenEntityReorder={() => {
           setChatSidebarOpen(true);
-          setIsReorderingEntities(true);
         }}
       />
 
