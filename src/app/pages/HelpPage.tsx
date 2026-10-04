@@ -15,6 +15,14 @@ import { WHATSAPP_URL } from "../data";
 
 const FAQS = [
   {
+    q: "¿AhorraTiempo realiza los trámites de forma directa o cobra por ellos?",
+    a: "No. AhorraTiempo.pe es un buscador inteligente, catálogo unificado y asistente de orientación ciudadana con Inteligencia Artificial (LOTA AI). No somos tramitadores ni intermediarios. Centralizamos los requisitos, costos y pasos oficiales de más de 30 entidades del Estado y te facilitamos los enlaces oficiales directos para que realices tus trámites de forma segura en las webs del gobierno."
+  },
+  {
+    q: "¿Qué entidades del Estado puedo encontrar en AhorraTiempo?",
+    a: "Encontrarás las entidades más concurridas (RENIEC, SUNAT, Migraciones, MTC, SUNARP, Banco de la Nación, EsSalud, SIS) y también organismos de protección y regulación ciudadana fundamentales que muchos desconocen: SUSALUD (atención en salud y clínicas), SUNAFIL (derechos laborales), OSINERGMIN (electricidad, gas y combustibles), OSIPTEL (telecomunicaciones), INDECOPI (defensa del consumidor), SMV, OEFA, entre otras."
+  },
+  {
     q: "¿Cómo tramito el duplicado o renovación de mi DNI?",
     a: "Inicia el trámite en la web oficial del RENIEC o en la app DNI BioFacial tras abonar la tasa correspondiente en Págalo.pe o Banco de la Nación."
   },
