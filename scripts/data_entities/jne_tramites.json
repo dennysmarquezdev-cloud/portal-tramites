@@ -1,0 +1,1061 @@
+[
+  {
+    "id": "448177",
+    "hash_id": "jne_448177",
+    "titulo_oficial": "Consultar si tienes multas electorales",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Recibes una multa electoral cuando no votaste, no cumpliste tu deber de asistir como miembro de mesa o te negaste a reemplazar a un miembro de mesa ausente. El monto de las multas electorales por no votar es diferen ...",
+    "requisitos": [
+      "Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda)."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/382-consultar-si-tienes-multas-electorales",
+    "action_url": "https://multas.jne.gob.pe/",
+    "raw_content": "# Trámite: Consultar si tienes multas electorales\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nRecibes una multa electoral cuando no votaste, no cumpliste tu deber de asistir como miembro de mesa o te negaste a reemplazar a un miembro de mesa ausente. El monto de las multas electorales por no votar es diferen ...\n\n## Requisitos Obligatorios\n* Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda).\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Consultar si tienes multas electorales. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Recibes una multa electoral cuando no votaste, no cumpliste tu deber de asistir como miembro de mesa o te negaste a reemplazar a un miembro de mesa ausente. El monto de las multas electorales por no votar es diferen .... Requisitos: Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda).. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "7666686",
+    "hash_id": "jne_7666686",
+    "titulo_oficial": "Solicitar dispensa o justificación de multa electoral",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "S/ 25.90",
+    "modalidad": "Mixto (En línea y Presencial)",
+    "publico_objetivo": "Personas Naturales y Empresas",
+    "descripcion": "Si no pudiste votar (sufragar) o no cumpliste con tu deber de miembro de mesa este trámite te permite eximir de la multa electoral, y se debe de realizar de forma virtual a través de la plataforma en línea ó de maner ...",
+    "requisitos": [
+      "Copia de DNI/DNIe (Solo para la causal de pérdida o robo de DNI).",
+      "Copias simples de los documentos que sustenten la causal invocada que comprenda un periodo electoral determinado y directamente relacionado con la fecha central del proceso electoral, conforme al detalle de las causales establecidas en la tabla general de causales que aplican al otorgamiento de justificación y/o dispensa. (ver Tabla General de Causales).",
+      "Pago por derecho de trámite, de acuerdo con el monto aprobado en el TUPA vigente. En caso de inasistencia a la instalación de la mesa de sufragio el monto a pagar es S/. 25.90 soles. En caso de la omisión al sufragio el monto a pagar es de S/. 25.90 soles. Si cuentan con ambas omisiones se paga sólo una tasa (S/. 25.90). El derecho de pago debe acreditarse por cada proceso electoral.",
+      "El pago por derecho de trámite se realiza en cualquier agencia del Banco de la Nación al código 01465 o por medios virtuales a través del portal https://pagalo.pe",
+      "Ciudadanos que viajan al extranjero para realizar estudios académicos:",
+      "Copia simple del pasaporte u otro documento donde conste la salida y entrada al país.",
+      "Copia simple del documento que acredite de manera indubitable los estudios realizados en el extranjero.",
+      "Ciudadanos que salen del país para ser atendidos por motivos de salud en el extranjero:",
+      "Copia simple del documento que certifique el tratamiento médico realizado en el extranjero",
+      "Ciudadanos que realicen labores de transporte aéreo, terrestre o marítimo:",
+      "Copia de constancia emitida por la empresa de transporte aéreo, marítima o terrestre que acredite de manera indubitable la labor que desempeñó durante las elecciones.",
+      "Ciudadanos mayores de 65 años (Aplica únicamente para otorgar Justificación):",
+      "Copia simple del documento nacional de identidad (DNI), cuya edad debe ser mayor a 65 años a la fecha de la elección.",
+      "Defectos en la actualización, organización y ejecución de actividades electorales atribuibles a las entidades del Sistema Electoral:",
+      "Copia simple del informe o documento de sustento, emitido por la entidad electoral, que acredite el defecto en la actualización, organización y ejecución de las actividades electorales y que indefectiblemente no sea imputable al ciudadano.",
+      "Desastres naturales o de origen humano:",
+      "Copia simple del documento suscrito por funcionario público competente o documento sustentatorio análogo que acredite fehacientemente el desastre natural/humano que impidió cumplir con el deber cívico.",
+      "Discapacidad física, mental, sensorial o intelectual:",
+      "Copia simple del certificado de discapacidad, dictamen de Comisión Médica, o la Resolución Ejecutiva de Inscripción o carné del Conadis, o documento que declare la interdicción.",
+      "Error en el padrón electoral:",
+      "Copia simple de la constancia de asistencia a la mesa de sufragio expedida por el presidente de la mesa donde le corresponda emitir su voto conforme su mesa de votación.",
+      "Fallecimiento de familiar directo:",
+      "Copia simple de la partida de defunción.",
+      "NOTA: Se aplica al cónyuge, familiares con vínculo de parentesco hasta el segundo grado de consanguinidad en línea recta (padres, hijos, abuelos y nietos) o en segundo grado de consanguinidad en línea colateral (hermanos), acaecido en la fecha de la elección o dentro de los cinco (5) días previos a la misma, y diez (10) días en caso que el fallecimiento haya ocurrido en una provincia distinta al lugar de sufragio.",
+      "Función electoral:",
+      "Personal de la PNP, Fuerzas Armadas y ciudadanos en servicio militar: Copia simple de la constancia de servicios expedida por su superior o jefe de unidad y copia simple carné de identificación militar o policial, y para el caso del servicio militar copia simple de su carné o documento análogo.",
+      "Personal de las entidades del Sistema Electoral (ONPE, RENIEC y el JNE): Constancia de servicios/labores expedidas por su superior o jefe responsable de la respectiva entidad o documento análogo que acredite haber desempañado funciones electorales el día de la elección.",
+      "Impedido del ejercicio de derecho de sufragio e instalación, en los casos originados por incidencias electorales",
+      "Copia simple del documento emitido por JNE u ONPE que acredite la incidencia electoral. Este documento no es exigido al administrado, siempre y cuando lo acontecido es de conocimiento público u obra en poder del JNE.",
+      "Lactancia / Mujeres en periodo de Gestación (Aplica únicamente para otorgar Justificación):",
+      "Copia simple de la partida de nacimiento o certificado de nacido vivo o DNI/DNIe del menor lactante, cuya edad debe ser menor o igual a dos (2) años a la fecha de la elección.",
+      "Copia simple del documento emitido por el médico que acredite el periodo de gestación en la fecha del día de la elección.",
+      "Prisión:",
+      "Para reclusión en el territorio nacional:",
+      "Copia simple de la Constancia de Libertad o Constancia de reclusión emitida por el INPE o documento que acredite fehacientemente la reclusión en un centro penitenciario.",
+      "Copia simple de la constancia de reclusión emitida por el Pronacej.",
+      "Para reclusión en el extranjero:",
+      "Copia del documento que acredite la reclusión en un centro penitenciario en el extranjero.",
+      "Robo o pérdida de DNI/DNIe:",
+      "Copia simple de la denuncia policial y del DNI/DNIe vigente emitido dentro de los 6 primeros meses posteriores al suceso motivo de la denuncia.",
+      "NOTA: El robo o pérdida debe haberse producido el día de la elección o dentro de los diez (10) días previos a la misma y la denuncia de este hecho debe de haberse realizado ante la comisaria dentro de los primeros 30 días naturales de producido el hecho.",
+      "Salud:",
+      "Copia simple del certificado médico o de documento análogo expedido por alguna entidad de salud privada o pública (Minsa, EsSalud, u hospitales de las FFAA y PNP).",
+      "NOTA: De tratarse de un documento expedido por un médico particular, éste debe constar en especie valorada del Colegio Médico del Perú.",
+      "Situaciones razonables y excepcionales que impidieron el cumplimiento de los deberes electorales:",
+      "Copia simple del o los documentos que acrediten fehacientemente la causal invocada.",
+      "Consideraciones adicionales:",
+      "Para la admisión de la solicitud de dispensa o justificación es necesario que la documentación presentada guarde relación directa con la fecha de la elección, a excepción de la causal G.",
+      "De conformidad con lo dispuesto por la LPAG, todo documento expedido en un idioma extranjero deberá ser obligatoriamente traducido al idioma oficial del Perú (la traducción podrá ser simple y deberá estar suscrita por la persona que realizó la misma)."
+    ],
+    "consideraciones": [
+      "Para la admisión de la solicitud de dispensa o justificación es necesario que la documentación presentada guarde relación directa con la fecha de la elección, a excepción de la causal G.",
+      "De conformidad con lo dispuesto por la LPAG, todo documento expedido en un idioma extranjero deberá ser obligatoriamente traducido al idioma oficial del Perú (la traducción podrá ser simple y deberá estar suscrita por la persona que realizó la misma)."
+    ],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/113905-solicitar-dispensa-o-justificacion-de-multa-electoral",
+    "action_url": "https://www.gob.pe/113905-solicitar-dispensa-o-justificacion-de-multa-electoral",
+    "raw_content": "# Trámite: Solicitar dispensa o justificación de multa electoral\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** S/ 25.90\n**Modalidad:** Mixto (En línea y Presencial)\n**Dirigido a:** Personas Naturales y Empresas\n\n## Resumen del Trámite\nSi no pudiste votar (sufragar) o no cumpliste con tu deber de miembro de mesa este trámite te permite eximir de la multa electoral, y se debe de realizar de forma virtual a través de la plataforma en línea ó de maner ...\n\n## Requisitos Obligatorios\n* Copia de DNI/DNIe (Solo para la causal de pérdida o robo de DNI).\n* Copias simples de los documentos que sustenten la causal invocada que comprenda un periodo electoral determinado y directamente relacionado con la fecha central del proceso electoral, conforme al detalle de las causales establecidas en la tabla general de causales que aplican al otorgamiento de justificación y/o dispensa. (ver Tabla General de Causales).\n* Pago por derecho de trámite, de acuerdo con el monto aprobado en el TUPA vigente. En caso de inasistencia a la instalación de la mesa de sufragio el monto a pagar es S/. 25.90 soles. En caso de la omisión al sufragio el monto a pagar es de S/. 25.90 soles. Si cuentan con ambas omisiones se paga sólo una tasa (S/. 25.90). El derecho de pago debe acreditarse por cada proceso electoral.\n* El pago por derecho de trámite se realiza en cualquier agencia del Banco de la Nación al código 01465 o por medios virtuales a través del portal https://pagalo.pe\n* Ciudadanos que viajan al extranjero para realizar estudios académicos:\n* Copia simple del pasaporte u otro documento donde conste la salida y entrada al país.\n* Copia simple del documento que acredite de manera indubitable los estudios realizados en el extranjero.\n* Ciudadanos que salen del país para ser atendidos por motivos de salud en el extranjero:\n* Copia simple del documento que certifique el tratamiento médico realizado en el extranjero\n* Ciudadanos que realicen labores de transporte aéreo, terrestre o marítimo:\n* Copia de constancia emitida por la empresa de transporte aéreo, marítima o terrestre que acredite de manera indubitable la labor que desempeñó durante las elecciones.\n* Ciudadanos mayores de 65 años (Aplica únicamente para otorgar Justificación):\n* Copia simple del documento nacional de identidad (DNI), cuya edad debe ser mayor a 65 años a la fecha de la elección.\n* Defectos en la actualización, organización y ejecución de actividades electorales atribuibles a las entidades del Sistema Electoral:\n* Copia simple del informe o documento de sustento, emitido por la entidad electoral, que acredite el defecto en la actualización, organización y ejecución de las actividades electorales y que indefectiblemente no sea imputable al ciudadano.\n* Desastres naturales o de origen humano:\n* Copia simple del documento suscrito por funcionario público competente o documento sustentatorio análogo que acredite fehacientemente el desastre natural/humano que impidió cumplir con el deber cívico.\n* Discapacidad física, mental, sensorial o intelectual:\n* Copia simple del certificado de discapacidad, dictamen de Comisión Médica, o la Resolución Ejecutiva de Inscripción o carné del Conadis, o documento que declare la interdicción.\n* Error en el padrón electoral:\n* Copia simple de la constancia de asistencia a la mesa de sufragio expedida por el presidente de la mesa donde le corresponda emitir su voto conforme su mesa de votación.\n* Fallecimiento de familiar directo:\n* Copia simple de la partida de defunción.\n* NOTA: Se aplica al cónyuge, familiares con vínculo de parentesco hasta el segundo grado de consanguinidad en línea recta (padres, hijos, abuelos y nietos) o en segundo grado de consanguinidad en línea colateral (hermanos), acaecido en la fecha de la elección o dentro de los cinco (5) días previos a la misma, y diez (10) días en caso que el fallecimiento haya ocurrido en una provincia distinta al lugar de sufragio.\n* Función electoral:\n* Personal de la PNP, Fuerzas Armadas y ciudadanos en servicio militar: Copia simple de la constancia de servicios expedida por su superior o jefe de unidad y copia simple carné de identificación militar o policial, y para el caso del servicio militar copia simple de su carné o documento análogo.\n* Personal de las entidades del Sistema Electoral (ONPE, RENIEC y el JNE): Constancia de servicios/labores expedidas por su superior o jefe responsable de la respectiva entidad o documento análogo que acredite haber desempañado funciones electorales el día de la elección.\n* Impedido del ejercicio de derecho de sufragio e instalación, en los casos originados por incidencias electorales\n* Copia simple del documento emitido por JNE u ONPE que acredite la incidencia electoral. Este documento no es exigido al administrado, siempre y cuando lo acontecido es de conocimiento público u obra en poder del JNE.\n* Lactancia / Mujeres en periodo de Gestación (Aplica únicamente para otorgar Justificación):\n* Copia simple de la partida de nacimiento o certificado de nacido vivo o DNI/DNIe del menor lactante, cuya edad debe ser menor o igual a dos (2) años a la fecha de la elección.\n* Copia simple del documento emitido por el médico que acredite el periodo de gestación en la fecha del día de la elección.\n* Prisión:\n* Para reclusión en el territorio nacional:\n* Copia simple de la Constancia de Libertad o Constancia de reclusión emitida por el INPE o documento que acredite fehacientemente la reclusión en un centro penitenciario.\n* Copia simple de la constancia de reclusión emitida por el Pronacej.\n* Para reclusión en el extranjero:\n* Copia del documento que acredite la reclusión en un centro penitenciario en el extranjero.\n* Robo o pérdida de DNI/DNIe:\n* Copia simple de la denuncia policial y del DNI/DNIe vigente emitido dentro de los 6 primeros meses posteriores al suceso motivo de la denuncia.\n* NOTA: El robo o pérdida debe haberse producido el día de la elección o dentro de los diez (10) días previos a la misma y la denuncia de este hecho debe de haberse realizado ante la comisaria dentro de los primeros 30 días naturales de producido el hecho.\n* Salud:\n* Copia simple del certificado médico o de documento análogo expedido por alguna entidad de salud privada o pública (Minsa, EsSalud, u hospitales de las FFAA y PNP).\n* NOTA: De tratarse de un documento expedido por un médico particular, éste debe constar en especie valorada del Colegio Médico del Perú.\n* Situaciones razonables y excepcionales que impidieron el cumplimiento de los deberes electorales:\n* Copia simple del o los documentos que acrediten fehacientemente la causal invocada.\n* Consideraciones adicionales:\n* Para la admisión de la solicitud de dispensa o justificación es necesario que la documentación presentada guarde relación directa con la fecha de la elección, a excepción de la causal G.\n* De conformidad con lo dispuesto por la LPAG, todo documento expedido en un idioma extranjero deberá ser obligatoriamente traducido al idioma oficial del Perú (la traducción podrá ser simple y deberá estar suscrita por la persona que realizó la misma).\n\n## Consideraciones y Notas Oficiales\n* Para la admisión de la solicitud de dispensa o justificación es necesario que la documentación presentada guarde relación directa con la fecha de la elección, a excepción de la causal G.\n* De conformidad con lo dispuesto por la LPAG, todo documento expedido en un idioma extranjero deberá ser obligatoriamente traducido al idioma oficial del Perú (la traducción podrá ser simple y deberá estar suscrita por la persona que realizó la misma).\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Solicitar dispensa o justificación de multa electoral. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Si no pudiste votar (sufragar) o no cumpliste con tu deber de miembro de mesa este trámite te permite eximir de la multa electoral, y se debe de realizar de forma virtual a través de la plataforma en línea ó de maner .... Requisitos: Copia de DNI/DNIe (Solo para la causal de pérdida o robo de DNI).; Copias simples de los documentos que sustenten la causal invocada que comprenda un periodo electoral determinado y directamente relacionado con la fecha central del proceso electoral, conforme al detalle de las causales establecidas en la tabla general de causales que aplican al otorgamiento de justificación y/o dispensa. (ver Tabla General de Causales).; Pago por derecho de trámite, de acuerdo con el monto aprobado en el TUPA vigente. En caso de inasistencia a la instalación de la mesa de sufragio el monto a pagar es S/. 25.90 soles. En caso de la omisión al sufragio el monto a pagar es de S/. 25.90 soles. Si cuentan con ambas omisiones se paga sólo una tasa (S/. 25.90). El derecho de pago debe acreditarse por cada proceso electoral.. Modalidad y Costo: Mixto (En línea y Presencial), costo S/ 25.90. Dirigido a Personas Naturales y Empresas. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: Para la admisión de la solicitud de dispensa o justificación es necesario que la documentación presentada guarde relación directa con la fecha de la elección, a excepción de la causal G.. De conformid. Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "448178",
+    "hash_id": "jne_448178",
+    "titulo_oficial": "Pagar mi multa electoral",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "Mixto (En línea y Presencial)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Recibes una multa e lectoral cuando no votaste, no cumpliste tu deber de asistir como miembro de mesa o te negaste a reemplazar a un miembro de mesa ausente. Si no pagas tu multa, aún tienes derecho a voto, pero: ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI)"
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Consulta si tienes multas electorales. Una vez que confirmes, ingresa al servicio Págalo.pe con tu usuario o contraseña. En el buscador, selecciona \"JNE\" y luego \"Multas electorales\". Coloca tu número de DNI. Aparecerán las multas y podrás cancelarlas siguiendo las instrucciones de la plataforma.",
+      "Paga tus multas",
+      "Puedes hacerlo desde el siguiente servicio ofrecido por el Jurado Nacional de Elecciones, donde podrás ver si cuentas con una multa electoral, la razón de la multa y si se ha iniciado o no un proceso de cobranza.",
+      "También puedes averiguarlo en las oficinas del Jurado Nacional de Elecciones o en las mismas agencias del Banco de la Nación.",
+      "Puedes cancelar tu penalización:",
+      "A través de la plataforma Págalo.pe.",
+      "En las agencias del Banco de la Nación.",
+      "En la caja de la oficina del JNE, ubicada en av. Nicolás de Piérola 1070, Cercado de Lima, con tarjeta Visa o efectivo.",
+      "Recuerda que el pago de las multas no es personal y cualquiera puede pagar tu deuda, brindando tu número de DNI."
+    ],
+    "url": "https://www.gob.pe/383-pagar-mi-multa-electoral",
+    "action_url": "https://www.pagalo.pe/",
+    "raw_content": "# Trámite: Pagar mi multa electoral\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** Mixto (En línea y Presencial)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nRecibes una multa e lectoral cuando no votaste, no cumpliste tu deber de asistir como miembro de mesa o te negaste a reemplazar a un miembro de mesa ausente. Si no pagas tu multa, aún tienes derecho a voto, pero: ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI)\n\n## Pasos para realizar el trámite\n1. Consulta si tienes multas electorales. Una vez que confirmes, ingresa al servicio Págalo.pe con tu usuario o contraseña. En el buscador, selecciona \"JNE\" y luego \"Multas electorales\". Coloca tu número de DNI. Aparecerán las multas y podrás cancelarlas siguiendo las instrucciones de la plataforma.\n2. Paga tus multas\n3. Puedes hacerlo desde el siguiente servicio ofrecido por el Jurado Nacional de Elecciones, donde podrás ver si cuentas con una multa electoral, la razón de la multa y si se ha iniciado o no un proceso de cobranza.\n4. También puedes averiguarlo en las oficinas del Jurado Nacional de Elecciones o en las mismas agencias del Banco de la Nación.\n5. Puedes cancelar tu penalización:\n6. A través de la plataforma Págalo.pe.\n7. En las agencias del Banco de la Nación.\n8. En la caja de la oficina del JNE, ubicada en av. Nicolás de Piérola 1070, Cercado de Lima, con tarjeta Visa o efectivo.\n9. Recuerda que el pago de las multas no es personal y cualquiera puede pagar tu deuda, brindando tu número de DNI.",
+    "embedding_text": "Trámite: Pagar mi multa electoral. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Recibes una multa e lectoral cuando no votaste, no cumpliste tu deber de asistir como miembro de mesa o te negaste a reemplazar a un miembro de mesa ausente. Si no pagas tu multa, aún tienes derecho a voto, pero: .... Requisitos: Documento Nacional de Identidad (DNI). Modalidad y Costo: Mixto (En línea y Presencial), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Consulta si tienes multas electorales. Una vez que confirmes, ingresa al servicio Págalo.pe con tu usuario o contraseña. En el buscador, selecciona \"JNE\" y luego \"Multas electorales\". Coloca tu número de DNI. Aparecerán . Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "6728028",
+    "hash_id": "jne_6728028",
+    "titulo_oficial": "Desafiliación a una organización política",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "Mixto (En línea y Presencial)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "¿Qué es una afiliación a una organización política? Es cuando un ciudadano, de manera libre y voluntaria, decide pertenecer a un partido político y participar en la vida democrática del país. Solo los afiliados gozan ...",
+    "requisitos": [
+      "1. Renuncia voluntaria presencial:",
+      "Tener una Casilla Electrónica del JNE.",
+      "Tener el DNI físico",
+      "Correo electrónico",
+      "2. Renuncia voluntaria virtual:",
+      "Contar con acceso a la Casilla Electrónica del JNE.",
+      "Contar con acceso a la Mesa de Partes Virtual.",
+      "Contar con una firma con certificado digital.",
+      "3. Afiliación indebida presencial:",
+      "4. Afiliación indebida virtual:"
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Nombres completos del solicitante, DNI, dirección, correo electrónico, casilla electrónica. (De no contar con casilla solicitar cita virtual https://casillaelectronica.jne.gob.pe/)",
+      "Expresar su deseo de renunciar a la organización política y el nombre de la organización política tal como se muestra en la Consulta detallada de afiliación",
+      "Firma con certificado digital.",
+      "Paso 2: Finalmente, deberá presentar su solicitud a través de nuestra Mesa de Partes Virtual mediante el siguiente link: https://mesapartesvirtual.jne.gob.pe/login",
+      "Paso 2: Adjunta la declaración jurada de acuerdo al Anexo 10 del Reglamento del ROP con su firma y huella dactilar.",
+      "Paso 3: En el caso que la solicitud sea presentada por un tercero, éste deberá adjuntar una carta poder simple suscrita y autorizada por el interesado.",
+      "Paso 4: Finalmente, deberá presentar su solicitud a través de nuestra Mesa de Partes Virtual mediante el siguiente link: https://mesapartesvirtual.jne.gob.pe/login",
+      "Paso 5: Haz seguimiento y revisa notificaciones en tu Casilla Electrónica.",
+      "Oficina de Servicios al Ciudadano: Jr. Cuzco 653 – Cercado de Lima.",
+      "O a cualquier Oficinas Desconcentradas a nivel nacional.",
+      "Paso 2: Lleva tu DNI vigente",
+      "Sirve para su identificación y validar tu solicitud.",
+      "Paso 3: Solicita tu renuncia dirigida al director de la Dirección Nacional del Registro de Organizaciones Políticas, el cual debe contener:",
+      "Nombres completos del solicitante, DNI, dirección, correo electrónico, Casilla Electrónica*",
+      "Expresar su deseo de renunciar a la organización política y el nombre de la organización política, tal como se muestra en la Consulta detallada de afiliación del ROP.",
+      "Firma del solicitante.",
+      "Paso 4: En caso, de haber presentado su solicitud de renuncia ante la organización política, en esta debe constar el acuse de recibo (sello y la fecha de recepción por parte de la organización política, así como los nombres y apellidos, DNI y firma de quien lo recibe).",
+      "NOTA: Este trámite requiere la presencia del interesado, no pudiéndose realizar por un tercero o mediante carta poder simple o notarial. Este servicio se generará durante su gestión ante la mesa de partes.",
+      "Oficina de Servicios al Ciudadano: Jr. Cusco 653 – Cercado de Lima.",
+      "Paso 2: Presenta por Mesa de Partes presencial tu solicitud dirigida al Director Nacional de Registro de Organizaciones Políticas (DNROP), Incluye: nombres y apellidos, DNI, domicilio real, teléfono y correo electrónico del solicitante, firma y huella dactilar, pidiendo que se deje sin efecto la presunta afiliación indebida.",
+      "Paso 3: Adjunta tu declaración jurada con su firma y huella dactilar",
+      "(Anexo 10 del Reglamento del Registro de Organizaciones Políticas).",
+      "Paso 4: Si presenta un tercero",
+      "Adjunta carta poder simple suscrita y autorizada por el interesado.",
+      "Sugerencia: Si no tienes Casilla Electrónica, solicítala (te ayudará a recibir notificaciones).",
+      "Asimismo, de tener alguna consulta adicional puede comunicarse con nosotros a través del CALL CENTER 01- 311-1717 en el horario de 8:00 am.a 16:00 horas de lunes a viernes."
+    ],
+    "url": "https://www.gob.pe/99307-desafiliacion-a-una-organizacion-politica",
+    "action_url": "https://www.gob.pe/99307-desafiliacion-a-una-organizacion-politica",
+    "raw_content": "# Trámite: Desafiliación a una organización política\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** Mixto (En línea y Presencial)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\n¿Qué es una afiliación a una organización política? Es cuando un ciudadano, de manera libre y voluntaria, decide pertenecer a un partido político y participar en la vida democrática del país. Solo los afiliados gozan ...\n\n## Requisitos Obligatorios\n* 1. Renuncia voluntaria presencial:\n* Tener una Casilla Electrónica del JNE.\n* Tener el DNI físico\n* Correo electrónico\n* 2. Renuncia voluntaria virtual:\n* Contar con acceso a la Casilla Electrónica del JNE.\n* Contar con acceso a la Mesa de Partes Virtual.\n* Contar con una firma con certificado digital.\n* 3. Afiliación indebida presencial:\n* 4. Afiliación indebida virtual:\n\n## Pasos para realizar el trámite\n1. Nombres completos del solicitante, DNI, dirección, correo electrónico, casilla electrónica. (De no contar con casilla solicitar cita virtual https://casillaelectronica.jne.gob.pe/)\n2. Expresar su deseo de renunciar a la organización política y el nombre de la organización política tal como se muestra en la Consulta detallada de afiliación\n3. Firma con certificado digital.\n4. Paso 2: Finalmente, deberá presentar su solicitud a través de nuestra Mesa de Partes Virtual mediante el siguiente link: https://mesapartesvirtual.jne.gob.pe/login\n5. Paso 2: Adjunta la declaración jurada de acuerdo al Anexo 10 del Reglamento del ROP con su firma y huella dactilar.\n6. Paso 3: En el caso que la solicitud sea presentada por un tercero, éste deberá adjuntar una carta poder simple suscrita y autorizada por el interesado.\n7. Paso 4: Finalmente, deberá presentar su solicitud a través de nuestra Mesa de Partes Virtual mediante el siguiente link: https://mesapartesvirtual.jne.gob.pe/login\n8. Paso 5: Haz seguimiento y revisa notificaciones en tu Casilla Electrónica.\n9. Oficina de Servicios al Ciudadano: Jr. Cuzco 653 – Cercado de Lima.\n10. O a cualquier Oficinas Desconcentradas a nivel nacional.\n11. Paso 2: Lleva tu DNI vigente\n12. Sirve para su identificación y validar tu solicitud.\n13. Paso 3: Solicita tu renuncia dirigida al director de la Dirección Nacional del Registro de Organizaciones Políticas, el cual debe contener:\n14. Nombres completos del solicitante, DNI, dirección, correo electrónico, Casilla Electrónica*\n15. Expresar su deseo de renunciar a la organización política y el nombre de la organización política, tal como se muestra en la Consulta detallada de afiliación del ROP.\n16. Firma del solicitante.\n17. Paso 4: En caso, de haber presentado su solicitud de renuncia ante la organización política, en esta debe constar el acuse de recibo (sello y la fecha de recepción por parte de la organización política, así como los nombres y apellidos, DNI y firma de quien lo recibe).\n18. NOTA: Este trámite requiere la presencia del interesado, no pudiéndose realizar por un tercero o mediante carta poder simple o notarial. Este servicio se generará durante su gestión ante la mesa de partes.\n19. Oficina de Servicios al Ciudadano: Jr. Cusco 653 – Cercado de Lima.\n20. Paso 2: Presenta por Mesa de Partes presencial tu solicitud dirigida al Director Nacional de Registro de Organizaciones Políticas (DNROP), Incluye: nombres y apellidos, DNI, domicilio real, teléfono y correo electrónico del solicitante, firma y huella dactilar, pidiendo que se deje sin efecto la presunta afiliación indebida.\n21. Paso 3: Adjunta tu declaración jurada con su firma y huella dactilar\n22. (Anexo 10 del Reglamento del Registro de Organizaciones Políticas).\n23. Paso 4: Si presenta un tercero\n24. Adjunta carta poder simple suscrita y autorizada por el interesado.\n25. Sugerencia: Si no tienes Casilla Electrónica, solicítala (te ayudará a recibir notificaciones).\n26. Asimismo, de tener alguna consulta adicional puede comunicarse con nosotros a través del CALL CENTER 01- 311-1717 en el horario de 8:00 am.a 16:00 horas de lunes a viernes.",
+    "embedding_text": "Trámite: Desafiliación a una organización política. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: ¿Qué es una afiliación a una organización política? Es cuando un ciudadano, de manera libre y voluntaria, decide pertenecer a un partido político y participar en la vida democrática del país. Solo los afiliados gozan .... Requisitos: 1. Renuncia voluntaria presencial:; Tener una Casilla Electrónica del JNE.; Tener el DNI físico. Modalidad y Costo: Mixto (En línea y Presencial), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Nombres completos del solicitante, DNI, dirección, correo electrónico, casilla electrónica. (De no contar con casilla solicitar cita virtual https://casillaelectronica.jne.gob.pe/); Expresar su deseo de renunciar a la or. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "448216",
+    "hash_id": "jne_448216",
+    "titulo_oficial": "Excusa o justificación al cargo de miembro de mesa y dispensa por no votar",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Existen motivos por los cuales puedes justificar no ejercer el cargo de miembro de mesa. En estos casos, deberás presentar una excusa o justificación antes de las elecciones en la ONPE o una dispensa o justifica ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/473-excusa-o-justificacion-al-cargo-de-miembro-de-mesa-y-dispensa-por-no-votar",
+    "action_url": "https://www.gob.pe/473-excusa-o-justificacion-al-cargo-de-miembro-de-mesa-y-dispensa-por-no-votar",
+    "raw_content": "# Trámite: Excusa o justificación al cargo de miembro de mesa y dispensa por no votar\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nExisten motivos por los cuales puedes justificar no ejercer el cargo de miembro de mesa. En estos casos, deberás presentar una excusa o justificación antes de las elecciones en la ONPE o una dispensa o justifica ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Excusa o justificación al cargo de miembro de mesa y dispensa por no votar. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Existen motivos por los cuales puedes justificar no ejercer el cargo de miembro de mesa. En estos casos, deberás presentar una excusa o justificación antes de las elecciones en la ONPE o una dispensa o justifica .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "448180",
+    "hash_id": "jne_448180",
+    "titulo_oficial": "Prescripción de la Multa Electoral",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "La prescripción es la extinción de una obligación (por ejemplo una multa electoral) por no ser sancionada en un plazo determinado por ley. Puedes plantar esta figura en cualquier etapa del procedimiento de cobranza d ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/385-prescripcion-de-la-multa-electoral",
+    "action_url": "https://www.gob.pe/385-prescripcion-de-la-multa-electoral",
+    "raw_content": "# Trámite: Prescripción de la Multa Electoral\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nLa prescripción es la extinción de una obligación (por ejemplo una multa electoral) por no ser sancionada en un plazo determinado por ley. Puedes plantar esta figura en cualquier etapa del procedimiento de cobranza d ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Prescripción de la Multa Electoral. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: La prescripción es la extinción de una obligación (por ejemplo una multa electoral) por no ser sancionada en un plazo determinado por ley. Puedes plantar esta figura en cualquier etapa del procedimiento de cobranza d .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "6717190",
+    "hash_id": "jne_6717190",
+    "titulo_oficial": "Conoce a tus autoridades vigentes",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Es una plataforma digital que permite a la ciudadanía consultar quiénes son las autoridades elegidas en ejercicio a nivel nacional, regional y local . ¿Qué información ofrece? Listado de autoridades actuales: presid ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/99071-conoce-a-tus-autoridades-vigentes",
+    "action_url": "https://www.gob.pe/99071-conoce-a-tus-autoridades-vigentes",
+    "raw_content": "# Trámite: Conoce a tus autoridades vigentes\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nEs una plataforma digital que permite a la ciudadanía consultar quiénes son las autoridades elegidas en ejercicio a nivel nacional, regional y local . ¿Qué información ofrece? Listado de autoridades actuales: presid ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Conoce a tus autoridades vigentes. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Es una plataforma digital que permite a la ciudadanía consultar quiénes son las autoridades elegidas en ejercicio a nivel nacional, regional y local . ¿Qué información ofrece? Listado de autoridades actuales: presid .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "448179",
+    "hash_id": "jne_448179",
+    "titulo_oficial": "Proceso de cobranza de una multa electoral",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "El Jurado Nacional de Elecciones tiene la facultad exclusiva de cobrarte las multas electorales por omisión al sufragio o a la instalación de la mesa de sufragio. Estas acciones administrativas son realizadas por la ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/384-proceso-de-cobranza-de-una-multa-electoral",
+    "action_url": "https://www.gob.pe/384-proceso-de-cobranza-de-una-multa-electoral",
+    "raw_content": "# Trámite: Proceso de cobranza de una multa electoral\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nEl Jurado Nacional de Elecciones tiene la facultad exclusiva de cobrarte las multas electorales por omisión al sufragio o a la instalación de la mesa de sufragio. Estas acciones administrativas son realizadas por la ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Proceso de cobranza de una multa electoral. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: El Jurado Nacional de Elecciones tiene la facultad exclusiva de cobrarte las multas electorales por omisión al sufragio o a la instalación de la mesa de sufragio. Estas acciones administrativas son realizadas por la .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "6717311",
+    "hash_id": "jne_6717311",
+    "titulo_oficial": "Multas Electorales",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Es una plataforma en línea que permite a los ciudadanos verificar si tienen multas pendientes por omisión al sufragio, inasistencia a la instalación de mesa de votación o por negarse a integrar la mesa electoral . ¿ ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/99072-multas-electorales",
+    "action_url": "https://www.gob.pe/99072-multas-electorales",
+    "raw_content": "# Trámite: Multas Electorales\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nEs una plataforma en línea que permite a los ciudadanos verificar si tienen multas pendientes por omisión al sufragio, inasistencia a la instalación de mesa de votación o por negarse a integrar la mesa electoral . ¿ ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Multas Electorales. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Es una plataforma en línea que permite a los ciudadanos verificar si tienen multas pendientes por omisión al sufragio, inasistencia a la instalación de mesa de votación o por negarse a integrar la mesa electoral . ¿ .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "6747302",
+    "hash_id": "jne_6747302",
+    "titulo_oficial": "Denunciar un presunto acto de corrupción",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "Mixto (En línea y Presencial)",
+    "publico_objetivo": "Empresas y Personas Jurídicas",
+    "descripcion": "Si necesitas denunciar un posible acto de corrupción o falta de ética cometida por personal de una entidad del Estado, puedes hacerlo a través de la Plataforma de Denuncias Ciudadanas , habilitada por la Presidenci ...",
+    "requisitos": [
+      "Documento de identidad.",
+      "Correo electrónico y número telefónico.",
+      "En caso de presentar la denuncia como persona jurídica, número de RUC.",
+      "Documentación original o copia simple que sustente tu denuncia. También puedes precisar la unidad o dependencia donde se efectuó el hecho.",
+      "Firma o huella digital (en caso de no poder firmar o estar impedido de hacerlo).",
+      "Nombre completo, DNI, domicilio, número telefónico o correo electrónico.",
+      "Número de RUC en caso presentes la denuncia como persona jurídica.",
+      "Presenta los documentos que sustenten tu denuncia. El personal a cargo a fin de mantener la reserva de tu identidad, del denunciado y los hechos denunciados, asignará un número a tu expediente para que puedas hacerle seguimiento y lo registrará como información confidencial.",
+      "Si eliges identificarte, podrás pedir medidas de protección laboral según la Ley N° 29542, mientras dure el proceso y hasta que lo decida la autoridad competente.",
+      "En 30 días hábiles, recibirás una respuesta de la entidad."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Hazlo de forma digital:: En el servicio, señala la entidad pública donde se cometió el presunto acto de corrupción. Incluye la fecha de lo ocurrido, hasta 2 motivos de tu denuncia y describe los hechos del modo más detallado posible.",
+      "Finalmente, indica si deseas hacerla de forma anónima o identificándote. El sistema te asignará un código para que puedas darle seguimiento a tu trámite.",
+      "Ten en cuenta que solo si eliges identificarte, podrás pedir medidas de protección laboral o en un proceso de contratación pública (como postor o contratista). La oficina de integridad de la entidad denunciada podrá contactarte para notificarte su avance o pedirte más información. El tiempo de respuesta puede variar dependiendo de la institución.",
+      "Haz tu denuncia",
+      "Hazlo de forma digital:: En el servicio, señala la entidad pública donde se cometió el presunto acto de corrupción. Incluye la fecha de lo ocurrido, hasta 2 motivos de tu denuncia y describe los hechos del modo más detallado posible.",
+      "Hazlo de forma digital:: En el servicio, señala la entidad pública donde se cometió el presunto acto de corrupción. Incluye la fecha de lo ocurrido, hasta 2 motivos de tu denuncia y describe los hechos del modo más detallado posible.",
+      "Haz una denuncia",
+      "Hazlo de forma digital:: En el servicio, señala la entidad pública donde se cometió el presunto acto de corrupción. Incluye la fecha de lo ocurrido, hasta 2 motivos de tu denuncia y describe los hechos del modo más detallado posible.",
+      "Dirígete a la [mesa de partes de atención al usuario de la entidad, ubicada en Av. Salaverry N° 801, Jesús María, Lima, de lunes a viernes de 8:30 a. m. a 4:30 p. m.] Para ingresar tendrás que presentar tu DNI o carnet de extranjería.",
+      "Presenta los documentos que sustenten tu denuncia. El personal a cargo a fin de mantener la reserva de tu identidad, del denunciado y los hechos denunciados, asignará un número a tu expediente para que puedas hacerle seguimiento y lo registrará como información confidencial.",
+      "Si eliges identificarte, podrás pedir medidas de protección laboral según la Ley N° 29542, mientras dure el proceso y hasta que lo decida la autoridad competente.",
+      "En 30 días hábiles, recibirás una respuesta de la entidad."
+    ],
+    "url": "https://www.gob.pe/99787-jurado-nacional-de-elecciones-denunciar-un-presunto-acto-de-corrupcion",
+    "action_url": "https://denuncias.servicios.gob.pe/",
+    "raw_content": "# Trámite: Denunciar un presunto acto de corrupción\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** Mixto (En línea y Presencial)\n**Dirigido a:** Empresas y Personas Jurídicas\n\n## Resumen del Trámite\nSi necesitas denunciar un posible acto de corrupción o falta de ética cometida por personal de una entidad del Estado, puedes hacerlo a través de la Plataforma de Denuncias Ciudadanas , habilitada por la Presidenci ...\n\n## Requisitos Obligatorios\n* Documento de identidad.\n* Correo electrónico y número telefónico.\n* En caso de presentar la denuncia como persona jurídica, número de RUC.\n* Documentación original o copia simple que sustente tu denuncia. También puedes precisar la unidad o dependencia donde se efectuó el hecho.\n* Firma o huella digital (en caso de no poder firmar o estar impedido de hacerlo).\n* Nombre completo, DNI, domicilio, número telefónico o correo electrónico.\n* Número de RUC en caso presentes la denuncia como persona jurídica.\n* Presenta los documentos que sustenten tu denuncia. El personal a cargo a fin de mantener la reserva de tu identidad, del denunciado y los hechos denunciados, asignará un número a tu expediente para que puedas hacerle seguimiento y lo registrará como información confidencial.\n* Si eliges identificarte, podrás pedir medidas de protección laboral según la Ley N° 29542, mientras dure el proceso y hasta que lo decida la autoridad competente.\n* En 30 días hábiles, recibirás una respuesta de la entidad.\n\n## Pasos para realizar el trámite\n1. Hazlo de forma digital:: En el servicio, señala la entidad pública donde se cometió el presunto acto de corrupción. Incluye la fecha de lo ocurrido, hasta 2 motivos de tu denuncia y describe los hechos del modo más detallado posible.\n2. Finalmente, indica si deseas hacerla de forma anónima o identificándote. El sistema te asignará un código para que puedas darle seguimiento a tu trámite.\n3. Ten en cuenta que solo si eliges identificarte, podrás pedir medidas de protección laboral o en un proceso de contratación pública (como postor o contratista). La oficina de integridad de la entidad denunciada podrá contactarte para notificarte su avance o pedirte más información. El tiempo de respuesta puede variar dependiendo de la institución.\n4. Haz tu denuncia\n5. Hazlo de forma digital:: En el servicio, señala la entidad pública donde se cometió el presunto acto de corrupción. Incluye la fecha de lo ocurrido, hasta 2 motivos de tu denuncia y describe los hechos del modo más detallado posible.\n6. Hazlo de forma digital:: En el servicio, señala la entidad pública donde se cometió el presunto acto de corrupción. Incluye la fecha de lo ocurrido, hasta 2 motivos de tu denuncia y describe los hechos del modo más detallado posible.\n7. Haz una denuncia\n8. Hazlo de forma digital:: En el servicio, señala la entidad pública donde se cometió el presunto acto de corrupción. Incluye la fecha de lo ocurrido, hasta 2 motivos de tu denuncia y describe los hechos del modo más detallado posible.\n9. Dirígete a la [mesa de partes de atención al usuario de la entidad, ubicada en Av. Salaverry N° 801, Jesús María, Lima, de lunes a viernes de 8:30 a. m. a 4:30 p. m.] Para ingresar tendrás que presentar tu DNI o carnet de extranjería.\n10. Presenta los documentos que sustenten tu denuncia. El personal a cargo a fin de mantener la reserva de tu identidad, del denunciado y los hechos denunciados, asignará un número a tu expediente para que puedas hacerle seguimiento y lo registrará como información confidencial.\n11. Si eliges identificarte, podrás pedir medidas de protección laboral según la Ley N° 29542, mientras dure el proceso y hasta que lo decida la autoridad competente.\n12. En 30 días hábiles, recibirás una respuesta de la entidad.",
+    "embedding_text": "Trámite: Denunciar un presunto acto de corrupción. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Si necesitas denunciar un posible acto de corrupción o falta de ética cometida por personal de una entidad del Estado, puedes hacerlo a través de la Plataforma de Denuncias Ciudadanas , habilitada por la Presidenci .... Requisitos: Documento de identidad.; Correo electrónico y número telefónico.; En caso de presentar la denuncia como persona jurídica, número de RUC.. Modalidad y Costo: Mixto (En línea y Presencial), costo Gratuito. Dirigido a Empresas y Personas Jurídicas. Pasos: Hazlo de forma digital:: En el servicio, señala la entidad pública donde se cometió el presunto acto de corrupción. Incluye la fecha de lo ocurrido, hasta 2 motivos de tu denuncia y describe los hechos del modo más detal. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "6718612",
+    "hash_id": "jne_6718612",
+    "titulo_oficial": "Registro de Organizaciones Políticas (ROP)",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Es el sistema oficial donde se inscriben, registran y actualizan los partidos políticos, movimientos regionales y alianzas electorales del Perú. ¿Qué permite el ROP? Verificar qué organizaciones políticas están le ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/99079-registro-de-organizaciones-politicas-rop",
+    "action_url": "https://www.gob.pe/99079-registro-de-organizaciones-politicas-rop",
+    "raw_content": "# Trámite: Registro de Organizaciones Políticas (ROP)\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nEs el sistema oficial donde se inscriben, registran y actualizan los partidos políticos, movimientos regionales y alianzas electorales del Perú. ¿Qué permite el ROP? Verificar qué organizaciones políticas están le ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Registro de Organizaciones Políticas (ROP). Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Es el sistema oficial donde se inscriben, registran y actualizan los partidos políticos, movimientos regionales y alianzas electorales del Perú. ¿Qué permite el ROP? Verificar qué organizaciones políticas están le .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "6719119",
+    "hash_id": "jne_6719119",
+    "titulo_oficial": "Declaración Jurada de Hoja de Vida",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "La Declaración Jurada de Hoja de Vida (DJHV) es un documento obligatorio que todo candidato debe presentar ante el Jurado Nacional de Elecciones (JNE) al postular a un cargo de elección popular. ¿Qué contiene? Da ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/99085-declaracion-jurada-de-hoja-de-vida",
+    "action_url": "https://www.gob.pe/99085-declaracion-jurada-de-hoja-de-vida",
+    "raw_content": "# Trámite: Declaración Jurada de Hoja de Vida\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nLa Declaración Jurada de Hoja de Vida (DJHV) es un documento obligatorio que todo candidato debe presentar ante el Jurado Nacional de Elecciones (JNE) al postular a un cargo de elección popular. ¿Qué contiene? Da ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Declaración Jurada de Hoja de Vida. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: La Declaración Jurada de Hoja de Vida (DJHV) es un documento obligatorio que todo candidato debe presentar ante el Jurado Nacional de Elecciones (JNE) al postular a un cargo de elección popular. ¿Qué contiene? Da .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "6716928",
+    "hash_id": "jne_6716928",
+    "titulo_oficial": "Infogob",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Es una plataforma digital del Jurado Nacional de Elecciones (JNE) que centraliza información sobre organizaciones políticas, autoridades y procesos electorales en el Perú . ¿Qué puedes encontrar en Infogob? Datos ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/99067-infogob",
+    "action_url": "https://www.gob.pe/99067-infogob",
+    "raw_content": "# Trámite: Infogob\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nEs una plataforma digital del Jurado Nacional de Elecciones (JNE) que centraliza información sobre organizaciones políticas, autoridades y procesos electorales en el Perú . ¿Qué puedes encontrar en Infogob? Datos ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Infogob. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Es una plataforma digital del Jurado Nacional de Elecciones (JNE) que centraliza información sobre organizaciones políticas, autoridades y procesos electorales en el Perú . ¿Qué puedes encontrar en Infogob? Datos .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "7747029",
+    "hash_id": "jne_7747029",
+    "titulo_oficial": "Consulta de expedientes",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Accede de manera rápida y segura a la información de los expedientes tramitados ante el Jurado Nacional de Elecciones. Esta plataforma permite consultar el estado, seguimiento y detalle de los procedimientos jurisdic ...",
+    "requisitos": [
+      "Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda)."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/114218-consulta-de-expedientes",
+    "action_url": "https://www.gob.pe/114218-consulta-de-expedientes",
+    "raw_content": "# Trámite: Consulta de expedientes\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nAccede de manera rápida y segura a la información de los expedientes tramitados ante el Jurado Nacional de Elecciones. Esta plataforma permite consultar el estado, seguimiento y detalle de los procedimientos jurisdic ...\n\n## Requisitos Obligatorios\n* Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda).\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Consulta de expedientes. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Accede de manera rápida y segura a la información de los expedientes tramitados ante el Jurado Nacional de Elecciones. Esta plataforma permite consultar el estado, seguimiento y detalle de los procedimientos jurisdic .... Requisitos: Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda).. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "7959480",
+    "hash_id": "jne_7959480",
+    "titulo_oficial": "Consultar normas sobre integridad y lucha contra la corrupción",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Normativa del Modelo de Integridad En esta sección encontrarás la normativa interna y nacional que regula la integridad institucional, la transparencia, la ética pública y la lucha contra la corrupción en el Jurado N ...",
+    "requisitos": [
+      "Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda)."
+    ],
+    "consideraciones": [
+      "Normativa interna: Resolución N.° 108-2025-P/JNE, que modifica el Reglamento de Organización y Funciones del Jurado Nacional de Elecciones e incorpora la Oficina de Integridad Institucional.",
+      "Normativa nacional: Esta sección reúne las principales normas que regulan la integridad pública, la prevención y lucha contra la corrupción, la transparencia, la gestión de denuncias, la protección al denunciante y la implementación del Modelo de Integridad en las entidades del sector público.",
+      "Normativa nacional: Decreto Legislativo N°1327, que establece medidas de protección para el denunciante de actos de corrupción y sanciona las denuncias realizadas de mala fe.",
+      "Normativa nacional: Manual de principios, deberes y prohibiciones éticas en la función pública.",
+      "Normativa nacional: Decreto Supremo N°010-2017-JUS, que aprueba el Reglamento del Decreto Legislativo N° 1327.",
+      "Normativa nacional: Decreto Supremo Nº092-2017-PCM, que aprueba la Política Nacional de Integridad y Lucha contra la Corrupción.",
+      "Normativa nacional: Decreto Supremo N°042-2018-PCM, que aprueba las medidas para fortalecer la integridad pública y lucha contra la corrupción.",
+      "Normativa nacional: Resolución de Secretaría de Integridad Pública N°001-2019-PCM/SIP, que aprueba la Directiva N°001-2019-PCM/SIP, que aprueba los Lineamientos para la implementación de la función de integridad en las entidades de la Administración Pública.",
+      "Normativa nacional: Resolución Directoral N° 011-2021-JUS/DGTAIPD, que aprueba el Lineamiento para la Implementación y Actualización del Portal de Transparencia Estándar en las entidades de la Administración Pública.",
+      "Normativa nacional: Resolución de Secretaría de Integridad Pública N°002-2021-PCM/SIP, que aprueba la Directiva N°002-2021-PCM/SIP, Lineamientos para fortalecer una cultura de integridad en las entidades del sector público.",
+      "Normativa nacional: Decreto Supremo N° 185-2021-PCM, que crea la Plataforma de Debida Diligencia del Sector Público, como herramienta de integridad destinada a fortalecer una lucha efectiva contra la corrupción y elevar los estándares de la actuación pública.",
+      "Normativa nacional: Resolución N° 001-2022-PCM/SIP, que aprueba la Directiva N° 001-2022-PCM/SIP, “Lineamientos para asegurar la integridad y transparencia en las gestiones de intereses y otras actividades a través del Registro de Visitas en Línea y Registro de Agendas Oficiales”.",
+      "Normativa nacional: Resolución de Secretaría de Integridad Pública N° 001-2023-PCM/SIP, que aprueba la “Guía para la gestión de riesgos que afectan la integridad pública”.",
+      "Normativa nacional: Resolución de Secretaría de Integridad Pública N° 005-2023-PCM/SIP, que aprueba la Directiva N° 002-2023-PCM/SIP, “Directiva para la gestión de denuncias y solicitudes de medidas de protección al denunciante de actos de corrupción recibidas a través de la plataforma digital única de denuncias del ciudadano”.",
+      "Normativa nacional: Resolución de Secretaría de Integridad Pública N° 012-2024-PCM/SIP, que aprueba la Directiva N° 004-2024-PCM/SIP, “Directiva para la participación de la Oficina de Integridad Institucional o la que haga sus veces, en calidad de veedora en los procesos de selección de personal en las entidades de la Administración pública”.",
+      "Normativa nacional: Decreto Supremo N° 148-2024-PCM, que aprueba el Modelo de Integridad para fortalecer la capacidad de prevención y respuesta frente a la corrupción en las entidades del sector público.",
+      "Normativa nacional: Resolución de Secretaría de Integridad Pública N° 002-2025-PCM/SIP, que aprueba la versión 2 de la “Guía de Evaluación del Modelo de Integridad en la Etapa N° 1: Inicial”.",
+      "Normativa nacional: Resolución de Secretaría de Integridad Pública N° 004-2025-PCM/SIP, que aprueba la versión 2 de la “Guía de evaluación del Modelo de Integridad en la Etapa N° 2: Institucionalización”.",
+      "Normativa nacional: Resolución de Secretaría de Integridad Pública N° 005-2025-PCM/SIP, que aprueba la versión 2 de la “Guía de evaluación del Modelo de Integridad en la Etapa N° 3: Estandarización”.",
+      "Normativa nacional: Resolución de Secretaría de Integridad Pública N° 002-2026-PCM/SIP, que aprueba la versión 2 de la Directiva N° 001-2026-PCM/SIP, “Directiva para la implementación del Modelo de Integridad en las entidades del sector público”.",
+      "Normativa nacional: Resolución de Secretaría de Integridad Pública N° 006-2026-PCM/SIP, que modifica la pregunta N° 1 de la Guía de Evaluación del Modelo de Integridad – Etapa 1 (inicial), conforme al anexo 1."
+    ],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/115140-consultar-normas-sobre-integridad-y-lucha-contra-la-corrupcion",
+    "action_url": "https://www.gob.pe/115140-consultar-normas-sobre-integridad-y-lucha-contra-la-corrupcion",
+    "raw_content": "# Trámite: Consultar normas sobre integridad y lucha contra la corrupción\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nNormativa del Modelo de Integridad En esta sección encontrarás la normativa interna y nacional que regula la integridad institucional, la transparencia, la ética pública y la lucha contra la corrupción en el Jurado N ...\n\n## Requisitos Obligatorios\n* Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda).\n\n## Consideraciones y Notas Oficiales\n* Normativa interna: Resolución N.° 108-2025-P/JNE, que modifica el Reglamento de Organización y Funciones del Jurado Nacional de Elecciones e incorpora la Oficina de Integridad Institucional.\n* Normativa nacional: Esta sección reúne las principales normas que regulan la integridad pública, la prevención y lucha contra la corrupción, la transparencia, la gestión de denuncias, la protección al denunciante y la implementación del Modelo de Integridad en las entidades del sector público.\n* Normativa nacional: Decreto Legislativo N°1327, que establece medidas de protección para el denunciante de actos de corrupción y sanciona las denuncias realizadas de mala fe.\n* Normativa nacional: Manual de principios, deberes y prohibiciones éticas en la función pública.\n* Normativa nacional: Decreto Supremo N°010-2017-JUS, que aprueba el Reglamento del Decreto Legislativo N° 1327.\n* Normativa nacional: Decreto Supremo Nº092-2017-PCM, que aprueba la Política Nacional de Integridad y Lucha contra la Corrupción.\n* Normativa nacional: Decreto Supremo N°042-2018-PCM, que aprueba las medidas para fortalecer la integridad pública y lucha contra la corrupción.\n* Normativa nacional: Resolución de Secretaría de Integridad Pública N°001-2019-PCM/SIP, que aprueba la Directiva N°001-2019-PCM/SIP, que aprueba los Lineamientos para la implementación de la función de integridad en las entidades de la Administración Pública.\n* Normativa nacional: Resolución Directoral N° 011-2021-JUS/DGTAIPD, que aprueba el Lineamiento para la Implementación y Actualización del Portal de Transparencia Estándar en las entidades de la Administración Pública.\n* Normativa nacional: Resolución de Secretaría de Integridad Pública N°002-2021-PCM/SIP, que aprueba la Directiva N°002-2021-PCM/SIP, Lineamientos para fortalecer una cultura de integridad en las entidades del sector público.\n* Normativa nacional: Decreto Supremo N° 185-2021-PCM, que crea la Plataforma de Debida Diligencia del Sector Público, como herramienta de integridad destinada a fortalecer una lucha efectiva contra la corrupción y elevar los estándares de la actuación pública.\n* Normativa nacional: Resolución N° 001-2022-PCM/SIP, que aprueba la Directiva N° 001-2022-PCM/SIP, “Lineamientos para asegurar la integridad y transparencia en las gestiones de intereses y otras actividades a través del Registro de Visitas en Línea y Registro de Agendas Oficiales”.\n* Normativa nacional: Resolución de Secretaría de Integridad Pública N° 001-2023-PCM/SIP, que aprueba la “Guía para la gestión de riesgos que afectan la integridad pública”.\n* Normativa nacional: Resolución de Secretaría de Integridad Pública N° 005-2023-PCM/SIP, que aprueba la Directiva N° 002-2023-PCM/SIP, “Directiva para la gestión de denuncias y solicitudes de medidas de protección al denunciante de actos de corrupción recibidas a través de la plataforma digital única de denuncias del ciudadano”.\n* Normativa nacional: Resolución de Secretaría de Integridad Pública N° 012-2024-PCM/SIP, que aprueba la Directiva N° 004-2024-PCM/SIP, “Directiva para la participación de la Oficina de Integridad Institucional o la que haga sus veces, en calidad de veedora en los procesos de selección de personal en las entidades de la Administración pública”.\n* Normativa nacional: Decreto Supremo N° 148-2024-PCM, que aprueba el Modelo de Integridad para fortalecer la capacidad de prevención y respuesta frente a la corrupción en las entidades del sector público.\n* Normativa nacional: Resolución de Secretaría de Integridad Pública N° 002-2025-PCM/SIP, que aprueba la versión 2 de la “Guía de Evaluación del Modelo de Integridad en la Etapa N° 1: Inicial”.\n* Normativa nacional: Resolución de Secretaría de Integridad Pública N° 004-2025-PCM/SIP, que aprueba la versión 2 de la “Guía de evaluación del Modelo de Integridad en la Etapa N° 2: Institucionalización”.\n* Normativa nacional: Resolución de Secretaría de Integridad Pública N° 005-2025-PCM/SIP, que aprueba la versión 2 de la “Guía de evaluación del Modelo de Integridad en la Etapa N° 3: Estandarización”.\n* Normativa nacional: Resolución de Secretaría de Integridad Pública N° 002-2026-PCM/SIP, que aprueba la versión 2 de la Directiva N° 001-2026-PCM/SIP, “Directiva para la implementación del Modelo de Integridad en las entidades del sector público”.\n* Normativa nacional: Resolución de Secretaría de Integridad Pública N° 006-2026-PCM/SIP, que modifica la pregunta N° 1 de la Guía de Evaluación del Modelo de Integridad – Etapa 1 (inicial), conforme al anexo 1.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Consultar normas sobre integridad y lucha contra la corrupción. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Normativa del Modelo de Integridad En esta sección encontrarás la normativa interna y nacional que regula la integridad institucional, la transparencia, la ética pública y la lucha contra la corrupción en el Jurado N .... Requisitos: Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda).. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: Normativa interna: Resolución N.° 108-2025-P/JNE, que modifica el Reglamento de Organización y Funciones del Jurado Nacional de Elecciones e incorpora la Oficina de Integridad Institucional.. Normativ. Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "6716777",
+    "hash_id": "jne_6716777",
+    "titulo_oficial": "Contratación de bienes y servicios mayores a 8 UIT",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "S/ 5",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Empresas y Personas Jurídicas",
+    "descripcion": "Cuando el JNE necesita adquirir bienes (ej. equipos, mobiliario) o servicios (ej. consultorías, mantenimiento, sistemas tecnológicos), y el monto de la contratación supera las 8 Unidades Impositivas Tributarias ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/99062-contratacion-de-bienes-y-servicios-mayores-a-8-uit",
+    "action_url": "https://www.gob.pe/99062-contratacion-de-bienes-y-servicios-mayores-a-8-uit",
+    "raw_content": "# Trámite: Contratación de bienes y servicios mayores a 8 UIT\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** S/ 5\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Empresas y Personas Jurídicas\n\n## Resumen del Trámite\nCuando el JNE necesita adquirir bienes (ej. equipos, mobiliario) o servicios (ej. consultorías, mantenimiento, sistemas tecnológicos), y el monto de la contratación supera las 8 Unidades Impositivas Tributarias ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Contratación de bienes y servicios mayores a 8 UIT. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Cuando el JNE necesita adquirir bienes (ej. equipos, mobiliario) o servicios (ej. consultorías, mantenimiento, sistemas tecnológicos), y el monto de la contratación supera las 8 Unidades Impositivas Tributarias .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo S/ 5. Dirigido a Empresas y Personas Jurídicas. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "6716998",
+    "hash_id": "jne_6716998",
+    "titulo_oficial": "Mesa de Partes Virtual",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "Mixto (En línea y Presencial)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Es una plataforma en línea que permite a los ciudadanos, organizaciones políticas e instituciones presentar documentos, solicitudes y trámites de manera digital ante el Jurado Nacional de Elecciones. ¿Para qué sirv ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/99069-mesa-de-partes-virtual",
+    "action_url": "https://www.gob.pe/99069-mesa-de-partes-virtual",
+    "raw_content": "# Trámite: Mesa de Partes Virtual\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** Mixto (En línea y Presencial)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nEs una plataforma en línea que permite a los ciudadanos, organizaciones políticas e instituciones presentar documentos, solicitudes y trámites de manera digital ante el Jurado Nacional de Elecciones. ¿Para qué sirv ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Mesa de Partes Virtual. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Es una plataforma en línea que permite a los ciudadanos, organizaciones políticas e instituciones presentar documentos, solicitudes y trámites de manera digital ante el Jurado Nacional de Elecciones. ¿Para qué sirv .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: Mixto (En línea y Presencial), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "6718949",
+    "hash_id": "jne_6718949",
+    "titulo_oficial": "Casilla Electrónica",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Es una plataforma virtual oficial que permite a ciudadanos, organizaciones políticas y entidades públicas recibir notificaciones electrónicas de carácter legal y administrativo emitidas por el Jurado Nacional de ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/99081-casilla-electronica",
+    "action_url": "https://www.gob.pe/99081-casilla-electronica",
+    "raw_content": "# Trámite: Casilla Electrónica\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nEs una plataforma virtual oficial que permite a ciudadanos, organizaciones políticas y entidades públicas recibir notificaciones electrónicas de carácter legal y administrativo emitidas por el Jurado Nacional de ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Casilla Electrónica. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Es una plataforma virtual oficial que permite a ciudadanos, organizaciones políticas y entidades públicas recibir notificaciones electrónicas de carácter legal y administrativo emitidas por el Jurado Nacional de .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "497393",
+    "hash_id": "jne_497393",
+    "titulo_oficial": "Infórmate sobre los candidatos a la Segunda Elección Regional 2022 - Voto Informado",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Cuando se acercan nuevas elecciones (sean presidenciales, congresales, regionales o municipales), el Jurado Nacional de Elecciones habilita la página Voto Informado, para ayudarte a conocer mejor a los candidatos. ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/7902-informate-sobre-los-candidatos-a-la-segunda-eleccion-regional-2022-voto-informado",
+    "action_url": "https://votoinformado.jne.gob.pe/voto",
+    "raw_content": "# Trámite: Infórmate sobre los candidatos a la Segunda Elección Regional 2022 - Voto Informado\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nCuando se acercan nuevas elecciones (sean presidenciales, congresales, regionales o municipales), el Jurado Nacional de Elecciones habilita la página Voto Informado, para ayudarte a conocer mejor a los candidatos. ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Infórmate sobre los candidatos a la Segunda Elección Regional 2022 - Voto Informado. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Cuando se acercan nuevas elecciones (sean presidenciales, congresales, regionales o municipales), el Jurado Nacional de Elecciones habilita la página Voto Informado, para ayudarte a conocer mejor a los candidatos. .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "6716880",
+    "hash_id": "jne_6716880",
+    "titulo_oficial": "Voto Informado",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Es un programa del Jurado Nacional de Elecciones (JNE) que busca brindar a la ciudadanía información clara, objetiva y accesible sobre los candidatos, partidos políticos, planes de gobierno y procesos electorales. ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/99065-voto-informado",
+    "action_url": "https://www.gob.pe/99065-voto-informado",
+    "raw_content": "# Trámite: Voto Informado\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nEs un programa del Jurado Nacional de Elecciones (JNE) que busca brindar a la ciudadanía información clara, objetiva y accesible sobre los candidatos, partidos políticos, planes de gobierno y procesos electorales. ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Voto Informado. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Es un programa del Jurado Nacional de Elecciones (JNE) que busca brindar a la ciudadanía información clara, objetiva y accesible sobre los candidatos, partidos políticos, planes de gobierno y procesos electorales. .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "521041",
+    "hash_id": "jne_521041",
+    "titulo_oficial": "Conoce cómo funciona el voto congresal",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos, Residentes y Extranjeros",
+    "descripcion": "Durante las elecciones generales, o por elecciones extraordinarias, los peruanos eligen a su parlamento mediante el voto congresal. Entérate de algunos conceptos del concurso para elegir a los miembros del Congreso d ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/8172-conoce-como-funciona-el-voto-congresal",
+    "action_url": "https://www.gob.pe/8172-conoce-como-funciona-el-voto-congresal",
+    "raw_content": "# Trámite: Conoce cómo funciona el voto congresal\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos, Residentes y Extranjeros\n\n## Resumen del Trámite\nDurante las elecciones generales, o por elecciones extraordinarias, los peruanos eligen a su parlamento mediante el voto congresal. Entérate de algunos conceptos del concurso para elegir a los miembros del Congreso d ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Conoce cómo funciona el voto congresal. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Durante las elecciones generales, o por elecciones extraordinarias, los peruanos eligen a su parlamento mediante el voto congresal. Entérate de algunos conceptos del concurso para elegir a los miembros del Congreso d .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos, Residentes y Extranjeros. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "6746375",
+    "hash_id": "jne_6746375",
+    "titulo_oficial": "Alerta de Afiliación Política",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Es un servicio gratuito del Jurado Nacional de Elecciones (JNE) que te permite recibir una notificación inmediata si eres inscrito en un partido político sin tu consentimiento. Sirve para que los ciudadanos puedan pr ...",
+    "requisitos": [
+      "Tener DNI vigente.",
+      "Registrar un correo electrónico personal.",
+      "Contar con un número de celular activo para recibir notificaciones."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Paso 2: Registra tus datos personales:",
+      "Número de DNI.",
+      "Fecha de emisión.",
+      "Nombre de padre o madre.",
+      "Captcha de seguridad.",
+      "Paso 3: Selecciona la opción “Por correo electrónico” o “Por número de Celular” cómo prefieres que se contacte el JNE cuando se envíe una alerta. Se puede elegir más de una opción y completar los campos correspondientes. Finalmente, dar clic al botón “Finalizar Registro”.",
+      "Resultado:Desde ese momento, recibirás avisos inmediatos por correo y/o celular si alguien intenta afiliarte a una organización política sin tu autorización."
+    ],
+    "url": "https://www.gob.pe/99764-alerta-de-afiliacion-politica",
+    "action_url": "https://www.gob.pe/99764-alerta-de-afiliacion-politica",
+    "raw_content": "# Trámite: Alerta de Afiliación Política\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nEs un servicio gratuito del Jurado Nacional de Elecciones (JNE) que te permite recibir una notificación inmediata si eres inscrito en un partido político sin tu consentimiento. Sirve para que los ciudadanos puedan pr ...\n\n## Requisitos Obligatorios\n* Tener DNI vigente.\n* Registrar un correo electrónico personal.\n* Contar con un número de celular activo para recibir notificaciones.\n\n## Pasos para realizar el trámite\n1. Paso 2: Registra tus datos personales:\n2. Número de DNI.\n3. Fecha de emisión.\n4. Nombre de padre o madre.\n5. Captcha de seguridad.\n6. Paso 3: Selecciona la opción “Por correo electrónico” o “Por número de Celular” cómo prefieres que se contacte el JNE cuando se envíe una alerta. Se puede elegir más de una opción y completar los campos correspondientes. Finalmente, dar clic al botón “Finalizar Registro”.\n7. Resultado:Desde ese momento, recibirás avisos inmediatos por correo y/o celular si alguien intenta afiliarte a una organización política sin tu autorización.",
+    "embedding_text": "Trámite: Alerta de Afiliación Política. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Es un servicio gratuito del Jurado Nacional de Elecciones (JNE) que te permite recibir una notificación inmediata si eres inscrito en un partido político sin tu consentimiento. Sirve para que los ciudadanos puedan pr .... Requisitos: Tener DNI vigente.; Registrar un correo electrónico personal.; Contar con un número de celular activo para recibir notificaciones.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Paso 2: Registra tus datos personales:; Número de DNI.; Fecha de emisión.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "6718028",
+    "hash_id": "jne_6718028",
+    "titulo_oficial": "Escuela Electoral y de Gobernabilidad (ESEG)",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Es el órgano académico y de investigación especializado en temas electorales, democracia y gobernabilidad. ¿Qué hace la ESEG? Organiza cursos, diplomados y programas de formación en materia electoral, política y de ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/99076-escuela-electoral-y-de-gobernabilidad-eseg",
+    "action_url": "https://www.gob.pe/99076-escuela-electoral-y-de-gobernabilidad-eseg",
+    "raw_content": "# Trámite: Escuela Electoral y de Gobernabilidad (ESEG)\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nEs el órgano académico y de investigación especializado en temas electorales, democracia y gobernabilidad. ¿Qué hace la ESEG? Organiza cursos, diplomados y programas de formación en materia electoral, política y de ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Escuela Electoral y de Gobernabilidad (ESEG). Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Es el órgano académico y de investigación especializado en temas electorales, democracia y gobernabilidad. ¿Qué hace la ESEG? Organiza cursos, diplomados y programas de formación en materia electoral, política y de .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "6719084",
+    "hash_id": "jne_6719084",
+    "titulo_oficial": "Ventanilla Única",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Es una plataforma digital creada por el Jurado Nacional de Elecciones para que los ciudadanos y las organizaciones políticas consulten, validen y gestionen información relacionada con afiliaciones políticas y part ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/99084-ventanilla-unica",
+    "action_url": "https://www.gob.pe/99084-ventanilla-unica",
+    "raw_content": "# Trámite: Ventanilla Única\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nEs una plataforma digital creada por el Jurado Nacional de Elecciones para que los ciudadanos y las organizaciones políticas consulten, validen y gestionen información relacionada con afiliaciones políticas y part ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Ventanilla Única. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Es una plataforma digital creada por el Jurado Nacional de Elecciones para que los ciudadanos y las organizaciones políticas consulten, validen y gestionen información relacionada con afiliaciones políticas y part .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "7930101",
+    "hash_id": "jne_7930101",
+    "titulo_oficial": "Sistema de gestión antisoborno (SGAS)",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "Presencial",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Es un conjunto de políticas, normas y procedimientos orientados a prevenir, detectar y enfrentar el soborno y la corrupción en la entidad. Su implementación promueve la integridad institucional, la transparencia y el ...",
+    "requisitos": [
+      "Nombre y apellido completo, domicilio.",
+      "Descripción de los actos materia de denuncia.",
+      "Compromiso del denunciante para permanecer a disposición de la entidad a fin de brindar información que falte o presente irregularidades.",
+      "Para el caso de denuncias anónimas, se obvia la identificación.",
+      "Para mayor orientación revisar la Directiva del JNE para la atención de denuncias de presuntos actos de corrupción y para el otorgamiento de medidas de protección al denunciante.",
+      "¿Existen plazos para el tratamiento de la denuncia?",
+      "Existen dispuestos por ley, para evaluar el cumplimiento de requisitos, subsanar observaciones, derivar la denuncia a las autoridades pertinentes. Ello se puede verificar en el Anexo 03 de la Directiva del JNE para la atención de denuncias de presuntos actos de corrupción y para el otorgamiento de medidas de protección al denunciante.",
+      "¿Cuánto tiempo tiene la oficina de integridad para evaluar que mi denuncia cumpla con los requisitos previstos en la Directiva del Jurado Nacional de Elecciones para la atención de denuncias de presuntos actos de corrupción y para el otorgamiento de medidas de protección al denunciante?",
+      "La oficina de integridad evaluara los requisitos mínimos en un plazo de dos (2) días hábiles.",
+      "¿Cuánto tiempo tengo para subsanar mi denuncia, si la colocaron como observada por falta de alguno de los requisitos establecidos en la Directiva del Jurado Nacional de Elecciones para la atención de denuncias de presuntos actos de corrupción y para el otorgamiento de medidas de protección al denunciante?",
+      "El denunciante cuenta con tres (3) días hábiles para que pueda subsanar la omisión.",
+      "¿Qué plazo tiene la oficina de integridad para indicarme si proceden o no mis medidas de protección?",
+      "La Oficina de integridad cuenta con el plazo de cinco (5) días hábiles, desde que son solicitadas, para indicar si proceden o no las medidas de protección solicitadas.",
+      "¿En cuánto tiempo se implementan las medidas de protección?",
+      "Las medidas de protección se implementan dentro de los quince (15) días hábiles posteriores a la interposición de la denuncia o desde que son solicitadas si es que están se solicitan de manera posterior."
+    ],
+    "consideraciones": [
+      "Existen dispuestos por ley, para evaluar el cumplimiento de requisitos, subsanar observaciones, derivar la denuncia a las autoridades pertinentes. Ello se puede verificar en el Anexo 03 de la Directiva del JNE para la atención de denuncias de presuntos actos de corrupción y para el otorgamiento de medidas de protección al denunciante.",
+      "¿Cuánto tiempo tiene la oficina de integridad para evaluar que mi denuncia cumpla con los requisitos previstos en la Directiva del Jurado Nacional de Elecciones para la atención de denuncias de presuntos actos de corrupción y para el otorgamiento de medidas de protección al denunciante?",
+      "La oficina de integridad evaluara los requisitos mínimos en un plazo de dos (2) días hábiles.",
+      "¿Cuánto tiempo tengo para subsanar mi denuncia, si la colocaron como observada por falta de alguno de los requisitos establecidos en la Directiva del Jurado Nacional de Elecciones para la atención de denuncias de presuntos actos de corrupción y para el otorgamiento de medidas de protección al denunciante?",
+      "El denunciante cuenta con tres (3) días hábiles para que pueda subsanar la omisión.",
+      "¿Qué plazo tiene la oficina de integridad para indicarme si proceden o no mis medidas de protección?",
+      "La Oficina de integridad cuenta con el plazo de cinco (5) días hábiles, desde que son solicitadas, para indicar si proceden o no las medidas de protección solicitadas.",
+      "¿En cuánto tiempo se implementan las medidas de protección?",
+      "Las medidas de protección se implementan dentro de los quince (15) días hábiles posteriores a la interposición de la denuncia o desde que son solicitadas si es que están se solicitan de manera posterior."
+    ],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/115002-sistema-de-gestion-antisoborno-sgas",
+    "action_url": "https://www.gob.pe/115002-sistema-de-gestion-antisoborno-sgas",
+    "raw_content": "# Trámite: Sistema de gestión antisoborno (SGAS)\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** Presencial\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nEs un conjunto de políticas, normas y procedimientos orientados a prevenir, detectar y enfrentar el soborno y la corrupción en la entidad. Su implementación promueve la integridad institucional, la transparencia y el ...\n\n## Requisitos Obligatorios\n* Nombre y apellido completo, domicilio.\n* Descripción de los actos materia de denuncia.\n* Compromiso del denunciante para permanecer a disposición de la entidad a fin de brindar información que falte o presente irregularidades.\n* Para el caso de denuncias anónimas, se obvia la identificación.\n* Para mayor orientación revisar la Directiva del JNE para la atención de denuncias de presuntos actos de corrupción y para el otorgamiento de medidas de protección al denunciante.\n* ¿Existen plazos para el tratamiento de la denuncia?\n* Existen dispuestos por ley, para evaluar el cumplimiento de requisitos, subsanar observaciones, derivar la denuncia a las autoridades pertinentes. Ello se puede verificar en el Anexo 03 de la Directiva del JNE para la atención de denuncias de presuntos actos de corrupción y para el otorgamiento de medidas de protección al denunciante.\n* ¿Cuánto tiempo tiene la oficina de integridad para evaluar que mi denuncia cumpla con los requisitos previstos en la Directiva del Jurado Nacional de Elecciones para la atención de denuncias de presuntos actos de corrupción y para el otorgamiento de medidas de protección al denunciante?\n* La oficina de integridad evaluara los requisitos mínimos en un plazo de dos (2) días hábiles.\n* ¿Cuánto tiempo tengo para subsanar mi denuncia, si la colocaron como observada por falta de alguno de los requisitos establecidos en la Directiva del Jurado Nacional de Elecciones para la atención de denuncias de presuntos actos de corrupción y para el otorgamiento de medidas de protección al denunciante?\n* El denunciante cuenta con tres (3) días hábiles para que pueda subsanar la omisión.\n* ¿Qué plazo tiene la oficina de integridad para indicarme si proceden o no mis medidas de protección?\n* La Oficina de integridad cuenta con el plazo de cinco (5) días hábiles, desde que son solicitadas, para indicar si proceden o no las medidas de protección solicitadas.\n* ¿En cuánto tiempo se implementan las medidas de protección?\n* Las medidas de protección se implementan dentro de los quince (15) días hábiles posteriores a la interposición de la denuncia o desde que son solicitadas si es que están se solicitan de manera posterior.\n\n## Consideraciones y Notas Oficiales\n* Existen dispuestos por ley, para evaluar el cumplimiento de requisitos, subsanar observaciones, derivar la denuncia a las autoridades pertinentes. Ello se puede verificar en el Anexo 03 de la Directiva del JNE para la atención de denuncias de presuntos actos de corrupción y para el otorgamiento de medidas de protección al denunciante.\n* ¿Cuánto tiempo tiene la oficina de integridad para evaluar que mi denuncia cumpla con los requisitos previstos en la Directiva del Jurado Nacional de Elecciones para la atención de denuncias de presuntos actos de corrupción y para el otorgamiento de medidas de protección al denunciante?\n* La oficina de integridad evaluara los requisitos mínimos en un plazo de dos (2) días hábiles.\n* ¿Cuánto tiempo tengo para subsanar mi denuncia, si la colocaron como observada por falta de alguno de los requisitos establecidos en la Directiva del Jurado Nacional de Elecciones para la atención de denuncias de presuntos actos de corrupción y para el otorgamiento de medidas de protección al denunciante?\n* El denunciante cuenta con tres (3) días hábiles para que pueda subsanar la omisión.\n* ¿Qué plazo tiene la oficina de integridad para indicarme si proceden o no mis medidas de protección?\n* La Oficina de integridad cuenta con el plazo de cinco (5) días hábiles, desde que son solicitadas, para indicar si proceden o no las medidas de protección solicitadas.\n* ¿En cuánto tiempo se implementan las medidas de protección?\n* Las medidas de protección se implementan dentro de los quince (15) días hábiles posteriores a la interposición de la denuncia o desde que son solicitadas si es que están se solicitan de manera posterior.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Sistema de gestión antisoborno (SGAS). Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Es un conjunto de políticas, normas y procedimientos orientados a prevenir, detectar y enfrentar el soborno y la corrupción en la entidad. Su implementación promueve la integridad institucional, la transparencia y el .... Requisitos: Nombre y apellido completo, domicilio.; Descripción de los actos materia de denuncia.; Compromiso del denunciante para permanecer a disposición de la entidad a fin de brindar información que falte o presente irregularidades.. Modalidad y Costo: Presencial, costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: Existen dispuestos por ley, para evaluar el cumplimiento de requisitos, subsanar observaciones, derivar la denuncia a las autoridades pertinentes. Ello se puede verificar en el Anexo 03 de la Directiv. Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "7963166",
+    "hash_id": "jne_7963166",
+    "titulo_oficial": "Consultar el avance de la implementación del Modelo de Integridad",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Consultar el avance de la implementación del Modelo de Integridad En esta sección podrás consultar los reportes y resultados de la evaluación de la implementación del Modelo de Integridad en el Jurado Nacional de Ele ...",
+    "requisitos": [
+      "Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda)."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/115160-consultar-el-avance-de-la-implementacion-del-modelo-de-integridad",
+    "action_url": "https://www.gob.pe/115160-consultar-el-avance-de-la-implementacion-del-modelo-de-integridad",
+    "raw_content": "# Trámite: Consultar el avance de la implementación del Modelo de Integridad\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nConsultar el avance de la implementación del Modelo de Integridad En esta sección podrás consultar los reportes y resultados de la evaluación de la implementación del Modelo de Integridad en el Jurado Nacional de Ele ...\n\n## Requisitos Obligatorios\n* Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda).\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Consultar el avance de la implementación del Modelo de Integridad. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Consultar el avance de la implementación del Modelo de Integridad En esta sección podrás consultar los reportes y resultados de la evaluación de la implementación del Modelo de Integridad en el Jurado Nacional de Ele .... Requisitos: Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda).. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "7952148",
+    "hash_id": "jne_7952148",
+    "titulo_oficial": "Oficina de Integridad Institucional",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Es la unidad orgánica encargada de la conducción, promoción y desarrollo de medidas para el fortalecimiento del comportamiento ético, la integridad institucional y la Lucha contra la Corrupción en el Jurado Nacional ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/115101-oficina-de-integridad-institucional",
+    "action_url": "https://www.gob.pe/115101-oficina-de-integridad-institucional",
+    "raw_content": "# Trámite: Oficina de Integridad Institucional\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nEs la unidad orgánica encargada de la conducción, promoción y desarrollo de medidas para el fortalecimiento del comportamiento ético, la integridad institucional y la Lucha contra la Corrupción en el Jurado Nacional ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Oficina de Integridad Institucional. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Es la unidad orgánica encargada de la conducción, promoción y desarrollo de medidas para el fortalecimiento del comportamiento ético, la integridad institucional y la Lucha contra la Corrupción en el Jurado Nacional .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "7966003",
+    "hash_id": "jne_7966003",
+    "titulo_oficial": "Sistema de control interno (SCI)",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "En esta sección encontrarás la normativa y los lineamientos que regulan la implementación del Sistema de Control Interno (SCI) en el Jurado Nacional de Elecciones (JNE) y en las entidades del Estado. El SCI contribuy ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [
+      "Normativa aplicable: Los principales lineamientos para la implementación del Sistema de Control Interno son:",
+      "Normativa aplicable: Ley N.° 27785, Ley Orgánica del Sistema Nacional de Control y de la Contraloría General de la República.",
+      "Normativa aplicable: Ley N.° 28716, Ley de Control Interno de las Entidades del Estado.",
+      "Normativa aplicable: Directiva para la Implementación del Sistema de Control Interno.",
+      "Normativa aplicable: Resolución de Contraloría N.° 146-2019-CG, que aprueba la Directiva N.° 006-2019-CG/INTEG \"Implementación del Sistema de Control Interno en las Entidades del Estado\".",
+      "Normativa aplicable: Resolución de Contraloría N.° 130-2020-CG, que modifica la Directiva N.° 006-2019-CG/INTEG.",
+      "Normativa aplicable: Resolución de Contraloría N.° 093-2021-CG, que modifica la Directiva N.° 006-2019-CG/INTEG.",
+      "Normativa aplicable: Resolución de Contraloría N.° 073-2023-CG, que modifica diversos numerales y anexos de la Directiva N.° 006-2019-CG/INTEG."
+    ],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/115190-sistema-de-control-interno-sci",
+    "action_url": "https://www.gob.pe/115190-sistema-de-control-interno-sci",
+    "raw_content": "# Trámite: Sistema de control interno (SCI)\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nEn esta sección encontrarás la normativa y los lineamientos que regulan la implementación del Sistema de Control Interno (SCI) en el Jurado Nacional de Elecciones (JNE) y en las entidades del Estado. El SCI contribuy ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Consideraciones y Notas Oficiales\n* Normativa aplicable: Los principales lineamientos para la implementación del Sistema de Control Interno son:\n* Normativa aplicable: Ley N.° 27785, Ley Orgánica del Sistema Nacional de Control y de la Contraloría General de la República.\n* Normativa aplicable: Ley N.° 28716, Ley de Control Interno de las Entidades del Estado.\n* Normativa aplicable: Directiva para la Implementación del Sistema de Control Interno.\n* Normativa aplicable: Resolución de Contraloría N.° 146-2019-CG, que aprueba la Directiva N.° 006-2019-CG/INTEG \"Implementación del Sistema de Control Interno en las Entidades del Estado\".\n* Normativa aplicable: Resolución de Contraloría N.° 130-2020-CG, que modifica la Directiva N.° 006-2019-CG/INTEG.\n* Normativa aplicable: Resolución de Contraloría N.° 093-2021-CG, que modifica la Directiva N.° 006-2019-CG/INTEG.\n* Normativa aplicable: Resolución de Contraloría N.° 073-2023-CG, que modifica diversos numerales y anexos de la Directiva N.° 006-2019-CG/INTEG.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Sistema de control interno (SCI). Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: En esta sección encontrarás la normativa y los lineamientos que regulan la implementación del Sistema de Control Interno (SCI) en el Jurado Nacional de Elecciones (JNE) y en las entidades del Estado. El SCI contribuy .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: Normativa aplicable: Los principales lineamientos para la implementación del Sistema de Control Interno son:. Normativa aplicable: Ley N.° 27785, Ley Orgánica del Sistema Nacional de Control y de la C. Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "7962380",
+    "hash_id": "jne_7962380",
+    "titulo_oficial": "Conocer las acciones de integridad y lucha contra la corrupción del JNE",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Programa de Integridad del Jurado Nacional de Elecciones En esta sección encontrarás los Programas de Integridad aprobados por el Jurado Nacional de Elecciones (JNE), que establecen las acciones y actividades orienta ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/115153-conocer-las-acciones-de-integridad-y-lucha-contra-la-corrupcion-del-jne",
+    "action_url": "https://www.gob.pe/115153-conocer-las-acciones-de-integridad-y-lucha-contra-la-corrupcion-del-jne",
+    "raw_content": "# Trámite: Conocer las acciones de integridad y lucha contra la corrupción del JNE\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nPrograma de Integridad del Jurado Nacional de Elecciones En esta sección encontrarás los Programas de Integridad aprobados por el Jurado Nacional de Elecciones (JNE), que establecen las acciones y actividades orienta ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Conocer las acciones de integridad y lucha contra la corrupción del JNE. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Programa de Integridad del Jurado Nacional de Elecciones En esta sección encontrarás los Programas de Integridad aprobados por el Jurado Nacional de Elecciones (JNE), que establecen las acciones y actividades orienta .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "7953346",
+    "hash_id": "jne_7953346",
+    "titulo_oficial": "Modelo de integridad",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Es un conjunto de principios, lineamientos y herramientas orientados a prevenir la corrupción y promover una gestión pública basada en la ética, la transparencia y la rendición de cuentas. Su implementación fortalece ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/115113-modelo-de-integridad",
+    "action_url": "https://www.gob.pe/115113-modelo-de-integridad",
+    "raw_content": "# Trámite: Modelo de integridad\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nEs un conjunto de principios, lineamientos y herramientas orientados a prevenir la corrupción y promover una gestión pública basada en la ética, la transparencia y la rendición de cuentas. Su implementación fortalece ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Modelo de integridad. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Es un conjunto de principios, lineamientos y herramientas orientados a prevenir la corrupción y promover una gestión pública basada en la ética, la transparencia y la rendición de cuentas. Su implementación fortalece .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "7746525",
+    "hash_id": "jne_7746525",
+    "titulo_oficial": "Acuerdos, resoluciones, oficios y autos del JNE",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Accede a las resoluciones y acuerdos emitidos por el Pleno del Jurado Nacional de Elecciones que no están vinculados a expedientes jurisdiccionales. Aquí podrás consultar disposiciones oficiales de carácter normativo ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/114215-acuerdos-resoluciones-oficios-y-autos-del-jne",
+    "action_url": "https://www.gob.pe/114215-acuerdos-resoluciones-oficios-y-autos-del-jne",
+    "raw_content": "# Trámite: Acuerdos, resoluciones, oficios y autos del JNE\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nAccede a las resoluciones y acuerdos emitidos por el Pleno del Jurado Nacional de Elecciones que no están vinculados a expedientes jurisdiccionales. Aquí podrás consultar disposiciones oficiales de carácter normativo ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Acuerdos, resoluciones, oficios y autos del JNE. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Accede a las resoluciones y acuerdos emitidos por el Pleno del Jurado Nacional de Elecciones que no están vinculados a expedientes jurisdiccionales. Aquí podrás consultar disposiciones oficiales de carácter normativo .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "7747239",
+    "hash_id": "jne_7747239",
+    "titulo_oficial": "Buscador de jurisprudencia",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Accede de manera rápida y sencilla a la jurisprudencia emitida por el Jurado Nacional de Elecciones. Esta herramienta permite consultar resoluciones, precedentes y criterios jurisprudenciales en materia electoral y j ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/114222-buscador-de-jurisprudencia",
+    "action_url": "https://www.gob.pe/114222-buscador-de-jurisprudencia",
+    "raw_content": "# Trámite: Buscador de jurisprudencia\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nAccede de manera rápida y sencilla a la jurisprudencia emitida por el Jurado Nacional de Elecciones. Esta herramienta permite consultar resoluciones, precedentes y criterios jurisprudenciales en materia electoral y j ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Buscador de jurisprudencia. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Accede de manera rápida y sencilla a la jurisprudencia emitida por el Jurado Nacional de Elecciones. Esta herramienta permite consultar resoluciones, precedentes y criterios jurisprudenciales en materia electoral y j .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "6746811",
+    "hash_id": "jne_6746811",
+    "titulo_oficial": "Formación Electoral para Jueces y Fiscales del JNE y la UPC",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "S/ 445.00",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Con un costo del servicio de S/ 445.00 (cuatrocientos cuarenta y cinco soles), el Jurado Nacional de Elecciones (JNE) en alianza con la Universidad Peruana de Ciencias Aplicadas (UPC) ofrece un programa académico que ...",
+    "requisitos": [
+      "Ser juez o fiscal en ejercicio en cualquier distrito judicial del país.",
+      "Contar con DNI vigente.",
+      "Llenar el formulario de inscripción en línea Formulario de postulación.",
+      "Presentar hoja de vida resumida (CV no documentado).",
+      "Carta de motivación, explicando por qué desea participar en el programa.",
+      "Compromiso de disponibilidad para asistir a las sesiones de formación en las fechas establecidas."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Formulario de inscripción – JNE &amp; UPC",
+      "Paso 2: Completa tus datos personales y laborales",
+      "Nombres y apellidos completos.",
+      "Número de DNI.",
+      "Cargo actual (juez o fiscal) y distrito judicial.",
+      "Datos de contacto (correo y celular).",
+      "Paso 3: Adjuntar los documentos solicitados",
+      "Hoja de vida (CV no documentado).",
+      "Carta de motivación explicando tu interés en el programa.",
+      "Paso 4: Declara tu compromiso de disponibilidad",
+      "Confirma que podrás participar en las sesiones y cumplir con los horarios establecidos.",
+      "Paso 5: Envía tu postulación y guarda la constancia",
+      "Una vez enviada la solicitud, recibirás un mensaje de confirmación en tu correo electrónico registrado.",
+      "Resultado esperado: El JNE y la UPC evaluarán tu postulación y, si cumples los requisitos, serás admitido para participar en el programa de formación."
+    ],
+    "url": "https://www.gob.pe/99768-formacion-electoral-para-jueces-y-fiscales-del-jne-y-la-upc",
+    "action_url": "https://www.gob.pe/99768-formacion-electoral-para-jueces-y-fiscales-del-jne-y-la-upc",
+    "raw_content": "# Trámite: Formación Electoral para Jueces y Fiscales del JNE y la UPC\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** S/ 445.00\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nCon un costo del servicio de S/ 445.00 (cuatrocientos cuarenta y cinco soles), el Jurado Nacional de Elecciones (JNE) en alianza con la Universidad Peruana de Ciencias Aplicadas (UPC) ofrece un programa académico que ...\n\n## Requisitos Obligatorios\n* Ser juez o fiscal en ejercicio en cualquier distrito judicial del país.\n* Contar con DNI vigente.\n* Llenar el formulario de inscripción en línea Formulario de postulación.\n* Presentar hoja de vida resumida (CV no documentado).\n* Carta de motivación, explicando por qué desea participar en el programa.\n* Compromiso de disponibilidad para asistir a las sesiones de formación en las fechas establecidas.\n\n## Pasos para realizar el trámite\n1. Formulario de inscripción – JNE &amp; UPC\n2. Paso 2: Completa tus datos personales y laborales\n3. Nombres y apellidos completos.\n4. Número de DNI.\n5. Cargo actual (juez o fiscal) y distrito judicial.\n6. Datos de contacto (correo y celular).\n7. Paso 3: Adjuntar los documentos solicitados\n8. Hoja de vida (CV no documentado).\n9. Carta de motivación explicando tu interés en el programa.\n10. Paso 4: Declara tu compromiso de disponibilidad\n11. Confirma que podrás participar en las sesiones y cumplir con los horarios establecidos.\n12. Paso 5: Envía tu postulación y guarda la constancia\n13. Una vez enviada la solicitud, recibirás un mensaje de confirmación en tu correo electrónico registrado.\n14. Resultado esperado: El JNE y la UPC evaluarán tu postulación y, si cumples los requisitos, serás admitido para participar en el programa de formación.",
+    "embedding_text": "Trámite: Formación Electoral para Jueces y Fiscales del JNE y la UPC. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Con un costo del servicio de S/ 445.00 (cuatrocientos cuarenta y cinco soles), el Jurado Nacional de Elecciones (JNE) en alianza con la Universidad Peruana de Ciencias Aplicadas (UPC) ofrece un programa académico que .... Requisitos: Ser juez o fiscal en ejercicio en cualquier distrito judicial del país.; Contar con DNI vigente.; Llenar el formulario de inscripción en línea Formulario de postulación.. Modalidad y Costo: En línea (Virtual), costo S/ 445.00. Dirigido a Ciudadanos y Personas Naturales. Pasos: Formulario de inscripción – JNE &amp; UPC; Paso 2: Completa tus datos personales y laborales; Nombres y apellidos completos.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "6719038",
+    "hash_id": "jne_6719038",
+    "titulo_oficial": "Plataforma Electoral",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Es una plataforma digital del Jurado Nacional de Elecciones que centraliza y permite el acceso a información y trámites vinculados a los procesos electorales . ¿Para qué sirve? Consultar y dar seguimiento a expedi ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/99083-plataforma-electoral",
+    "action_url": "https://www.gob.pe/99083-plataforma-electoral",
+    "raw_content": "# Trámite: Plataforma Electoral\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nEs una plataforma digital del Jurado Nacional de Elecciones que centraliza y permite el acceso a información y trámites vinculados a los procesos electorales . ¿Para qué sirve? Consultar y dar seguimiento a expedi ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Plataforma Electoral. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Es una plataforma digital del Jurado Nacional de Elecciones que centraliza y permite el acceso a información y trámites vinculados a los procesos electorales . ¿Para qué sirve? Consultar y dar seguimiento a expedi .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "7962848",
+    "hash_id": "jne_7962848",
+    "titulo_oficial": "Conocer cómo se implementa la integridad en el JNE",
+    "entidad": "JNE",
+    "entidad_nombre": "Jurado Nacional de Elecciones",
+    "category": "Sistema Electoral",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Conocer cómo se implementa la integridad en el JNE En esta sección encontrarás los principales elementos que conforman el Modelo de Integridad del Jurado Nacional de Elecciones (JNE), orientados a promover la ética p ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de JNE.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/115155-conocer-como-se-implementa-la-integridad-en-el-jne",
+    "action_url": "https://www.gob.pe/115155-conocer-como-se-implementa-la-integridad-en-el-jne",
+    "raw_content": "# Trámite: Conocer cómo se implementa la integridad en el JNE\n**Entidad:** Jurado Nacional de Elecciones (JNE)\n**Categoría:** Sistema Electoral\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nConocer cómo se implementa la integridad en el JNE En esta sección encontrarás los principales elementos que conforman el Modelo de Integridad del Jurado Nacional de Elecciones (JNE), orientados a promover la ética p ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de JNE.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Conocer cómo se implementa la integridad en el JNE. Entidad: JNE - Jurado Nacional de Elecciones. Categoría: Sistema Electoral. Para qué sirve: Conocer cómo se implementa la integridad en el JNE En esta sección encontrarás los principales elementos que conforman el Modelo de Integridad del Jurado Nacional de Elecciones (JNE), orientados a promover la ética p .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de JNE.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "description": "This web application features a sleek loading screen that seamlessly integrates with the brand logo, enhancing user experience during content loading.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

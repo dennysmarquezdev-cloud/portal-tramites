@@ -1,0 +1,10 @@
+{
+  "description": "Create professional designs that blend corporate seriousness with technological energy, ideal for businesses seeking a modern visual identity.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

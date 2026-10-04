@@ -1,0 +1,790 @@
+/* ═══════════════════════════════════════════════════════════════
+   AhorraTiempo Design System — Extended CSS (Elite Tier Mobile & Web)
+   Técnicas: Thumb Zone, Bottom Sheets, Gesture Physics, Zero-Delay, Elastic Overscroll, Virtual Keyboard
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 1. Semantic Design Tokens & Surface Architecture ──────────── */
+:root {
+  /* Tokens de Color Oficiales AhorraTiempo (Opción 1: Confianza Ciudadana & Claridad AI) */
+  --at-primary:          #0284C7;
+  --at-primary-hover:    #0369A1;
+  --at-primary-active:   #075985;
+  --at-primary-subtle:   rgba(2, 132, 199, 0.08);
+  --at-primary-glow:     rgba(2, 132, 199, 0.28);
+  
+  --at-accent-mint:      #10B981;
+  --at-accent-green:     #10B981;
+  --at-accent-gold:      #F59E0B;
+  --at-accent-amber:     #F59E0B;
+  --at-accent-rose:      #EF4444;
+  --at-accent-red:       #EF4444;
+
+  --at-bg:               #F8FAFC;
+  --at-surface:          #FFFFFF;
+  --at-border:           #E2E8F0;
+
+  --at-text:             #0F172A;
+  --at-text-muted:       #64748B;
+
+  /* Jerarquía Tipográfica */
+  --font-heading:        'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body:           'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-lota:           'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Border Radius */
+  --at-radius-xs:     6px;
+  --at-radius-sm:     10px;
+  --at-radius-md:     14px;
+  --at-radius-card:   18px;
+  --at-radius-modal:  24px;
+  --at-radius-sheet:  28px;
+  --at-radius-pill:   999px;
+
+  /* Safe Area Insets (iOS & Android) */
+  --at-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --at-safe-top:    env(safe-area-inset-top, 0px);
+
+  /* Sombras y Elevaciones Calibradas (0% Slop) */
+  --at-shadow-xs:    0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --at-shadow-sm:    0 4px 14px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.02);
+  --at-shadow-md:    0 10px 30px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
+  --at-shadow-lg:    0 20px 50px -10px rgba(2, 132, 199, 0.16), 0 0 0 1px rgba(255, 255, 255, 0.85);
+  --at-shadow-sheet: 0 -12px 48px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  --at-shadow-glow:  0 0 32px rgba(2, 132, 199, 0.35);
+
+  /* Curvas de Físicas y Tiempos */
+  --at-ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+  --at-ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --at-dur-fast:    140ms;
+  --at-dur-normal:  240ms;
+
+  /* Glassmorphism Ultra-Refinado */
+  --at-glass-bg:     rgba(255, 255, 255, 0.82);
+  --at-glass-border: rgba(255, 255, 255, 0.94);
+  --at-glass-blur:   24px;
+}
+
+/* ── 2. Zero-Delay Touch Engine & Responsive Feel ─────────────── */
+* {
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Eliminar delay de 300ms y habilitar manipulación táctil directa */
+button, a, input, textarea, select, [role="button"], .clickable {
+  touch-action: manipulation !important;
+}
+
+/* Evitar selección accidental de texto al deslizar con el pulgar */
+button, [role="button"], .no-select {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ── 3. Rubber-Banding & Elastic Overscroll (iOS Style) ───────── */
+html, body {
+  overscroll-behavior-y: none; /* Evita el rebote de la página entera en safari */
+  height: 100%;
+  height: 100dvh;
+}
+
+.at-scroll-elastic {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  scroll-behavior: smooth;
+}
+
+/* Aislamiento de Capas GPU para 60-120 FPS fijos */
+.at-gpu-layer {
+  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
+  contain: layout paint;
+}
+
+/* ── 4. The Thumb Zone & Bottom Sheet Styles ──────────────────── */
+.at-sheet-handle {
+  width: 36px;
+  height: 4.5px;
+  border-radius: 999px;
+  background: var(--colorNeutralStroke1, rgba(0, 0, 0, 0.15));
+  margin: 10px auto 4px;
+  cursor: grab;
+  flex-shrink: 0;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.at-sheet-handle:active {
+  cursor: grabbing;
+  transform: scaleX(1.15);
+  background: var(--at-primary);
+}
+
+@media (max-width: 768px) {
+  /* En móviles, los modales se anclan abajo en la zona del pulgar */
+  .at-bottom-sheet-mobile {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    max-height: 92dvh !important;
+    border-top-left-radius: var(--at-radius-sheet) !important;
+    border-top-right-radius: var(--at-radius-sheet) !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    padding-bottom: calc(16px + var(--at-safe-bottom)) !important;
+    box-shadow: var(--at-shadow-sheet) !important;
+  }
+
+  /* Prevenir zoom automático invasivo de iOS al enfocar inputs */
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
+
+/* ── 5. Keyframes Cinéticos ─────────────────────────────────── */
+@keyframes at-shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+@keyframes at-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes at-glow-pulse {
+  0%, 100% { box-shadow: 0 0 16px rgba(2, 132, 199, 0.25); }
+  50%      { box-shadow: 0 0 32px rgba(2, 132, 199, 0.55); }
+}
+
+@keyframes at-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 6. Utilidades de Clases ─────────────────────────────────── */
+.at-animate-spin       { animation: at-spin 1s linear infinite; }
+.at-animate-glow-pulse { animation: at-glow-pulse 2s ease-in-out infinite; }
+.at-animate-fade-up    { animation: at-fade-up var(--at-dur-normal) var(--at-ease-out) both; }
+
+.at-glass {
+  background: var(--at-glass-bg);
+  border: 1px solid var(--at-glass-border);
+  backdrop-filter: blur(var(--at-glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--at-glass-blur)) saturate(180%);
+}
+
+.at-focus-ring:focus-visible {
+  outline: 2px solid var(--at-primary);
+  outline-offset: 2px;
+}
+
+.at-no-scrollbar::-webkit-scrollbar { display: none; }
+.at-no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── 7. Tipografía Global Optimizada (Inter & Plus Jakarta Sans) ── */
+body {
+  font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── 8. Fondos Ambientales Vivos para Frutilota (Base Atractiva & Profundidad) ── */
+@keyframes at-aurora-pulse {
+  0%, 100% {
+    transform: scale(1) translate(0px, 0px);
+    opacity: 0.65;
+  }
+  50% {
+    transform: scale(1.08) translate(15px, -10px);
+    opacity: 0.95;
+  }
+}
+
+@keyframes at-aurora-pulse-reverse {
+  0%, 100% {
+    transform: scale(1) translate(0px, 0px);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.12) translate(-15px, 12px);
+    opacity: 0.85;
+  }
+}
+
+.at-frutilota-ambient-bg {
+  background-color: var(--colorNeutralBackground1);
+  background-image: 
+    radial-gradient(ellipse 70% 45% at 50% 0%, rgba(2, 132, 199, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 85% 90%, rgba(16, 185, 129, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 40% at 15% 85%, rgba(99, 102, 241, 0.06) 0%, transparent 60%);
+  position: relative;
+  overflow: hidden;
+}
+
+.at-frutilota-aurora-top {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  max-width: 90vw;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.20) 0%, rgba(56, 189, 248, 0.10) 45%, transparent 75%);
+  filter: blur(48px);
+  pointer-events: none;
+  animation: at-aurora-pulse 8s ease-in-out infinite;
+  z-index: 0;
+}
+
+.at-frutilota-aurora-bottom {
+  position: absolute;
+  bottom: -100px;
+  right: 10%;
+  width: 480px;
+  max-width: 80vw;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, rgba(2, 132, 199, 0.08) 50%, transparent 75%);
+  filter: blur(52px);
+  pointer-events: none;
+  animation: at-aurora-pulse-reverse 10s ease-in-out infinite;
+  z-index: 0;
+}
+
+.at-frutilota-dot-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(2, 132, 199, 0.09) 1.2px, transparent 1.2px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 35%, #000 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 35%, #000 30%, transparent 85%);
+  opacity: 0.7;
+  z-index: 0;
+}
+
+.dark .at-frutilota-ambient-bg {
+  background-image: 
+    radial-gradient(ellipse 70% 45% at 50% 0%, rgba(2, 132, 199, 0.22) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 85% 90%, rgba(16, 185, 129, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 40% at 15% 85%, rgba(99, 102, 241, 0.10) 0%, transparent 60%);
+}
+
+.dark .at-frutilota-aurora-top {
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.28) 0%, rgba(56, 189, 248, 0.14) 45%, transparent 75%);
+  filter: blur(60px);
+}
+
+.dark .at-frutilota-aurora-bottom {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, rgba(2, 132, 199, 0.12) 50%, transparent 75%);
+  filter: blur(60px);
+}
+
+.dark .at-frutilota-dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1.2px, transparent 1.2px);
+  opacity: 0.45;
+}
+
+/* ── 9. Contorno de Luces que Nadan (Swimming Lights Animated Beam Border) ── */
+@keyframes at-border-swim {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.at-swimming-lights-card {
+  position: relative;
+  border-radius: 26px;
+  padding: 1.8px;
+  background: linear-gradient(
+    115deg,
+    #0284C7 0%,
+    #38BDF8 25%,
+    #10B981 50%,
+    #818CF8 75%,
+    #0284C7 100%
+  );
+  background-size: 280% 280%;
+  animation: at-border-swim 4.5s ease-in-out infinite;
+  box-shadow: 
+    0 4px 20px -2px rgba(2, 132, 199, 0.16),
+    0 0 16px -2px rgba(56, 189, 248, 0.20);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.at-swimming-lights-card:hover,
+.at-swimming-lights-card:focus-within {
+  box-shadow: 
+    0 8px 30px -4px rgba(2, 132, 199, 0.28),
+    0 0 24px -2px rgba(56, 189, 248, 0.35);
+  animation-duration: 3s;
+}
+
+.at-swimming-lights-inner {
+  position: relative;
+  border-radius: 24.2px;
+  background: var(--colorNeutralBackground1);
+  overflow: hidden;
+  width: 100%;
+}
+
+/* ── 10. Glassmorphism Top Header Bar & Header Actions ── */
+.at-glass-header {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--colorNeutralStroke2);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.dark .at-glass-header {
+  background: rgba(15, 23, 42, 0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.at-header-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid var(--colorNeutralStroke1);
+  color: var(--colorNeutralForeground1);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.15s ease;
+}
+
+.dark .at-header-action-btn {
+  background: rgba(30, 41, 59, 0.70);
+  border-color: rgba(255, 255, 255, 0.10);
+}
+
+.at-header-action-btn:hover {
+  border-color: #0284C7;
+  color: #0284C7;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.15);
+}
+
+@keyframes at-glow-breathe {
+  0%, 100% { opacity: 0.65; }
+  50%      { opacity: 0.90; }
+}
+
+.at-gemini-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 650px;
+  max-width: 90vw;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.05) 0%, rgba(220, 38, 38, 0.03) 45%, transparent 75%);
+  filter: blur(48px);
+  pointer-events: none;
+  z-index: 0;
+  animation: at-glow-breathe 6s ease-in-out infinite;
+}
+
+.dark .at-gemini-ambient-glow {
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.18) 0%, rgba(56, 189, 248, 0.08) 45%, transparent 75%);
+  filter: blur(56px);
+}
+
+.at-gemini-pill-form-light,
+.at-gemini-pill-form {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+}
+
+.at-gemini-pill-form-light textarea,
+.at-gemini-pill-form textarea {
+  color: #0F172A !important;
+}
+
+.at-gemini-pill-form-light textarea::placeholder,
+.at-gemini-pill-form textarea::placeholder {
+  color: #64748B !important;
+  opacity: 1 !important;
+}
+
+.at-gemini-pill-form-dark {
+  background: rgba(10, 15, 29, 0.88) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+}
+
+.at-gemini-pill-form-dark textarea {
+  color: #FFFFFF !important;
+}
+
+.at-gemini-pill-form-dark textarea::placeholder {
+  color: #94A3B8 !important;
+  opacity: 1 !important;
+}
+
+.at-gemini-pill-form-light:focus-within,
+.at-gemini-pill-form:focus-within {
+  border-color: #DC2626 !important;
+  box-shadow: 0 4px 24px rgba(220, 38, 38, 0.15), 0 0 0 1.5px rgba(220, 38, 38, 0.25) !important;
+}
+
+.at-gemini-pill-form-dark:focus-within {
+  border-color: #EF4444 !important;
+  box-shadow: 0 4px 24px rgba(239, 68, 68, 0.35), 0 0 0 1.5px rgba(239, 68, 68, 0.35) !important;
+}
+
+/* ── 12. Estilos para Hero Marketing con Sparkles (Aceternity) ── */
+.at-sparkles-hero-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 28px;
+  overflow: hidden;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, #030712 0%, #020617 60%, #000000 100%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ── 8. Marketing Bento & Landing Styles ───────────────────────── */
+.at-bento-marketing-card {
+  background: var(--colorNeutralBackground1);
+  border: 1px solid rgba(2, 132, 199, 0.14);
+  border-radius: 22px;
+  padding: 24px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justifyContent: space-between;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.at-bento-marketing-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.4), transparent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.at-bento-marketing-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(2, 132, 199, 0.45);
+  box-shadow: 0 16px 36px -6px rgba(2, 132, 199, 0.16), 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.at-bento-marketing-card:hover::before {
+  opacity: 1;
+}
+
+.at-cta-banner-glow {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.75) 0%, rgba(30, 27, 75, 0.55) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 24px;
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.5), 0 0 30px rgba(2, 132, 199, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+}
+
+.at-cta-banner-glow::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 140%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.18) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ── 9. Cosmic Glass Theme for Full Page Home ────────────────── */
+.at-home-cosmic-wrapper {
+  position: relative;
+  min-height: 100%;
+  width: 100%;
+  color: #F8FAFC;
+}
+
+.at-glass-card-cosmic {
+  background: rgba(15, 23, 42, 0.68) !important;
+  border: 1px solid rgba(56, 189, 248, 0.22) !important;
+  border-radius: 20px !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+  color: #F8FAFC !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.at-glass-card-cosmic:hover {
+  transform: translateY(-3px) !important;
+  border-color: rgba(56, 189, 248, 0.5) !important;
+  box-shadow: 0 16px 40px -8px rgba(2, 132, 199, 0.35), 0 0 24px rgba(56, 189, 248, 0.2) !important;
+}
+
+.at-glass-search-input {
+  background: rgba(15, 23, 42, 0.80);
+  border: 1px solid rgba(56, 189, 248, 0.32);
+  border-radius: 999px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.5), 0 0 24px rgba(2, 132, 199, 0.15);
+  color: #FFFFFF;
+  transition: all 0.2s ease;
+}
+
+.at-glass-search-input:focus-within {
+  border-color: #38BDF8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.30), 0 16px 48px rgba(2, 132, 199, 0.4);
+}
+
+.at-prompt-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.at-prompt-pill:hover {
+  background: rgba(2, 132, 199, 0.20);
+  border-color: rgba(2, 132, 199, 0.5);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.at-entity-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  color: #E0F2FE;
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+}
+
+.at-entity-chip:hover {
+  background: rgba(56, 189, 248, 0.18);
+  border-color: rgba(56, 189, 248, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+}
+
+.at-bento-card-large {
+  grid-column: span 1;
+}
+
+@media (min-width: 860px) {
+  .at-bento-card-large {
+    grid-column: span 2;
+  }
+}
+
+/* ── 10. JetBrains Design System Core Styles ── */
+.at-jb-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
+}
+
+.at-jb-card {
+  background: rgba(18, 20, 28, 0.82) !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  border-radius: 20px !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: relative;
+}
+
+.at-jb-card:hover {
+  border-color: rgba(56, 189, 248, 0.45) !important;
+  box-shadow: 0 16px 44px -8px rgba(2, 132, 199, 0.35), 0 0 24px rgba(56, 189, 248, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-3px);
+}
+
+.at-jb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 650;
+  letter-spacing: 0.03em;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #7DD3FC;
+  text-transform: uppercase;
+}
+
+.at-jb-kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #CBD5E1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.at-jb-entity-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 13px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  color: #E2E8F0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+}
+
+.at-jb-entity-chip:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.5);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(56, 189, 248, 0.25);
+}
+
+.at-jb-gradient-title {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFFFFF 30%, #EF4444 70%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── 11. Frutilota Peruvian Obsidian Theme ── */
+.at-frutilota-ambient-bg {
+  background: #030712 !important;
+  color: #FFFFFF !important;
+}
+
+.at-frutilota-aurora-top {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.16) 0%, rgba(245, 158, 11, 0.08) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.at-frutilota-aurora-bottom {
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.10) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.at-gemini-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 550px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.18) 0%, rgba(245, 158, 11, 0.10) 45%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.at-glass-header {
+  background: rgba(7, 10, 19, 0.92) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+}
+
+.at-gemini-pill-form {
+  background: rgba(10, 15, 29, 0.92) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7), 0 0 20px rgba(239, 68, 68, 0.18) !important;
+}
+
+.at-gemini-pill-form:focus-within {
+  border-color: rgba(239, 68, 68, 0.65) !important;
+  box-shadow: 0 8px 36px rgba(0, 0, 0, 0.8), 0 0 28px rgba(239, 68, 68, 0.35) !important;
+}
+
+/* ── Nitidez Avanzada de Iconos y Gráficos SVG (Zero-Blur Vector Engine) ── */
+svg, 
+.fluent-icon, 
+svg path, 
+svg rect, 
+svg circle, 
+svg line, 
+svg polyline {
+  shape-rendering: geometricPrecision !important;
+  text-rendering: geometricPrecision !important;
+  image-rendering: -webkit-optimize-contrast !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+svg {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+
+
+

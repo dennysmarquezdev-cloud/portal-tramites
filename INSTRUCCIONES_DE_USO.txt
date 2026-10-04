@@ -1,0 +1,167 @@
+================================================================================
+   GUÍA RÁPIDA DE USO: PROYECTO "AHORRATIEMPO CON LOTA AI"
+   Respaldo Técnico Oficial para Sustentación de Tesis - TECSUP 2026
+================================================================================
+
+Bienvenido(a). Este documento explica de manera clara y sencilla cómo poner en 
+marcha la plataforma en cualquier computadora y cómo probar todas sus funciones.
+
+
+--------------------------------------------------------------------------------
+1. ¿QUÉ ES AHORRATIEMPO CON LOTA AI?
+--------------------------------------------------------------------------------
+Es una plataforma web inteligente diseñada para que los ciudadanos peruanos 
+encuentren, entiendan y completen trámites del Estado (SUNAT, RENIEC, MTC, 
+SUNARP, EsSalud, Banco de la Nación, etc.) de manera rápida y sin complicaciones.
+
+Cuenta con LOTA AI (Localizadora y Orientadora de Trámites Ágiles), un asistente 
+con Inteligencia Artificial y arquitectura RAG (Búsqueda Semántica + Base de Datos 
+Oficial) que orienta al ciudadano en lenguaje natural, aclara requisitos, pasos, 
+costos y genera accesos directos validados a las pasarelas oficiales del gobierno.
+
+
+--------------------------------------------------------------------------------
+2. REQUISITOS PREVIOS EN SU COMPUTADORA
+--------------------------------------------------------------------------------
+Para levantar el proyecto en su máquina solo necesita:
+
+1. Node.js (Versión 18 o superior):
+   - Puede verificar si lo tiene instalado abriendo una consola (CMD o PowerShell)
+     y escribiendo:
+       node -v
+   - Si no lo tiene instalado, puede descargarlo gratis desde:
+       https://nodejs.org/ (Recomendado: Versión LTS)
+
+2. Conexión a Internet:
+   - Para descargar las dependencias de Node.js por primera vez y conectar 
+     con los modelos de Inteligencia Artificial en Cloudflare Workers.
+
+3. Un Navegador Web Moderno:
+   - Google Chrome, Microsoft Edge, Brave, Mozilla Firefox o Safari.
+
+
+--------------------------------------------------------------------------------
+3. PASOS PARA EJECUTAR EL PROYECTO (FRONTEND - INTERFAZ DE USUARIO)
+--------------------------------------------------------------------------------
+
+PASO 1: Abrir la carpeta del Frontend
+  - Abra la terminal (PowerShell, Símbolo del sistema / CMD, o la terminal de 
+    Visual Studio Code).
+  - Navegue hasta la carpeta "01_Frontend_React_Tailwind".
+    (O si está en la raíz del CD: cd 01_Frontend_React_Tailwind)
+
+PASO 2: Instalar las librerías necesarias
+  - Ejecute el siguiente comando y presione Enter:
+      npm install
+  - Espere unos segundos mientras se descargan las librerías del proyecto.
+
+PASO 3: Iniciar el servidor local
+  - Ejecute el siguiente comando:
+      npm run dev
+  - La consola le mostrará un mensaje indicando que el servidor está listo, 
+    generalmente en la dirección:
+      http://localhost:5173
+
+PASO 4: Abrir la plataforma en su navegador
+  - Abra su navegador web e ingrese a:
+      http://localhost:5173
+  - ¡Listo! Ya puede navegar e interactuar con la plataforma completa.
+
+
+--------------------------------------------------------------------------------
+4. CÓMO PROBAR Y USAR LAS FUNCIONES PRINCIPALES
+--------------------------------------------------------------------------------
+
+A) ASISTENTE INTELIGENTE LOTA AI (Frutilota / LOTA):
+   1. En la pantalla principal o mediante el botón flotante del asistente, 
+      haga clic para abrir el chat de LOTA AI.
+   2. Escriba consultas en lenguaje común como un ciudadano cualquiera, por ejemplo:
+      - "¿Cómo emito un recibo por honorarios para un cliente?"
+      - "¿Aplica retención del 8% si cobro 1200 soles?"
+      - "¿Cómo saco mi Clave SOL desde mi celular?"
+      - "¿Qué necesito para renovar mi DNI azul o electrónico?"
+      - "¿Cuánto cuesta el trámite de brevete o pasaporte?"
+   3. Observe cómo LOTA AI:
+      - Responde en tiempo real (streaming letra por letra).
+      - Explica los requisitos y el procedimiento paso a paso.
+      - Muestra botones interactivos de "Acceso Directo" a los formularios 
+        oficiales de la SUNAT/Gob.pe y la "Guía Oficial Gob.pe".
+      - Genera listas de verificación (Checklists) interactivas de requisitos.
+
+B) BUSCADOR INSTANTÁNEO:
+   - En la barra de búsqueda superior, comience a escribir palabras clave como:
+     "RUC", "Brevete", "Pasaporte", "DNI", "Matrimonio", "Renta".
+   - El sistema filtrará instantáneamente los trámites correspondientes con 
+     sus costos y entidades emisoras.
+
+C) EXPLORACIÓN POR CATEGORÍAS:
+   - Diríjase a la sección "Categorías" en el menú.
+   - Explore las áreas temáticas: Conducir y Transporte, Negocios y RUC, 
+     Familia y Registro Civil, Educación, Salud y Vivienda.
+
+D) SISTEMA DE FAVORITOS:
+   - En cualquier tarjeta de trámite, haga clic en el icono del corazón.
+   - Acceda a la pestaña "Favoritos" en el menú para ver sus trámites guardados 
+     para acceso rápido permanente.
+
+E) PANEL DE ADMINISTRACIÓN (MÓDULO DE GESTIÓN):
+   - Puede acceder a la ruta administrativa para visualizar el control de 
+     trámites, catálogo de servicios, métricas de consultas y compradores.
+
+
+--------------------------------------------------------------------------------
+5. INFORMACIÓN TÉCNICA DEL BACKEND Y BASE DE DATOS (PARA EL JURADO)
+--------------------------------------------------------------------------------
+
+* Backend Serverless (Carpeta "02_Backend_Cloudflare_Workers"):
+  - Construido sobre Cloudflare Workers en arquitectura Serverless.
+  - Archivo principal: index.js
+  - Integra RAG Híbrido:
+    1) Búsqueda directa en SQLite D1.
+    2) Búsqueda léxica BM25 mediante SQLite FTS5 (Full-Text Search).
+    3) Búsqueda semántica vectorial en Cloudflare Vectorize (Embeddings de 768 dim).
+    4) Modelos de lenguaje en Workers AI: LLaMA 3.2 3B Instruct y Qwen 2.5 7B.
+
+* Base de Datos (Carpeta "03_Base_de_Datos"):
+  - Archivo "schema_d1.sql": Script DDL de creación de tablas, índices, 
+    tabla virtual FTS5 y disparadores (triggers) de auto-sincronización.
+  - Archivo "fase3_populate_d1.sql": Poblado de más de 590 trámites oficiales.
+  - Archivo "sunat_tramites_completos.json": Dataset JSON estructurado extraído 
+    directamente desde Gob.pe con requisitos, modalidades, pasos y costos.
+
+* Scraping y ETL (Carpeta "04_Scripts_Scraping_y_ETL"):
+  - Scripts en Node.js y Scrapy (Python) utilizados para extraer y transformar 
+    la información oficial desde los portales gubernamentales.
+
+
+--------------------------------------------------------------------------------
+6. SOLUCIÓN DE PROBLEMAS COMUNES
+--------------------------------------------------------------------------------
+
+- Problema: La consola indica "npm no se reconoce como un comando interno o externo".
+  Solución: Instale Node.js desde https://nodejs.org/ y reinicie la ventana de la 
+  terminal para que tome las variables de entorno del sistema.
+
+- Problema: Aparece el mensaje "Port 5173 is in use".
+  Solución: Vite cambiará automáticamente al siguiente puerto disponible (por 
+  ejemplo http://localhost:5174). Abra en su navegador el enlace que indique la 
+  consola.
+
+- Problema: "¿Cómo apago el servidor local cuando termine de usarlo?"
+  Solución: En la ventana de la terminal donde corre el proyecto, presione 
+  las teclas:
+    Ctrl + C
+  Y escriba 'S' para confirmar.
+
+
+--------------------------------------------------------------------------------
+7. CRÉDITOS ACADÉMICOS
+--------------------------------------------------------------------------------
+- Institución: TECSUP
+- Carrera: Tecnología de la Información / Diseño y Desarrollo de Software
+- Proyecto: AhorraTiempo con LOTA AI
+- Año Académico: 2026
+
+¡Gracias por revisar este proyecto! Para mayores detalles técnicos de arquitectura, 
+consulte el archivo README.md incluido en este mismo directorio.
+================================================================================

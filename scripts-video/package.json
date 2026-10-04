@@ -1,0 +1,14 @@
+{
+  "name": "scripts-video",
+  "version": "1.0.0",
+  "description": "Script de Playwright para capturar video",
+  "main": "capture.js",
+  "type": "module",
+  "scripts": {
+    "start": "node capture.js"
+  },
+  "dependencies": {
+    "gtts": "^0.2.1",
+    "playwright": "^1.42.1"
+  }
+}

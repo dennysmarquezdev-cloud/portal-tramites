@@ -1,0 +1,21 @@
+name = "ahorratiempo-scraper"
+main = "index.js"
+compatibility_date = "2024-03-01"
+
+[ai]
+binding = "AI"
+
+[observability]
+enabled = true
+
+[[d1_databases]]
+binding = "ahorratiempo_db"
+database_name = "ahorratiempo-db"
+database_id = "cc9a87f7-3ffe-4d6a-a21e-ce716302c7b2"
+
+[vars]
+EXA_API_KEY = "fda96172-2ba0-4b63-b61d-33df49240f7d"
+
+[[vectorize]]
+binding = "ahorratiempo_vectors"
+index_name = "ahorratiempo-vectors"

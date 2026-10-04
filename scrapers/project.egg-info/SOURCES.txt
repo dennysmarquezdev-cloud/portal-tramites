@@ -1,0 +1,12 @@
+setup.py
+ahorratiempo_spiders/__init__.py
+ahorratiempo_spiders/items.py
+ahorratiempo_spiders/pipelines.py
+ahorratiempo_spiders/settings.py
+ahorratiempo_spiders/spiders/__init__.py
+ahorratiempo_spiders/spiders/gob_spider.py
+project.egg-info/PKG-INFO
+project.egg-info/SOURCES.txt
+project.egg-info/dependency_links.txt
+project.egg-info/entry_points.txt
+project.egg-info/top_level.txt

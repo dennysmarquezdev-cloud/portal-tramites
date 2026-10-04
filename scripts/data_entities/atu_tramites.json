@@ -1,0 +1,815 @@
+[
+  {
+    "id": "1977334",
+    "hash_id": "atu_1977334",
+    "titulo_oficial": "Acceder a la plataforma de consulta de infracciones de la ATU",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Si eres un operador de transporte urbano o tienes un vehículo y necesitas conocer si presenta deudas impuestas por la Autoridad de Transporte Urbano para Lima y Callao (ATU) , puedes consultarlo de manera online ...",
+    "requisitos": [
+      "Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda)."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Puedes realizar la búsqueda por número de placa del vehículo o por número de acta de fiscalización (papeleta). El sistema te indicará la falta cometida, la fecha de la infracción y el importe a pagar.",
+      "Ten presente que las papeletas consideradas en este servicio son aquellas que fueron impuestas por la ATU desde el día 23 de octubre de 2019, el inicio del ejercicio de sus funciones.",
+      "Consulta infracciones"
+    ],
+    "url": "https://www.gob.pe/15921-acceder-a-la-plataforma-de-consulta-de-infracciones-de-la-atu",
+    "action_url": "https://pasarela.atu.gob.pe/?CONSULTA=1",
+    "raw_content": "# Trámite: Acceder a la plataforma de consulta de infracciones de la ATU\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nSi eres un operador de transporte urbano o tienes un vehículo y necesitas conocer si presenta deudas impuestas por la Autoridad de Transporte Urbano para Lima y Callao (ATU) , puedes consultarlo de manera online ...\n\n## Requisitos Obligatorios\n* Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda).\n\n## Pasos para realizar el trámite\n1. Puedes realizar la búsqueda por número de placa del vehículo o por número de acta de fiscalización (papeleta). El sistema te indicará la falta cometida, la fecha de la infracción y el importe a pagar.\n2. Ten presente que las papeletas consideradas en este servicio son aquellas que fueron impuestas por la ATU desde el día 23 de octubre de 2019, el inicio del ejercicio de sus funciones.\n3. Consulta infracciones",
+    "embedding_text": "Trámite: Acceder a la plataforma de consulta de infracciones de la ATU. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Si eres un operador de transporte urbano o tienes un vehículo y necesitas conocer si presenta deudas impuestas por la Autoridad de Transporte Urbano para Lima y Callao (ATU) , puedes consultarlo de manera online .... Requisitos: Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda).. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Puedes realizar la búsqueda por número de placa del vehículo o por número de acta de fiscalización (papeleta). El sistema te indicará la falta cometida, la fecha de la infracción y el importe a pagar.; Ten presente que l. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "8126290",
+    "hash_id": "atu_8126290",
+    "titulo_oficial": "Subsidio al transporte terrestre regular de personas y del servicio de transporte público terrestre de mercancías",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "S/ 4",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Personas Naturales y Empresas",
+    "descripcion": "Conozca cómo solicitar el beneficio en la plataforma digital de la ATU Los comprobantes para acceder a este mecanismo deberán corresponder a compras realizadas entre el 29 de mayo y el 29 de julio de 2026 en estable ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "1. Regístrate en la plataforma",
+      "* Ingresa al enlace: https://soluciones.atu.gob.pe/subsidio_transportista_du004/login",
+      "* Crea tu usuario con el RUC de la empresa y una contraseña.",
+      "* Registra tu Código de Cuenta Interbancaria (CCI) y adjunta una captura o comprobante donde se vea el CCI. Si es persona natural, también podrá ingresar una Orden de Pago Electrónico (OPE) para cobrar en ventanilla del Banco de la Nación.",
+      "2. Verifica tu RUC, autorización y flota vehicular",
+      "* El sistema validará que tu RUC esté ACTIVO y en condición HABIDO ante SUNAT.",
+      "* La plataforma mostrará si cuentas con autorizaciones vigentes (otorgadas por el MTC, gobiernos regionales o municipalidades provinciales).",
+      "* También se visualizará la lista de vehículos habilitados.",
+      "* Esta información es proporcionada a la ATU por las entidades competentes.",
+      "3. Registra tus Comprobantes de Pago Electrónicos (CPE)",
+      "* Debes ingresar los comprobantes por la compra de diésel B5 o B20 con un contenido de azufre menor o igual a 50 partes por millón (ppm), emitidos entre el 29 de mayo y el 29 de julio de 2026.",
+      "* Para cada CPE, coloca en la plataforma el RUC del proveedor, serie, número y fecha de emisión, la placa del vehículo al que corresponde el consumo (en la modalidad Surtido directo), así como la ubicación del establecimiento donde se realizó la compra.",
+      "* Si eres consumidor directo (inscrito en Osinergmin), también deberás precisar el tipo de combustible y el volumen en galones.",
+      "4. Revisa, declara y envía tu solicitud",
+      "* Confirma que toda la información sea correcta y acepta la declaración jurada.",
+      "* Haz clic en “Enviar solicitud”. Recibirás un número de expediente y un correo de confirmación.",
+      "Cabe precisar que, después de enviar tu solicitud, tendrás 5 días hábiles para realizar cambios (corregir CPE, actualizar cuenta bancaria, etc.). Pasado ese plazo, el expediente quedará bloqueado y pasará a revisión de la ATU.",
+      "Talleres prácticos",
+      "Con el fin de orientar a los transportistas sobre el uso de la Plataforma Digital de Subsidio, la ATU realizará talleres prácticos virtuales los días 4, 6 y 11 de agosto. Las capacitaciones se desarrollarán a las 10 a. m., excepto la del 6 de agosto, que se realizará a las 3 p. m.",
+      "Canales de atención",
+      "Para facilitar la implementación de este subsidio económico, la Autoridad de Transporte Urbano para Lima y Callao (ATU) también ha habilitado los siguientes números de contacto:",
+      "Para consultas sobre la plataforma, se han establecido los siguientes canales de atención:",
+      "Correo: subsidio.sistema@atu.gob.pe",
+      "WhatsApp: +51 986 747 178",
+      "WhatsApp y llamadas:+51 938 806 601 (nuevo)"
+    ],
+    "url": "https://www.gob.pe/116186-subsidio-al-transporte-terrestre-regular-de-personas-y-del-servicio-de-transporte-publico-terrestre-de-mercancias",
+    "action_url": "https://soluciones.atu.gob.pe/subsidio_transportista_du007/login",
+    "raw_content": "# Trámite: Subsidio al transporte terrestre regular de personas y del servicio de transporte público terrestre de mercancías\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** S/ 4\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Personas Naturales y Empresas\n\n## Resumen del Trámite\nConozca cómo solicitar el beneficio en la plataforma digital de la ATU Los comprobantes para acceder a este mecanismo deberán corresponder a compras realizadas entre el 29 de mayo y el 29 de julio de 2026 en estable ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. 1. Regístrate en la plataforma\n2. * Ingresa al enlace: https://soluciones.atu.gob.pe/subsidio_transportista_du004/login\n3. * Crea tu usuario con el RUC de la empresa y una contraseña.\n4. * Registra tu Código de Cuenta Interbancaria (CCI) y adjunta una captura o comprobante donde se vea el CCI. Si es persona natural, también podrá ingresar una Orden de Pago Electrónico (OPE) para cobrar en ventanilla del Banco de la Nación.\n5. 2. Verifica tu RUC, autorización y flota vehicular\n6. * El sistema validará que tu RUC esté ACTIVO y en condición HABIDO ante SUNAT.\n7. * La plataforma mostrará si cuentas con autorizaciones vigentes (otorgadas por el MTC, gobiernos regionales o municipalidades provinciales).\n8. * También se visualizará la lista de vehículos habilitados.\n9. * Esta información es proporcionada a la ATU por las entidades competentes.\n10. 3. Registra tus Comprobantes de Pago Electrónicos (CPE)\n11. * Debes ingresar los comprobantes por la compra de diésel B5 o B20 con un contenido de azufre menor o igual a 50 partes por millón (ppm), emitidos entre el 29 de mayo y el 29 de julio de 2026.\n12. * Para cada CPE, coloca en la plataforma el RUC del proveedor, serie, número y fecha de emisión, la placa del vehículo al que corresponde el consumo (en la modalidad Surtido directo), así como la ubicación del establecimiento donde se realizó la compra.\n13. * Si eres consumidor directo (inscrito en Osinergmin), también deberás precisar el tipo de combustible y el volumen en galones.\n14. 4. Revisa, declara y envía tu solicitud\n15. * Confirma que toda la información sea correcta y acepta la declaración jurada.\n16. * Haz clic en “Enviar solicitud”. Recibirás un número de expediente y un correo de confirmación.\n17. Cabe precisar que, después de enviar tu solicitud, tendrás 5 días hábiles para realizar cambios (corregir CPE, actualizar cuenta bancaria, etc.). Pasado ese plazo, el expediente quedará bloqueado y pasará a revisión de la ATU.\n18. Talleres prácticos\n19. Con el fin de orientar a los transportistas sobre el uso de la Plataforma Digital de Subsidio, la ATU realizará talleres prácticos virtuales los días 4, 6 y 11 de agosto. Las capacitaciones se desarrollarán a las 10 a. m., excepto la del 6 de agosto, que se realizará a las 3 p. m.\n20. Canales de atención\n21. Para facilitar la implementación de este subsidio económico, la Autoridad de Transporte Urbano para Lima y Callao (ATU) también ha habilitado los siguientes números de contacto:\n22. Para consultas sobre la plataforma, se han establecido los siguientes canales de atención:\n23. Correo: subsidio.sistema@atu.gob.pe\n24. WhatsApp: +51 986 747 178\n25. WhatsApp y llamadas:+51 938 806 601 (nuevo)",
+    "embedding_text": "Trámite: Subsidio al transporte terrestre regular de personas y del servicio de transporte público terrestre de mercancías. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Conozca cómo solicitar el beneficio en la plataforma digital de la ATU Los comprobantes para acceder a este mecanismo deberán corresponder a compras realizadas entre el 29 de mayo y el 29 de julio de 2026 en estable .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo S/ 4. Dirigido a Personas Naturales y Empresas. Pasos: 1. Regístrate en la plataforma; * Ingresa al enlace: https://soluciones.atu.gob.pe/subsidio_transportista_du004/login; * Crea tu usuario con el RUC de la empresa y una contraseña.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "619471",
+    "hash_id": "atu_619471",
+    "titulo_oficial": "Consultar si tu taxi tiene autorización para circular en Lima y Callao",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Si vives en Lima o Callao, puedes verificar online si el taxi que utilizas se encuentra autorizado por la Autoridad de Transporte Urbano para Lima y Callao (ATU) , y cumple con la normativa vigente. Durante el pe ...",
+    "requisitos": [
+      "Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda)."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "En la plataforma de consultas en línea de la ATU, deberás ingresar la placa del vehículo (no es necesario incluir el guion, ni distinguir entre letras mayúsculas y minúsculas) y el código de verificación de la página web.",
+      "Consulta autorización de tu taxi"
+    ],
+    "url": "https://www.gob.pe/8953-consultar-si-tu-taxi-tiene-autorizacion-para-circular-en-lima-y-callao",
+    "action_url": "https://sistemas.atu.gob.pe/ConsultaVehiculo",
+    "raw_content": "# Trámite: Consultar si tu taxi tiene autorización para circular en Lima y Callao\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nSi vives en Lima o Callao, puedes verificar online si el taxi que utilizas se encuentra autorizado por la Autoridad de Transporte Urbano para Lima y Callao (ATU) , y cumple con la normativa vigente. Durante el pe ...\n\n## Requisitos Obligatorios\n* Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda).\n\n## Pasos para realizar el trámite\n1. En la plataforma de consultas en línea de la ATU, deberás ingresar la placa del vehículo (no es necesario incluir el guion, ni distinguir entre letras mayúsculas y minúsculas) y el código de verificación de la página web.\n2. Consulta autorización de tu taxi",
+    "embedding_text": "Trámite: Consultar si tu taxi tiene autorización para circular en Lima y Callao. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Si vives en Lima o Callao, puedes verificar online si el taxi que utilizas se encuentra autorizado por la Autoridad de Transporte Urbano para Lima y Callao (ATU) , y cumple con la normativa vigente. Durante el pe .... Requisitos: Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda).. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: En la plataforma de consultas en línea de la ATU, deberás ingresar la placa del vehículo (no es necesario incluir el guion, ni distinguir entre letras mayúsculas y minúsculas) y el código de verificación de la página web. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "1267271",
+    "hash_id": "atu_1267271",
+    "titulo_oficial": "Acceder al Portal del Ciudadano de la ATU",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Si necesitas presentar documentos a la Autoridad de Transporte Urbano para Lima y Callao (ATU), realizar algún trámite nuevo o continuar con uno anterior, puedes hacerlo a través de su portal del ciudadano .",
+    "requisitos": [
+      "Tener una cuenta de correo electrónico.",
+      "Estar registrado en el Portal del Ciudadano. Si no cuentas con usuario y contraseña, puedes registrarte directamente en el portal.",
+      "Adjuntar solo archivos PDF con un tamaño máximo 6 MB por archivo y un máximo de 10 archivos. Deben ser legibles.",
+      "Todas las páginas del documento adjunto deben tener la firma del interesado, estar ordenadas y foliadas.",
+      "Ver - Nuevo procedimiento de recepción virtual",
+      "Incluye todos los sustentos o anexos que respalden tu trámite. Recuerda que el tiempo que tome subir el documento dependerá del tamaño del archivo y la velocidad de tu conexión a Internet.",
+      "Ingresa al Portal del Ciudadano",
+      "Si tienes algún problema técnico con este servicio, escríbenos a atencionalciudadano@atu.gob.pe o revisa el Manual de usuario para el Portal del Ciudadano de la ATU."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresa los datos del remitente y luego los datos del documento, colocando en la casilla \"Asunto\" el motivo por el cual deseas registrar tu trámite.",
+      "En caso quieras continuar con un trámite anterior, debes indicar el número de la Hoja de Trámite previa al final del asunto y entre paréntesis. Escoge el tipo de documento que vas a ingresar entre las opciones del campo \"Tipo de documento\".",
+      "Incluye todos los sustentos o anexos que respalden tu trámite. Recuerda que el tiempo que tome subir el documento dependerá del tamaño del archivo y la velocidad de tu conexión a Internet.",
+      "Ingresa al Portal del Ciudadano",
+      "Si tienes algún problema técnico con este servicio, escríbenos a atencionalciudadano@atu.gob.pe o revisa el Manual de usuario para el Portal del Ciudadano de la ATU."
+    ],
+    "url": "https://www.gob.pe/12413-acceder-al-portal-del-ciudadano-de-la-atu",
+    "action_url": "https://soluciones.atu.gob.pe/portal_ciudadano/login",
+    "raw_content": "# Trámite: Acceder al Portal del Ciudadano de la ATU\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nSi necesitas presentar documentos a la Autoridad de Transporte Urbano para Lima y Callao (ATU), realizar algún trámite nuevo o continuar con uno anterior, puedes hacerlo a través de su portal del ciudadano .\n\n## Requisitos Obligatorios\n* Tener una cuenta de correo electrónico.\n* Estar registrado en el Portal del Ciudadano. Si no cuentas con usuario y contraseña, puedes registrarte directamente en el portal.\n* Adjuntar solo archivos PDF con un tamaño máximo 6 MB por archivo y un máximo de 10 archivos. Deben ser legibles.\n* Todas las páginas del documento adjunto deben tener la firma del interesado, estar ordenadas y foliadas.\n* Ver - Nuevo procedimiento de recepción virtual\n* Incluye todos los sustentos o anexos que respalden tu trámite. Recuerda que el tiempo que tome subir el documento dependerá del tamaño del archivo y la velocidad de tu conexión a Internet.\n* Ingresa al Portal del Ciudadano\n* Si tienes algún problema técnico con este servicio, escríbenos a atencionalciudadano@atu.gob.pe o revisa el Manual de usuario para el Portal del Ciudadano de la ATU.\n\n## Pasos para realizar el trámite\n1. Ingresa los datos del remitente y luego los datos del documento, colocando en la casilla \"Asunto\" el motivo por el cual deseas registrar tu trámite.\n2. En caso quieras continuar con un trámite anterior, debes indicar el número de la Hoja de Trámite previa al final del asunto y entre paréntesis. Escoge el tipo de documento que vas a ingresar entre las opciones del campo \"Tipo de documento\".\n3. Incluye todos los sustentos o anexos que respalden tu trámite. Recuerda que el tiempo que tome subir el documento dependerá del tamaño del archivo y la velocidad de tu conexión a Internet.\n4. Ingresa al Portal del Ciudadano\n5. Si tienes algún problema técnico con este servicio, escríbenos a atencionalciudadano@atu.gob.pe o revisa el Manual de usuario para el Portal del Ciudadano de la ATU.",
+    "embedding_text": "Trámite: Acceder al Portal del Ciudadano de la ATU. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Si necesitas presentar documentos a la Autoridad de Transporte Urbano para Lima y Callao (ATU), realizar algún trámite nuevo o continuar con uno anterior, puedes hacerlo a través de su portal del ciudadano .. Requisitos: Tener una cuenta de correo electrónico.; Estar registrado en el Portal del Ciudadano. Si no cuentas con usuario y contraseña, puedes registrarte directamente en el portal.; Adjuntar solo archivos PDF con un tamaño máximo 6 MB por archivo y un máximo de 10 archivos. Deben ser legibles.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresa los datos del remitente y luego los datos del documento, colocando en la casilla \"Asunto\" el motivo por el cual deseas registrar tu trámite.; En caso quieras continuar con un trámite anterior, debes indicar el nú. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "1987392",
+    "hash_id": "atu_1987392",
+    "titulo_oficial": "Acceder a la Plataforma Virtual de Trámites - PVT de la ATU (para trámites TUPA y/o servicios prestados en exclusividad)",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Si como ciudadano u operador de servicio de transporte necesitas realizar trámites ante la Autoridad del Transporte Urbano para Lima y Callao (ATU) , puedes hacerlo de manera online en la plataforma de trámites de e ...",
+    "requisitos": [
+      "Cuenta de usuario en plataforma"
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Cuando ingreses a tu cuenta, es importante que actives la casilla de autorización para que la entidad envíe la información generada a tu correo electrónico.",
+      "Ingresa a la plataforma"
+    ],
+    "url": "https://www.gob.pe/15920-acceder-a-la-plataforma-virtual-de-tramites-pvt-de-la-atu-para-tramites-tupa-y-o-servicios-prestados-en-exclusividad",
+    "action_url": "http://soluciones.atu.gob.pe/plataformavirtual",
+    "raw_content": "# Trámite: Acceder a la Plataforma Virtual de Trámites - PVT de la ATU (para trámites TUPA y/o servicios prestados en exclusividad)\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nSi como ciudadano u operador de servicio de transporte necesitas realizar trámites ante la Autoridad del Transporte Urbano para Lima y Callao (ATU) , puedes hacerlo de manera online en la plataforma de trámites de e ...\n\n## Requisitos Obligatorios\n* Cuenta de usuario en plataforma\n\n## Pasos para realizar el trámite\n1. Cuando ingreses a tu cuenta, es importante que actives la casilla de autorización para que la entidad envíe la información generada a tu correo electrónico.\n2. Ingresa a la plataforma",
+    "embedding_text": "Trámite: Acceder a la Plataforma Virtual de Trámites - PVT de la ATU (para trámites TUPA y/o servicios prestados en exclusividad). Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Si como ciudadano u operador de servicio de transporte necesitas realizar trámites ante la Autoridad del Transporte Urbano para Lima y Callao (ATU) , puedes hacerlo de manera online en la plataforma de trámites de e .... Requisitos: Cuenta de usuario en plataforma. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Cuando ingreses a tu cuenta, es importante que actives la casilla de autorización para que la entidad envíe la información generada a tu correo electrónico.; Ingresa a la plataforma. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "1843118",
+    "hash_id": "atu_1843118",
+    "titulo_oficial": "Conocer puntos de venta y recarga de tarjetas del Metropolitano y Corredores complementarios",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Si eres usuario del servicio de transporte público de Lima y Callao, y necesitas comprar o recargar tus tarjetas Lima Pass o Metropolitano , puedes hacerlo en cualquiera de los puntos que la Autoridad de Transpor ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Posiciónate en el mapa de acuerdo a tu lugar de ubicación en Lima y Callao. Los puntos celestes te indicarán los lugares de recarga de tarjetas y los negros, los lugares de venta y recarga.",
+      "Puedes recargar desde 0.50 céntimos de sol.",
+      "Ubica un punto de venta o recarga"
+    ],
+    "url": "https://www.gob.pe/15049-conocer-puntos-de-venta-y-recarga-de-tarjetas-del-metropolitano-y-corredores-complementarios",
+    "action_url": "https://www.google.com/maps/d/u/0/viewer?mid=1yAw_GY9R8jQ28znyNOSaeTL5nRcSas-6&ll=-12.009248819678794%2C-76.90176369873045&z=11",
+    "raw_content": "# Trámite: Conocer puntos de venta y recarga de tarjetas del Metropolitano y Corredores complementarios\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nSi eres usuario del servicio de transporte público de Lima y Callao, y necesitas comprar o recargar tus tarjetas Lima Pass o Metropolitano , puedes hacerlo en cualquiera de los puntos que la Autoridad de Transpor ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Posiciónate en el mapa de acuerdo a tu lugar de ubicación en Lima y Callao. Los puntos celestes te indicarán los lugares de recarga de tarjetas y los negros, los lugares de venta y recarga.\n2. Puedes recargar desde 0.50 céntimos de sol.\n3. Ubica un punto de venta o recarga",
+    "embedding_text": "Trámite: Conocer puntos de venta y recarga de tarjetas del Metropolitano y Corredores complementarios. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Si eres usuario del servicio de transporte público de Lima y Callao, y necesitas comprar o recargar tus tarjetas Lima Pass o Metropolitano , puedes hacerlo en cualquiera de los puntos que la Autoridad de Transpor .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Posiciónate en el mapa de acuerdo a tu lugar de ubicación en Lima y Callao. Los puntos celestes te indicarán los lugares de recarga de tarjetas y los negros, los lugares de venta y recarga.; Puedes recargar desde 0.50 cé. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "2350596",
+    "hash_id": "atu_2350596",
+    "titulo_oficial": "Pagar multas por infracciones de transporte en la ATU",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "Mixto (En línea y Presencial)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Si necesitas pagar una multa por infracción a las reglas de transporte, o deseas acceder al Beneficio PRS puedes hacerlo a través de los canales que la Autoridad de Transporte Urbano para Lima y Callao (ATU) pone a ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Cuando ingreses al Sistema de Pagos en Línea, selecciona las tres rayas del menú y elige la opción que deseas cancelar (Multas, Beneficio PRS o Beneficio pronto pago), asimismo ​selecciona una o más casillas de las actas de fiscalización o documentos de deuda que deseas pagar y presiona en agregar al carrito.​ Luego, haz clic en carrito de compras en la parte superior derecha.​",
+      "Allí, ingresa los datos de la persona relacionada con el pago de la infracción, escoge la tarjeta con la que pagarás e ingresa la información que te solicitan.​",
+      "Puedes usar tarjetas Visa, Mastercard, Diners o Amex; pero ten en cuenta que para usar tu tarjeta VISA, debe estar afiliada al sistema Verified By Visa, trámite que debes hacer ante el banco.",
+      "*Recuerda que los pagos de Guardianía y Remolque, fraccionamiento, fiscalización Electrónica se debe realizar en ventanilla de Banco Scotiabank, Banco de la Nación o en agentes autorizados.",
+      "Paga con los códigos de acuerdo al concepto.",
+      "En Scotiabank:",
+      "Otras multa ATU (código 115).",
+      "Guardianía y remolque (código 122).",
+      "Fiscalización electrónica y gabinete (código 119).",
+      "ATU pago multas (código 120) para pagos en base de datos.",
+      "Fraccionamiento (código 124)",
+      "Beneficio PRS Dscto (código 123)",
+      "En el Banco de la Nación:",
+      "Multas varias ATU (código 02475)",
+      "Fraccionamiento (código 02476)",
+      "Una vez realizado el pago, registra el pago de tu multa para actualizar tu estado rápidamente.​",
+      "Si necesitas más información, puedes escribir a atencionalciudadano@atu.gob.pe o llamarnos a Aló ATU al (01) 203- 9000 opción 2. También puedes escribirnos al WhatsApp 938806628 ó 945838534, de lunes a viernes de 08:30 a. m. a 5:30 p. m.​",
+      "Si tu consulta es sobre el registro de pagos, escribe a registrodepagos@atu.gob.pe."
+    ],
+    "url": "https://www.gob.pe/21482-pagar-multas-por-infracciones-de-transporte-en-la-atu",
+    "action_url": "https://www.gob.pe/15920-acceder-a-la-plataforma-de-tramites-de-la-atu",
+    "raw_content": "# Trámite: Pagar multas por infracciones de transporte en la ATU\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** Mixto (En línea y Presencial)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nSi necesitas pagar una multa por infracción a las reglas de transporte, o deseas acceder al Beneficio PRS puedes hacerlo a través de los canales que la Autoridad de Transporte Urbano para Lima y Callao (ATU) pone a ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Cuando ingreses al Sistema de Pagos en Línea, selecciona las tres rayas del menú y elige la opción que deseas cancelar (Multas, Beneficio PRS o Beneficio pronto pago), asimismo ​selecciona una o más casillas de las actas de fiscalización o documentos de deuda que deseas pagar y presiona en agregar al carrito.​ Luego, haz clic en carrito de compras en la parte superior derecha.​\n2. Allí, ingresa los datos de la persona relacionada con el pago de la infracción, escoge la tarjeta con la que pagarás e ingresa la información que te solicitan.​\n3. Puedes usar tarjetas Visa, Mastercard, Diners o Amex; pero ten en cuenta que para usar tu tarjeta VISA, debe estar afiliada al sistema Verified By Visa, trámite que debes hacer ante el banco.\n4. *Recuerda que los pagos de Guardianía y Remolque, fraccionamiento, fiscalización Electrónica se debe realizar en ventanilla de Banco Scotiabank, Banco de la Nación o en agentes autorizados.\n5. Paga con los códigos de acuerdo al concepto.\n6. En Scotiabank:\n7. Otras multa ATU (código 115).\n8. Guardianía y remolque (código 122).\n9. Fiscalización electrónica y gabinete (código 119).\n10. ATU pago multas (código 120) para pagos en base de datos.\n11. Fraccionamiento (código 124)\n12. Beneficio PRS Dscto (código 123)\n13. En el Banco de la Nación:\n14. Multas varias ATU (código 02475)\n15. Fraccionamiento (código 02476)\n16. Una vez realizado el pago, registra el pago de tu multa para actualizar tu estado rápidamente.​\n17. Si necesitas más información, puedes escribir a atencionalciudadano@atu.gob.pe o llamarnos a Aló ATU al (01) 203- 9000 opción 2. También puedes escribirnos al WhatsApp 938806628 ó 945838534, de lunes a viernes de 08:30 a. m. a 5:30 p. m.​\n18. Si tu consulta es sobre el registro de pagos, escribe a registrodepagos@atu.gob.pe.",
+    "embedding_text": "Trámite: Pagar multas por infracciones de transporte en la ATU. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Si necesitas pagar una multa por infracción a las reglas de transporte, o deseas acceder al Beneficio PRS puedes hacerlo a través de los canales que la Autoridad de Transporte Urbano para Lima y Callao (ATU) pone a .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: Mixto (En línea y Presencial), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Cuando ingreses al Sistema de Pagos en Línea, selecciona las tres rayas del menú y elige la opción que deseas cancelar (Multas, Beneficio PRS o Beneficio pronto pago), asimismo ​selecciona una o más casillas de las actas. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "8317459",
+    "hash_id": "atu_8317459",
+    "titulo_oficial": "Subsidio META Nacional al transporte de pasajeros y mercancías en el ámbito nacional, regional y provincial",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "S/ 4",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Personas Naturales y Empresas",
+    "descripcion": "Conozca cómo solicitar el beneficio en la plataforma digital de la ATU A partir del 16 de setiembre, las empresas del servicio público de transporte terrestre regular de personas y del servicio de transporte público ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "1. Regístrate en la plataforma",
+      "* Ingresa al enlace: https://soluciones.atu.gob.pe/subsidio_transportista_du007/login",
+      "* Crea tu usuario con el RUC de la empresa, que será validado con SUNAT",
+      "* Se enviará un código de acceso al correo electrónico registrado.",
+      "2. Verificación de datos bancarios, autorización y flota vehicular",
+      "* En la sección de “Validación” podrás verificar los datos de la empresa de transporte.",
+      "* Registra tu cuenta bancaria para los abonos colocando el Código de Cuenta Interbancaria (CCI) y adjuntando un comprobante donde se vea el CCI. En caso reciba los abonos a través de ventanilla del Banco de la Nación, también podrá ingresar una Orden de Pago Electrónico (OPE).",
+      "* La plataforma le mostrará si cuenta con autorizaciones vigentes (otorgadas por el MTC, gobiernos regionales o municipalidades provinciales).",
+      "* También se visualizará la lista de vehículos habilitados. Si las unidades vehiculares no tienen asignada una categoría, complete esta información con los datos de la Tarjeta de Propiedad.",
+      "* Esta información es proporcionada a la ATU por las entidades competentes.",
+      "3. Registra tus Comprobantes de Pago Electrónicos (CPE)",
+      "* En la sección “Comprobantes” puedes ingresar en la opción “Surtido en establecimiento” tus comprobantes de compra de diésel B5 o diésel B20 de uso vehicular, que correspondan al plazo habilitado",
+      "* Cada Comprobante de Pago Electrónico (CPE) puede estar asociado a una o varias placas vehiculares, se pueden agregar de forma individual o mediante la carga masiva.",
+      "* Para cada CPE, se deben llenar todos los campos, tales como RUC del grifo, serie, número, monto total de la compra, fecha de emisión, la placa del vehículo al que corresponde el consumo (se proporciona una plantilla para facilitar el llenado), entre otros. Esta información se valida con SUNAT y Osinergmin.",
+      "* Si eres consumidor directo (inscrito en Osinergmin), ingresa a la opción 2 de “Flujo B”, donde deberás registrar las compras a granel y asociarlas a la relación de placas habilitadas.",
+      "4. Revisa, declara y envía tu solicitud",
+      "* En la opción “Declaración Jurada” podrás confirmar que toda la información sea correcta y marcar la casilla de aprobación de la declaración jurada.",
+      "* Haz clic en “Enviar declaración jurada” y se le asignará un número de expediente administrativo con un correo electrónico de confirmación.",
+      "Cabe precisar que, después de enviar tu solicitud, tendrás 5 días hábiles para realizar cambios (corregir CPE, actualizar cuenta bancaria, etc.). Pasado ese plazo, el expediente quedará bloqueado y pasará a revisión de la ATU.",
+      "Canales de atención",
+      "Para facilitar la implementación de este subsidio económico, la Autoridad de Transporte Urbano para Lima y Callao (ATU) también ha habilitado los siguientes números de contacto:",
+      "Para consultas sobre la plataforma, se han establecido los siguientes canales de atención:",
+      "Correo: subsidio.sistema@atu.gob.pe",
+      "WhatsApp: +51 986 747 178 / +51 938 806 601"
+    ],
+    "url": "https://www.gob.pe/116886-subsidio-meta-nacional-al-transporte-de-pasajeros-y-mercancias-en-el-ambito-nacional-regional-y-provincial",
+    "action_url": "https://soluciones.atu.gob.pe/subsidio_transportista_du007/login",
+    "raw_content": "# Trámite: Subsidio META Nacional al transporte de pasajeros y mercancías en el ámbito nacional, regional y provincial\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** S/ 4\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Personas Naturales y Empresas\n\n## Resumen del Trámite\nConozca cómo solicitar el beneficio en la plataforma digital de la ATU A partir del 16 de setiembre, las empresas del servicio público de transporte terrestre regular de personas y del servicio de transporte público ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. 1. Regístrate en la plataforma\n2. * Ingresa al enlace: https://soluciones.atu.gob.pe/subsidio_transportista_du007/login\n3. * Crea tu usuario con el RUC de la empresa, que será validado con SUNAT\n4. * Se enviará un código de acceso al correo electrónico registrado.\n5. 2. Verificación de datos bancarios, autorización y flota vehicular\n6. * En la sección de “Validación” podrás verificar los datos de la empresa de transporte.\n7. * Registra tu cuenta bancaria para los abonos colocando el Código de Cuenta Interbancaria (CCI) y adjuntando un comprobante donde se vea el CCI. En caso reciba los abonos a través de ventanilla del Banco de la Nación, también podrá ingresar una Orden de Pago Electrónico (OPE).\n8. * La plataforma le mostrará si cuenta con autorizaciones vigentes (otorgadas por el MTC, gobiernos regionales o municipalidades provinciales).\n9. * También se visualizará la lista de vehículos habilitados. Si las unidades vehiculares no tienen asignada una categoría, complete esta información con los datos de la Tarjeta de Propiedad.\n10. * Esta información es proporcionada a la ATU por las entidades competentes.\n11. 3. Registra tus Comprobantes de Pago Electrónicos (CPE)\n12. * En la sección “Comprobantes” puedes ingresar en la opción “Surtido en establecimiento” tus comprobantes de compra de diésel B5 o diésel B20 de uso vehicular, que correspondan al plazo habilitado\n13. * Cada Comprobante de Pago Electrónico (CPE) puede estar asociado a una o varias placas vehiculares, se pueden agregar de forma individual o mediante la carga masiva.\n14. * Para cada CPE, se deben llenar todos los campos, tales como RUC del grifo, serie, número, monto total de la compra, fecha de emisión, la placa del vehículo al que corresponde el consumo (se proporciona una plantilla para facilitar el llenado), entre otros. Esta información se valida con SUNAT y Osinergmin.\n15. * Si eres consumidor directo (inscrito en Osinergmin), ingresa a la opción 2 de “Flujo B”, donde deberás registrar las compras a granel y asociarlas a la relación de placas habilitadas.\n16. 4. Revisa, declara y envía tu solicitud\n17. * En la opción “Declaración Jurada” podrás confirmar que toda la información sea correcta y marcar la casilla de aprobación de la declaración jurada.\n18. * Haz clic en “Enviar declaración jurada” y se le asignará un número de expediente administrativo con un correo electrónico de confirmación.\n19. Cabe precisar que, después de enviar tu solicitud, tendrás 5 días hábiles para realizar cambios (corregir CPE, actualizar cuenta bancaria, etc.). Pasado ese plazo, el expediente quedará bloqueado y pasará a revisión de la ATU.\n20. Canales de atención\n21. Para facilitar la implementación de este subsidio económico, la Autoridad de Transporte Urbano para Lima y Callao (ATU) también ha habilitado los siguientes números de contacto:\n22. Para consultas sobre la plataforma, se han establecido los siguientes canales de atención:\n23. Correo: subsidio.sistema@atu.gob.pe\n24. WhatsApp: +51 986 747 178 / +51 938 806 601",
+    "embedding_text": "Trámite: Subsidio META Nacional al transporte de pasajeros y mercancías en el ámbito nacional, regional y provincial. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Conozca cómo solicitar el beneficio en la plataforma digital de la ATU A partir del 16 de setiembre, las empresas del servicio público de transporte terrestre regular de personas y del servicio de transporte público .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo S/ 4. Dirigido a Personas Naturales y Empresas. Pasos: 1. Regístrate en la plataforma; * Ingresa al enlace: https://soluciones.atu.gob.pe/subsidio_transportista_du007/login; * Crea tu usuario con el RUC de la empresa, que será validado con SUNAT. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "1989711",
+    "hash_id": "atu_1989711",
+    "titulo_oficial": "Obtener usuario en la Plataforma de trámites de la ATU",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Personas Naturales y Empresas",
+    "descripcion": "Si como persona natural o jurídica necesitas realizar trámites en línea ante la Autoridad de Transporte Urbano para Lima y Callao (ATU) , debes primero obtener tu usuario en la Plataforma de Trámites Virtuales de ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Cuando ingreses, selecciona el tipo de persona (natural o jurídica) y documento. Para persona natural, selecciona entre DNI, carnet de extranjería, permiso temporal de permanencia o carnet de solicitud de refugio; y, para persona jurídica, RUC. En el caso del DNI, considera el dígito verificador.",
+      "El sistema validará tus datos y te solicitará un número de teléfono y tu correo electrónico. Da clic en “Registrar” y recibirás en tu correo un código de validación para que confirmes tus datos y continues con el registro de tu cuenta de usuario.",
+      "Vuelve a la plataforma, digita el código y da clic en “Verificar”. Recibirás en tu bandeja de entrada los datos de acceso para que puedas hacer tus trámites en línea ante la ATU.",
+      "Obtén tu usuario"
+    ],
+    "url": "https://www.gob.pe/15841-obtener-usuario-en-la-plataforma-de-tramites-de-la-atu",
+    "action_url": "http://sistemas.atu.gob.pe/plataformavirtual/Login/Register",
+    "raw_content": "# Trámite: Obtener usuario en la Plataforma de trámites de la ATU\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Personas Naturales y Empresas\n\n## Resumen del Trámite\nSi como persona natural o jurídica necesitas realizar trámites en línea ante la Autoridad de Transporte Urbano para Lima y Callao (ATU) , debes primero obtener tu usuario en la Plataforma de Trámites Virtuales de ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Cuando ingreses, selecciona el tipo de persona (natural o jurídica) y documento. Para persona natural, selecciona entre DNI, carnet de extranjería, permiso temporal de permanencia o carnet de solicitud de refugio; y, para persona jurídica, RUC. En el caso del DNI, considera el dígito verificador.\n2. El sistema validará tus datos y te solicitará un número de teléfono y tu correo electrónico. Da clic en “Registrar” y recibirás en tu correo un código de validación para que confirmes tus datos y continues con el registro de tu cuenta de usuario.\n3. Vuelve a la plataforma, digita el código y da clic en “Verificar”. Recibirás en tu bandeja de entrada los datos de acceso para que puedas hacer tus trámites en línea ante la ATU.\n4. Obtén tu usuario",
+    "embedding_text": "Trámite: Obtener usuario en la Plataforma de trámites de la ATU. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Si como persona natural o jurídica necesitas realizar trámites en línea ante la Autoridad de Transporte Urbano para Lima y Callao (ATU) , debes primero obtener tu usuario en la Plataforma de Trámites Virtuales de .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Personas Naturales y Empresas. Pasos: Cuando ingreses, selecciona el tipo de persona (natural o jurídica) y documento. Para persona natural, selecciona entre DNI, carnet de extranjería, permiso temporal de permanencia o carnet de solicitud de refugio; y, par. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "1988511",
+    "hash_id": "atu_1988511",
+    "titulo_oficial": "Consultar operadores de transporte urbano habilitados por la ATU",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Si necesitas consultar qué personas naturales están habilitadas como operadores de transporte, conductores o cobradores , puedes hacerlo en este servicio de la Autoridad del Transporte Público para Lima y Callao (A ...",
+    "requisitos": [
+      "Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda)."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Puedes hacer la consulta con el número de documento de la persona natural, ya sea DNI, carnet de extranjería, permiso temporal de permanencia o carnet de solicitud de refugio.",
+      "El sistema te indicará el nombre del titular de la autorización, su condición, modalidad del servicio, así como su fecha de vencimiento.",
+      "Consulta por un operador"
+    ],
+    "url": "https://www.gob.pe/15924-consultar-operadores-de-transporte-urbano-habilitados-por-la-atu",
+    "action_url": "https://sistemas.atu.gob.pe/ConsultaCredencial/",
+    "raw_content": "# Trámite: Consultar operadores de transporte urbano habilitados por la ATU\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nSi necesitas consultar qué personas naturales están habilitadas como operadores de transporte, conductores o cobradores , puedes hacerlo en este servicio de la Autoridad del Transporte Público para Lima y Callao (A ...\n\n## Requisitos Obligatorios\n* Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda).\n\n## Pasos para realizar el trámite\n1. Puedes hacer la consulta con el número de documento de la persona natural, ya sea DNI, carnet de extranjería, permiso temporal de permanencia o carnet de solicitud de refugio.\n2. El sistema te indicará el nombre del titular de la autorización, su condición, modalidad del servicio, así como su fecha de vencimiento.\n3. Consulta por un operador",
+    "embedding_text": "Trámite: Consultar operadores de transporte urbano habilitados por la ATU. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Si necesitas consultar qué personas naturales están habilitadas como operadores de transporte, conductores o cobradores , puedes hacerlo en este servicio de la Autoridad del Transporte Público para Lima y Callao (A .... Requisitos: Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda).. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Puedes hacer la consulta con el número de documento de la persona natural, ya sea DNI, carnet de extranjería, permiso temporal de permanencia o carnet de solicitud de refugio.; El sistema te indicará el nombre del titula. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "2081987",
+    "hash_id": "atu_2081987",
+    "titulo_oficial": "Programa de Regularización de Sanciones (PRS): ¡Regulariza tu situación hoy!",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "La Autoridad de Transporte Urbano para Lima y Callao (ATU) pone a disposición de los operadores formales de transporte terrestre de personas el Programa de Regularización de Sanciones (PRS). Este beneficio permite ...",
+    "requisitos": [
+      "¿Quiénes pueden acogerse?",
+      "Si eres operador formal, puedes solicitar el PRS si te encuentras en alguna de las siguientes situaciones:",
+      "En trámite: Procedimientos administrativos sancionadores en curso.",
+      "Sanciones firmes: Resoluciones que ya agotaron la vía administrativa.",
+      "En impugnación o coactiva: Sanciones impugnadas ante el Poder Judicial (proceso contencioso-administrativo) o en etapa de ejecución coactiva.",
+      "Fiscalización de gabinete: Actas de fiscalización o resoluciones de inicio notificadas por infracciones a la normativa de la materia que haya sido detectada mediante fiscalización de gabinete.",
+      "Al acogerte al PRS podrás acceder a descuentos extraordinarios sobre el monto original de la multa, de acuerdo con la oportunidad y condiciones establecidas en la norma:",
+      "Hasta 90 % de descuento: Infracciones calificadas como “muy graves”.",
+      "Hasta 92 % de descuento: Infracciones calificadas como “graves”.",
+      "Hasta 95 % de descuento: Infracciones calificadas como “leves”.",
+      "Estos beneficios permiten:",
+      "Facilitar el cumplimiento de tus obligaciones administrativas.",
+      "Regularizar tu situación y operar sin deudas pendientes.",
+      "Evitar la aplicación de medidas cautelares en procedimientos de ejecución coactiva.",
+      "¿Qué faltas se encuentran excluidas del PRS?",
+      "Son las faltas inmersas en informalidad como (N01, N02, RE1, TR1, R01, R02, T.1, T.1-A, TX01, S01, S02, TU.1, TT.1, TE.1 y E1)."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Consulta y Paga en pasarela de pagos:",
+      "Ingresa a la plataforma: Consulta en nuestra pasarela de pagos: pasarela.atu.gob.pe.",
+      "Selecciona el trámite: Elige la opción “Consulta y pago del Programa de Regulación de Sanciones – PRS” y sigue las instrucciones del sistema.",
+      "Nota: Recuerda que también puedes cancelar en el Banco Scotiabank (Código 123) Ventanilla o APP del Banco.",
+      "Presenta la solicitud de Acogimiento al Programa de Regularización de Sanciones, adjuntando el pago realizado:",
+      "Descarga el formulario: Obtén el FORMULARIO PRS.pdf aquí.",
+      "Nota: La presente información se publica con fines de difusión y orientación al administrado, respecto de los supuestos vinculados al Procedimiento Administrativo Sancionador y al Procedimiento de Ejecución Coactiva, conforme a la normativa vigente."
+    ],
+    "url": "https://www.gob.pe/16818-programa-de-regularizacion-de-sanciones-prs-regulariza-tu-situacion-hoy",
+    "action_url": "https://www.gob.pe/16818-programa-de-regularizacion-de-sanciones-prs-regulariza-tu-situacion-hoy",
+    "raw_content": "# Trámite: Programa de Regularización de Sanciones (PRS): ¡Regulariza tu situación hoy!\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nLa Autoridad de Transporte Urbano para Lima y Callao (ATU) pone a disposición de los operadores formales de transporte terrestre de personas el Programa de Regularización de Sanciones (PRS). Este beneficio permite ...\n\n## Requisitos Obligatorios\n* ¿Quiénes pueden acogerse?\n* Si eres operador formal, puedes solicitar el PRS si te encuentras en alguna de las siguientes situaciones:\n* En trámite: Procedimientos administrativos sancionadores en curso.\n* Sanciones firmes: Resoluciones que ya agotaron la vía administrativa.\n* En impugnación o coactiva: Sanciones impugnadas ante el Poder Judicial (proceso contencioso-administrativo) o en etapa de ejecución coactiva.\n* Fiscalización de gabinete: Actas de fiscalización o resoluciones de inicio notificadas por infracciones a la normativa de la materia que haya sido detectada mediante fiscalización de gabinete.\n* Al acogerte al PRS podrás acceder a descuentos extraordinarios sobre el monto original de la multa, de acuerdo con la oportunidad y condiciones establecidas en la norma:\n* Hasta 90 % de descuento: Infracciones calificadas como “muy graves”.\n* Hasta 92 % de descuento: Infracciones calificadas como “graves”.\n* Hasta 95 % de descuento: Infracciones calificadas como “leves”.\n* Estos beneficios permiten:\n* Facilitar el cumplimiento de tus obligaciones administrativas.\n* Regularizar tu situación y operar sin deudas pendientes.\n* Evitar la aplicación de medidas cautelares en procedimientos de ejecución coactiva.\n* ¿Qué faltas se encuentran excluidas del PRS?\n* Son las faltas inmersas en informalidad como (N01, N02, RE1, TR1, R01, R02, T.1, T.1-A, TX01, S01, S02, TU.1, TT.1, TE.1 y E1).\n\n## Pasos para realizar el trámite\n1. Consulta y Paga en pasarela de pagos:\n2. Ingresa a la plataforma: Consulta en nuestra pasarela de pagos: pasarela.atu.gob.pe.\n3. Selecciona el trámite: Elige la opción “Consulta y pago del Programa de Regulación de Sanciones – PRS” y sigue las instrucciones del sistema.\n4. Nota: Recuerda que también puedes cancelar en el Banco Scotiabank (Código 123) Ventanilla o APP del Banco.\n5. Presenta la solicitud de Acogimiento al Programa de Regularización de Sanciones, adjuntando el pago realizado:\n6. Descarga el formulario: Obtén el FORMULARIO PRS.pdf aquí.\n7. Nota: La presente información se publica con fines de difusión y orientación al administrado, respecto de los supuestos vinculados al Procedimiento Administrativo Sancionador y al Procedimiento de Ejecución Coactiva, conforme a la normativa vigente.",
+    "embedding_text": "Trámite: Programa de Regularización de Sanciones (PRS): ¡Regulariza tu situación hoy!. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: La Autoridad de Transporte Urbano para Lima y Callao (ATU) pone a disposición de los operadores formales de transporte terrestre de personas el Programa de Regularización de Sanciones (PRS). Este beneficio permite .... Requisitos: ¿Quiénes pueden acogerse?; Si eres operador formal, puedes solicitar el PRS si te encuentras en alguna de las siguientes situaciones:; En trámite: Procedimientos administrativos sancionadores en curso.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Consulta y Paga en pasarela de pagos:; Ingresa a la plataforma: Consulta en nuestra pasarela de pagos: pasarela.atu.gob.pe.; Selecciona el trámite: Elige la opción “Consulta y pago del Programa de Regulación de Sanciones. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "1272700",
+    "hash_id": "atu_1272700",
+    "titulo_oficial": "Registrar pago de multas ante la ATU",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Si tienes una multa de transporte e hiciste el pago correspondiente, puedes registrarlo en la plataforma de Registro de Pago de Multas de la Autoridad del Transporte Urbano para Lima y Callao para que esta instituc ...",
+    "requisitos": [
+      "Comprobante de pago de la multa."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Deberás adjuntar el comprobante de pago en formato jpg o pdf, con un peso máximo 5MB.",
+      "Al finalizar el registro, recibirás un correo electrónico de constancia. El proceso continuará con la revisión de los documentos por parte de un especialista de la ATU, quien te informará los resultados al correo electrónico que declaraste."
+    ],
+    "url": "https://www.gob.pe/12477-registrar-pago-de-multas-ante-la-atu",
+    "action_url": "https://soluciones.atu.gob.pe/sispamul/",
+    "raw_content": "# Trámite: Registrar pago de multas ante la ATU\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nSi tienes una multa de transporte e hiciste el pago correspondiente, puedes registrarlo en la plataforma de Registro de Pago de Multas de la Autoridad del Transporte Urbano para Lima y Callao para que esta instituc ...\n\n## Requisitos Obligatorios\n* Comprobante de pago de la multa.\n\n## Pasos para realizar el trámite\n1. Deberás adjuntar el comprobante de pago en formato jpg o pdf, con un peso máximo 5MB.\n2. Al finalizar el registro, recibirás un correo electrónico de constancia. El proceso continuará con la revisión de los documentos por parte de un especialista de la ATU, quien te informará los resultados al correo electrónico que declaraste.",
+    "embedding_text": "Trámite: Registrar pago de multas ante la ATU. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Si tienes una multa de transporte e hiciste el pago correspondiente, puedes registrarlo en la plataforma de Registro de Pago de Multas de la Autoridad del Transporte Urbano para Lima y Callao para que esta instituc .... Requisitos: Comprobante de pago de la multa.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Deberás adjuntar el comprobante de pago en formato jpg o pdf, con un peso máximo 5MB.; Al finalizar el registro, recibirás un correo electrónico de constancia. El proceso continuará con la revisión de los documentos por . Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "2603971",
+    "hash_id": "atu_2603971",
+    "titulo_oficial": "Consultar la autorización de circulación de unidades de transporte público en Lima y Callao",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Si necesitas verificar que la unidad de transporte público que utilizas se encuentra autorizada por la Autoridad de Transporte Urbano para Lima y Callao (ATU) y cumple con la normativa vigente para circular en Lim ...",
+    "requisitos": [
+      "Placa del vehículo."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresa la placa del vehículo (no es necesario incluir el guion, ni distinguir entre letras mayúsculas y minúsculas), el código de verificación de la página web y haz clic en el botón \"buscar\".",
+      "Consulta autorización de la unidad"
+    ],
+    "url": "https://www.gob.pe/23352-consultar-la-autorizacion-de-circulacion-de-unidades-de-transporte-publico-en-lima-y-callao",
+    "action_url": "https://sistemas.atu.gob.pe/ConsultaVehiculo",
+    "raw_content": "# Trámite: Consultar la autorización de circulación de unidades de transporte público en Lima y Callao\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nSi necesitas verificar que la unidad de transporte público que utilizas se encuentra autorizada por la Autoridad de Transporte Urbano para Lima y Callao (ATU) y cumple con la normativa vigente para circular en Lim ...\n\n## Requisitos Obligatorios\n* Placa del vehículo.\n\n## Pasos para realizar el trámite\n1. Ingresa la placa del vehículo (no es necesario incluir el guion, ni distinguir entre letras mayúsculas y minúsculas), el código de verificación de la página web y haz clic en el botón \"buscar\".\n2. Consulta autorización de la unidad",
+    "embedding_text": "Trámite: Consultar la autorización de circulación de unidades de transporte público en Lima y Callao. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Si necesitas verificar que la unidad de transporte público que utilizas se encuentra autorizada por la Autoridad de Transporte Urbano para Lima y Callao (ATU) y cumple con la normativa vigente para circular en Lim .... Requisitos: Placa del vehículo.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresa la placa del vehículo (no es necesario incluir el guion, ni distinguir entre letras mayúsculas y minúsculas), el código de verificación de la página web y haz clic en el botón \"buscar\".; Consulta autorización de . Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "1268828",
+    "hash_id": "atu_1268828",
+    "titulo_oficial": "Solicitar devolución de licencias de conducir retenidas por la ATU",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Si tu licencia de conducir fue retenida durante las acciones de fiscalización que realiza la Autoridad del Trasporte Urbano de Lima y Callao (ATU) , en cumplimiento de sus funciones para la prevención de la COVID-1 ...",
+    "requisitos": [
+      "Contar con los datos del acta de fiscalización: número de acta, tipo de falta y fecha de infracción."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Deberás identificarte con tu número de documento (DNI, carnet de extranjería o permiso temporal de permanencia) y se te pedirá el código de validación del mismo. Luego de esto, coloca los datos del acta de fiscalización correspondiente.",
+      "Solicita devolución de licencia de conducir",
+      "Cuando hayas terminado, el sistema registrará tu solicitud y te enviará un correo electrónico con la confirmación del registro de la solicitud de devolución de licencia de conducir, así como la fecha y hora en que deberás ir a recoger la licencia a la Av. Argentina N° 2060, Callao."
+    ],
+    "url": "https://www.gob.pe/12449-solicitar-devolucion-de-licencias-de-conducir-retenidas-por-la-atu",
+    "action_url": "https://soluciones.atu.gob.pe/SIDELI/",
+    "raw_content": "# Trámite: Solicitar devolución de licencias de conducir retenidas por la ATU\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nSi tu licencia de conducir fue retenida durante las acciones de fiscalización que realiza la Autoridad del Trasporte Urbano de Lima y Callao (ATU) , en cumplimiento de sus funciones para la prevención de la COVID-1 ...\n\n## Requisitos Obligatorios\n* Contar con los datos del acta de fiscalización: número de acta, tipo de falta y fecha de infracción.\n\n## Pasos para realizar el trámite\n1. Deberás identificarte con tu número de documento (DNI, carnet de extranjería o permiso temporal de permanencia) y se te pedirá el código de validación del mismo. Luego de esto, coloca los datos del acta de fiscalización correspondiente.\n2. Solicita devolución de licencia de conducir\n3. Cuando hayas terminado, el sistema registrará tu solicitud y te enviará un correo electrónico con la confirmación del registro de la solicitud de devolución de licencia de conducir, así como la fecha y hora en que deberás ir a recoger la licencia a la Av. Argentina N° 2060, Callao.",
+    "embedding_text": "Trámite: Solicitar devolución de licencias de conducir retenidas por la ATU. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Si tu licencia de conducir fue retenida durante las acciones de fiscalización que realiza la Autoridad del Trasporte Urbano de Lima y Callao (ATU) , en cumplimiento de sus funciones para la prevención de la COVID-1 .... Requisitos: Contar con los datos del acta de fiscalización: número de acta, tipo de falta y fecha de infracción.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Deberás identificarte con tu número de documento (DNI, carnet de extranjería o permiso temporal de permanencia) y se te pedirá el código de validación del mismo. Luego de esto, coloca los datos del acta de fiscalización . Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "7820974",
+    "hash_id": "atu_7820974",
+    "titulo_oficial": "Sistemas de Prevención de La Corrupción",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "1. MODELO DE INTEGRIDAD 1.1. Programa de Integridad Programa de Integridad - 2022 Programa de Integridad - 2023 Programa de Integridad - 2024 Programa de Integridad - 2025 Programa de Integridad - 2026 ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [
+      "Normativa interna en materia de integridad: Código de ética",
+      "Normativa interna en materia de integridad: Directiva de denuncias - versión V01",
+      "Normativa interna en materia de integridad: Directiva de denuncias versión V02 -vigente",
+      "Normativa interna en materia de integridad: Directiva de Liberalidades",
+      "Normativa interna en materia de integridad: 2. SISTEMA DE GESTIÓN ANTISOBORNO",
+      "Normativa interna en materia de integridad: 2.1. Política Institucional Antisoborno de la ATU",
+      "Normativa interna en materia de integridad: Política Institucional versión V01",
+      "Normativa interna en materia de integridad: Política Institucional versión V02",
+      "Normativa interna en materia de integridad: Política Institucional versión V03-vigente",
+      "Normativa interna en materia de integridad: Versión audible AYMARA",
+      "Normativa interna en materia de integridad: Versión audible INGLÉS",
+      "Normativa interna en materia de integridad: Versión audible QUECHUA",
+      "Normativa interna en materia de integridad: Manual del Sistema de Gestión Antisoborno",
+      "Normativa interna en materia de integridad: Manual del SGAS versión V01",
+      "Normativa interna en materia de integridad: Manual del SGAS versión V02- vigente",
+      "Normativa interna en materia de integridad: 2.2. Certificación ISO 37001 – Gestión Antisoborno",
+      "Normativa interna en materia de integridad: Certificación ISO 2022",
+      "Normativa interna en materia de integridad: Certificación ISO 2023",
+      "Normativa interna en materia de integridad: Certificación ISO 2024",
+      "Normativa interna en materia de integridad: Certificación ISO 2025",
+      "Normativa interna en materia de integridad: 2.3. Alcance del SGAS",
+      "Normativa interna en materia de integridad: 2.4. Actas de revisión de SGAS",
+      "Normativa interna en materia de integridad: 3. SISTEMA DE CONTROL INTERNO",
+      "Normativa interna en materia de integridad: Entregables SCI de la ATU"
+    ],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de ATU.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/114475-sistemas-de-prevencion-de-la-corrupcion",
+    "action_url": "https://www.gob.pe/114475-sistemas-de-prevencion-de-la-corrupcion",
+    "raw_content": "# Trámite: Sistemas de Prevención de La Corrupción\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\n1. MODELO DE INTEGRIDAD 1.1. Programa de Integridad Programa de Integridad - 2022 Programa de Integridad - 2023 Programa de Integridad - 2024 Programa de Integridad - 2025 Programa de Integridad - 2026 ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Consideraciones y Notas Oficiales\n* Normativa interna en materia de integridad: Código de ética\n* Normativa interna en materia de integridad: Directiva de denuncias - versión V01\n* Normativa interna en materia de integridad: Directiva de denuncias versión V02 -vigente\n* Normativa interna en materia de integridad: Directiva de Liberalidades\n* Normativa interna en materia de integridad: 2. SISTEMA DE GESTIÓN ANTISOBORNO\n* Normativa interna en materia de integridad: 2.1. Política Institucional Antisoborno de la ATU\n* Normativa interna en materia de integridad: Política Institucional versión V01\n* Normativa interna en materia de integridad: Política Institucional versión V02\n* Normativa interna en materia de integridad: Política Institucional versión V03-vigente\n* Normativa interna en materia de integridad: Versión audible AYMARA\n* Normativa interna en materia de integridad: Versión audible INGLÉS\n* Normativa interna en materia de integridad: Versión audible QUECHUA\n* Normativa interna en materia de integridad: Manual del Sistema de Gestión Antisoborno\n* Normativa interna en materia de integridad: Manual del SGAS versión V01\n* Normativa interna en materia de integridad: Manual del SGAS versión V02- vigente\n* Normativa interna en materia de integridad: 2.2. Certificación ISO 37001 – Gestión Antisoborno\n* Normativa interna en materia de integridad: Certificación ISO 2022\n* Normativa interna en materia de integridad: Certificación ISO 2023\n* Normativa interna en materia de integridad: Certificación ISO 2024\n* Normativa interna en materia de integridad: Certificación ISO 2025\n* Normativa interna en materia de integridad: 2.3. Alcance del SGAS\n* Normativa interna en materia de integridad: 2.4. Actas de revisión de SGAS\n* Normativa interna en materia de integridad: 3. SISTEMA DE CONTROL INTERNO\n* Normativa interna en materia de integridad: Entregables SCI de la ATU\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de ATU.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Sistemas de Prevención de La Corrupción. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: 1. MODELO DE INTEGRIDAD 1.1. Programa de Integridad Programa de Integridad - 2022 Programa de Integridad - 2023 Programa de Integridad - 2024 Programa de Integridad - 2025 Programa de Integridad - 2026 .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de ATU.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: Normativa interna en materia de integridad: Código de ética. Normativa interna en materia de integridad: Directiva de denuncias - versión V01. Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "1988578",
+    "hash_id": "atu_1988578",
+    "titulo_oficial": "Consultar habilitación para el servicio de transporte de trabajadores en el régimen excepcional",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Empresas y Personas Jurídicas",
+    "descripcion": "Si necesitas conocer si una empresa tiene autorización para prestar servicios de transporte de trabajadores, públicos o privados, de acuerdo al régimen excepcional , puedes consultarlo en este servicio de la Autori ...",
+    "requisitos": [
+      "Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda)."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Puedes buscar con el número de RUC de la empresa o con el número de placa del vehículo.",
+      "Consulta habilitación"
+    ],
+    "url": "https://www.gob.pe/15926-consultar-habilitacion-para-el-servicio-de-transporte-de-trabajadores-en-el-regimen-excepcional",
+    "action_url": "https://soluciones.atu.gob.pe/consultaservicioespecial/login",
+    "raw_content": "# Trámite: Consultar habilitación para el servicio de transporte de trabajadores en el régimen excepcional\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Empresas y Personas Jurídicas\n\n## Resumen del Trámite\nSi necesitas conocer si una empresa tiene autorización para prestar servicios de transporte de trabajadores, públicos o privados, de acuerdo al régimen excepcional , puedes consultarlo en este servicio de la Autori ...\n\n## Requisitos Obligatorios\n* Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda).\n\n## Pasos para realizar el trámite\n1. Puedes buscar con el número de RUC de la empresa o con el número de placa del vehículo.\n2. Consulta habilitación",
+    "embedding_text": "Trámite: Consultar habilitación para el servicio de transporte de trabajadores en el régimen excepcional. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Si necesitas conocer si una empresa tiene autorización para prestar servicios de transporte de trabajadores, públicos o privados, de acuerdo al régimen excepcional , puedes consultarlo en este servicio de la Autori .... Requisitos: Ingresar el documento de consulta (DNI, RUC, Placa o Código según corresponda).. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Empresas y Personas Jurídicas. Pasos: Puedes buscar con el número de RUC de la empresa o con el número de placa del vehículo.; Consulta habilitación. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "2288783",
+    "hash_id": "atu_2288783",
+    "titulo_oficial": "Pagar por derecho de trámites TUPA en la ATU",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Si necesitas pagar por el derecho de algún trámite contenido en el Texto Único de Procedimientos Administrativos (TUPA) de la Autoridad de Transporte Urbano Para Lima y Callao (ATU) , puedes hacerlo a través de ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Al ingresar a la plataforma, selecciona el procedimiento que necesitas pagar. El sistema te listará los trámites específicos y el monto a cancelar. Haz clic en agregar y continúa con el proceso ingresando tus datos y los de tu tarjeta de débito o crédito.",
+      "Puedes hacer el pago a través de tu usuario registrado previamente o solo con tus datos personales.",
+      "Paga por tu trámite"
+    ],
+    "url": "https://www.gob.pe/20988-pagar-por-derecho-de-tramites-tupa-en-la-atu",
+    "action_url": "https://pasarela.atu.gob.pe/",
+    "raw_content": "# Trámite: Pagar por derecho de trámites TUPA en la ATU\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nSi necesitas pagar por el derecho de algún trámite contenido en el Texto Único de Procedimientos Administrativos (TUPA) de la Autoridad de Transporte Urbano Para Lima y Callao (ATU) , puedes hacerlo a través de ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Al ingresar a la plataforma, selecciona el procedimiento que necesitas pagar. El sistema te listará los trámites específicos y el monto a cancelar. Haz clic en agregar y continúa con el proceso ingresando tus datos y los de tu tarjeta de débito o crédito.\n2. Puedes hacer el pago a través de tu usuario registrado previamente o solo con tus datos personales.\n3. Paga por tu trámite",
+    "embedding_text": "Trámite: Pagar por derecho de trámites TUPA en la ATU. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Si necesitas pagar por el derecho de algún trámite contenido en el Texto Único de Procedimientos Administrativos (TUPA) de la Autoridad de Transporte Urbano Para Lima y Callao (ATU) , puedes hacerlo a través de .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Al ingresar a la plataforma, selecciona el procedimiento que necesitas pagar. El sistema te listará los trámites específicos y el monto a cancelar. Haz clic en agregar y continúa con el proceso ingresando tus datos y los. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "2299106",
+    "hash_id": "atu_2299106",
+    "titulo_oficial": "Solicitar acceso a la información pública",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Empresas y Personas Jurídicas",
+    "descripcion": "Puedes acceder a la información pública de la Autoridad de Transporte Urbano para Lima y Callao , según el principio de transparencia y el Texto Único Ordenado de la Ley N° 27806, Ley de Transparencia y Acceso a la ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [
+      "Información que afecte la intimidad personal y/o familiar de otras personas.",
+      "Información que involucre temas de inteligencia y/o seguridad nacional.",
+      "Información clasificada en el ámbito militar.",
+      "Información de negociaciones internacionales.",
+      "Información protegida por el secreto bancario, tributario, comercial, industrial, tecnológico y bursátil.",
+      "Investigaciones en curso de la Administración Pública que se hayan iniciado hace menos de 6 meses sin que se haya dictado una resolución final.",
+      "Información de asesores jurídicos o abogados que puedan revelar la estrategia de la Entidad Pública ante un proceso administrativo o judicial.",
+      "Información señalada por la Constitución o por una Ley aprobada por el Congreso de la República."
+    ],
+    "pasos": [
+      "Este trámite puede tener un costo según cómo quieras recibir tu información:",
+      "Copia simple formato A4 (blanco y negro, por unidad): S/ 0.10",
+      "Disco compacto (CD, unidad): S/ 1.00",
+      "Correo electrónico: gratis",
+      "Las solicitudes se considerarán presentadas en la mesa de partes de la ATU el mismo día hábil y hora* de ingreso del documento.",
+      "(*) Conforme a los alcances establecidos en la Ley N° 31465, Ley que modifica el numeral 117.1 del artículo 117 de la Ley del Procedimiento Administrativo General – Ley Nº 27444, la cual señala que el horario de atención es de veinticuatro (24) horas, los siete (7) días de la semana, se debe tener en consideración lo siguiente:",
+      "Los documentos que se ingresen desde las 00:00 horas hasta las 23:59 horas de un día hábil, se consideran presentados ese mismo día y hora; sin embargo, para contabilizar el plazo de los documentos ingresados los sábados, domingos, feriados, o cualquier otro día inhábil, se consideran presentados al primer día hábil siguiente.",
+      "Si tienes consultas adicionales, puedes formularlas de lunes a viernes, de 08:30 a.m. a 05:30 p.m. al teléfono (01) 224 2444 anexo 1393 o el correo electrónico: accesoalainformacion@atu.gob.pe"
+    ],
+    "url": "https://www.gob.pe/12444-autoridad-de-transporte-urbano-para-lima-y-callao-acceder-a-la-informacion-publica-de-la-atu",
+    "action_url": "https://soluciones.atu.gob.pe/saip_portal/",
+    "raw_content": "# Trámite: Solicitar acceso a la información pública\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Empresas y Personas Jurídicas\n\n## Resumen del Trámite\nPuedes acceder a la información pública de la Autoridad de Transporte Urbano para Lima y Callao , según el principio de transparencia y el Texto Único Ordenado de la Ley N° 27806, Ley de Transparencia y Acceso a la ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Consideraciones y Notas Oficiales\n* Información que afecte la intimidad personal y/o familiar de otras personas.\n* Información que involucre temas de inteligencia y/o seguridad nacional.\n* Información clasificada en el ámbito militar.\n* Información de negociaciones internacionales.\n* Información protegida por el secreto bancario, tributario, comercial, industrial, tecnológico y bursátil.\n* Investigaciones en curso de la Administración Pública que se hayan iniciado hace menos de 6 meses sin que se haya dictado una resolución final.\n* Información de asesores jurídicos o abogados que puedan revelar la estrategia de la Entidad Pública ante un proceso administrativo o judicial.\n* Información señalada por la Constitución o por una Ley aprobada por el Congreso de la República.\n\n## Pasos para realizar el trámite\n1. Este trámite puede tener un costo según cómo quieras recibir tu información:\n2. Copia simple formato A4 (blanco y negro, por unidad): S/ 0.10\n3. Disco compacto (CD, unidad): S/ 1.00\n4. Correo electrónico: gratis\n5. Las solicitudes se considerarán presentadas en la mesa de partes de la ATU el mismo día hábil y hora* de ingreso del documento.\n6. (*) Conforme a los alcances establecidos en la Ley N° 31465, Ley que modifica el numeral 117.1 del artículo 117 de la Ley del Procedimiento Administrativo General – Ley Nº 27444, la cual señala que el horario de atención es de veinticuatro (24) horas, los siete (7) días de la semana, se debe tener en consideración lo siguiente:\n7. Los documentos que se ingresen desde las 00:00 horas hasta las 23:59 horas de un día hábil, se consideran presentados ese mismo día y hora; sin embargo, para contabilizar el plazo de los documentos ingresados los sábados, domingos, feriados, o cualquier otro día inhábil, se consideran presentados al primer día hábil siguiente.\n8. Si tienes consultas adicionales, puedes formularlas de lunes a viernes, de 08:30 a.m. a 05:30 p.m. al teléfono (01) 224 2444 anexo 1393 o el correo electrónico: accesoalainformacion@atu.gob.pe",
+    "embedding_text": "Trámite: Solicitar acceso a la información pública. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Puedes acceder a la información pública de la Autoridad de Transporte Urbano para Lima y Callao , según el principio de transparencia y el Texto Único Ordenado de la Ley N° 27806, Ley de Transparencia y Acceso a la .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Empresas y Personas Jurídicas. Pasos: Este trámite puede tener un costo según cómo quieras recibir tu información:; Copia simple formato A4 (blanco y negro, por unidad): S/ 0.10; Disco compacto (CD, unidad): S/ 1.00. Consideraciones: Información que afecte la intimidad personal y/o familiar de otras personas.. Información que involucre temas de inteligencia y/o seguridad nacional.. Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "2288715",
+    "hash_id": "atu_2288715",
+    "titulo_oficial": "Crear usuario en la pasarela de pagos de la ATU",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Personas Naturales y Empresas",
+    "descripcion": "Si necesitas pagar por algún trámite a través de la pasarela de pagos de la Autoridad de Transporte Urbano para Lima y Callao (ATU) , primero debes obtener un usuario en este servicio.",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Cuando ingreses a la plataforma, selecciona el tipo de persona (natural o jurídica) y documento. Como persona natural, puedes colocar tu número de DNI, carnet de extranjería, permiso temporal de permanencia (PTP) o carnet de solicitud de refugio; y como persona jurídica, tu RUC.",
+      "El sistema validará tus datos y te solicitará un número de teléfono y tu correo electrónico. Da clic en “Registrar” y recibirás en tu correo un código de verificación para que confirmes tus datos y continúes con el registro de tu usuario.",
+      "Vuelve a la plataforma y, en la pantalla Verificar correo electrónico, digita el código y da clic en “Validar”. Recibirás en tu bandeja de entrada los datos de acceso para que puedas pagar en línea por tus trámites ante la ATU.",
+      "Crea tu usuario"
+    ],
+    "url": "https://www.gob.pe/21037-crear-usuario-en-la-pasarela-de-pagos-de-la-atu",
+    "action_url": "https://pasarela.atu.gob.pe/#",
+    "raw_content": "# Trámite: Crear usuario en la pasarela de pagos de la ATU\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Personas Naturales y Empresas\n\n## Resumen del Trámite\nSi necesitas pagar por algún trámite a través de la pasarela de pagos de la Autoridad de Transporte Urbano para Lima y Callao (ATU) , primero debes obtener un usuario en este servicio.\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Cuando ingreses a la plataforma, selecciona el tipo de persona (natural o jurídica) y documento. Como persona natural, puedes colocar tu número de DNI, carnet de extranjería, permiso temporal de permanencia (PTP) o carnet de solicitud de refugio; y como persona jurídica, tu RUC.\n2. El sistema validará tus datos y te solicitará un número de teléfono y tu correo electrónico. Da clic en “Registrar” y recibirás en tu correo un código de verificación para que confirmes tus datos y continúes con el registro de tu usuario.\n3. Vuelve a la plataforma y, en la pantalla Verificar correo electrónico, digita el código y da clic en “Validar”. Recibirás en tu bandeja de entrada los datos de acceso para que puedas pagar en línea por tus trámites ante la ATU.\n4. Crea tu usuario",
+    "embedding_text": "Trámite: Crear usuario en la pasarela de pagos de la ATU. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Si necesitas pagar por algún trámite a través de la pasarela de pagos de la Autoridad de Transporte Urbano para Lima y Callao (ATU) , primero debes obtener un usuario en este servicio.. Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Personas Naturales y Empresas. Pasos: Cuando ingreses a la plataforma, selecciona el tipo de persona (natural o jurídica) y documento. Como persona natural, puedes colocar tu número de DNI, carnet de extranjería, permiso temporal de permanencia (PTP) o carne. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "1284895",
+    "hash_id": "atu_1284895",
+    "titulo_oficial": "Presentar denuncias sobre posibles actos de corrupción en la ATU",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "Mixto (En línea y Presencial)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Si conoces de algún hecho de corrupción de parte de algún funcionario o trabajador de la Autoridad del Transporte Urbano para Lima y Callao , y tienes cómo sustentarlo, puedes presentar tu denuncia en la Plataforma ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Presencial",
+      "Visítanos en CALLE JOSÉ GALVEZ N° 550,Miraflores de lunes a viernes de 8:30 a. m. a 5:30 p. m. y pregunta por la Oficina de Integridad y Lucha contra la Corrupción.",
+      "Ingresa tu denuncia en el formulario de denuncias.",
+      "Llama al (511) 981546562 de lunes a viernes de 8:30 a. m. a 5:30 p. m y presenta tu denuncia ante la Oficina de Integridad y Lucha contra la Corrupción."
+    ],
+    "url": "https://www.gob.pe/12492-presentar-denuncias-sobre-posibles-actos-de-corrupcion-en-la-atu",
+    "action_url": "https://denuncias.servicios.gob.pe/?gobpe_id=3286",
+    "raw_content": "# Trámite: Presentar denuncias sobre posibles actos de corrupción en la ATU\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** Mixto (En línea y Presencial)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nSi conoces de algún hecho de corrupción de parte de algún funcionario o trabajador de la Autoridad del Transporte Urbano para Lima y Callao , y tienes cómo sustentarlo, puedes presentar tu denuncia en la Plataforma ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Presencial\n2. Visítanos en CALLE JOSÉ GALVEZ N° 550,Miraflores de lunes a viernes de 8:30 a. m. a 5:30 p. m. y pregunta por la Oficina de Integridad y Lucha contra la Corrupción.\n3. Ingresa tu denuncia en el formulario de denuncias.\n4. Llama al (511) 981546562 de lunes a viernes de 8:30 a. m. a 5:30 p. m y presenta tu denuncia ante la Oficina de Integridad y Lucha contra la Corrupción.",
+    "embedding_text": "Trámite: Presentar denuncias sobre posibles actos de corrupción en la ATU. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Si conoces de algún hecho de corrupción de parte de algún funcionario o trabajador de la Autoridad del Transporte Urbano para Lima y Callao , y tienes cómo sustentarlo, puedes presentar tu denuncia en la Plataforma .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: Mixto (En línea y Presencial), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Presencial; Visítanos en CALLE JOSÉ GALVEZ N° 550,Miraflores de lunes a viernes de 8:30 a. m. a 5:30 p. m. y pregunta por la Oficina de Integridad y Lucha contra la Corrupción.; Ingresa tu denuncia en el formulario de de. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "1964729",
+    "hash_id": "atu_1964729",
+    "titulo_oficial": "Consultar estado de trámite",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "Mixto (En línea y Presencial)",
+    "publico_objetivo": "Empresas y Personas Jurídicas",
+    "descripcion": "Si iniciaste un trámite en la mesa de partes de la Autoridad de Transporte Urbano para Lima y Callao (ATU ), puedes consultar online el estado de atención en que se encuentra tu expediente. Esta plataforma te perm ...",
+    "requisitos": [
+      "Número de expediente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Al ingresar a la plataforma, escribe el número de tu expediente y da clic en “Consultar”.",
+      "Consulta estado de tu trámite"
+    ],
+    "url": "https://www.gob.pe/15831-autoridad-de-transporte-urbano-para-lima-y-callao-consultar-estado-de-tramite-en-la-atu",
+    "action_url": "https://sgd.atu.gob.pe/portal-Web/consultaExterna/index.xhtml",
+    "raw_content": "# Trámite: Consultar estado de trámite\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** Mixto (En línea y Presencial)\n**Dirigido a:** Empresas y Personas Jurídicas\n\n## Resumen del Trámite\nSi iniciaste un trámite en la mesa de partes de la Autoridad de Transporte Urbano para Lima y Callao (ATU ), puedes consultar online el estado de atención en que se encuentra tu expediente. Esta plataforma te perm ...\n\n## Requisitos Obligatorios\n* Número de expediente.\n\n## Pasos para realizar el trámite\n1. Al ingresar a la plataforma, escribe el número de tu expediente y da clic en “Consultar”.\n2. Consulta estado de tu trámite",
+    "embedding_text": "Trámite: Consultar estado de trámite. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Si iniciaste un trámite en la mesa de partes de la Autoridad de Transporte Urbano para Lima y Callao (ATU ), puedes consultar online el estado de atención en que se encuentra tu expediente. Esta plataforma te perm .... Requisitos: Número de expediente.. Modalidad y Costo: Mixto (En línea y Presencial), costo Gratuito. Dirigido a Empresas y Personas Jurídicas. Pasos: Al ingresar a la plataforma, escribe el número de tu expediente y da clic en “Consultar”.; Consulta estado de tu trámite. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "1979145",
+    "hash_id": "atu_1979145",
+    "titulo_oficial": "Autorizar notificaciones electrónicas de la ATU",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Personas Naturales y Empresas",
+    "descripcion": "Si como ciudadano u operador de transporte inicias un trámite ante la Autoridad del Transporte Urbano de Lima y Callao (ATU) , debes autorizar a esta entidad, para que te notifique sobre los acciones administrativas ...",
+    "requisitos": [
+      "Cuenta de correo electrónico activa"
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Cuando ingreses al Registro de Autorización para Notificación Electrónica, indica el tipo de persona (natural o jurídica) y escribe tu número de documento. Puede ser tu DNI, carnet de extranjería, permiso temporal de permanencia o carnet de solicitud de refugio si eres persona natural; o RUC si eres persona jurídica.",
+      "El sistema validará tus datos y te solicitará información complementaria, como también el correo electrónico a donde serán enviadas las notificaciones. Da clic en “Guardar” y recibirás en tu correo, una copia del documento de autorización con información importante que debes leer.",
+      "Asegúrate que el buzón de tu correo no esté lleno y permita recibir los documentos que te notificarán, activa la opción de respuesta automática de recepción y tenla activa durante la tramitación del procedimiento administrativo.",
+      "Revisa continuamente tu cuenta de correo electrónico, incluyendo la bandeja de spam o el buzón de correo no deseado, porque el no tomar conocimiento oportuno de las notificaciones electrónicas enviadas será tu responsabilidad.",
+      "Autoriza las notificaciones"
+    ],
+    "url": "https://www.gob.pe/15922-autorizar-notificaciones-electronicas-de-la-atu",
+    "action_url": "https://soluciones.atu.gob.pe/AutorizacionCorreoRegistro/",
+    "raw_content": "# Trámite: Autorizar notificaciones electrónicas de la ATU\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Personas Naturales y Empresas\n\n## Resumen del Trámite\nSi como ciudadano u operador de transporte inicias un trámite ante la Autoridad del Transporte Urbano de Lima y Callao (ATU) , debes autorizar a esta entidad, para que te notifique sobre los acciones administrativas ...\n\n## Requisitos Obligatorios\n* Cuenta de correo electrónico activa\n\n## Pasos para realizar el trámite\n1. Cuando ingreses al Registro de Autorización para Notificación Electrónica, indica el tipo de persona (natural o jurídica) y escribe tu número de documento. Puede ser tu DNI, carnet de extranjería, permiso temporal de permanencia o carnet de solicitud de refugio si eres persona natural; o RUC si eres persona jurídica.\n2. El sistema validará tus datos y te solicitará información complementaria, como también el correo electrónico a donde serán enviadas las notificaciones. Da clic en “Guardar” y recibirás en tu correo, una copia del documento de autorización con información importante que debes leer.\n3. Asegúrate que el buzón de tu correo no esté lleno y permita recibir los documentos que te notificarán, activa la opción de respuesta automática de recepción y tenla activa durante la tramitación del procedimiento administrativo.\n4. Revisa continuamente tu cuenta de correo electrónico, incluyendo la bandeja de spam o el buzón de correo no deseado, porque el no tomar conocimiento oportuno de las notificaciones electrónicas enviadas será tu responsabilidad.\n5. Autoriza las notificaciones",
+    "embedding_text": "Trámite: Autorizar notificaciones electrónicas de la ATU. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Si como ciudadano u operador de transporte inicias un trámite ante la Autoridad del Transporte Urbano de Lima y Callao (ATU) , debes autorizar a esta entidad, para que te notifique sobre los acciones administrativas .... Requisitos: Cuenta de correo electrónico activa. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Personas Naturales y Empresas. Pasos: Cuando ingreses al Registro de Autorización para Notificación Electrónica, indica el tipo de persona (natural o jurídica) y escribe tu número de documento. Puede ser tu DNI, carnet de extranjería, permiso temporal de per. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "6042267",
+    "hash_id": "atu_6042267",
+    "titulo_oficial": "Revisar y participar de las licitaciones de la ATU",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Personas Naturales y Empresas",
+    "descripcion": "Si quieres revisar toda la información sobre el concurso de proyectos integrales para la entrega en concesión del Sistema de Recaudo Electrónico en los Corredores Complementarios del Sistema Integrado de Transporte ( ...",
+    "requisitos": [
+      "Si quieres participar como postor, agrega:",
+      "Número de RUC.",
+      "Denominación o Razón Social de la empresa a la que representas.",
+      "Dirección del domicilio legal de la empresa a la que representas."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Hazlo de forma digital:: Una vez que ingreses a la plataforma, visualizarás la información sobre los concursos de proyectos integrales activos.",
+      "Si deseas participar como postor, realiza el pago por derecho de participación en el concurso a la Cuenta Corriente en Moneda Extranjera N° 00-068-002514 (CCI N° 018-068-006068002514-79) del Banco de la Nación (SWIFT: BANCPEP), por un monto de US$ 1,000.00 , incluido IGV (neto de comisión y gastos de transferencia).",
+      "Una vez realizado el depósito, envía una copia del mismo al correo electrónico del concurso proy_recaudo_cc@atu.gob.pe, indicando la denominación o razón social, dirección y RUC (empresas nacionales), para la emisión de la respectiva constancia de pago.",
+      "En ese mismo correo o en un mensaje posterior, solicita el Formulario 1 y el Formulario 4 del Anexo N° 8 de las Bases del Concurso diligenciados. Una vez que los completes, envíalos con el fin de solicitar acceso a la Sala de Datos.",
+      "Revisa las licitaciones",
+      "Hazlo de forma digital:: Una vez que ingreses a la plataforma, visualizarás la información sobre los concursos de proyectos integrales activos."
+    ],
+    "url": "https://www.gob.pe/83302-revisar-y-participar-de-las-licitaciones-de-la-atu",
+    "action_url": "https://licitaciones.atu.gob.pe/info/home",
+    "raw_content": "# Trámite: Revisar y participar de las licitaciones de la ATU\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Personas Naturales y Empresas\n\n## Resumen del Trámite\nSi quieres revisar toda la información sobre el concurso de proyectos integrales para la entrega en concesión del Sistema de Recaudo Electrónico en los Corredores Complementarios del Sistema Integrado de Transporte ( ...\n\n## Requisitos Obligatorios\n* Si quieres participar como postor, agrega:\n* Número de RUC.\n* Denominación o Razón Social de la empresa a la que representas.\n* Dirección del domicilio legal de la empresa a la que representas.\n\n## Pasos para realizar el trámite\n1. Hazlo de forma digital:: Una vez que ingreses a la plataforma, visualizarás la información sobre los concursos de proyectos integrales activos.\n2. Si deseas participar como postor, realiza el pago por derecho de participación en el concurso a la Cuenta Corriente en Moneda Extranjera N° 00-068-002514 (CCI N° 018-068-006068002514-79) del Banco de la Nación (SWIFT: BANCPEP), por un monto de US$ 1,000.00 , incluido IGV (neto de comisión y gastos de transferencia).\n3. Una vez realizado el depósito, envía una copia del mismo al correo electrónico del concurso proy_recaudo_cc@atu.gob.pe, indicando la denominación o razón social, dirección y RUC (empresas nacionales), para la emisión de la respectiva constancia de pago.\n4. En ese mismo correo o en un mensaje posterior, solicita el Formulario 1 y el Formulario 4 del Anexo N° 8 de las Bases del Concurso diligenciados. Una vez que los completes, envíalos con el fin de solicitar acceso a la Sala de Datos.\n5. Revisa las licitaciones\n6. Hazlo de forma digital:: Una vez que ingreses a la plataforma, visualizarás la información sobre los concursos de proyectos integrales activos.",
+    "embedding_text": "Trámite: Revisar y participar de las licitaciones de la ATU. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Si quieres revisar toda la información sobre el concurso de proyectos integrales para la entrega en concesión del Sistema de Recaudo Electrónico en los Corredores Complementarios del Sistema Integrado de Transporte ( .... Requisitos: Si quieres participar como postor, agrega:; Número de RUC.; Denominación o Razón Social de la empresa a la que representas.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Personas Naturales y Empresas. Pasos: Hazlo de forma digital:: Una vez que ingreses a la plataforma, visualizarás la información sobre los concursos de proyectos integrales activos.; Si deseas participar como postor, realiza el pago por derecho de participac. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "7066139",
+    "hash_id": "atu_7066139",
+    "titulo_oficial": "Postular a Contrataciones Mediante Régimen Especial D.L. 1192",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "Si deseas participar en los procedimientos de contrataciones bajo el régimen especial del Decreto Legislativo N° 1192, debes presentar tu propuesta de manera digital a ATU .",
+    "requisitos": [
+      "Documentos solicitados en la postulación."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de ATU.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/105727-postular-a-contrataciones-mediante-regimen-especial-d-l-1192",
+    "action_url": "https://portal.atu.gob.pe/LocacionServicios/",
+    "raw_content": "# Trámite: Postular a Contrataciones Mediante Régimen Especial D.L. 1192\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nSi deseas participar en los procedimientos de contrataciones bajo el régimen especial del Decreto Legislativo N° 1192, debes presentar tu propuesta de manera digital a ATU .\n\n## Requisitos Obligatorios\n* Documentos solicitados en la postulación.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de ATU.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Postular a Contrataciones Mediante Régimen Especial D.L. 1192. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Si deseas participar en los procedimientos de contrataciones bajo el régimen especial del Decreto Legislativo N° 1192, debes presentar tu propuesta de manera digital a ATU .. Requisitos: Documentos solicitados en la postulación.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de ATU.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "2229167",
+    "hash_id": "atu_2229167",
+    "titulo_oficial": "Infracciones a lineamientos COVID-19 sobre transporte en Lima Metropolitana y el Callao",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Empresas y Personas Jurídicas",
+    "descripcion": "Como usuario u operador del servicio de transporte urbano en Lima Metropolitana y el Callao, debes conocer las leyes y normas que lo rigen. La Autoridad de Transporte Urbano para Lima y Callao (ATU) se fundamenta e ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de ATU.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/17420-infracciones-a-lineamientos-covid-19-sobre-transporte-en-lima-metropolitana-y-el-callao",
+    "action_url": "https://www.gob.pe/17420-infracciones-a-lineamientos-covid-19-sobre-transporte-en-lima-metropolitana-y-el-callao",
+    "raw_content": "# Trámite: Infracciones a lineamientos COVID-19 sobre transporte en Lima Metropolitana y el Callao\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Empresas y Personas Jurídicas\n\n## Resumen del Trámite\nComo usuario u operador del servicio de transporte urbano en Lima Metropolitana y el Callao, debes conocer las leyes y normas que lo rigen. La Autoridad de Transporte Urbano para Lima y Callao (ATU) se fundamenta e ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de ATU.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Infracciones a lineamientos COVID-19 sobre transporte en Lima Metropolitana y el Callao. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Como usuario u operador del servicio de transporte urbano en Lima Metropolitana y el Callao, debes conocer las leyes y normas que lo rigen. La Autoridad de Transporte Urbano para Lima y Callao (ATU) se fundamenta e .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Empresas y Personas Jurídicas. Pasos: Ingresar a la plataforma o portal oficial de ATU.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "1989647",
+    "hash_id": "atu_1989647",
+    "titulo_oficial": "Registrarme en el régimen excepcional de transporte de trabajadores en la ATU",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Personas Naturales y Empresas",
+    "descripcion": "Si como persona jurídica prestas el servicio de transporte turístico o de estudiantes en Lima y Callao y, debido a la situación de emergencia por el coronavirus, debiste dejar de hacerlo, puedes acogerte al régimen ...",
+    "requisitos": [
+      "Autorización vigente al 15 de marzo de 2020 para prestar el servicio de transporte regular de personas.",
+      "Estar habilitado en las categorías de vehículos M2 y M3 (vehículo que tiene más de ocho asientos)."
+    ],
+    "consideraciones": [],
+    "pasos": [
+      "Para acceder a la plataforma, digita tu número de RUC y da clic en “Ingresar”.",
+      "El sistema te listará los datos de la empresa, del representante legal y la placa de las unidades registradas. Deberás confirmarlos o modificarlos, activar el check de las declaraciones juradas y dar clic en “Guardar”.",
+      "Recibirás la confirmación de tu registro en tu correo electrónico de manera inmediata.",
+      "Regístrate en el régimen excepcional"
+    ],
+    "url": "https://www.gob.pe/15925-registrarme-en-el-regimen-excepcional-de-transporte-de-trabajadores-en-la-atu",
+    "action_url": "https://soluciones.atu.gob.pe/servicioespecial/login",
+    "raw_content": "# Trámite: Registrarme en el régimen excepcional de transporte de trabajadores en la ATU\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Personas Naturales y Empresas\n\n## Resumen del Trámite\nSi como persona jurídica prestas el servicio de transporte turístico o de estudiantes en Lima y Callao y, debido a la situación de emergencia por el coronavirus, debiste dejar de hacerlo, puedes acogerte al régimen ...\n\n## Requisitos Obligatorios\n* Autorización vigente al 15 de marzo de 2020 para prestar el servicio de transporte regular de personas.\n* Estar habilitado en las categorías de vehículos M2 y M3 (vehículo que tiene más de ocho asientos).\n\n## Pasos para realizar el trámite\n1. Para acceder a la plataforma, digita tu número de RUC y da clic en “Ingresar”.\n2. El sistema te listará los datos de la empresa, del representante legal y la placa de las unidades registradas. Deberás confirmarlos o modificarlos, activar el check de las declaraciones juradas y dar clic en “Guardar”.\n3. Recibirás la confirmación de tu registro en tu correo electrónico de manera inmediata.\n4. Regístrate en el régimen excepcional",
+    "embedding_text": "Trámite: Registrarme en el régimen excepcional de transporte de trabajadores en la ATU. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: Si como persona jurídica prestas el servicio de transporte turístico o de estudiantes en Lima y Callao y, debido a la situación de emergencia por el coronavirus, debiste dejar de hacerlo, puedes acogerte al régimen .... Requisitos: Autorización vigente al 15 de marzo de 2020 para prestar el servicio de transporte regular de personas.; Estar habilitado en las categorías de vehículos M2 y M3 (vehículo que tiene más de ocho asientos).. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Personas Naturales y Empresas. Pasos: Para acceder a la plataforma, digita tu número de RUC y da clic en “Ingresar”.; El sistema te listará los datos de la empresa, del representante legal y la placa de las unidades registradas. Deberás confirmarlos o modifi. Consideraciones: . Información oficial del Estado Peruano en AhorraTiempo.pe."
+  },
+  {
+    "id": "6031835",
+    "hash_id": "atu_6031835",
+    "titulo_oficial": "Entrega en concesión del Sistema de Recaudo Electrónico en los corredores complementarios del SIT de Lima y Callao",
+    "entidad": "ATU",
+    "entidad_nombre": "Autoridad de Transporte Urbano para Lima y Callao",
+    "category": "Transporte y Tránsito",
+    "costo": "Gratuito",
+    "modalidad": "En línea (Virtual)",
+    "publico_objetivo": "Ciudadanos y Personas Naturales",
+    "descripcion": "En esta página encontrarás toda la información sobre el concurso de proyectos integrales para la entrega en concesión del Sistema de Recaudo Electrónico en los Corredores Complementarios del Sistema Integrado de Tran ...",
+    "requisitos": [
+      "Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente."
+    ],
+    "consideraciones": [
+      "9 años",
+      "Reynaldo Alonso Valentín Bueno",
+      "(01)2242444, anexo 1533",
+      "proy_recaudo_cc@atu.gob.pe",
+      "Otorgar mediante concesión el diseño, la implementación, la operación y el mantenimiento del Sistema de Recaudo Electrónico (SRE) del Sistema de Corredores Complementarios (SCC)."
+    ],
+    "pasos": [
+      "Ingresar a la plataforma o portal oficial de ATU.",
+      "Completar el formulario con los datos solicitados.",
+      "Obtener la constancia, comprobante o resultado del trámite."
+    ],
+    "url": "https://www.gob.pe/82396-entrega-en-concesion-del-sistema-de-recaudo-electronico-en-los-corredores-complementarios-del-sit-de-lima-y-callao",
+    "action_url": "https://www.gob.pe/82396-entrega-en-concesion-del-sistema-de-recaudo-electronico-en-los-corredores-complementarios-del-sit-de-lima-y-callao",
+    "raw_content": "# Trámite: Entrega en concesión del Sistema de Recaudo Electrónico en los corredores complementarios del SIT de Lima y Callao\n**Entidad:** Autoridad de Transporte Urbano para Lima y Callao (ATU)\n**Categoría:** Transporte y Tránsito\n**Costo:** Gratuito\n**Modalidad:** En línea (Virtual)\n**Dirigido a:** Ciudadanos y Personas Naturales\n\n## Resumen del Trámite\nEn esta página encontrarás toda la información sobre el concurso de proyectos integrales para la entrega en concesión del Sistema de Recaudo Electrónico en los Corredores Complementarios del Sistema Integrado de Tran ...\n\n## Requisitos Obligatorios\n* Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.\n\n## Consideraciones y Notas Oficiales\n* 9 años\n* Reynaldo Alonso Valentín Bueno\n* (01)2242444, anexo 1533\n* proy_recaudo_cc@atu.gob.pe\n* Otorgar mediante concesión el diseño, la implementación, la operación y el mantenimiento del Sistema de Recaudo Electrónico (SRE) del Sistema de Corredores Complementarios (SCC).\n\n## Pasos para realizar el trámite\n1. Ingresar a la plataforma o portal oficial de ATU.\n2. Completar el formulario con los datos solicitados.\n3. Obtener la constancia, comprobante o resultado del trámite.",
+    "embedding_text": "Trámite: Entrega en concesión del Sistema de Recaudo Electrónico en los corredores complementarios del SIT de Lima y Callao. Entidad: ATU - Autoridad de Transporte Urbano para Lima y Callao. Categoría: Transporte y Tránsito. Para qué sirve: En esta página encontrarás toda la información sobre el concurso de proyectos integrales para la entrega en concesión del Sistema de Recaudo Electrónico en los Corredores Complementarios del Sistema Integrado de Tran .... Requisitos: Documento Nacional de Identidad (DNI) o documento de identidad oficial vigente.. Modalidad y Costo: En línea (Virtual), costo Gratuito. Dirigido a Ciudadanos y Personas Naturales. Pasos: Ingresar a la plataforma o portal oficial de ATU.; Completar el formulario con los datos solicitados.; Obtener la constancia, comprobante o resultado del trámite.. Consideraciones: 9 años. Reynaldo Alonso Valentín Bueno. Información oficial del Estado Peruano en AhorraTiempo.pe."
+  }
+]
