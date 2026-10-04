@@ -1747,7 +1747,7 @@ export function FrutilotaMascot({
             >
               <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
                 <SparkleRegular fontSize={13} />
-                <span>¿Cómo usar AhorraTiempo?</span>
+                <span>¿Cómo usar ahorratiempo?</span>
               </div>
               <ArrowRightRegular fontSize={11} />
             </button>
