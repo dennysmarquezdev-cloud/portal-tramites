@@ -1,31 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  SparkleRegular, 
   ArrowRightRegular, 
   ArrowLeftRegular, 
   DismissRegular, 
-  PinRegular, 
-  PinFilled,
-  MicRegular, 
-  CheckmarkRegular, 
-  SearchRegular,
-  GlobeRegular,
-  DocumentTextRegular,
-  CheckmarkCircleRegular,
-  ShieldCheckmarkRegular
+  CheckmarkRegular
 } from "@fluentui/react-icons";
-import { 
-  Compass, 
-  Move, 
-  Sparkles, 
-  CheckCircle2, 
-  ExternalLink, 
-  ShieldCheck, 
-  Layers,
-  ArrowRight,
-  Pin
-} from "lucide-react";
 import { haptic } from "../utils/haptics";
 import { sound } from "../utils/sound";
 import { getEntityLogo } from "../data/entityLogos";
@@ -37,6 +17,53 @@ interface OnboardingGuideModalProps {
   onOpenEntityReorder?: () => void;
 }
 
+// ── Icono 1 Único: Portal Cívico Universal (Conexión de Entidades) ──
+function UniqueCivicNexusIcon({ size = 24, color = "#10A37F" }: { size?: number; color?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="9.5" stroke={color} strokeWidth="1.5" strokeOpacity="0.4" />
+      <path d="M12 2.5C14.8 5.8 16.5 8.8 16.5 12C16.5 15.2 14.8 18.2 12 21.5C9.2 18.2 7.5 15.2 7.5 12C7.5 8.8 9.2 5.8 12 2.5Z" stroke={color} strokeWidth="1.5" />
+      <path d="M3.5 12H20.5" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M5.5 7.5H18.5" stroke={color} strokeWidth="1.2" strokeOpacity="0.6" strokeLinecap="round" />
+      <path d="M5.5 16.5H18.5" stroke={color} strokeWidth="1.2" strokeOpacity="0.6" strokeLinecap="round" />
+      <circle cx="12" cy="12" r="2.2" fill={color} />
+    </svg>
+  );
+}
+
+// ── Icono 2 Único: Módulos Reordenables (Mesa de Trabajo Dinámica) ──
+function UniqueModularDeckIcon({ size = 24, color = "#D97706" }: { size?: number; color?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="3.5" y="4" width="7" height="6.5" rx="2" stroke={color} strokeWidth="1.5" />
+      <rect x="13.5" y="4" width="7" height="6.5" rx="2" fill={color} fillOpacity="0.15" stroke={color} strokeWidth="1.5" />
+      <rect x="3.5" y="13.5" width="7" height="6.5" rx="2" fill={color} fillOpacity="0.15" stroke={color} strokeWidth="1.5" />
+      <rect x="13.5" y="13.5" width="7" height="6.5" rx="2" stroke={color} strokeWidth="1.5" />
+      <path d="M7 7.25H7.01M17 7.25H17.01M7 16.75H7.01M17 16.75H17.01" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M10.5 7.25L13.5 7.25" stroke={color} strokeWidth="1.2" strokeDasharray="1.5 1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+// ── Icono 3 Único: Constelación de Inteligencia Cívica (LOTA AI Spark) ──
+function UniqueAiConstellationIcon({ size = 24, color = "#6366F1" }: { size?: number; color?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path 
+        d="M12 2C12 7.2 16.2 11.4 21.4 11.4C16.2 11.4 12 15.6 12 20.8C12 15.6 7.8 11.4 2.6 11.4C7.8 11.4 12 7.2 12 2Z" 
+        fill={color} 
+        fillOpacity="0.15"
+        stroke={color} 
+        strokeWidth="1.5" 
+        strokeLinejoin="round" 
+      />
+      <circle cx="12" cy="11.4" r="1.8" fill={color} />
+      <circle cx="19" cy="5" r="1.2" fill={color} />
+      <circle cx="5" cy="18" r="1.2" fill={color} />
+    </svg>
+  );
+}
+
 export function OnboardingGuideModal({
   isOpen,
   onClose,
@@ -46,20 +73,29 @@ export function OnboardingGuideModal({
   const [currentStep, setCurrentStep] = useState(0);
   const isDarkMode = theme === "dark";
 
-  // Colores exactos de ChatGPT
+  // Colores refinados y desaturados estilo ChatGPT / Claude / Gemini
   const C = {
     bg: isDarkMode ? "#212121" : "#FFFFFF",
-    surface: isDarkMode ? "#2F2F2F" : "#F9F9F9",
-    surfaceCard: isDarkMode ? "#1E1E1E" : "#FFFFFF",
-    border: isDarkMode ? "rgba(255, 255, 255, 0.1)" : "#E5E5E5",
-    borderLight: isDarkMode ? "rgba(255, 255, 255, 0.06)" : "#F0F0F0",
+    surface: isDarkMode ? "#1B1B1B" : "#F9F9FB",
+    surfaceCard: isDarkMode ? "#282828" : "#FFFFFF",
+    border: isDarkMode ? "rgba(255, 255, 255, 0.09)" : "#E5E7EB",
+    borderSubtle: isDarkMode ? "rgba(255, 255, 255, 0.05)" : "#F0F2F5",
     textPrimary: isDarkMode ? "#ECECEC" : "#0D0D0D",
-    textSecondary: isDarkMode ? "#B4B4B4" : "#737373",
-    textMuted: isDarkMode ? "#8E8E8E" : "#A3A3A3",
-    accentGreen: "#10A37F",
-    accentBlue: isDarkMode ? "#38BDF8" : "#0284C7",
-    accentAmber: "#F59E0B",
-    accentPurple: isDarkMode ? "#A78BFA" : "#7C3AED"
+    textSecondary: isDarkMode ? "#A3A3A3" : "#6B7280",
+    textMuted: isDarkMode ? "#737373" : "#9CA3AF",
+    
+    // Tonos sobrios desaturados
+    sage: isDarkMode ? "#34D399" : "#059669",
+    sageBg: isDarkMode ? "rgba(16, 163, 127, 0.12)" : "#ECFDF5",
+    sageBorder: isDarkMode ? "rgba(16, 163, 127, 0.25)" : "#D1FAE5",
+
+    ochre: isDarkMode ? "#FBBF24" : "#D97706",
+    ochreBg: isDarkMode ? "rgba(217, 119, 6, 0.12)" : "#FFFBEB",
+    ochreBorder: isDarkMode ? "rgba(217, 119, 6, 0.25)" : "#FEF3C7",
+
+    iris: isDarkMode ? "#A5B4FC" : "#6366F1",
+    irisBg: isDarkMode ? "rgba(99, 102, 241, 0.12)" : "#EEF2FF",
+    irisBorder: isDarkMode ? "rgba(99, 102, 241, 0.25)" : "#E0E7FF"
   };
 
   // Reiniciar paso al abrir
@@ -69,7 +105,7 @@ export function OnboardingGuideModal({
     }
   }, [isOpen]);
 
-  // Manejo de teclado (Escape, Flechas)
+  // Manejo de teclado
   useEffect(() => {
     if (!isOpen) return;
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -118,45 +154,45 @@ export function OnboardingGuideModal({
   const Step1Illustration = (
     <div style={{
       background: C.surface,
-      borderRadius: 16,
+      borderRadius: 14,
       padding: "16px 14px",
       border: `1px solid ${C.border}`,
       display: "flex",
       flexDirection: "column",
       gap: 12
     }}>
-      {/* Banner de Acceso 100% Gratuito */}
+      {/* Banner de Acceso 100% Gratuito y Libre */}
       <div style={{
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        background: isDarkMode ? "rgba(16, 163, 127, 0.15)" : "#ECFDF5",
-        border: `1px solid ${isDarkMode ? "rgba(16, 163, 127, 0.3)" : "#A7F3D0"}`,
-        borderRadius: 10,
+        background: C.sageBg,
+        border: `1px solid ${C.sageBorder}`,
+        borderRadius: 8,
         padding: "8px 12px"
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <CheckCircle2 size={16} style={{ color: C.accentGreen }} />
-          <span style={{ fontSize: 12, fontWeight: 750, color: isDarkMode ? "#34D399" : "#065F46" }}>
-            Catálogo y Buscador 100% Gratuito y Libre
+          <span style={{ fontSize: 13, color: C.sage, fontWeight: 800 }}>✓</span>
+          <span style={{ fontSize: 12, fontWeight: 700, color: C.sage }}>
+            Catálogo oficial 100% gratuito y libre
           </span>
         </div>
-        <span style={{ fontSize: 11, fontWeight: 700, color: isDarkMode ? "#34D399" : "#047857" }}>
+        <span style={{ fontSize: 11, fontWeight: 650, color: C.sage }}>
           Sin cobros ni registros
         </span>
       </div>
 
-      {/* Grid de Entidades Oficiales con Logos Claros */}
+      {/* Grid de 4 Instituciones Principales */}
       <div style={{
         display: "grid",
         gridTemplateColumns: "repeat(4, 1fr)",
         gap: 8
       }}>
         {[
-          { acronym: "RENIEC", desc: "DNIe / Partidas", color: "#059669" },
-          { acronym: "SUNAT", desc: "RUC / Clave SOL", color: "#2563EB" },
-          { acronym: "MIGRACIONES", desc: "Pasaporte / Citas", color: "#0284C7" },
-          { acronym: "MTC", desc: "Brevete / Licencias", color: "#DC2626" }
+          { acronym: "RENIEC", desc: "DNIe y partidas" },
+          { acronym: "SUNAT", desc: "RUC y Clave SOL" },
+          { acronym: "MIGRACIONES", desc: "Pasaporte y citas" },
+          { acronym: "MTC", desc: "Brevete y licencias" }
         ].map((item, idx) => {
           const logoSrc = getEntityLogo(item.acronym);
           return (
@@ -166,21 +202,21 @@ export function OnboardingGuideModal({
                 background: C.surfaceCard,
                 border: `1px solid ${C.border}`,
                 borderRadius: 10,
-                padding: "10px 6px 8px",
+                padding: "9px 6px 8px",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 textAlign: "center",
                 gap: 4,
-                boxShadow: isDarkMode ? "0 2px 6px rgba(0,0,0,0.2)" : "0 1px 3px rgba(0,0,0,0.04)"
+                boxShadow: isDarkMode ? "0 2px 5px rgba(0,0,0,0.25)" : "0 1px 3px rgba(0,0,0,0.03)"
               }}
             >
               <div style={{
-                width: 52,
+                width: 54,
                 height: 32,
                 background: "#FFFFFF",
                 borderRadius: 6,
-                border: isDarkMode ? "1px solid rgba(255,255,255,0.12)" : "1px solid #E2E8F0",
+                border: isDarkMode ? "1px solid rgba(255,255,255,0.12)" : "1px solid #E5E7EB",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -194,7 +230,7 @@ export function OnboardingGuideModal({
                     style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain", imageRendering: "-webkit-optimize-contrast" }}
                   />
                 ) : (
-                  <span style={{ fontSize: 9.5, fontWeight: 800, color: item.color }}>{item.acronym}</span>
+                  <span style={{ fontSize: 10, fontWeight: 800, color: C.textPrimary }}>{item.acronym}</span>
                 )}
               </div>
               <span style={{ fontSize: 11, fontWeight: 750, color: C.textPrimary }}>
@@ -215,18 +251,18 @@ export function OnboardingGuideModal({
         lineHeight: 1.45,
         color: C.textSecondary
       }}>
-        En <strong>ahorratiempo.pe</strong> encuentras todas las entidades públicas centralizadas para consultar requisitos oficiales, costos en el Banco de la Nación y enlaces directos a las páginas web oficiales <strong>(.gob.pe)</strong> sin intermediarios.
+        En <strong>ahorratiempo.pe</strong> encuentras todas las entidades del Estado reunidas en un solo lugar. Puedes consultar gratis requisitos, costos de tasas oficiales y acceder a los enlaces directos de las sedes <strong>.gob.pe</strong>.
       </p>
     </div>
   );
 
   // ─────────────────────────────────────────────────────────────
-  // ── PASO 2: Organiza tu Mesa de Trabajo (Hold & Drag) ──
+  // ── PASO 2: Organiza tus Entidades a tu Medida ──
   // ─────────────────────────────────────────────────────────────
   const Step2Illustration = (
     <div style={{
       background: C.surface,
-      borderRadius: 16,
+      borderRadius: 14,
       padding: "16px 14px",
       border: `1px solid ${C.border}`,
       display: "flex",
@@ -239,88 +275,66 @@ export function OnboardingGuideModal({
         gridTemplateColumns: "1fr 1fr",
         gap: 8
       }}>
-        {/* Tarjeta 1: Fijada */}
+        {/* Tarjeta 1: Normal */}
         <div style={{
           background: C.surfaceCard,
-          border: `1px solid ${isDarkMode ? "rgba(245, 158, 11, 0.4)" : "#FDE68A"}`,
+          border: `1px solid ${C.border}`,
           borderRadius: 10,
           padding: "8px 10px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between"
         }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <span style={{ fontSize: 14 }}>🏛️</span>
-            <div>
-              <div style={{ fontSize: 12, fontWeight: 750, color: C.textPrimary }}>RENIEC</div>
-              <div style={{ fontSize: 10, color: C.textSecondary }}>Identidad & DNI</div>
-            </div>
+          <div>
+            <div style={{ fontSize: 12, fontWeight: 750, color: C.textPrimary }}>RENIEC</div>
+            <div style={{ fontSize: 10, color: C.textSecondary }}>Identidad y DNI</div>
           </div>
-          <span style={{
-            fontSize: 9.5,
-            fontWeight: 700,
-            color: C.accentAmber,
-            background: isDarkMode ? "rgba(245, 158, 11, 0.2)" : "#FEF3C7",
-            padding: "2px 6px",
-            borderRadius: 4
-          }}>
-            📌 Favorita
+          <span style={{ fontSize: 10, fontWeight: 700, color: C.textMuted, background: isDarkMode ? "rgba(255,255,255,0.06)" : "#F3F4F6", padding: "2px 6px", borderRadius: 4 }}>
+            Posición 1
           </span>
         </div>
 
         {/* Tarjeta 2: En movimiento sostenido */}
         <div style={{
-          background: isDarkMode ? "#1E293B" : "#EFF6FF",
-          border: `2px solid ${C.accentBlue}`,
+          background: C.ochreBg,
+          border: `1.5px solid ${C.ochreBorder}`,
           borderRadius: 10,
           padding: "8px 10px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           transform: "scale(1.02)",
-          boxShadow: isDarkMode ? "0 4px 14px rgba(0,0,0,0.5)" : "0 4px 12px rgba(2, 132, 199, 0.15)"
+          boxShadow: isDarkMode ? "0 4px 12px rgba(0,0,0,0.4)" : "0 3px 10px rgba(217, 119, 6, 0.12)"
         }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <span style={{ fontSize: 14 }}>💼</span>
-            <div>
-              <div style={{ fontSize: 12, fontWeight: 800, color: isDarkMode ? "#93C5FD" : "#1D4ED8" }}>SUNAT</div>
-              <div style={{ fontSize: 10, color: C.textSecondary }}>Tributos & RUC</div>
-            </div>
+          <div>
+            <div style={{ fontSize: 12, fontWeight: 800, color: C.ochre }}>SUNAT</div>
+            <div style={{ fontSize: 10, color: C.textSecondary }}>Tributos y RUC</div>
           </div>
           <span style={{
-            fontSize: 9.5,
-            fontWeight: 750,
-            color: "#FFFFFF",
-            background: C.accentBlue,
+            fontSize: 10,
+            fontWeight: 700,
+            color: C.ochre,
+            background: isDarkMode ? "rgba(217, 119, 6, 0.2)" : "#FEF3C7",
             padding: "2px 6px",
-            borderRadius: 4,
-            display: "flex",
-            alignItems: "center",
-            gap: 3
+            borderRadius: 4
           }}>
-            <Move size={10} /> Mover
+            Moviendo
           </span>
         </div>
       </div>
 
-      {/* 3 puntos clave explicativos */}
-      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+      {/* Puntos explicativos sin viñetas de puntos */}
+      <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
         <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-          <span style={{ color: C.accentAmber, fontSize: 13, marginTop: 1 }}>📌</span>
+          <span style={{ color: C.ochre, fontSize: 12, fontWeight: 800, marginTop: 1 }}>—</span>
           <span style={{ fontSize: 12.5, color: C.textPrimary, lineHeight: 1.35 }}>
-            <strong>Fija tus favoritas:</strong> Haz clic en el pin (📌) para mantener tus entidades frecuentes siempre en la parte superior.
+            <strong>Mantén presionada cualquier tarjeta:</strong> Pulsa por un instante la entidad y arrástrala hacia arriba o abajo para acomodar el orden a tu preferencia.
           </span>
         </div>
         <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-          <span style={{ color: C.accentBlue, fontSize: 13, marginTop: 1 }}>👆</span>
-          <span style={{ fontSize: 12.5, color: C.textPrimary, lineHeight: 1.35 }}>
-            <strong>Reordena manteniendo presionado:</strong> Mantén pulsada cualquier tarjeta y cámbiale de posición libremente.
-          </span>
-        </div>
-        <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-          <span style={{ color: C.accentGreen, fontSize: 13, marginTop: 1 }}>💾</span>
+          <span style={{ color: C.sage, fontSize: 12, fontWeight: 800, marginTop: 1 }}>—</span>
           <span style={{ fontSize: 12.5, color: C.textSecondary, lineHeight: 1.35 }}>
-            Tu orden personalizado se guarda automáticamente en tu navegador para cuando regreses.
+            Tu orden personalizado se guarda de forma automática en tu navegador para que siempre lo encuentres listo.
           </span>
         </div>
       </div>
@@ -333,14 +347,14 @@ export function OnboardingGuideModal({
   const Step3Illustration = (
     <div style={{
       background: C.surface,
-      borderRadius: 16,
+      borderRadius: 14,
       padding: "16px 14px",
       border: `1px solid ${C.border}`,
       display: "flex",
       flexDirection: "column",
       gap: 12
     }}>
-      {/* Comparativa Nítida: Catálogo Gratis vs LOTA AI PLUS */}
+      {/* Comparativa Sobria: Directorio Gratuito vs LOTA AI PLUS */}
       <div style={{
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
@@ -350,21 +364,21 @@ export function OnboardingGuideModal({
         <div style={{
           background: C.surfaceCard,
           border: `1px solid ${C.border}`,
-          borderRadius: 12,
+          borderRadius: 10,
           padding: "12px 10px",
           display: "flex",
           flexDirection: "column",
           gap: 8
         }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <span style={{ fontSize: 12, fontWeight: 800, color: C.textPrimary }}>
+            <span style={{ fontSize: 12, fontWeight: 750, color: C.textPrimary }}>
               Directorio Público
             </span>
             <span style={{
               fontSize: 9.5,
-              fontWeight: 800,
-              color: C.accentGreen,
-              background: isDarkMode ? "rgba(16, 163, 127, 0.2)" : "#ECFDF5",
+              fontWeight: 750,
+              color: C.sage,
+              background: C.sageBg,
               padding: "1px 6px",
               borderRadius: 4
             }}>
@@ -373,57 +387,53 @@ export function OnboardingGuideModal({
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 5, fontSize: 11, color: C.textSecondary }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-              <CheckmarkRegular fontSize={12} style={{ color: C.accentGreen }} />
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <span style={{ color: C.sage, fontSize: 11 }}>✓</span>
               <span>Buscador de +30 entidades</span>
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-              <CheckmarkRegular fontSize={12} style={{ color: C.accentGreen }} />
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <span style={{ color: C.sage, fontSize: 11 }}>✓</span>
               <span>Enlaces a sedes .gob.pe</span>
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-              <CheckmarkRegular fontSize={12} style={{ color: C.accentGreen }} />
-              <span>Requisitos y sedes oficiales</span>
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <span style={{ color: C.sage, fontSize: 11 }}>✓</span>
+              <span>Requisitos oficiales</span>
             </div>
           </div>
 
           <div style={{
             marginTop: "auto",
-            padding: "4px 6px",
+            padding: "4px",
             textAlign: "center",
-            background: isDarkMode ? "rgba(255,255,255,0.04)" : "#F4F4F5",
+            background: isDarkMode ? "rgba(255,255,255,0.04)" : "#F3F4F6",
             borderRadius: 6,
             fontSize: 10,
-            fontWeight: 700,
+            fontWeight: 650,
             color: C.textMuted
           }}>
-            Acceso libre sin registro
+            Acceso libre para todos
           </div>
         </div>
 
         {/* Columna Derecha: LOTA AI Orientador (Plan PLUS) */}
         <div style={{
-          background: isDarkMode ? "#1F1D2B" : "#F5F3FF",
-          border: `1.5px solid ${isDarkMode ? "rgba(167, 139, 250, 0.4)" : "#DDD6FE"}`,
-          borderRadius: 12,
+          background: C.irisBg,
+          border: `1px solid ${C.irisBorder}`,
+          borderRadius: 10,
           padding: "12px 10px",
           display: "flex",
           flexDirection: "column",
-          gap: 8,
-          boxShadow: isDarkMode ? "0 4px 14px rgba(124, 58, 237, 0.15)" : "0 2px 8px rgba(124, 58, 237, 0.08)"
+          gap: 8
         }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-              <Sparkles size={13} style={{ color: C.accentPurple }} />
-              <span style={{ fontSize: 12, fontWeight: 800, color: isDarkMode ? "#E9D5FF" : "#6D28D9" }}>
-                LOTA AI Orientador
-              </span>
-            </div>
+            <span style={{ fontSize: 12, fontWeight: 800, color: isDarkMode ? "#C7D2FE" : "#4338CA" }}>
+              LOTA AI Orientador
+            </span>
             <span style={{
               fontSize: 9.5,
               fontWeight: 800,
-              color: "#FFFFFF",
-              background: C.accentPurple,
+              color: isDarkMode ? "#EEF2FF" : "#4338CA",
+              background: isDarkMode ? "rgba(99, 102, 241, 0.3)" : "#E0E7FF",
               padding: "1px 6px",
               borderRadius: 4
             }}>
@@ -432,67 +442,67 @@ export function OnboardingGuideModal({
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 5, fontSize: 11, color: isDarkMode ? "#E2E8F0" : "#4B5563" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-              <Sparkles size={11} style={{ color: C.accentPurple }} />
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <span style={{ color: C.iris, fontSize: 11 }}>✦</span>
               <span>Orientación guiada 24/7</span>
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-              <Sparkles size={11} style={{ color: C.accentPurple }} />
-              <span>Cálculo de tasas en Págalo.pe</span>
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <span style={{ color: C.iris, fontSize: 11 }}>✦</span>
+              <span>Cálculo de tasas Págalo.pe</span>
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-              <Sparkles size={11} style={{ color: C.accentPurple }} />
-              <span>Preguntas por voz y texto</span>
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <span style={{ color: C.iris, fontSize: 11 }}>✦</span>
+              <span>Consultas por voz y texto</span>
             </div>
           </div>
 
           <div style={{
             marginTop: "auto",
-            padding: "4px 6px",
+            padding: "4px",
             textAlign: "center",
-            background: isDarkMode ? "rgba(167, 139, 250, 0.2)" : "#EDE9FE",
+            background: isDarkMode ? "rgba(99, 102, 241, 0.25)" : "#E0E7FF",
             borderRadius: 6,
             fontSize: 10,
             fontWeight: 750,
-            color: isDarkMode ? "#E9D5FF" : "#6D28D9"
+            color: isDarkMode ? "#E0E7FF" : "#4338CA"
           }}>
             Consultas guiadas personalizadas
           </div>
         </div>
       </div>
 
-      {/* Explicación amigable */}
+      {/* Nota descriptiva */}
       <p style={{
         margin: 0,
         fontSize: 12,
         lineHeight: 1.45,
         color: C.textSecondary
       }}>
-        ¿Necesitas que un orientador te ayude paso a paso a resolver tu trámite? Puedes preguntarle a <strong>LOTA AI</strong> en cualquier momento. Dispones de consultas de cortesía y acceso ilimitado suscribiéndote al Plan PLUS.
+        Si necesitas un asistente que resuelva tus dudas paso a paso o calcule los montos exactos a pagar en el Banco de la Nación, puedes usar <strong>LOTA AI</strong> mediante el Plan PLUS tras tus consultas gratuitas.
       </p>
     </div>
   );
 
   const steps = [
     {
-      badge: "Paso 1 de 3 • Catálogo Oficial Gratuito",
+      badge: "Paso 1 de 3 / Catálogo Oficial Gratuito",
       title: "Todas las entidades públicas en un solo lugar",
       subtitle: "ahorratiempo reúne más de 30 instituciones para que ubiques requisitos y trámites gratis.",
-      icon: <Compass size={22} style={{ color: C.accentGreen }} />,
+      icon: <UniqueCivicNexusIcon size={22} color={C.sage} />,
       illustration: Step1Illustration
     },
     {
-      badge: "Paso 2 de 3 • Personalización",
-      title: "Organiza tu barra lateral a tu gusto",
-      subtitle: "Mantén presionada cualquier tarjeta para reordenarla o fíjala como favorita con 📌.",
-      icon: <Move size={22} style={{ color: C.accentAmber }} />,
+      badge: "Paso 2 de 3 / Personalización",
+      title: "Organiza tus entidades a tu medida",
+      subtitle: "Mantén presionada cualquier tarjeta para reordenarla y acomodar tu mesa de trabajo.",
+      icon: <UniqueModularDeckIcon size={22} color={C.ochre} />,
       illustration: Step2Illustration
     },
     {
-      badge: "Paso 3 de 3 • Orientación con IA",
+      badge: "Paso 3 de 3 / Orientación con IA",
       title: "LOTA AI: Orientación ciudadana 24/7",
       subtitle: "Tu asistente guiado para calcular tasas oficiales y resolver dudas con el Plan LOTA AI PLUS.",
-      icon: <Sparkles size={22} style={{ color: C.accentPurple }} />,
+      icon: <UniqueAiConstellationIcon size={22} color={C.iris} />,
       illustration: Step3Illustration
     }
   ];
@@ -507,7 +517,7 @@ export function OnboardingGuideModal({
         position: "fixed",
         inset: 0,
         zIndex: 500,
-        background: "rgba(0, 0, 0, 0.75)",
+        background: "rgba(0, 0, 0, 0.72)",
         backdropFilter: "blur(10px)",
         WebkitBackdropFilter: "blur(10px)",
         display: "flex",
@@ -523,19 +533,19 @@ export function OnboardingGuideModal({
       }}
     >
       <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 12 }}
+        initial={{ opacity: 0, scale: 0.96, y: 10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 12 }}
-        transition={{ duration: 0.2, ease: "easeOut" }}
+        exit={{ opacity: 0, scale: 0.96, y: 10 }}
+        transition={{ duration: 0.18, ease: "easeOut" }}
         style={{
           maxWidth: 580,
           width: "100%",
           background: C.bg,
-          borderRadius: 20,
+          borderRadius: 18,
           border: `1px solid ${C.border}`,
           boxShadow: isDarkMode 
-            ? "0 24px 60px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.15)" 
-            : "0 20px 50px rgba(0, 0, 0, 0.1)",
+            ? "0 24px 60px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.12)" 
+            : "0 18px 45px rgba(0, 0, 0, 0.09)",
           padding: "24px 24px 20px",
           display: "flex",
           flexDirection: "column",
@@ -557,7 +567,7 @@ export function OnboardingGuideModal({
             right: 16,
             width: 32,
             height: 32,
-            borderRadius: "50%",
+            borderRadius: 8,
             border: `1px solid ${C.border}`,
             background: C.surface,
             color: C.textSecondary,
@@ -592,7 +602,7 @@ export function OnboardingGuideModal({
               fontWeight: 750,
               textTransform: "uppercase",
               letterSpacing: "0.04em",
-              color: currentStep === 0 ? C.accentGreen : currentStep === 1 ? C.accentAmber : C.accentPurple
+              color: currentStep === 0 ? C.sage : currentStep === 1 ? C.ochre : C.iris
             }}>
               {step.badge}
             </span>
@@ -621,24 +631,24 @@ export function OnboardingGuideModal({
         <AnimatePresence mode="wait">
           <motion.div
             key={currentStep}
-            initial={{ opacity: 0, y: 8 }}
+            initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.18 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.16 }}
           >
             {step.illustration}
           </motion.div>
         </AnimatePresence>
 
-        {/* Barra Inferior: Indicador de Pasos y Botones */}
+        {/* Barra Inferior: Progreso Segmentado (Sin Puntos) y Botones */}
         <div style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          paddingTop: 8,
-          borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E5E5"}`
+          paddingTop: 10,
+          borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E7EB"}`
         }}>
-          {/* Indicador de Dots */}
+          {/* Barra de Progreso Segmentada (Sin Puntos) */}
           <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
             {steps.map((_, idx) => (
               <button
@@ -650,12 +660,12 @@ export function OnboardingGuideModal({
                 }}
                 aria-label={`Ir al paso ${idx + 1}`}
                 style={{
-                  width: currentStep === idx ? 22 : 7,
-                  height: 7,
-                  borderRadius: 99,
+                  width: currentStep === idx ? 28 : 12,
+                  height: 4,
+                  borderRadius: 2,
                   background: currentStep === idx 
-                    ? (currentStep === 0 ? C.accentGreen : currentStep === 1 ? C.accentAmber : C.accentPurple)
-                    : (isDarkMode ? "rgba(255, 255, 255, 0.18)" : "#E5E5E5"),
+                    ? (currentStep === 0 ? C.sage : currentStep === 1 ? C.ochre : C.iris)
+                    : (isDarkMode ? "rgba(255, 255, 255, 0.18)" : "#E5E7EB"),
                   border: "none",
                   padding: 0,
                   cursor: "pointer",
@@ -673,7 +683,7 @@ export function OnboardingGuideModal({
                 onClick={handlePrev}
                 style={{
                   padding: "8px 14px",
-                  borderRadius: 10,
+                  borderRadius: 8,
                   border: `1px solid ${C.border}`,
                   background: "transparent",
                   color: C.textPrimary,
@@ -694,7 +704,7 @@ export function OnboardingGuideModal({
                 onClick={handleFinish}
                 style={{
                   padding: "8px 12px",
-                  borderRadius: 10,
+                  borderRadius: 8,
                   border: "none",
                   background: "transparent",
                   color: C.textSecondary,
@@ -712,21 +722,19 @@ export function OnboardingGuideModal({
               onClick={handleNext}
               style={{
                 padding: "8px 18px",
-                borderRadius: 10,
+                borderRadius: 8,
                 border: "none",
                 background: currentStep === steps.length - 1
-                  ? C.accentGreen
+                  ? (isDarkMode ? "#ECECEC" : "#0D0D0D")
                   : (isDarkMode ? "#ECECEC" : "#0D0D0D"),
-                color: currentStep === steps.length - 1 ? "#FFFFFF" : (isDarkMode ? "#0D0D0D" : "#FFFFFF"),
+                color: isDarkMode ? "#0D0D0D" : "#FFFFFF",
                 fontSize: 13,
                 fontWeight: 750,
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
                 gap: 6,
-                boxShadow: currentStep === steps.length - 1
-                  ? "0 4px 14px rgba(16, 163, 127, 0.35)"
-                  : (isDarkMode ? "0 4px 14px rgba(0, 0, 0, 0.4)" : "0 4px 14px rgba(0, 0, 0, 0.15)")
+                boxShadow: isDarkMode ? "0 4px 14px rgba(0, 0, 0, 0.4)" : "0 4px 14px rgba(0, 0, 0, 0.15)"
               }}
             >
               <span>{currentStep === steps.length - 1 ? "¡Empezar a usar ahorratiempo!" : "Siguiente"}</span>

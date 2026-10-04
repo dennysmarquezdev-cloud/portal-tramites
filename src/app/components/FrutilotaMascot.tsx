@@ -1589,15 +1589,11 @@ export function FrutilotaMascot({
                         ? `2px solid ${isDarkMode ? "#38BDF8" : "#0284C7"}`
                         : isSelected 
                         ? `2px solid ${isDarkMode ? "#38BDF8" : catColor}` 
-                        : isPinned
-                        ? `1.5px solid ${isDarkMode ? "rgba(245, 158, 11, 0.4)" : "#FDE68A"}`
                         : `1px solid ${D.border}`,
                       background: isBeingDragged
                         ? (isDarkMode ? "rgba(56, 189, 248, 0.22)" : "#E0F2FE")
                         : isSelected 
                         ? (isDarkMode ? "rgba(56, 189, 248, 0.12)" : bgLight) 
-                        : isPinned
-                        ? (isDarkMode ? "#262626" : "#FFFDF5")
                         : (isDarkMode ? "#262626" : "#FFFFFF"),
                       cursor: "inherit",
                       textAlign: "center",
@@ -1612,33 +1608,6 @@ export function FrutilotaMascot({
                       minHeight: 86,
                     }}
                   >
-                    {/* Botón Pin de Fijado Rápido */}
-                    <button
-                      type="button"
-                      onClick={(e) => handleTogglePin(c.acronym, e)}
-                      title={isPinned ? `Desfijar ${c.acronym}` : `Fijar ${c.acronym} como favorita`}
-                      style={{
-                        position: "absolute",
-                        top: 4,
-                        right: 4,
-                        zIndex: 2,
-                        background: isPinned 
-                          ? (isDarkMode ? "rgba(245, 158, 11, 0.25)" : "#FEF3C7") 
-                          : "transparent",
-                        border: "none",
-                        borderRadius: 4,
-                        padding: "2px",
-                        cursor: "pointer",
-                        color: isPinned ? "#F59E0B" : (isDarkMode ? "rgba(255,255,255,0.25)" : "#94A3B8"),
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        transition: "all 0.15s ease"
-                      }}
-                    >
-                      {isPinned ? <PinFilled fontSize={11} /> : <PinRegular fontSize={11} />}
-                    </button>
-
                     {/* Logo / Badge de la Entidad */}
                     <div style={{
                       width: "82%",
