@@ -2387,17 +2387,26 @@ export function FrutilotaMascot({
             {!selectedEntity ? (
               <div style={{ display: "flex", flexDirection: "column", gap: 20, width: "100%", maxWidth: 1100, margin: "0 auto" }}>
                 {/* Título Oficial Principal */}
-                <h1 style={{
-                  fontFamily: G,
-                  fontSize: "clamp(26px, 4vw, 36px)",
-                  fontWeight: 850,
-                  letterSpacing: "-0.025em",
-                  textAlign: "center",
-                  margin: "8px 0 16px",
-                  color: isDarkMode ? "#F9FAFB" : "#0D0D0D"
-                }}>
-                  Entidades
-                </h1>
+                <div style={{ textAlign: "center", margin: "6px 0 12px", display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+                  <h1 style={{
+                    fontFamily: G,
+                    fontSize: "clamp(24px, 3.8vw, 32px)",
+                    fontWeight: 850,
+                    letterSpacing: "-0.025em",
+                    margin: 0,
+                    color: isDarkMode ? "#F9FAFB" : "#0D0D0D"
+                  }}>
+                    Directorio Oficial de Trámites
+                  </h1>
+                  <p style={{
+                    fontFamily: I,
+                    fontSize: 13.5,
+                    color: isDarkMode ? "#9CA3AF" : "#64748B",
+                    margin: 0
+                  }}>
+                    Accede a los trámites del Estado organizados por institución oficial
+                  </p>
+                </div>
 
                 {/* ── Cuadrícula de Categorías (Bloques con Barra Vertical + Grid de Entidades) ── */}
                 <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "100%" }}>
