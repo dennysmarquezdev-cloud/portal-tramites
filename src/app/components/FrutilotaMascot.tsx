@@ -1038,16 +1038,14 @@ export function FrutilotaMascot({
           display: none;
         }
         @media (max-width: 768px) {
-          .chat-sidebar-reopen {
-            top: 10px !important;
-            left: 10px !important;
-            width: 36px !important;
-            height: 36px !important;
-            min-width: 36px !important;
-            padding: 0 !important;
+          .mobile-bottom-nav-bar {
             display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
+          }
+          .dynamic-official-procedures-container {
+            padding: 16px 14px calc(76px + env(safe-area-inset-bottom, 12px)) !important;
+          }
+          .chat-sidebar-reopen {
+            display: none !important;
           }
           .chat-empty {
             padding: 38px 12px 16px !important;
@@ -1058,6 +1056,13 @@ export function FrutilotaMascot({
             padding: 4px 2px 10px;
             margin-bottom: 10px;
           }
+        }
+        .mob-btn-tab:active {
+          transform: scale(0.92);
+        }
+        .mob-btn-tab--active {
+          transform: scale(1.04);
+        }
         @keyframes slowEyeBlink {
           0%, 60% {
             opacity: 1;
@@ -3018,6 +3023,220 @@ export function FrutilotaMascot({
           setChatSidebarOpen(true);
         }}
       />
+
+      {/* ── Barra de Menú Inferior para Móviles (Bottom Navigation Bar) ── */}
+      <nav 
+        className="mobile-bottom-nav-bar"
+        aria-label="Menú principal inferior móvil"
+        style={{
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: 62,
+          background: isDarkMode ? "rgba(24, 24, 27, 0.96)" : "rgba(255, 255, 255, 0.96)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "rgba(0, 0, 0, 0.08)"}`,
+          boxShadow: isDarkMode ? "0 -4px 24px rgba(0, 0, 0, 0.55)" : "0 -4px 20px rgba(0, 0, 0, 0.06)",
+          zIndex: 80,
+          display: "none",
+          alignItems: "center",
+          justifyContent: "space-around",
+          padding: "0 8px calc(env(safe-area-inset-bottom, 0px) + 2px)",
+          boxSizing: "border-box"
+        }}
+      >
+        {/* 1. Botón Entidades (Abre el catálogo lateral/inferior) */}
+        <button
+          type="button"
+          onClick={() => {
+            sound.playClick();
+            haptic.selection();
+            setChatSidebarOpen(prev => !prev);
+          }}
+          className={`mob-btn-tab ${chatSidebarOpen ? "mob-btn-tab--active" : ""}`}
+          style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 2,
+            padding: "5px 12px",
+            borderRadius: 10,
+            color: chatSidebarOpen 
+              ? (isDarkMode ? "#60A5FA" : "#2563EB") 
+              : (isDarkMode ? "#9CA3AF" : "#64748B"),
+            transition: "all 0.15s ease",
+            position: "relative"
+          }}
+        >
+          <div style={{ position: "relative", display: "inline-flex" }}>
+            <BuildingBankRegular fontSize={20} />
+            <span style={{
+              position: "absolute",
+              top: -2,
+              right: -5,
+              width: 6,
+              height: 6,
+              borderRadius: "50%",
+              background: isDarkMode ? "#60A5FA" : "#2563EB"
+            }} />
+          </div>
+          <span style={{ fontFamily: I, fontSize: 10.5, fontWeight: 700, letterSpacing: "-0.01em" }}>
+            Entidades
+          </span>
+        </button>
+
+        {/* 2. Botón Trámites (Entidad actual) */}
+        <button
+          type="button"
+          onClick={() => {
+            sound.playClick();
+            haptic.selection();
+            setChatSidebarOpen(false);
+            const container = document.querySelector(".dynamic-official-procedures-container");
+            if (container) {
+              container.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
+          className={`mob-btn-tab ${!chatSidebarOpen ? "mob-btn-tab--active" : ""}`}
+          style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 2,
+            padding: "5px 12px",
+            borderRadius: 10,
+            color: !chatSidebarOpen 
+              ? (isDarkMode ? "#60A5FA" : "#2563EB") 
+              : (isDarkMode ? "#9CA3AF" : "#64748B"),
+            transition: "all 0.15s ease"
+          }}
+        >
+          <DocumentTextRegular fontSize={20} />
+          <span style={{ fontFamily: I, fontSize: 10.5, fontWeight: 700, letterSpacing: "-0.01em" }}>
+            {activeEntity.acronym}
+          </span>
+        </button>
+
+        {/* 3. Botón Buscar */}
+        <button
+          type="button"
+          onClick={() => {
+            sound.playClick();
+            haptic.selection();
+            setChatSidebarOpen(true);
+            setTimeout(() => {
+              const inputEl = document.querySelector("input[placeholder*='Buscar entidad']") as HTMLInputElement;
+              if (inputEl) inputEl.focus();
+            }, 250);
+          }}
+          className="mob-btn-tab"
+          style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 2,
+            padding: "5px 12px",
+            borderRadius: 10,
+            color: isDarkMode ? "#9CA3AF" : "#64748B",
+            transition: "all 0.15s ease"
+          }}
+        >
+          <SearchRegular fontSize={20} />
+          <span style={{ fontFamily: I, fontSize: 10.5, fontWeight: 700, letterSpacing: "-0.01em" }}>
+            Buscar
+          </span>
+        </button>
+
+        {/* 4. Botón Tema (Modo Claro / Oscuro) */}
+        {toggleTheme && (
+          <button
+            type="button"
+            onClick={() => {
+              sound.playClick();
+              haptic.medium();
+              toggleTheme();
+            }}
+            className="mob-btn-tab"
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 2,
+              padding: "5px 12px",
+              borderRadius: 10,
+              color: isDarkMode ? "#9CA3AF" : "#64748B",
+              transition: "all 0.15s ease"
+            }}
+          >
+            {isDarkMode ? <WeatherSunnyRegular fontSize={20} /> : <WeatherMoonRegular fontSize={20} />}
+            <span style={{ fontFamily: I, fontSize: 10.5, fontWeight: 700, letterSpacing: "-0.01em" }}>
+              {isDarkMode ? "Claro" : "Oscuro"}
+            </span>
+          </button>
+        )}
+
+        {/* 5. Botón Perfil / Cuenta */}
+        <button
+          type="button"
+          onClick={() => {
+            sound.playClick();
+            haptic.selection();
+            if (user) {
+              setSidebarProfileMenuOpen(prev => !prev);
+              setChatSidebarOpen(true);
+            } else {
+              onOpenLogin?.();
+            }
+          }}
+          className="mob-btn-tab"
+          style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 2,
+            padding: "5px 12px",
+            borderRadius: 10,
+            color: isDarkMode ? "#9CA3AF" : "#64748B",
+            transition: "all 0.15s ease"
+          }}
+        >
+          {user?.photoURL ? (
+            <img 
+              src={user.photoURL} 
+              alt={displayName} 
+              referrerPolicy="no-referrer"
+              style={{ width: 20, height: 20, borderRadius: "50%", objectFit: "cover" }} 
+            />
+          ) : (
+            <PersonRegular fontSize={20} />
+          )}
+          <span style={{ fontFamily: I, fontSize: 10.5, fontWeight: 700, letterSpacing: "-0.01em" }}>
+            {user ? "Perfil" : "Ingresar"}
+          </span>
+        </button>
+      </nav>
 
     </div>
   );
