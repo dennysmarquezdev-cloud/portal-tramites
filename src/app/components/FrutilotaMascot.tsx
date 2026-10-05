@@ -405,6 +405,83 @@ export interface FrutilotaMascotProps {
   onGoToCatalog?: () => void;
 }
 
+// ── Paletas Temáticas Estilo ChatGPT para Subcategorías de Trámites ──
+const CHATGPT_SUBCATEGORY_PALETTES = [
+  // 0. Azul Cobalto (Identidad, DNI, Pasaportes, Ciudadanía)
+  {
+    light: { bg: "#EFF6FF", border: "#BFDBFE", text: "#1E40AF", dot: "#2563EB" },
+    dark:  { bg: "rgba(37, 99, 235, 0.16)", border: "rgba(37, 99, 235, 0.38)", text: "#93C5FD", dot: "#3B82F6" }
+  },
+  // 1. Verde Esmeralda (Tributos, RUC, Impuestos, Finanzas)
+  {
+    light: { bg: "#ECFDF5", border: "#A7F3D0", text: "#065F46", dot: "#10B981" },
+    dark:  { bg: "rgba(16, 185, 129, 0.16)", border: "rgba(16, 185, 129, 0.38)", text: "#6EE7B7", dot: "#10B981" }
+  },
+  // 2. Ámbar / Naranja Cálido (Propiedad, Registros, Predios, Inmuebles, Vehicular)
+  {
+    light: { bg: "#FFFBEB", border: "#FDE68A", text: "#92400E", dot: "#F59E0B" },
+    dark:  { bg: "rgba(245, 158, 11, 0.16)", border: "rgba(245, 158, 11, 0.38)", text: "#FDE68A", dot: "#F59E0B" }
+  },
+  // 3. Rosa / Carmesí Suave (Salud, Citas Médicas, Seguros, Hospital)
+  {
+    light: { bg: "#FFF1F2", border: "#FECDD3", text: "#9F1239", dot: "#F43F5E" },
+    dark:  { bg: "rgba(244, 63, 94, 0.16)", border: "rgba(244, 63, 94, 0.38)", text: "#FECDD3", dot: "#FB7185" }
+  },
+  // 4. Violeta / Púrpura (Transporte, Brevetes, Licencias, Tránsito)
+  {
+    light: { bg: "#F5F3FF", border: "#DDD6FE", text: "#5B21B6", dot: "#8B5CF6" },
+    dark:  { bg: "rgba(139, 92, 246, 0.16)", border: "rgba(139, 92, 246, 0.38)", text: "#DDD6FE", dot: "#A78BFA" }
+  },
+  // 5. Índigo Profundo (Educación, Becas, Títulos, Constancias)
+  {
+    light: { bg: "#EEF2FF", border: "#C7D2FE", text: "#3730A3", dot: "#6366F1" },
+    dark:  { bg: "rgba(99, 102, 241, 0.16)", border: "rgba(99, 102, 241, 0.38)", text: "#C7D2FE", dot: "#818CF8" }
+  },
+  // 6. Cian / Turquesa (Justicia, Legalidad, Certificados, Registros Civiles)
+  {
+    light: { bg: "#ECFEFF", border: "#A5F3FC", text: "#155E75", dot: "#06B6D4" },
+    dark:  { bg: "rgba(6, 182, 212, 0.16)", border: "rgba(6, 182, 212, 0.38)", text: "#A5F3FC", dot: "#22D3EE" }
+  },
+  // 7. Amarillo Dorado / Ámbar (Riesgos, Seguridad, Biometría, Alertas)
+  {
+    light: { bg: "#FEF3C7", border: "#FDE047", text: "#854D0E", dot: "#EAB308" },
+    dark:  { bg: "rgba(234, 179, 8, 0.16)", border: "rgba(234, 179, 8, 0.38)", text: "#FEF08A", dot: "#FACC15" }
+  },
+  // 8. Verde Azulado / Teal (Servicios, Extras, Agua, Consultas Generales)
+  {
+    light: { bg: "#F0FDFA", border: "#99F6E4", text: "#115E59", dot: "#14B8A6" },
+    dark:  { bg: "rgba(20, 184, 166, 0.16)", border: "rgba(20, 184, 166, 0.38)", text: "#99F6E4", dot: "#2DD4BF" }
+  }
+];
+
+function getSubcategoryTheme(catName: string, isDarkMode: boolean, index: number) {
+  const norm = (catName || "").toLowerCase();
+  let paletteIdx = index % CHATGPT_SUBCATEGORY_PALETTES.length;
+
+  if (/identidad|dni|pasaporte|ciudadan|extranjer/i.test(norm)) {
+    paletteIdx = 0; // Azul
+  } else if (/tribut|ruc|impuesto|finanz|econom|factur|pago|honorario/i.test(norm)) {
+    paletteIdx = 1; // Verde
+  } else if (/propiedad|inmueble|predio|vehicul|placa|partida|titul/i.test(norm)) {
+    paletteIdx = 2; // Ámbar/Naranja
+  } else if (/salud|cita|medic|seguro|essalud|minsa|hospital/i.test(norm)) {
+    paletteIdx = 3; // Rosa
+  } else if (/transporte|brevete|licencia|transit|conducir|mtc/i.test(norm)) {
+    paletteIdx = 4; // Violeta
+  } else if (/educac|beca|titul|grado|estudio|colegio|minedu/i.test(norm)) {
+    paletteIdx = 5; // Índigo
+  } else if (/actas|registro civil|justic|legal|poder|judicial/i.test(norm)) {
+    paletteIdx = 6; // Cian
+  } else if (/riesgo|seguridad|alerta|biometr|c4|garant/i.test(norm)) {
+    paletteIdx = 7; // Dorado
+  } else if (/servicio|extra|agua|luz|general/i.test(norm)) {
+    paletteIdx = 8; // Teal
+  }
+
+  const p = CHATGPT_SUBCATEGORY_PALETTES[paletteIdx];
+  return isDarkMode ? p.dark : p.light;
+}
+
 export function FrutilotaMascot({
   initialEntity = "SUNAT",
   initialQuery = "",
@@ -1087,17 +1164,14 @@ export function FrutilotaMascot({
           display: none;
         }
         @media (max-width: 768px) {
-          .mobile-bottom-entities-bar {
-            display: flex !important;
+          .mob-hide-entity-logo {
+            display: none !important;
           }
           .desktop-top-entities-header {
             display: none !important;
           }
           .dynamic-official-procedures-container {
-            padding: 16px 14px calc(86px + env(safe-area-inset-bottom, 12px)) !important;
-          }
-          .chat-sidebar-reopen {
-            display: none !important;
+            padding: 14px 14px 28px !important;
           }
           .proc-item-mobile-hidden {
             display: none !important;
@@ -2286,23 +2360,26 @@ export function FrutilotaMascot({
                           e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0";
                         }}
                       >
-                        {/* Logo en Caja Blanca Rectangular */}
-                        <div style={{
-                          width: "100%",
-                          maxWidth: 86,
-                          height: 42,
-                          borderRadius: 8,
-                          background: "#FFFFFF",
-                          border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #E2E8F0",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          padding: "2px 5px",
-                          boxSizing: "border-box",
-                          overflow: "hidden",
-                          marginBottom: 8,
-                          boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.05)"
-                        }}>
+                        {/* Logo en Caja Blanca Rectangular (Oculto en Móviles) */}
+                        <div 
+                          className="mob-hide-entity-logo"
+                          style={{
+                            width: "100%",
+                            maxWidth: 86,
+                            height: 42,
+                            borderRadius: 8,
+                            background: "#FFFFFF",
+                            border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #E2E8F0",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            padding: "2px 5px",
+                            boxSizing: "border-box",
+                            overflow: "hidden",
+                            marginBottom: 8,
+                            boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.05)"
+                          }}
+                        >
                           {logoSrc ? (
                             <img 
                               src={logoSrc} 
@@ -2552,21 +2629,24 @@ export function FrutilotaMascot({
                         border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
                         boxShadow: isDarkMode ? "0 2px 8px rgba(0,0,0,0.3)" : "0 1px 4px rgba(0,0,0,0.03)"
                       }}>
-                        <div style={{
-                          width: 56,
-                          height: 38,
-                          borderRadius: 7,
-                          background: "#FFFFFF",
-                          border: "1px solid #E2E8F0",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          padding: "2px 5px",
-                          boxSizing: "border-box",
-                          overflow: "hidden",
-                          flexShrink: 0,
-                          boxShadow: "0 1px 3px rgba(0,0,0,0.06)"
-                        }}>
+                        <div 
+                          className="mob-hide-entity-logo"
+                          style={{
+                            width: 56,
+                            height: 38,
+                            borderRadius: 7,
+                            background: "#FFFFFF",
+                            border: "1px solid #E2E8F0",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            padding: "2px 5px",
+                            boxSizing: "border-box",
+                            overflow: "hidden",
+                            flexShrink: 0,
+                            boxShadow: "0 1px 3px rgba(0,0,0,0.06)"
+                          }}
+                        >
                           {logoSrc ? (
                             <img 
                               src={logoSrc} 
@@ -2607,36 +2687,44 @@ export function FrutilotaMascot({
                         return (
                           <div key={catName} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                             
-                            {/* Cabecera de Subcategoría Estilo ChatGPT */}
-                            <div style={{
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "flex-start",
-                              padding: "9px 14px",
-                              borderRadius: 10,
-                              background: isDarkMode ? "#212121" : "#F4F4F5",
-                              border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.10)" : "#E5E7EB"}`
-                            }}>
-                              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                            {/* Cabecera de Subcategoría con Fondo de Color y Puntito Estilo ChatGPT */}
+                            {(() => {
+                              const subTheme = getSubcategoryTheme(catName, isDarkMode, cIdx);
+                              return (
                                 <div style={{
-                                  width: 6,
-                                  height: 6,
-                                  borderRadius: 2,
-                                  background: isDarkMode ? "#ECECEC" : "#1F2937",
-                                  flexShrink: 0
-                                }} />
-                                <h3 style={{
-                                  fontFamily: G,
-                                  fontSize: 14.5,
-                                  fontWeight: 750,
-                                  color: isDarkMode ? "#ECECEC" : "#111827",
-                                  margin: 0,
-                                  letterSpacing: "-0.015em"
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "flex-start",
+                                  padding: "9px 14px",
+                                  borderRadius: 10,
+                                  background: subTheme.bg,
+                                  border: `1px solid ${subTheme.border}`,
+                                  boxShadow: isDarkMode ? "0 1px 4px rgba(0,0,0,0.25)" : "0 1px 3px rgba(0,0,0,0.02)",
+                                  transition: "all 0.15s ease"
                                 }}>
-                                  {catName}
-                                </h3>
-                              </div>
-                            </div>
+                                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                    <div style={{
+                                      width: 7,
+                                      height: 7,
+                                      borderRadius: "50%",
+                                      background: subTheme.dot,
+                                      boxShadow: `0 0 6px ${subTheme.dot}`,
+                                      flexShrink: 0
+                                    }} />
+                                    <h3 style={{
+                                      fontFamily: G,
+                                      fontSize: 14,
+                                      fontWeight: 750,
+                                      color: subTheme.text,
+                                      margin: 0,
+                                      letterSpacing: "-0.015em"
+                                    }}>
+                                      {catName}
+                                    </h3>
+                                  </div>
+                                </div>
+                              );
+                            })()}
 
                             {/* Cuadrícula de Tarjetas de esta Subcategoría */}
                             <div 
