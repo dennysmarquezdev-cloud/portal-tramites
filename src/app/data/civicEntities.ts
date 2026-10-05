@@ -137,12 +137,17 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Copia Literal y Certificados Registrales (SPRL)",
         description: "Descarga partidas registrales de predios, vehículos y personas jurídicas.",
-        url: "https://www.sunarp.gob.pe/"
+        url: "https://serviciosweb.sunarp.gob.pe/sprl/"
+      },
+      {
+        title: "Alerta Registral Gratuita",
+        description: "Recibe alertas por correo y SMS sobre cualquier movimiento en tus partidas.",
+        url: "https://www.sunarp.gob.pe/alertaregistral/"
       },
       {
         title: "Certificado de Vigencia de Poder",
         description: "Acredita facultades legales de representantes de empresas y apoderados.",
-        url: "https://www.sunarp.gob.pe/"
+        url: "https://serviciosweb.sunarp.gob.pe/sprl/"
       }
     ]
   },
