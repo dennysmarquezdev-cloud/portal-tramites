@@ -702,22 +702,25 @@ export function ProgressiveDisclosureResponse({
         <div style={{ display: "flex", flexDirection: "column", gap: 5, marginTop: 2, paddingTop: 4 }}>
           <span style={{ 
             fontSize: 10.5, 
-            fontWeight: 750, 
-            color: isLight ? "#737373" : "#B4B4B4", 
+            fontWeight: 700, 
+            color: isLight ? "#6B7280" : "#9CA3AF", 
             textTransform: "uppercase", 
             letterSpacing: "0.05em", 
             display: "flex", 
             alignItems: "center", 
             gap: 5 
           }}>
-            <SparkleRegular fontSize={12} color={isLight ? "#10A37F" : "#38BDF8"} />
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: isLight ? "#6B7280" : "#9CA3AF" }}>
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
             <span>Consultas sugeridas:</span>
           </span>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
             {followUps.map((prompt, pIdx) => (
               <motion.button
                 key={pIdx}
-                whileHover={{ scale: 1.01, borderColor: isLight ? "#10A37F" : "#38BDF8" }}
+                whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => {
                   haptic.light();
@@ -729,20 +732,22 @@ export function ProgressiveDisclosureResponse({
                   gap: 6,
                   padding: "5px 10px",
                   borderRadius: 8,
-                  background: isLight ? "#F4F4F4" : "rgba(255, 255, 255, 0.04)",
-                  border: isLight ? "1px solid #E5E5E5" : "1px solid rgba(255, 255, 255, 0.08)",
+                  background: isLight ? "#F4F4F5" : "#212121",
+                  border: isLight ? "1px solid #E5E7EB" : "1px solid rgba(255, 255, 255, 0.12)",
                   color: isLight ? "#0D0D0D" : "#ECECEC",
                   fontSize: 12,
-                  fontWeight: 550,
+                  fontWeight: 500,
                   cursor: "pointer",
                   textAlign: "left",
                   lineHeight: 1.35,
-                  boxShadow: isLight ? "0 1px 2px rgba(0, 0, 0, 0.02)" : "none",
-                  transition: "border-color 0.15s ease"
+                  boxShadow: isLight ? "0 1px 2px rgba(0, 0, 0, 0.02)" : "0 1px 3px rgba(0, 0, 0, 0.2)",
+                  transition: "all 0.15s ease"
                 }}
               >
                 <span>{prompt}</span>
-                <ArrowRightRegular fontSize={11} color={isLight ? "#10A37F" : "#38BDF8"} />
+                <svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: isLight ? "#6B7280" : "#9CA3AF", flexShrink: 0 }}>
+                  <path d="M3 8h10M9 4l4 4-4 4"/>
+                </svg>
               </motion.button>
             ))}
           </div>
