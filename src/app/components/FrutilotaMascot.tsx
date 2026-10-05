@@ -422,6 +422,14 @@ export function FrutilotaMascot({
     return user?.isPremium === true || (user?.email || "").toLowerCase() === "plaeis260@gmail.com";
   }, [user]);
 
+  const [selectedEntity, setSelectedEntity] = useState<string | null>(() => {
+    if (initialQuery) {
+      return initialEntity ? findCivicEntity(initialEntity).acronym : "SUNAT";
+    }
+    return null; // Initial state: show all entities directory
+  });
+  const [directorySearch, setDirectorySearch] = useState("");
+  const [directoryCategory, setDirectoryCategory] = useState("all");
   const [entity, setEntity] = useState(() => (initialEntity ? findCivicEntity(initialEntity).acronym : "SUNAT"));
   const [entityDropdownOpen, setEntityDropdownOpen] = useState(false);
   const [entityFilterText, setEntityFilterText] = useState("");
@@ -437,6 +445,7 @@ export function FrutilotaMascot({
     haptic.selection();
     const matched = findCivicEntity(newAcronym);
     setEntity(matched.acronym);
+    setSelectedEntity(matched.acronym);
     setEntityDropdownOpen(false);
     setProcSearchQuery("");
     setSelectedCategory("all");
@@ -725,6 +734,28 @@ export function FrutilotaMascot({
 
     return ordered;
   }, [customOrder, sidebarEntitySearch]);
+
+  const filteredDirectoryEntities = useMemo(() => {
+    let list = displayEntitiesList;
+    if (directoryCategory !== "all") {
+      list = list.filter(e => {
+        const cat = e.category || "";
+        if (directoryCategory === "identidad") return /identidad|migra/i.test(cat);
+        if (directoryCategory === "tributos") return /econom|impuest|registr/i.test(cat);
+        if (directoryCategory === "salud") return /salud|seguridad social|bienestar/i.test(cat);
+        if (directoryCategory === "transporte") return /transporte|tránsito/i.test(cat);
+        if (directoryCategory === "justicia") return /justicia|trabajo|empleo/i.test(cat);
+        if (directoryCategory === "educacion") return /educaci|empren/i.test(cat);
+        if (directoryCategory === "servicios") return /vivienda|energ|básicos/i.test(cat);
+        return true;
+      });
+    }
+    if (directorySearch.trim()) {
+      const q = cleanText(directorySearch);
+      list = list.filter(c => cleanText(c.acronym).includes(q) || cleanText(c.name || "").includes(q) || cleanText(c.description || "").includes(q));
+    }
+    return list;
+  }, [displayEntitiesList, directoryCategory, directorySearch]);
 
   const displayName = useMemo(() => {
     if (user?.displayName) return user.displayName.trim().split(" ")[0];
@@ -1063,7 +1094,7 @@ export function FrutilotaMascot({
             display: none !important;
           }
           .dynamic-official-procedures-container {
-            padding: 16px 14px calc(76px + env(safe-area-inset-bottom, 12px)) !important;
+            padding: 16px 14px calc(86px + env(safe-area-inset-bottom, 12px)) !important;
           }
           .chat-sidebar-reopen {
             display: none !important;
@@ -1089,8 +1120,9 @@ export function FrutilotaMascot({
             display: none !important;
           }
         }
-        .mob-entity-chip:active {
-          transform: scale(0.94) !important;
+        .mob-entity-chip:active,
+        .mob-entity-cube:active {
+          transform: scale(0.93) !important;
         }
         @keyframes slowEyeBlink {
           0%, 60% {
@@ -2615,32 +2647,388 @@ export function FrutilotaMascot({
         >
           <div style={{ maxWidth: 1040, width: "100%", margin: "0 auto", display: "flex", flexDirection: "column", gap: 18 }}>
             
-            {/* ── Encabezado Superior de Entidades para Escritorio (Horizontal Scrollable Shelf) ── */}
-            <div 
-              className="desktop-top-entities-header"
-              style={{
-                display: "none",
-                alignItems: "center",
-                gap: 8,
-                overflowX: "auto",
-                scrollbarWidth: "none",
-                padding: "2px 0 14px",
-                borderBottom: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`,
-                marginBottom: 4
-              }}
-            >
-              {displayEntitiesList.map((c) => {
-                const isSelected = entity.toUpperCase() === c.acronym.toUpperCase();
-                const logoSrc = getEntityLogo(c.acronym);
+            {/* ── Vista 1: Directorio General de Entidades (Al ingresar a ahorratiempo) ── */}
+            {!selectedEntity ? (
+              <div style={{ display: "flex", flexDirection: "column", gap: 20, width: "100%" }}>
+                {/* Encabezado Principal */}
+                <div style={{ textAlign: "center", padding: "8px 0 4px", display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+                  <div style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                    padding: "4px 12px",
+                    borderRadius: 20,
+                    background: isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9",
+                    border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
+                    fontSize: 12,
+                    fontFamily: I,
+                    fontWeight: 650,
+                    color: isDarkMode ? "#93C5FD" : "#2563EB"
+                  }}>
+                    <span>🏛️</span>
+                    <span>Directorio Oficial de Entidades del Estado</span>
+                  </div>
 
-                return (
+                  <h1 style={{
+                    fontFamily: G,
+                    fontSize: "clamp(22px, 4vw, 30px)",
+                    fontWeight: 850,
+                    color: isDarkMode ? "#F9FAFB" : "#0F172A",
+                    letterSpacing: "-0.03em",
+                    margin: 0,
+                    lineHeight: 1.2
+                  }}>
+                    Trámites y Servicios del Estado Peruano
+                  </h1>
+
+                  <p style={{
+                    fontFamily: I,
+                    fontSize: 14,
+                    color: isDarkMode ? "#9CA3AF" : "#64748B",
+                    maxWidth: 620,
+                    margin: 0,
+                    lineHeight: 1.5
+                  }}>
+                    Elige una institución pública para explorar todos sus trámites oficiales y acceder directamente en 1 clic.
+                  </p>
+
+                  {/* Buscador de Entidades */}
+                  <div style={{ position: "relative", width: "100%", maxWidth: 500, marginTop: 8 }}>
+                    <svg 
+                      width="15" 
+                      height="15" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2.2" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      style={{ 
+                        position: "absolute", 
+                        left: 14, 
+                        top: "50%", 
+                        transform: "translateY(-50%)", 
+                        color: isDarkMode ? "#9CA3AF" : "#64748B",
+                        pointerEvents: "none" 
+                      }}
+                    >
+                      <circle cx="11" cy="11" r="8"/>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                    <input 
+                      value={directorySearch}
+                      onChange={e => setDirectorySearch(e.target.value)}
+                      placeholder="Buscar entidad (ej. SUNAT, RENIEC, MTC, MINEDU, ESSALUD)..."
+                      style={{
+                        width: "100%",
+                        height: 42,
+                        padding: "0 36px 0 40px",
+                        borderRadius: 10,
+                        border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.14)" : "#CBD5E1"}`,
+                        background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
+                        color: isDarkMode ? "#ECECEC" : "#0F172A",
+                        fontFamily: I,
+                        fontSize: 13.5,
+                        outline: "none",
+                        boxSizing: "border-box",
+                        boxShadow: isDarkMode ? "0 2px 8px rgba(0,0,0,0.4)" : "0 2px 8px rgba(0,0,0,0.04)",
+                        transition: "border-color 0.15s ease"
+                      }}
+                      onFocus={e => {
+                        e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.35)" : "#0F172A";
+                      }}
+                      onBlur={e => {
+                        e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.14)" : "#CBD5E1";
+                      }}
+                    />
+                    {directorySearch && (
+                      <button
+                        type="button"
+                        onClick={() => setDirectorySearch("")}
+                        style={{
+                          position: "absolute",
+                          right: 12,
+                          top: "50%",
+                          transform: "translateY(-50%)",
+                          background: "none",
+                          border: "none",
+                          cursor: "pointer",
+                          color: isDarkMode ? "#9CA3AF" : "#64748B",
+                          padding: 0,
+                          display: "flex",
+                          alignItems: "center"
+                        }}
+                      >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                          <line x1="18" y1="6" x2="6" y2="18"></line>
+                          <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Chips de Filtro por Categorías */}
+                  <div style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexWrap: "wrap",
+                    gap: 6,
+                    marginTop: 6
+                  }}>
+                    {[
+                      { id: "all", label: "Todas las entidades" },
+                      { id: "identidad", label: "Identidad y Migración" },
+                      { id: "tributos", label: "Tributos y Registros" },
+                      { id: "salud", label: "Salud y Bienestar" },
+                      { id: "transporte", label: "Transporte" },
+                      { id: "justicia", label: "Justicia y Trabajo" },
+                      { id: "educacion", label: "Educación" },
+                      { id: "servicios", label: "Servicios Públicos" },
+                    ].map(cat => {
+                      const isCatSelected = directoryCategory === cat.id;
+                      return (
+                        <button
+                          key={cat.id}
+                          type="button"
+                          onClick={() => {
+                            sound.playHoverKey();
+                            haptic.selection();
+                            setDirectoryCategory(cat.id);
+                          }}
+                          style={{
+                            padding: "5px 12px",
+                            borderRadius: 20,
+                            background: isCatSelected 
+                              ? (isDarkMode ? "#2563EB" : "#0F172A") 
+                              : (isDarkMode ? "#1F1F1F" : "#F1F5F9"),
+                            color: isCatSelected ? "#FFFFFF" : (isDarkMode ? "#9CA3AF" : "#64748B"),
+                            border: isCatSelected 
+                              ? `1px solid ${isDarkMode ? "#3B82F6" : "#0F172A"}` 
+                              : `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`,
+                            fontFamily: I,
+                            fontSize: 12,
+                            fontWeight: isCatSelected ? 700 : 550,
+                            cursor: "pointer",
+                            transition: "all 0.15s ease"
+                          }}
+                        >
+                          {cat.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Cuadrícula de Entidades en Formato Cubo/Tarjeta */}
+                <div style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+                  gap: 12,
+                  padding: "4px 0 20px"
+                }}>
+                  {filteredDirectoryEntities.map((c, idx) => {
+                    const logoSrc = getEntityLogo(c.acronym);
+                    const procsCount = getEntityOfficialProcedures(c.acronym).length;
+
+                    return (
+                      <motion.div
+                        key={c.id || c.acronym}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.18, delay: Math.min(idx * 0.015, 0.2) }}
+                        whileHover={{ y: -3, scale: 1.015 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => {
+                          sound.playClick();
+                          haptic.selection();
+                          setEntity(c.acronym);
+                          setSelectedEntity(c.acronym);
+                          clearChat();
+                          const container = document.querySelector(".dynamic-official-procedures-container");
+                          if (container) container.scrollTo({ top: 0, behavior: "smooth" });
+                        }}
+                        style={{
+                          background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
+                          border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
+                          borderRadius: 12,
+                          padding: "15px 14px 12px",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          textAlign: "center",
+                          cursor: "pointer",
+                          boxShadow: isDarkMode ? "0 4px 14px rgba(0,0,0,0.35)" : "0 2px 8px rgba(0,0,0,0.04)",
+                          transition: "border-color 0.15s ease, box-shadow 0.15s ease",
+                          minHeight: 145,
+                          boxSizing: "border-box"
+                        }}
+                        onMouseEnter={e => {
+                          sound.playHoverKey();
+                          e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.28)" : "#0F172A";
+                        }}
+                        onMouseLeave={e => {
+                          e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0";
+                        }}
+                      >
+                        {/* Logo en Caja Blanca Rectangular */}
+                        <div style={{
+                          width: "100%",
+                          maxWidth: 90,
+                          height: 44,
+                          borderRadius: 8,
+                          background: "#FFFFFF",
+                          border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #E2E8F0",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          padding: "2px 6px",
+                          boxSizing: "border-box",
+                          overflow: "hidden",
+                          marginBottom: 8,
+                          boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.05)"
+                        }}>
+                          {logoSrc ? (
+                            <img 
+                              src={logoSrc} 
+                              alt={c.acronym} 
+                              style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain", display: "block" }} 
+                            />
+                          ) : (
+                            <span style={{ fontSize: 11, fontWeight: 800, color: "#0F172A" }}>{c.acronym}</span>
+                          )}
+                        </div>
+
+                        {/* Acrónimo y Nombre Oficial */}
+                        <div style={{ display: "flex", flexDirection: "column", gap: 2, width: "100%" }}>
+                          <h3 style={{
+                            fontFamily: G,
+                            fontSize: 14.5,
+                            fontWeight: 800,
+                            color: isDarkMode ? "#F9FAFB" : "#0F172A",
+                            margin: 0,
+                            letterSpacing: "-0.015em"
+                          }}>
+                            {c.acronym}
+                          </h3>
+                          <p style={{
+                            fontFamily: I,
+                            fontSize: 11,
+                            color: isDarkMode ? "#9CA3AF" : "#64748B",
+                            margin: 0,
+                            lineHeight: 1.3,
+                            display: "-webkit-box",
+                            WebkitLineClamp: 2,
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden"
+                          }}>
+                            {c.name}
+                          </p>
+                        </div>
+
+                        {/* Conteo de Trámites y Flecha */}
+                        <div style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          width: "100%",
+                          marginTop: 8,
+                          paddingTop: 7,
+                          borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9"}`
+                        }}>
+                          <span style={{
+                            fontFamily: I,
+                            fontSize: 10.5,
+                            fontWeight: 650,
+                            color: isDarkMode ? "#38BDF8" : "#0284C7",
+                            background: isDarkMode ? "rgba(56, 189, 248, 0.12)" : "rgba(2, 132, 199, 0.08)",
+                            padding: "2px 6px",
+                            borderRadius: 6
+                          }}>
+                            {procsCount} {procsCount === 1 ? "trámite" : "trámites"}
+                          </span>
+
+                          <span style={{
+                            fontFamily: G,
+                            fontSize: 11,
+                            fontWeight: 700,
+                            color: isDarkMode ? "#ECECEC" : "#0F172A",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: 2
+                          }}>
+                            <span>Ver</span>
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                              <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                          </span>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : (
+              /* ── Vista 2: Catálogo de Trámites de la Entidad Seleccionada ── */
+              <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "100%" }}>
+                
+                {/* Botón Superior para Volver a Todas las Entidades */}
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8 }}>
                   <button
-                    key={`desktop-head-${c.id || c.acronym}`}
                     type="button"
                     onClick={() => {
                       sound.playClick();
                       haptic.selection();
-                      setEntity(c.acronym);
+                      setSelectedEntity(null);
+                      const container = document.querySelector(".dynamic-official-procedures-container");
+                      if (container) container.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                    onMouseEnter={() => sound.playHoverKey()}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 6,
+                      padding: "6px 14px",
+                      borderRadius: 8,
+                      background: isDarkMode ? "#212121" : "#F4F4F5",
+                      border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E5E7EB"}`,
+                      color: isDarkMode ? "#ECECEC" : "#1F2937",
+                      fontFamily: I,
+                      fontSize: 12.5,
+                      fontWeight: 650,
+                      cursor: "pointer",
+                      transition: "all 0.15s ease",
+                      boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.03)"
+                    }}
+                  >
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    <span>Ver todas las entidades</span>
+                  </button>
+                </div>
+
+                {/* ── Encabezado Superior de Entidades para Escritorio (Horizontal Scrollable Shelf) ── */}
+                <div 
+                  className="desktop-top-entities-header"
+                  style={{
+                    display: "none",
+                    alignItems: "center",
+                    gap: 8,
+                    overflowX: "auto",
+                    scrollbarWidth: "none",
+                    padding: "2px 0 10px",
+                    borderBottom: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`,
+                    marginBottom: 2
+                  }}
+                >
+                  <button
+                    type="button"
+                    onClick={() => {
+                      sound.playClick();
+                      haptic.selection();
+                      setSelectedEntity(null);
                       clearChat();
                     }}
                     onMouseEnter={() => sound.playHoverKey()}
@@ -2648,315 +3036,389 @@ export function FrutilotaMascot({
                       flexShrink: 0,
                       display: "inline-flex",
                       alignItems: "center",
-                      gap: 7,
-                      padding: isSelected ? "7px 14px" : "6px 12px",
+                      gap: 6,
+                      padding: "6px 12px",
                       borderRadius: 999,
-                      background: isSelected 
-                        ? (isDarkMode ? "#2563EB" : "#0F172A") 
-                        : (isDarkMode ? "#1F1F1F" : "#FFFFFF"),
-                      color: isSelected ? "#FFFFFF" : (isDarkMode ? "#E2E8F0" : "#334155"),
-                      border: isSelected 
-                        ? `1px solid ${isDarkMode ? "#3B82F6" : "#0F172A"}` 
-                        : `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
-                      boxShadow: isSelected 
-                        ? (isDarkMode ? "0 2px 10px rgba(37, 99, 235, 0.4)" : "0 2px 6px rgba(15, 23, 42, 0.15)") 
-                        : (isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.03)"),
+                      background: !selectedEntity ? (isDarkMode ? "#2563EB" : "#0F172A") : (isDarkMode ? "#1F1F1F" : "#FFFFFF"),
+                      color: !selectedEntity ? "#FFFFFF" : (isDarkMode ? "#E2E8F0" : "#334155"),
+                      border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
                       cursor: "pointer",
                       fontFamily: I,
-                      fontSize: 12.5,
-                      fontWeight: isSelected ? 750 : 600,
-                      transition: "all 0.15s ease"
+                      fontSize: 12,
+                      fontWeight: 650
                     }}
                   >
-                    <div style={{
-                      width: 26,
-                      height: 18,
-                      borderRadius: 4,
-                      background: "#FFFFFF",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      padding: "1px 2px",
-                      boxSizing: "border-box",
-                      overflow: "hidden",
-                      flexShrink: 0
-                    }}>
-                      {logoSrc ? (
-                        <img 
-                          src={logoSrc} 
-                          alt={c.acronym} 
-                          style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain", display: "block" }} 
-                        />
-                      ) : (
-                        <span style={{ fontSize: 8.5, fontWeight: 800, color: "#1E293B" }}>{c.acronym.slice(0, 3)}</span>
-                      )}
-                    </div>
-                    <span>{c.acronym}</span>
+                    <span>🏛️ Todas</span>
                   </button>
-                );
-              })}
-            </div>
 
-            {/* Trámites Oficiales de la Entidad Organizados por Subcategorías */}
-            {(() => {
-              const allProcs = getEntityOfficialProcedures(activeEntity.acronym);
-
-              // Agrupación por subcategorías en orden de aparición
-              const categoriesMap = new Map<string, DirectProcedureItem[]>();
-              allProcs.forEach(p => {
-                const cat = p.category || "Trámites Generales";
-                if (!categoriesMap.has(cat)) {
-                  categoriesMap.set(cat, []);
-                }
-                categoriesMap.get(cat)!.push(p);
-              });
-
-              // Paleta de colores vibrantes para destacar subtítulos
-              const accentPalettes = [
-                { border: "#2563EB", bgLight: "#EFF6FF", bgDark: "rgba(37, 99, 235, 0.15)", textLight: "#1D4ED8", textDark: "#93C5FD", dot: "#3B82F6" },
-                { border: "#059669", bgLight: "#ECFDF5", bgDark: "rgba(5, 150, 105, 0.15)", textLight: "#047857", textDark: "#6EE7B7", dot: "#10B981" },
-                { border: "#7C3AED", bgLight: "#F5F3FF", bgDark: "rgba(124, 58, 237, 0.15)", textLight: "#6D28D9", textDark: "#C4B5FD", dot: "#8B5CF6" },
-                { border: "#D97706", bgLight: "#FFFBEB", bgDark: "rgba(217, 119, 6, 0.15)", textLight: "#B45309", textDark: "#FCD34D", dot: "#F59E0B" },
-                { border: "#DB2777", bgLight: "#FDF2F8", bgDark: "rgba(219, 39, 119, 0.15)", textLight: "#BE185D", textDark: "#F472B6", dot: "#EC4899" },
-                { border: "#0891B2", bgLight: "#ECFEFF", bgDark: "rgba(8, 145, 178, 0.15)", textLight: "#0E7490", textDark: "#67E8F9", dot: "#06B6D4" },
-                { border: "#4F46E5", bgLight: "#EEF2FF", bgDark: "rgba(79, 70, 229, 0.15)", textLight: "#4338CA", textDark: "#A5B4FC", dot: "#6366F1" }
-              ];
-
-              return (
-                <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>
-                  
-                  {/* Título Principal de la Entidad */}
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8, padding: "0 2px" }}>
-                    <h2 style={{
-                      fontFamily: G,
-                      fontSize: 20,
-                      fontWeight: 850,
-                      color: isDarkMode ? "#F9FAFB" : "#0F172A",
-                      letterSpacing: "-0.02em",
-                      margin: 0
-                    }}>
-                      Trámites de {activeEntity.acronym}
-                    </h2>
-
-                    <span style={{
-                      fontFamily: I,
-                      fontSize: 12,
-                      fontWeight: 650,
-                      padding: "3px 10px",
-                      borderRadius: 20,
-                      background: isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9",
-                      color: isDarkMode ? "#9CA3AF" : "#64748B",
-                      border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`
-                    }}>
-                      {allProcs.length} trámites en {categoriesMap.size} {categoriesMap.size === 1 ? "categoría" : "categorías"}
-                    </span>
-                  </div>
-
-                  {/* Renderizado por Cada Subcategoría */}
-                  {Array.from(categoriesMap.entries()).map(([catName, procsList], cIdx) => {
-                    const catKey = `${activeEntity.acronym}-${catName}`;
-                    const isExpanded = Boolean(expandedCategories[catKey]);
-                    const themeAccent = accentPalettes[cIdx % accentPalettes.length];
+                  {displayEntitiesList.map((c) => {
+                    const isSelected = selectedEntity && entity.toUpperCase() === c.acronym.toUpperCase();
+                    const logoSrc = getEntityLogo(c.acronym);
 
                     return (
-                      <div key={catName} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                        
-                        {/* Cabecera de la Subcategoría con Color Resaltado */}
+                      <button
+                        key={`desktop-head-${c.id || c.acronym}`}
+                        type="button"
+                        onClick={() => {
+                          sound.playClick();
+                          haptic.selection();
+                          setEntity(c.acronym);
+                          setSelectedEntity(c.acronym);
+                          clearChat();
+                        }}
+                        onMouseEnter={() => sound.playHoverKey()}
+                        style={{
+                          flexShrink: 0,
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: 7,
+                          padding: isSelected ? "7px 14px" : "6px 12px",
+                          borderRadius: 999,
+                          background: isSelected 
+                            ? (isDarkMode ? "#2563EB" : "#0F172A") 
+                            : (isDarkMode ? "#1F1F1F" : "#FFFFFF"),
+                          color: isSelected ? "#FFFFFF" : (isDarkMode ? "#E2E8F0" : "#334155"),
+                          border: isSelected 
+                            ? `1px solid ${isDarkMode ? "#3B82F6" : "#0F172A"}` 
+                            : `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
+                          boxShadow: isSelected 
+                            ? (isDarkMode ? "0 2px 10px rgba(37, 99, 235, 0.4)" : "0 2px 6px rgba(15, 23, 42, 0.15)") 
+                            : (isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.03)"),
+                          cursor: "pointer",
+                          fontFamily: I,
+                          fontSize: 12.5,
+                          fontWeight: isSelected ? 750 : 600,
+                          transition: "all 0.15s ease"
+                        }}
+                      >
                         <div style={{
+                          width: 26,
+                          height: 18,
+                          borderRadius: 4,
+                          background: "#FFFFFF",
                           display: "flex",
                           alignItems: "center",
-                          justifyContent: "space-between",
-                          padding: "8px 12px",
-                          borderRadius: 10,
-                          background: isDarkMode ? themeAccent.bgDark : themeAccent.bgLight,
-                          border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 0, 0, 0.05)"}`,
-                          borderLeft: `4px solid ${themeAccent.border}`
+                          justifyContent: "center",
+                          padding: "1px 2px",
+                          boxSizing: "border-box",
+                          overflow: "hidden",
+                          flexShrink: 0
                         }}>
-                          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                            <div style={{
-                              width: 8,
-                              height: 8,
-                              borderRadius: "50%",
-                              background: themeAccent.dot,
-                              flexShrink: 0
-                            }} />
-                            <h3 style={{
-                              fontFamily: G,
-                              fontSize: 15.5,
-                              fontWeight: 800,
-                              color: isDarkMode ? themeAccent.textDark : themeAccent.textLight,
-                              margin: 0,
-                              letterSpacing: "-0.015em"
-                            }}>
-                              {catName}
-                            </h3>
-                          </div>
-
-                          <span style={{
-                            fontFamily: I,
-                            fontSize: 11.5,
-                            fontWeight: 700,
-                            padding: "2px 8px",
-                            borderRadius: 12,
-                            background: isDarkMode ? "rgba(255, 255, 255, 0.08)" : "rgba(255, 255, 255, 0.8)",
-                            color: isDarkMode ? themeAccent.textDark : themeAccent.textLight,
-                            border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 0, 0, 0.06)"}`
-                          }}>
-                            {procsList.length} {procsList.length === 1 ? "trámite" : "trámites"}
-                          </span>
+                          {logoSrc ? (
+                            <img 
+                              src={logoSrc} 
+                              alt={c.acronym} 
+                              style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain", display: "block" }} 
+                            />
+                          ) : (
+                            <span style={{ fontSize: 8.5, fontWeight: 800, color: "#1E293B" }}>{c.acronym.slice(0, 3)}</span>
+                          )}
                         </div>
-
-                        {/* Cuadrícula de Tarjetas de esta Subcategoría */}
-                        <div 
-                          style={{ 
-                            display: "grid", 
-                            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", 
-                            gap: 12 
-                          }}
-                        >
-                          {procsList.map((proc, pIdx) => {
-                            const isHiddenOnMobile = pIdx >= 3 && !isExpanded;
-
-                            return (
-                              <motion.a
-                                key={proc.id || `${catName}-${pIdx}`}
-                                href={proc.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={isHiddenOnMobile ? "proc-item-mobile-hidden" : ""}
-                                initial={{ opacity: 0, y: 6 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.16, delay: Math.min(pIdx * 0.02, 0.2) }}
-                                whileHover={{ y: -2, scale: 1.01 }}
-                                whileTap={{ scale: 0.985 }}
-                                onClick={() => {
-                                  sound.playClick();
-                                  haptic.selection();
-                                }}
-                                onMouseEnter={() => sound.playHoverKey()}
-                                style={{
-                                  background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
-                                  border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
-                                  borderRadius: 12,
-                                  padding: "15px 16px",
-                                  display: "flex",
-                                  flexDirection: "column",
-                                  justifyContent: "space-between",
-                                  gap: 12,
-                                  textDecoration: "none",
-                                  boxShadow: isDarkMode ? "0 3px 12px rgba(0,0,0,0.3)" : "0 1px 6px rgba(0,0,0,0.04)",
-                                  cursor: "pointer",
-                                  transition: "border-color 0.15s ease, box-shadow 0.15s ease"
-                                }}
-                              >
-                                {/* Título Nítido del Trámite */}
-                                <h4 style={{
-                                  fontFamily: G,
-                                  fontSize: 14.5,
-                                  fontWeight: 700,
-                                  color: isDarkMode ? "#F9FAFB" : "#0F172A",
-                                  margin: 0,
-                                  lineHeight: 1.36,
-                                  letterSpacing: "-0.015em",
-                                  WebkitFontSmoothing: "antialiased",
-                                  textRendering: "geometricPrecision"
-                                }}>
-                                  {proc.title}
-                                </h4>
-
-                                {/* Pie de Acción: Botón Directo al Portal Oficial */}
-                                <div style={{
-                                  display: "flex",
-                                  alignItems: "center",
-                                  justifyContent: "space-between",
-                                  paddingTop: 8,
-                                  borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.07)" : "#F1F5F9"}`
-                                }}>
-                                  <span style={{
-                                    fontFamily: I,
-                                    fontSize: 11.5,
-                                    fontWeight: 600,
-                                    color: isDarkMode ? "#9CA3AF" : "#64748B"
-                                  }}>
-                                    Acceso directo
-                                  </span>
-
-                                  <span style={{
-                                    padding: "5px 11px",
-                                    borderRadius: 7,
-                                    background: isDarkMode ? "#2D2D2D" : "#0F172A",
-                                    color: "#FFFFFF",
-                                    fontFamily: G,
-                                    fontSize: 11.5,
-                                    fontWeight: 700,
-                                    display: "inline-flex",
-                                    alignItems: "center",
-                                    gap: 4,
-                                    boxShadow: isDarkMode ? "0 2px 6px rgba(0,0,0,0.3)" : "0 1px 3px rgba(0,0,0,0.1)"
-                                  }}>
-                                    <span>Ingresar</span>
-                                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                      <polyline points="15 3 21 3 21 9"/>
-                                      <line x1="10" y1="14" x2="21" y2="3"/>
-                                    </svg>
-                                  </span>
-                                </div>
-                              </motion.a>
-                            );
-                          })}
-                        </div>
-
-                        {/* Botón Ver Más para Móviles si hay más de 3 trámites */}
-                        {procsList.length > 3 && (
-                          <div className="proc-ver-mas-container" style={{ display: "flex", justifyContent: "center", paddingTop: 4 }}>
-                            <button
-                              type="button"
-                              onClick={() => toggleCategoryExpand(catKey)}
-                              style={{
-                                display: "inline-flex",
-                                alignItems: "center",
-                                gap: 6,
-                                padding: "7px 18px",
-                                borderRadius: 20,
-                                background: isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9",
-                                border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#CBD5E1"}`,
-                                color: isDarkMode ? "#60A5FA" : "#2563EB",
-                                fontFamily: G,
-                                fontSize: 12.5,
-                                fontWeight: 700,
-                                cursor: "pointer",
-                                transition: "all 0.15s ease",
-                                boxShadow: isDarkMode ? "0 1px 4px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.04)"
-                              }}
-                            >
-                              <span>{isExpanded ? "Ver menos" : `Ver más (${procsList.length - 3} trámites)`}</span>
-                              <svg 
-                                width="12" 
-                                height="12" 
-                                viewBox="0 0 24 24" 
-                                fill="none" 
-                                stroke="currentColor" 
-                                strokeWidth="2.5" 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round" 
-                                style={{ 
-                                  transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)", 
-                                  transition: "transform 0.2s ease" 
-                                }}
-                              >
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                              </svg>
-                            </button>
-                          </div>
-                        )}
-
-                      </div>
+                        <span>{c.acronym}</span>
+                      </button>
                     );
                   })}
                 </div>
-              );
-            })()}
+
+                {/* Banner de la Entidad Activa */}
+                {(() => {
+                  const allProcs = getEntityOfficialProcedures(activeEntity.acronym);
+                  const logoSrc = getEntityLogo(activeEntity.acronym);
+
+                  // Agrupación por subcategorías
+                  const categoriesMap = new Map<string, DirectProcedureItem[]>();
+                  allProcs.forEach(p => {
+                    const cat = p.category || "Trámites Generales";
+                    if (!categoriesMap.has(cat)) {
+                      categoriesMap.set(cat, []);
+                    }
+                    categoriesMap.get(cat)!.push(p);
+                  });
+
+                  return (
+                    <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                      
+                      {/* Banner Principal de la Entidad */}
+                      <div style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        flexWrap: "wrap",
+                        gap: 12,
+                        padding: "14px 16px",
+                        borderRadius: 12,
+                        background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
+                        border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
+                        boxShadow: isDarkMode ? "0 2px 8px rgba(0,0,0,0.3)" : "0 1px 4px rgba(0,0,0,0.03)"
+                      }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 12, minWidth: 0 }}>
+                          <div style={{
+                            width: 54,
+                            height: 36,
+                            borderRadius: 7,
+                            background: "#FFFFFF",
+                            border: "1px solid #E2E8F0",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            padding: "2px 4px",
+                            boxSizing: "border-box",
+                            overflow: "hidden",
+                            flexShrink: 0,
+                            boxShadow: "0 1px 3px rgba(0,0,0,0.06)"
+                          }}>
+                            {logoSrc ? (
+                              <img 
+                                src={logoSrc} 
+                                alt={activeEntity.acronym} 
+                                style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain", display: "block" }} 
+                              />
+                            ) : (
+                              <span style={{ fontSize: 10, fontWeight: 800, color: "#0F172A" }}>{activeEntity.acronym}</span>
+                            )}
+                          </div>
+                          <div>
+                            <h2 style={{
+                              fontFamily: G,
+                              fontSize: 19,
+                              fontWeight: 850,
+                              color: isDarkMode ? "#F9FAFB" : "#0F172A",
+                              letterSpacing: "-0.02em",
+                              margin: 0
+                            }}>
+                              Trámites de {activeEntity.acronym}
+                            </h2>
+                            <p style={{
+                              fontFamily: I,
+                              fontSize: 12,
+                              color: isDarkMode ? "#9CA3AF" : "#64748B",
+                              margin: "2px 0 0"
+                            }}>
+                              {activeEntity.name}
+                            </p>
+                          </div>
+                        </div>
+
+                        <span style={{
+                          fontFamily: I,
+                          fontSize: 12,
+                          fontWeight: 650,
+                          padding: "4px 11px",
+                          borderRadius: 20,
+                          background: isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9",
+                          color: isDarkMode ? "#9CA3AF" : "#64748B",
+                          border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`
+                        }}>
+                          {allProcs.length} trámites oficiales
+                        </span>
+                      </div>
+
+                      {/* Renderizado de Categorías al Estilo ChatGPT */}
+                      {Array.from(categoriesMap.entries()).map(([catName, procsList], cIdx) => {
+                        const catKey = `${activeEntity.acronym}-${catName}`;
+                        const isExpanded = Boolean(expandedCategories[catKey]);
+
+                        return (
+                          <div key={catName} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                            
+                            {/* Cabecera de Subcategoría Estilo ChatGPT */}
+                            <div style={{
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "space-between",
+                              padding: "9px 14px",
+                              borderRadius: 10,
+                              background: isDarkMode ? "#212121" : "#F4F4F5",
+                              border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.10)" : "#E5E7EB"}`
+                            }}>
+                              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                <div style={{
+                                  width: 6,
+                                  height: 6,
+                                  borderRadius: 2,
+                                  background: isDarkMode ? "#ECECEC" : "#1F2937",
+                                  flexShrink: 0
+                                }} />
+                                <h3 style={{
+                                  fontFamily: G,
+                                  fontSize: 14.5,
+                                  fontWeight: 750,
+                                  color: isDarkMode ? "#ECECEC" : "#111827",
+                                  margin: 0,
+                                  letterSpacing: "-0.015em"
+                                }}>
+                                  {catName}
+                                </h3>
+                              </div>
+
+                              <span style={{
+                                fontFamily: I,
+                                fontSize: 11,
+                                fontWeight: 650,
+                                padding: "2px 8px",
+                                borderRadius: 6,
+                                background: isDarkMode ? "#2A2A2A" : "#FFFFFF",
+                                color: isDarkMode ? "#A3A3A3" : "#6B7280",
+                                border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E7EB"}`
+                              }}>
+                                {procsList.length} {procsList.length === 1 ? "trámite" : "trámites"}
+                              </span>
+                            </div>
+
+                            {/* Cuadrícula de Tarjetas de esta Subcategoría */}
+                            <div 
+                              style={{ 
+                                display: "grid", 
+                                gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", 
+                                gap: 11 
+                              }}
+                            >
+                              {procsList.map((proc, pIdx) => {
+                                const isHiddenOnMobile = pIdx >= 3 && !isExpanded;
+
+                                return (
+                                  <motion.a
+                                    key={proc.id || `${catName}-${pIdx}`}
+                                    href={proc.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={isHiddenOnMobile ? "proc-item-mobile-hidden" : ""}
+                                    initial={{ opacity: 0, y: 6 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.16, delay: Math.min(pIdx * 0.02, 0.2) }}
+                                    whileHover={{ y: -2, scale: 1.01 }}
+                                    whileTap={{ scale: 0.985 }}
+                                    onClick={() => {
+                                      sound.playClick();
+                                      haptic.selection();
+                                    }}
+                                    onMouseEnter={() => sound.playHoverKey()}
+                                    style={{
+                                      background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
+                                      border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
+                                      borderRadius: 12,
+                                      padding: "14px 15px",
+                                      display: "flex",
+                                      flexDirection: "column",
+                                      justifyContent: "space-between",
+                                      gap: 10,
+                                      textDecoration: "none",
+                                      boxShadow: isDarkMode ? "0 3px 12px rgba(0,0,0,0.3)" : "0 1px 6px rgba(0,0,0,0.04)",
+                                      cursor: "pointer",
+                                      transition: "border-color 0.15s ease, box-shadow 0.15s ease"
+                                    }}
+                                  >
+                                    {/* Título Nítido del Trámite */}
+                                    <h4 style={{
+                                      fontFamily: G,
+                                      fontSize: 14,
+                                      fontWeight: 700,
+                                      color: isDarkMode ? "#F9FAFB" : "#0F172A",
+                                      margin: 0,
+                                      lineHeight: 1.36,
+                                      letterSpacing: "-0.015em",
+                                      WebkitFontSmoothing: "antialiased",
+                                      textRendering: "geometricPrecision"
+                                    }}>
+                                      {proc.title}
+                                    </h4>
+
+                                    {/* Pie de Acción: Botón Directo al Portal Oficial */}
+                                    <div style={{
+                                      display: "flex",
+                                      alignItems: "center",
+                                      justifyContent: "space-between",
+                                      paddingTop: 8,
+                                      borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.07)" : "#F1F5F9"}`
+                                    }}>
+                                      <span style={{
+                                        fontFamily: I,
+                                        fontSize: 11,
+                                        fontWeight: 600,
+                                        color: isDarkMode ? "#9CA3AF" : "#64748B"
+                                      }}>
+                                        Acceso directo
+                                      </span>
+
+                                      <span style={{
+                                        padding: "4px 10px",
+                                        borderRadius: 6,
+                                        background: isDarkMode ? "#2D2D2D" : "#0F172A",
+                                        color: "#FFFFFF",
+                                        fontFamily: G,
+                                        fontSize: 11,
+                                        fontWeight: 700,
+                                        display: "inline-flex",
+                                        alignItems: "center",
+                                        gap: 4,
+                                        boxShadow: isDarkMode ? "0 2px 6px rgba(0,0,0,0.3)" : "0 1px 3px rgba(0,0,0,0.1)"
+                                      }}>
+                                        <span>Ingresar</span>
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                          <polyline points="15 3 21 3 21 9"/>
+                                          <line x1="10" y1="14" x2="21" y2="3"/>
+                                        </svg>
+                                      </span>
+                                    </div>
+                                  </motion.a>
+                                );
+                              })}
+                            </div>
+
+                            {/* Botón Ver Más para Móviles si hay más de 3 trámites */}
+                            {procsList.length > 3 && (
+                              <div className="proc-ver-mas-container" style={{ display: "flex", justifyContent: "center", paddingTop: 3 }}>
+                                <button
+                                  type="button"
+                                  onClick={() => toggleCategoryExpand(catKey)}
+                                  style={{
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    gap: 6,
+                                    padding: "6px 16px",
+                                    borderRadius: 20,
+                                    background: isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9",
+                                    border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#CBD5E1"}`,
+                                    color: isDarkMode ? "#60A5FA" : "#2563EB",
+                                    fontFamily: G,
+                                    fontSize: 12,
+                                    fontWeight: 700,
+                                    cursor: "pointer",
+                                    transition: "all 0.15s ease",
+                                    boxShadow: isDarkMode ? "0 1px 4px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.04)"
+                                  }}
+                                >
+                                  <span>{isExpanded ? "Ver menos" : `Ver más (${procsList.length - 3} trámites)`}</span>
+                                  <svg 
+                                    width="11" 
+                                    height="11" 
+                                    viewBox="0 0 24 24" 
+                                    fill="none" 
+                                    stroke="currentColor" 
+                                    strokeWidth="2.5" 
+                                    strokeLinecap="round" 
+                                    strokeLinejoin="round" 
+                                    style={{ 
+                                      transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)", 
+                                      transition: "transform 0.2s ease" 
+                                    }}
+                                  >
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                  </svg>
+                                </button>
+                              </div>
+                            )}
+
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })()}
+
+              </div>
+            )}
 
             {/* Disclaimer Oficial */}
             <div style={{
@@ -2968,7 +3430,8 @@ export function FrutilotaMascot({
               color: isDarkMode ? "#64748B" : "#94A3B8",
               fontFamily: I,
               fontSize: 11.5,
-              lineHeight: 1.45
+              lineHeight: 1.45,
+              marginTop: 6
             }}>
               🔒 <strong>ahorratiempo</strong> te conecta directamente con las plataformas y sedes oficiales de cada institución.
             </div>
@@ -3210,7 +3673,7 @@ export function FrutilotaMascot({
         }}
       />
 
-      {/* ── Menú Inferior Móvil: Carrusel Horizontal de Entidades (Estilo Header Desplazable) ── */}
+      {/* ── Menú Inferior Móvil: Carrusel Horizontal de Entidades en Estilo Cubo ── */}
       <nav 
         ref={mobileEntitiesBarRef}
         className="mobile-bottom-entities-bar"
@@ -3220,26 +3683,90 @@ export function FrutilotaMascot({
           bottom: 0,
           left: 0,
           right: 0,
-          height: 56,
-          background: isDarkMode ? "rgba(18, 18, 20, 0.94)" : "rgba(255, 255, 255, 0.95)",
+          height: 68,
+          background: isDarkMode ? "rgba(18, 18, 20, 0.94)" : "rgba(255, 255, 255, 0.96)",
           backdropFilter: "blur(20px)",
           WebkitBackdropFilter: "blur(20px)",
           borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
-          boxShadow: isDarkMode ? "0 -4px 24px rgba(0, 0, 0, 0.6)" : "0 -4px 18px rgba(0, 0, 0, 0.05)",
+          boxShadow: isDarkMode ? "0 -4px 24px rgba(0, 0, 0, 0.6)" : "0 -4px 18px rgba(0, 0, 0, 0.06)",
           zIndex: 90,
           display: "none",
           alignItems: "center",
           overflowX: "auto",
           WebkitOverflowScrolling: "touch",
           scrollbarWidth: "none",
-          gap: 8,
-          padding: "0 12px calc(env(safe-area-inset-bottom, 0px) + 2px)",
+          gap: 7,
+          padding: "0 10px calc(env(safe-area-inset-bottom, 0px) + 4px)",
           boxSizing: "border-box"
         }}
       >
+        {/* Cubo 1: Todas las Entidades */}
+        <button
+          type="button"
+          onClick={() => {
+            sound.playClick();
+            haptic.selection();
+            setSelectedEntity(null);
+            const container = document.querySelector(".dynamic-official-procedures-container");
+            if (container) container.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          className="mob-entity-cube"
+          style={{
+            flexShrink: 0,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            minWidth: 58,
+            height: 52,
+            padding: "4px 5px",
+            borderRadius: 9,
+            background: !selectedEntity
+              ? (isDarkMode ? "#2F2F2F" : "#F4F4F5")
+              : (isDarkMode ? "rgba(255, 255, 255, 0.06)" : "#FFFFFF"),
+            border: !selectedEntity
+              ? `1.5px solid ${isDarkMode ? "rgba(255, 255, 255, 0.35)" : "#0F172A"}`
+              : `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.10)" : "#E2E8F0"}`,
+            boxShadow: !selectedEntity
+              ? (isDarkMode ? "0 2px 8px rgba(0,0,0,0.5)" : "0 2px 6px rgba(15, 23, 42, 0.12)")
+              : "none",
+            cursor: "pointer",
+            transition: "all 0.16s ease",
+            userSelect: "none",
+            WebkitUserSelect: "none"
+          }}
+        >
+          <div style={{
+            width: 34,
+            height: 20,
+            borderRadius: 4,
+            background: isDarkMode ? "rgba(255,255,255,0.12)" : "#F1F5F9",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: 3
+          }}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: isDarkMode ? "#ECECEC" : "#1E293B" }}>
+              <rect x="3" y="3" width="7" height="7" rx="1.5" />
+              <rect x="14" y="3" width="7" height="7" rx="1.5" />
+              <rect x="3" y="14" width="7" height="7" rx="1.5" />
+              <rect x="14" y="14" width="7" height="7" rx="1.5" />
+            </svg>
+          </div>
+          <span style={{
+            fontFamily: G,
+            fontSize: 9.5,
+            fontWeight: 700,
+            color: !selectedEntity ? (isDarkMode ? "#FFFFFF" : "#0F172A") : (isDarkMode ? "#9CA3AF" : "#64748B"),
+            lineHeight: 1
+          }}>
+            Todas
+          </span>
+        </button>
+
+        {/* Cubos de Entidades */}
         {displayEntitiesList.map((c) => {
-          const isSelected = entity.toUpperCase() === c.acronym.toUpperCase();
-          const catColor = c.categoryColor || c.color || "#2563EB";
+          const isSelected = Boolean(selectedEntity && entity.toUpperCase() === c.acronym.toUpperCase());
           const logoSrc = getEntityLogo(c.acronym);
 
           return (
@@ -3251,6 +3778,7 @@ export function FrutilotaMascot({
                 sound.playClick();
                 haptic.selection();
                 setEntity(c.acronym);
+                setSelectedEntity(c.acronym);
                 clearChat();
                 e.currentTarget.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
                 const container = document.querySelector(".dynamic-official-procedures-container");
@@ -3258,40 +3786,36 @@ export function FrutilotaMascot({
                   container.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
-              className="mob-entity-chip"
+              className="mob-entity-cube"
               style={{
                 flexShrink: 0,
-                display: "inline-flex",
+                display: "flex",
+                flexDirection: "column",
                 alignItems: "center",
-                gap: 7,
-                padding: isSelected ? "7px 14px" : "6px 12px",
-                borderRadius: 999,
+                justifyContent: "center",
+                minWidth: 58,
+                height: 52,
+                padding: "4px 5px",
+                borderRadius: 9,
                 background: isSelected 
-                  ? (isDarkMode ? "#2563EB" : "#0F172A") 
-                  : (isDarkMode ? "rgba(255, 255, 255, 0.07)" : "#F1F5F9"),
-                color: isSelected 
-                  ? "#FFFFFF" 
-                  : (isDarkMode ? "#E2E8F0" : "#334155"),
+                  ? (isDarkMode ? "#2F2F2F" : "#F4F4F5") 
+                  : (isDarkMode ? "rgba(255, 255, 255, 0.06)" : "#FFFFFF"),
                 border: isSelected 
-                  ? `1px solid ${isDarkMode ? "#3B82F6" : "#0F172A"}` 
+                  ? `1.5px solid ${isDarkMode ? "rgba(255, 255, 255, 0.4)" : "#0F172A"}` 
                   : `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.10)" : "#E2E8F0"}`,
                 boxShadow: isSelected 
-                  ? (isDarkMode ? "0 2px 10px rgba(37, 99, 235, 0.45)" : "0 2px 8px rgba(15, 23, 42, 0.18)") 
+                  ? (isDarkMode ? "0 2px 8px rgba(0,0,0,0.5)" : "0 2px 6px rgba(15, 23, 42, 0.12)") 
                   : "none",
                 cursor: "pointer",
-                fontFamily: I,
-                fontSize: 12.5,
-                fontWeight: isSelected ? 750 : 650,
-                letterSpacing: "-0.01em",
                 transition: "all 0.16s ease",
                 userSelect: "none",
                 WebkitUserSelect: "none"
               }}
             >
-              {/* Logo / Badge de la Entidad */}
+              {/* Logo en Caja Blanca Rectangular */}
               <div style={{
-                width: 24,
-                height: 17,
+                width: 36,
+                height: 20,
                 borderRadius: 4,
                 background: "#FFFFFF",
                 display: "flex",
@@ -3300,7 +3824,9 @@ export function FrutilotaMascot({
                 padding: "1px 2px",
                 boxSizing: "border-box",
                 overflow: "hidden",
-                flexShrink: 0
+                flexShrink: 0,
+                marginBottom: 3,
+                border: "1px solid rgba(0,0,0,0.06)"
               }}>
                 {logoSrc ? (
                   <img 
@@ -3314,7 +3840,19 @@ export function FrutilotaMascot({
               </div>
 
               {/* Nombre / Sigla de la Entidad */}
-              <span>{c.acronym}</span>
+              <span style={{
+                fontFamily: G,
+                fontSize: 9.5,
+                fontWeight: isSelected ? 800 : 600,
+                color: isSelected ? (isDarkMode ? "#FFFFFF" : "#0F172A") : (isDarkMode ? "#9CA3AF" : "#64748B"),
+                lineHeight: 1,
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+                maxWidth: 54
+              }}>
+                {c.acronym}
+              </span>
             </button>
           );
         })}
