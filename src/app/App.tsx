@@ -1040,8 +1040,13 @@ export default function App() {
           />
         </AdminCMSContext.Provider>
 
-        {/* Toast alerts */}
-        <Toaster richColors position="bottom-right" />
+        {/* Toast alerts con Estilo ChatGPT */}
+        <Toaster 
+          theme={theme === "dark" ? "dark" : "light"} 
+          position="bottom-right" 
+          closeButton={false}
+          offset={20}
+        />
       </div>
       )}
     </FluentProvider>

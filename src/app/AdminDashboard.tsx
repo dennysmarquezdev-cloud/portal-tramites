@@ -101,7 +101,7 @@ export default function AdminDashboard({ onExit }: AdminDashboardProps) {
 
   return (
     <div className={styles.root}>
-      <Toaster richColors position="bottom-right" />
+      <Toaster position="bottom-right" closeButton={false} offset={20} />
       
       <AdminSidebar 
         page={page} 
