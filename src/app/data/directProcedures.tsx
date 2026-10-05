@@ -158,12 +158,24 @@ export const OFFICIAL_PROCEDURES_BY_ENTITY: Record<string, DirectProcedureItem[]
       url: "https://serviciosweb.reniec.gob.pe/cet/consulta.do",
       category: "Identidad y DNI"
     },
+    {
+      id: "reniec-rectificacion-estado-civil",
+      title: "Actualización de Estado Civil en DNI",
+      url: "https://apps.reniec.gob.pe/domicilio/",
+      category: "Identidad y DNI"
+    },
 
     // ── 2. Registros y Actas Civiles ──
     {
       id: "reniec-actas-certificadas",
       title: "Copia Certificada de Actas (Nacimiento, Matrimonio, Defunción)",
       url: "https://apps.reniec.gob.pe/actasConsulta/",
+      category: "Registros y Actas Civiles"
+    },
+    {
+      id: "reniec-registro-nacimiento",
+      title: "Registro Digital de Nacimiento (con CNV en línea)",
+      url: "https://apps.reniec.gob.pe/",
       category: "Registros y Actas Civiles"
     },
     {
@@ -191,6 +203,12 @@ export const OFFICIAL_PROCEDURES_BY_ENTITY: Record<string, DirectProcedureItem[]
       title: "Consulta de Mejores Huellas Registradas",
       url: "https://www.reniec.gob.pe/",
       category: "Constancias y Biometría"
+    },
+    {
+      id: "reniec-peruanos-exterior",
+      title: "Trámites de Identidad para Peruanos en el Exterior",
+      url: "https://www.reniec.gob.pe/",
+      category: "Constancias y Biometría"
     }
   ],
 
@@ -210,21 +228,45 @@ export const OFFICIAL_PROCEDURES_BY_ENTITY: Record<string, DirectProcedureItem[]
     },
     {
       id: "sunat-clave-sol",
-      title: "Generación y Recuperación de Clave SOL",
+      title: "Generación y Recuperación de Clave SOL Virtual",
       url: "https://ww1.sunat.gob.pe/ol-ti-itclave/ol-ti-itclave.htm",
       category: "RUC y Clave SOL"
     },
     {
       id: "sunat-ficha-ruc",
-      title: "Descarga de Ficha RUC Digital",
+      title: "Descarga de Ficha RUC Digital Certificada",
+      url: "https://www.sunat.gob.pe/sol.html",
+      category: "RUC y Clave SOL"
+    },
+    {
+      id: "sunat-modificar-ruc",
+      title: "Modificación de Datos del RUC y Domicilio Fiscal",
+      url: "https://www.sunat.gob.pe/sol.html",
+      category: "RUC y Clave SOL"
+    },
+    {
+      id: "sunat-suspension-reinicio",
+      title: "Suspensión Temporal y Reinicio de Actividades del RUC",
+      url: "https://www.sunat.gob.pe/sol.html",
+      category: "RUC y Clave SOL"
+    },
+    {
+      id: "sunat-baja-ruc",
+      title: "Baja de Inscripción del RUC",
       url: "https://www.sunat.gob.pe/sol.html",
       category: "RUC y Clave SOL"
     },
 
-    // ── 2. Comprobantes de Pago ──
+    // ── 2. Comprobantes de Pago Electrónicos ──
     {
       id: "sunat-recibos-honorarios",
       title: "Emisión de Recibos por Honorarios Electrónicos (RHE)",
+      url: "https://www.sunat.gob.pe/sol.html",
+      category: "Comprobantes de Pago"
+    },
+    {
+      id: "sunat-consulta-rhe",
+      title: "Consulta y Reversión de Recibos por Honorarios",
       url: "https://www.sunat.gob.pe/sol.html",
       category: "Comprobantes de Pago"
     },
@@ -234,25 +276,159 @@ export const OFFICIAL_PROCEDURES_BY_ENTITY: Record<string, DirectProcedureItem[]
       url: "https://www.sunat.gob.pe/sol.html",
       category: "Comprobantes de Pago"
     },
-
-    // ── 3. Tributos, Deudas y Devoluciones ──
     {
-      id: "sunat-deuda-tributaria",
-      title: "Consulta de Deuda Tributaria y Coactiva",
+      id: "sunat-gre",
+      title: "Guía de Remisión Electrónica (GRE Remitente y Transportista)",
       url: "https://www.sunat.gob.pe/sol.html",
-      category: "Tributos, Deudas y Devoluciones"
+      category: "Comprobantes de Pago"
     },
     {
-      id: "sunat-devolucion-renta",
-      title: "Solicitud y Consulta de Devolución de Impuesto a la Renta",
+      id: "sunat-consulta-validez-cpe",
+      title: "Consulta de Validez de Comprobantes de Pago",
+      url: "https://ww1.sunat.gob.pe/ol-ti-itconsvalicpe/ConsValiCpe.htm",
+      category: "Comprobantes de Pago"
+    },
+    {
+      id: "sunat-notas-credito-debito",
+      title: "Emisión de Notas de Crédito y Débito Electrónicas",
       url: "https://www.sunat.gob.pe/sol.html",
-      category: "Tributos, Deudas y Devoluciones"
+      category: "Comprobantes de Pago"
+    },
+
+    // ── 3. Declaraciones y Pagos Tributarios ──
+    {
+      id: "sunat-renta-anual",
+      title: "Declaración Jurada Anual de Renta (Naturales y Empresas)",
+      url: "https://renta.sunat.gob.pe/",
+      category: "Declaraciones y Tributos"
+    },
+    {
+      id: "sunat-declara-facil",
+      title: "Declara Fácil - IGV Renta Mensual (Formulario 621)",
+      url: "https://www.sunat.gob.pe/sol.html",
+      category: "Declaraciones y Tributos"
+    },
+    {
+      id: "sunat-plame",
+      title: "Planilla Electrónica (PLAME y T-Registro)",
+      url: "https://www.sunat.gob.pe/sol.html",
+      category: "Declaraciones y Tributos"
+    },
+    {
+      id: "sunat-pago-varios-1662",
+      title: "Boleta de Pago Varios Virtual (Formulario 1662 / 1609)",
+      url: "https://www.sunat.gob.pe/sol.html",
+      category: "Declaraciones y Tributos"
+    },
+    {
+      id: "sunat-consulta-declaraciones-pagos",
+      title: "Consulta de Declaraciones Presentadas y Pagos Realizados",
+      url: "https://www.sunat.gob.pe/sol.html",
+      category: "Declaraciones y Tributos"
+    },
+
+    // ── 4. Deudas, Fraccionamiento y Devoluciones ──
+    {
+      id: "sunat-deuda-tributaria",
+      title: "Consulta de Deuda Tributaria y Valores Emitidos",
+      url: "https://www.sunat.gob.pe/sol.html",
+      category: "Deuda y Devoluciones"
     },
     {
       id: "sunat-fraccionamiento",
-      title: "Solicitud de Fraccionamiento Tributario Art. 36",
+      title: "Solicitud de Fraccionamiento y Aplazamiento Tributario (Art. 36)",
       url: "https://www.sunat.gob.pe/sol.html",
-      category: "Tributos, Deudas y Devoluciones"
+      category: "Deuda y Devoluciones"
+    },
+    {
+      id: "sunat-devolucion-renta",
+      title: "Solicitud de Devolución de Renta (Formulario 1649)",
+      url: "https://www.sunat.gob.pe/sol.html",
+      category: "Deuda y Devoluciones"
+    },
+    {
+      id: "sunat-devolucion-4949",
+      title: "Solicitud de Devolución por Pago Indebido o en Exceso (Formulario 4949)",
+      url: "https://www.sunat.gob.pe/sol.html",
+      category: "Deuda y Devoluciones"
+    },
+    {
+      id: "sunat-expedientes-coactivos",
+      title: "Consulta de Expedientes Coactivos y Embargos",
+      url: "https://www.sunat.gob.pe/sol.html",
+      category: "Deuda y Devoluciones"
+    },
+    {
+      id: "sunat-gastos-deducibles",
+      title: "Consulta de Gastos Deducibles (Hasta 3 UIT)",
+      url: "https://www.sunat.gob.pe/sol.html",
+      category: "Deuda y Devoluciones"
+    },
+
+    // ── 5. Detracciones y Retenciones ──
+    {
+      id: "sunat-cuenta-detracciones",
+      title: "Consulta de Cuenta de Detracciones (SPOT Banco de la Nación)",
+      url: "https://www.sunat.gob.pe/sol.html",
+      category: "Detracciones y Retenciones"
+    },
+    {
+      id: "sunat-liberacion-detracciones",
+      title: "Solicitud de Liberación de Fondos de Detracciones",
+      url: "https://www.sunat.gob.pe/sol.html",
+      category: "Detracciones y Retenciones"
+    },
+    {
+      id: "sunat-agentes-retencion",
+      title: "Consulta de Agentes de Retención y Percepción del IGV",
+      url: "https://www.sunat.gob.pe/sol.html",
+      category: "Detracciones y Retenciones"
+    },
+
+    // ── 6. Aduanas y Comercio Exterior ──
+    {
+      id: "sunat-importacion-facil",
+      title: "Importación Fácil (Compras y Envíos Postales por Courier)",
+      url: "https://www.sunat.gob.pe/orientacionaduanera/importacionfacil/",
+      category: "Aduanas y Comercio"
+    },
+    {
+      id: "sunat-consulta-dam",
+      title: "Consulta de Declaración Aduanera de Mercancías (DAM / DUA)",
+      url: "https://ww1.sunat.gob.pe/aduanas/informao/aduanas.htm",
+      category: "Aduanas y Comercio"
+    },
+    {
+      id: "sunat-arancel-aduanas",
+      title: "Consulta de Arancel de Aduanas y Subpartidas Nacionales",
+      url: "https://ww1.sunat.gob.pe/aduanas/informag/arancel.htm",
+      category: "Aduanas y Comercio"
+    },
+    {
+      id: "sunat-exporta-facil",
+      title: "Exporta Fácil (Exportaciones Simplificadas para Emprendedores)",
+      url: "https://www.sunat.gob.pe/orientacionaduanera/exportafacil/",
+      category: "Aduanas y Comercio"
+    },
+
+    // ── 7. Mesa de Partes y Asistencia ──
+    {
+      id: "sunat-mesa-partes",
+      title: "Mesa de Partes Virtual SUNAT (MPV-SUNAT)",
+      url: "https://mpv.sunat.gob.pe/",
+      category: "Mesa de Partes y Asistencia"
+    },
+    {
+      id: "sunat-citas-virtuales",
+      title: "Reserva de Cita Virtual SUNAT",
+      url: "https://www.sunat.gob.pe/citas/",
+      category: "Mesa de Partes y Asistencia"
+    },
+    {
+      id: "sunat-denuncias",
+      title: "Denuncias Tributarias y Aduaneras Virtuales",
+      url: "https://www.sunat.gob.pe/denuncias/",
+      category: "Mesa de Partes y Asistencia"
     }
   ],
 
