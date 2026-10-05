@@ -1605,29 +1605,29 @@ export function FrutilotaMascot({
                       flexDirection: "column",
                       alignItems: "center",
                       justifyContent: "center",
-                      padding: "10px 4px 8px",
-                      borderRadius: 12,
+                      padding: "10px 6px 8px",
+                      borderRadius: 10,
                       border: isBeingDragged
-                        ? `2px solid ${isDarkMode ? "#38BDF8" : "#0284C7"}`
+                        ? `1.5px solid ${isDarkMode ? "rgba(255, 255, 255, 0.35)" : "#9CA3AF"}`
                         : isSelected 
-                        ? `2px solid ${isDarkMode ? "#38BDF8" : catColor}` 
-                        : `1px solid ${D.border}`,
+                        ? `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.22)" : "#D1D5DB"}` 
+                        : `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E7EB"}`,
                       background: isBeingDragged
-                        ? (isDarkMode ? "rgba(56, 189, 248, 0.28)" : "#E0F2FE")
+                        ? (isDarkMode ? "#333333" : "#E5E7EB")
                         : isSelected 
-                        ? (isDarkMode ? "rgba(56, 189, 248, 0.12)" : bgLight) 
-                        : (isDarkMode ? "#262626" : "#FFFFFF"),
+                        ? (isDarkMode ? "#2F2F2F" : "#F4F4F5") 
+                        : (isDarkMode ? "#212121" : "#FFFFFF"),
                       cursor: "inherit",
                       textAlign: "center",
-                      transition: "background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease",
+                      transition: "all 0.16s ease",
                       boxShadow: isBeingDragged
-                        ? (isDarkMode ? "0 12px 30px rgba(0,0,0,0.8), 0 0 0 2px #38BDF8" : "0 12px 30px rgba(2,132,199,0.35), 0 0 0 2px #0284C7")
+                        ? (isDarkMode ? "0 14px 34px rgba(0,0,0,0.8)" : "0 12px 28px rgba(0,0,0,0.14)")
                         : isSelected 
-                        ? `0 4px 12px ${catColor}25` 
-                        : (isDarkMode ? "none" : "0 1px 3px rgba(0,0,0,0.03)"),
+                        ? (isDarkMode ? "0 2px 8px rgba(0,0,0,0.4)" : "0 2px 6px rgba(0,0,0,0.05)")
+                        : (isDarkMode ? "none" : "0 1px 2px rgba(0,0,0,0.03)"),
                       position: "relative",
                       boxSizing: "border-box",
-                      minHeight: 86,
+                      minHeight: 84,
                       pointerEvents: isBeingDragged ? "none" : "auto",
                       WebkitUserSelect: "none",
                       userSelect: "none"
@@ -1635,18 +1635,18 @@ export function FrutilotaMascot({
                   >
                     {/* Logo / Badge de la Entidad */}
                     <div style={{
-                      width: "82%",
+                      width: "84%",
                       maxWidth: 64,
-                      height: 36,
-                      borderRadius: 8,
+                      height: 34,
+                      borderRadius: 7,
                       background: "#FFFFFF",
-                      border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #E2E8F0",
+                      border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.10)" : "1px solid #E5E7EB",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      padding: "3px 6px",
-                      marginBottom: 6,
-                      boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.4)" : "0 1px 2px rgba(0,0,0,0.05)",
+                      padding: "2px 5px",
+                      marginBottom: 5,
+                      boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.04)",
                       boxSizing: "border-box",
                       overflow: "hidden",
                       pointerEvents: "none"
@@ -1668,7 +1668,7 @@ export function FrutilotaMascot({
                         />
                       ) : (
                         <span style={{
-                          color: catColor,
+                          color: isDarkMode ? "#ECECEC" : "#1F2937",
                           fontWeight: 800,
                           fontFamily: G,
                           fontSize: 10.5,
@@ -1684,8 +1684,8 @@ export function FrutilotaMascot({
                     <span style={{ 
                       fontFamily: G, 
                       fontSize: 11.5, 
-                      color: isSelected ? (isDarkMode ? "#38BDF8" : catColor) : D.text, 
-                      fontWeight: isSelected ? 800 : 650, 
+                      color: isSelected ? (isDarkMode ? "#FFFFFF" : "#0D0D0D") : (isDarkMode ? "#ECECEC" : "#374151"), 
+                      fontWeight: isSelected ? 800 : 600, 
                       lineHeight: 1.2,
                       textAlign: "center",
                       maxWidth: "100%",
@@ -1694,7 +1694,8 @@ export function FrutilotaMascot({
                       whiteSpace: "nowrap",
                       display: "block",
                       padding: "0 2px",
-                      pointerEvents: "none"
+                      pointerEvents: "none",
+                      letterSpacing: "-0.01em"
                     }}>
                       {c.acronym}
                     </span>
@@ -3641,15 +3642,15 @@ function ChatInputCard({
             exit={{ opacity: 0, scale: 0.97, y: 6 }}
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
             style={{
-              background: D.sidebar,
-              border: `1.5px solid ${activeColor || T.violet}`,
+              background: isDarkMode ? "#212121" : "#FFFFFF",
+              border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.16)" : "1px solid #E5E7EB",
               borderRadius: 18,
-              boxShadow: `0 10px 30px rgba(47, 108, 181, 0.16), 0 0 0 1px ${activeColor || T.violet}20`,
-              padding: "14px 16px 12px",
+              boxShadow: isDarkMode ? "0 12px 36px rgba(0, 0, 0, 0.65)" : "0 10px 30px rgba(0, 0, 0, 0.08)",
+              padding: "16px 18px 14px",
               display: "flex",
               flexDirection: "column",
-              gap: 10,
-              minHeight: 110,
+              gap: 12,
+              minHeight: 116,
               boxSizing: "border-box"
             }}
           >
@@ -3658,11 +3659,11 @@ function ChatInputCard({
               {value.trim() ? (
                 <div style={{
                   fontFamily: I,
-                  fontSize: "clamp(15px, 4vw, 16.5px)",
-                  fontWeight: 600,
-                  color: D.ink,
-                  lineHeight: 1.45,
-                  maxHeight: 70,
+                  fontSize: "15px",
+                  fontWeight: 500,
+                  color: isDarkMode ? "#ECECEC" : "#0D0D0D",
+                  lineHeight: 1.5,
+                  maxHeight: 72,
                   overflowY: "auto",
                   wordBreak: "break-word"
                 }}>
@@ -3672,22 +3673,22 @@ function ChatInputCard({
                     transition={{ repeat: Infinity, duration: 0.8 }}
                     style={{
                       display: "inline-block",
-                      width: 2.5,
-                      height: 16,
+                      width: 2,
+                      height: 15,
                       marginLeft: 4,
-                      background: activeColor || T.violet,
+                      background: isDarkMode ? "#ECECEC" : "#0D0D0D",
                       verticalAlign: "middle"
                     }}
                   />
                 </div>
               ) : (
-                <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                    <span style={{ fontFamily: G, fontSize: 14.5, fontWeight: 750, color: D.ink }}>
+                    <span style={{ fontFamily: G, fontSize: 14.5, fontWeight: 700, color: isDarkMode ? "#ECECEC" : "#0D0D0D" }}>
                       Escuchando tu voz...
                     </span>
                   </div>
-                  <span style={{ fontFamily: I, fontSize: 12, color: D.muted, lineHeight: 1.35 }}>
+                  <span style={{ fontFamily: I, fontSize: 12, color: isDarkMode ? "#9CA3AF" : "#6B7280", lineHeight: 1.35 }}>
                     {getEntityVoiceExample(active.acronym)}
                   </span>
                 </div>
@@ -3699,11 +3700,11 @@ function ChatInputCard({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              gap: 3.5,
-              height: 24,
+              gap: 4,
+              height: 26,
               padding: "0 8px"
             }}>
-              {[0.2, 0.35, 0.5, 0.7, 0.85, 1.0, 1.0, 0.85, 0.7, 0.5, 0.35, 0.2].map((weight, idx) => {
+              {[0.2, 0.35, 0.55, 0.75, 0.9, 1.0, 1.0, 0.9, 0.75, 0.55, 0.35, 0.2].map((weight, idx) => {
                 const waveHeight = Math.max(4, Math.min(22, (audioLevel * 22 * weight) + (Math.sin(idx * 0.7 + Date.now() / 140) * 3 + 3)));
                 return (
                   <motion.div
@@ -3711,9 +3712,9 @@ function ChatInputCard({
                     animate={{ height: waveHeight }}
                     transition={{ duration: 0.08, ease: "linear" }}
                     style={{
-                      width: 3.2,
-                      borderRadius: 8,
-                      background: `linear-gradient(180deg, ${activeColor || T.violet} 0%, #38BDF8 100%)`
+                      width: 3.5,
+                      borderRadius: 4,
+                      background: isDarkMode ? "rgba(255, 255, 255, 0.85)" : "#1F2937"
                     }}
                   />
                 );
@@ -3725,8 +3726,8 @@ function ChatInputCard({
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              borderTop: `1px solid ${D.border}`,
-              paddingTop: 8
+              borderTop: isDarkMode ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #F3F4F6",
+              paddingTop: 10
             }}>
               {/* Botón Cancelar (✕) */}
               <button
@@ -3737,13 +3738,14 @@ function ChatInputCard({
                   else onToggleVoice();
                 }}
                 title="Cancelar grabación"
+                aria-label="Cancelar grabación"
                 style={{
-                  width: 36,
-                  height: 36,
+                  width: 34,
+                  height: 34,
                   borderRadius: "50%",
-                  border: `1px solid ${D.border}`,
-                  background: D.bg,
-                  color: D.muted,
+                  border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.10)" : "1px solid #E5E7EB",
+                  background: isDarkMode ? "#2A2A2A" : "#F3F4F6",
+                  color: isDarkMode ? "#A3A3A3" : "#6B7280",
                   cursor: "pointer",
                   display: "flex",
                   alignItems: "center",
@@ -3753,63 +3755,72 @@ function ChatInputCard({
                 onMouseEnter={e => {
                   e.currentTarget.style.color = "#EF4444";
                   e.currentTarget.style.borderColor = "rgba(239, 68, 68, 0.35)";
-                  e.currentTarget.style.background = "rgba(239, 68, 68, 0.08)";
+                  e.currentTarget.style.background = isDarkMode ? "rgba(239, 68, 68, 0.15)" : "#FEF2F2";
                 }}
                 onMouseLeave={e => {
-                  e.currentTarget.style.color = D.muted;
-                  e.currentTarget.style.borderColor = D.border;
-                  e.currentTarget.style.background = D.bg;
+                  e.currentTarget.style.color = isDarkMode ? "#A3A3A3" : "#6B7280";
+                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.10)" : "#E5E7EB";
+                  e.currentTarget.style.background = isDarkMode ? "#2A2A2A" : "#F3F4F6";
                 }}
               >
-                <DismissRegular fontSize={16} />
+                <DismissRegular fontSize={15} />
               </button>
 
               {/* Status Pill Central Estilo ChatGPT */}
               <div style={{
                 display: "flex",
                 alignItems: "center",
-                gap: 5.5,
+                gap: 6,
                 padding: "3px 10px",
                 borderRadius: 20,
-                background: "rgba(47, 108, 181, 0.08)",
-                border: `1px solid ${activeColor || T.violet}25`
+                background: isDarkMode ? "#2A2A2A" : "#F3F4F6",
+                border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #E5E7EB"
               }}>
-                <SparkleFilled fontSize={11} color={activeColor || T.violet} />
-                <span style={{ fontFamily: I, fontSize: 10.5, fontWeight: 750, color: activeColor || T.violet, letterSpacing: "0.04em", textTransform: "uppercase" }}>
-                  LOTA Voice AI
+                <span style={{
+                  width: 6,
+                  height: 6,
+                  borderRadius: "50%",
+                  background: "#10A37F",
+                  display: "inline-block",
+                  boxShadow: "0 0 8px rgba(16, 163, 127, 0.6)"
+                }} />
+                <span style={{ fontFamily: I, fontSize: 11, fontWeight: 650, color: isDarkMode ? "#ECECEC" : "#1F2937", letterSpacing: "0.02em" }}>
+                  LOTA Voz
                 </span>
               </div>
 
-              {/* Botón Confirmar / Enviar */}
+              {/* Botón Confirmar / Enviar (Estilo ChatGPT) */}
               <motion.button
                 type="button"
-                whileHover={{ scale: 1.06 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.94 }}
                 onClick={() => {
                   haptic.success();
                   onToggleVoice();
                 }}
                 title={value.trim() ? "Enviar consulta" : "Terminar grabación"}
+                aria-label={value.trim() ? "Enviar consulta" : "Terminar grabación"}
                 style={{
-                  width: 38,
-                  height: 38,
+                  width: 34,
+                  height: 34,
                   borderRadius: "50%",
                   border: "none",
-                  background: activeColor || T.violet,
-                  color: "#FFFFFF",
+                  background: isDarkMode ? "#ECECEC" : "#0D0D0D",
+                  color: isDarkMode ? "#0D0D0D" : "#FFFFFF",
                   cursor: "pointer",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  boxShadow: `0 4px 14px rgba(47, 108, 181, 0.35)`
+                  boxShadow: isDarkMode ? "0 4px 12px rgba(0, 0, 0, 0.5)" : "0 4px 12px rgba(0, 0, 0, 0.15)",
+                  transition: "all 0.15s ease"
                 }}
               >
                 {value.trim() ? (
-                  <svg width="15" height="15" viewBox="0 0 14 14" fill="none">
-                    <path d="M7 12V2M7 2L2.5 6.5M7 2L11.5 6.5" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M7 12V2M7 2L2.5 6.5M7 2L11.5 6.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 ) : (
-                  <CheckmarkRegular fontSize={17} />
+                  <CheckmarkRegular fontSize={16} />
                 )}
               </motion.button>
             </div>
