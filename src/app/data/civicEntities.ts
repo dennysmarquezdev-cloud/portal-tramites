@@ -35,22 +35,22 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Renovación de DNI por Caducidad (DNIe / DNI Azul)",
         description: "Renueva tu documento con foto desde la app DNI BioFacial y recógelo en agencia.",
-        url: "https://apps.reniec.gob.pe/renovacionDni/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=RENIEC"
       },
       {
         title: "Duplicado de DNI vía Web",
         description: "Solicita un duplicado exacto de tu DNI vigente por robo o extravío.",
-        url: "https://portaladminusuarios.reniec.gob.pe/duplicado/#!/index"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=RENIEC"
       },
       {
         title: "Copia Certificada de Actas (Nacimiento, Matrimonio, Defunción)",
         description: "Descarga actas digitales con código QR de verificación oficial.",
-        url: "https://apps.reniec.gob.pe/actascertificadas"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=RENIEC"
       },
       {
         title: "Certificado de Inscripción C4",
         description: "Obtén la constancia informativa de tu identidad para trámites bancarios y notariales.",
-        url: "https://apps.reniec.gob.pe/certins"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=RENIEC"
       }
     ]
   },
@@ -70,17 +70,17 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Citas para Pasaporte Electrónico Biométrico",
         description: "Reserva tu turno de atención tras pagar la tasa en Págalo.pe (código 01810).",
-        url: "https://citaspasaporte.migraciones.gob.pe/citas-pasaporte-v2/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=MIGRACIONES"
       },
       {
         title: "Certificado de Movimiento Migratorio",
         description: "Registro oficial de tus entradas y salidas del territorio peruano.",
-        url: "https://agenciavirtual.migraciones.gob.pe/agencia-virtual/identidad"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=MIGRACIONES"
       },
       {
         title: "Prórroga de Permanencia o Residencia para Extranjeros",
         description: "Extiende la vigencia de estadía legal de forma 100% digital en la agencia virtual.",
-        url: "https://agenciavirtual.migraciones.gob.pe/agencia-virtual/identidad"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=MIGRACIONES"
       }
     ]
   },
@@ -101,27 +101,27 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Inscripción y Activación al RUC Digital",
         description: "Obtén tu RUC online con tu DNI y datos biométricos desde la app Personas o web oficial.",
-        url: "https://ww1.sunat.gob.pe/ol-ti-itinsruc/inscripcion/index.htm"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SUNAT"
       },
       {
         title: "Generación y Recuperación de Clave SOL",
         description: "Crea tu contraseña de acceso a SUNAT Operaciones en Línea de forma 100% virtual.",
-        url: "https://ww1.sunat.gob.pe/ol-ti-itclave/ol-ti-itclave.htm"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SUNAT"
       },
       {
         title: "Emisión de Recibos por Honorarios Electrónicos",
         description: "Emite comprobantes de 4ta categoría para trabajadores independientes sin costo.",
-        url: "https://ww1.sunat.gob.pe/ol-ti-itrheopciones/RHESunat.htm"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SUNAT"
       },
       {
         title: "Formulario 1609 (Tasa para Pasaporte y Trámites)",
         description: "Genera y paga constancias de tributos y tasas arancelarias.",
-        url: "https://www.gob.pe/10012-pagar-tributos-o-multas-con-guia-de-pago-facil-formulario-1662"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SUNAT"
       },
       {
         title: "Declaración Jurada Anual de Renta",
         description: "Guía paso a paso para presentar tu declaración de personas naturales o empresas.",
-        url: "https://ww1.sunat.gob.pe/ol-ti-itinsruc/inscripcion/index.htm"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SUNAT"
       }
     ]
   },
@@ -141,22 +141,22 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Consulta Vehicular Gratuita (Placas y Datos)",
         description: "Verifica datos de un vehículo (marca, modelo, propietario) sin costo.",
-        url: "https://consultavehicular.sunarp.gob.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SUNARP"
       },
       {
         title: "Copia Literal y Certificados Registrales (SPRL)",
         description: "Descarga partidas registrales de predios, vehículos y personas jurídicas.",
-        url: "https://enlinea.sunarp.gob.pe/sunarpweb/pages/acceso/ingreso.faces"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SUNARP"
       },
       {
         title: "Alerta Registral Gratuita",
         description: "Recibe alertas por correo y SMS sobre cualquier movimiento en tus partidas.",
-        url: "https://alertaregistral.sunarp.gob.pe/alerta/Inicio"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SUNARP"
       },
       {
         title: "Certificado de Vigencia de Poder",
         description: "Acredita facultades legales de representantes de empresas y apoderados.",
-        url: "https://www.gob.pe/380-solicitar-certificado-de-vigencia-de-poder-otorgado-por-persona-juridica"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SUNARP"
       }
     ]
   },
@@ -175,12 +175,12 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Reporte de Deudas SBS Gratuito",
         description: "Consulta en línea tu calificación crediticia oficial y deudas registradas.",
-        url: "https://servicios.sbs.gob.pe/serviciosenlinea"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SBS"
       },
       {
         title: "Consulta de Constancia de Afiliación AFP",
         description: "Verifica a qué administradora privada de fondos de pensiones perteneces.",
-        url: "https://servicios.sbs.gob.pe/serviciosenlinea"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SBS"
       }
     ]
   },
@@ -199,12 +199,12 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Pago de Tasas Administrativas en Págalo.pe",
         description: "Paga tasas de RENIEC, MTC, Migraciones, Poder Judicial y PNP con tarjeta o Yape.",
-        url: "https://www.pagalo.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=BN"
       },
       {
         title: "Activación y Consulta de Cuenta DNI",
         description: "Billetera digital del Banco de la Nación para cobro de subsidios del Estado.",
-        url: "https://www.gob.pe/14238-activar-tu-cuenta-dni"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=BN"
       }
     ]
   },
@@ -224,7 +224,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Registro Público del Mercado de Valores",
         description: "Consulta de prospectos informativos y hechos de importancia de emisores.",
-        url: "https://www.smv.gob.pe/SIMV/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SMV"
       }
     ]
   },
@@ -246,17 +246,17 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Consulta de Acreditación y Vigencia de Seguro",
         description: "Revisa si tu seguro está activo y con cobertura vigente con tu DNI.",
-        url: "https://dondemeatiendo.essalud.gob.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=ESSALUD"
       },
       {
         title: "¿Dónde me atiendo? (Centro Asistencial)",
         description: "Conoce el policlínico u hospital de EsSalud que te corresponde según tu domicilio.",
-        url: "https://dondemeatiendo.essalud.gob.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=ESSALUD"
       },
       {
         title: "Subsidio por Lactancia y Maternidad",
         description: "Requisitos y trámite digital de pago de subsidio para madres trabajadoras.",
-        url: "https://viva.essalud.gob.pe/viva/login"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=ESSALUD"
       }
     ]
   },
@@ -276,12 +276,12 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Consulta de Asegurado SIS en Línea",
         description: "Verifica con tu DNI si cuentas con seguro SIS activo y en qué centro de salud.",
-        url: "https://cel.sis.gob.pe/SisConsultaEnLinea"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SIS"
       },
       {
         title: "Afiliación Virtual al SIS Gratuito",
         description: "Inscríbete por internet si no cuentas con otro seguro de salud.",
-        url: "https://afiliacion.sis.gob.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SIS"
       }
     ]
   },
@@ -300,7 +300,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Carné de Vacunación Digital",
         description: "Descarga tu constancia oficial con código QR con todas tus dosis registradas.",
-        url: "https://carnetvacunacion.minsa.gob.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=MINSA"
       }
     ]
   },
@@ -339,12 +339,12 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Consulta de Registro Sanitario de Medicamentos",
         description: "Verifica si un medicamento, producto biológico o genérico cuenta con autorización sanitaria vigente.",
-        url: "https://serviciosweb.digemid.minsa.gob.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=DIGEMID"
       },
       {
         title: "Observatorio de Precios de Medicamentos",
         description: "Compara precios oficiales y disponibilidad de fármacos en boticas y farmacias autorizadas.",
-        url: "https://observatorio.digemid.minsa.gob.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=DIGEMID"
       }
     ]
   },
@@ -366,12 +366,12 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Consulta de Estado de Cuenta y Aportes al SNP",
         description: "Verifica cuántos años de aportes tienes registrados en la ONP con tu clave virtual.",
-        url: "https://onpvirtual.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=ONP"
       },
       {
         title: "Solicitud de Pensión de Jubilación (19990)",
         description: "Tramita tu jubilación con 20 años de aportes o pensión proporcional (10 a 15 años).",
-        url: "https://onpvirtual.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=ONP"
       }
     ]
   },
@@ -391,12 +391,12 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Denuncia Laboral Virtual Confidencial",
         description: "Reporta incumplimientos de sueldo, CTS, gratificación o despidos arbitrarios.",
-        url: "https://aplicativosweb2.sunafil.gob.pe/si.denunciasVirtuales/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SUNAFIL"
       },
       {
         title: "Verifica si estás en Planilla (Verifica tu Chamba)",
         description: "Consulta anónimamente si tu empleador te registró formalmente en la planilla electrónica.",
-        url: "https://aplicativosweb2.sunafil.gob.pe/si.verificacionLaboral/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SUNAFIL"
       }
     ]
   },
@@ -415,7 +415,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Certificado Único Laboral (CUL)",
         description: "Documento oficial gratuito que reúne antecedentes, identidad, formación y experiencia.",
-        url: "https://www.empleosperu.gob.pe/CertificadoUnicoLaboral/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=MTPE"
       }
     ]
   },
@@ -433,7 +433,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Consulta de Estado de Cuenta AFP",
         description: "Revisa tu fondo acumulado en Integra, Prima, Profuturo o Habitat.",
-        url: "https://servicios.sbs.gob.pe/serviciosenlinea"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=AFP"
       }
     ]
   },
@@ -454,17 +454,17 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Emisión y Revalidación de Licencia Electrónica (Brevete)",
         description: "Obtén tu licencia digital con código QR con validez nacional e internacional.",
-        url: "https://licencias.mtc.gob.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=MTC"
       },
       {
         title: "Récord del Conductor y Sistema de Puntos",
         description: "Consulta tu historial de papeletas y puntos acumulados por infracciones.",
-        url: "https://recordconductor.mtc.gob.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=MTC"
       },
       {
         title: "Simulacro Oficial de Examen de Reglas MTC",
         description: "Practica para tu examen de reglas de tránsito en línea.",
-        url: "https://sierdn.mtc.gob.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=MTC"
       }
     ]
   },
@@ -484,7 +484,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Consulta de Récord de Infracciones SUTRAN",
         description: "Verifica papeletas pendientes en la red vial nacional por placa o DNI.",
-        url: "https://www.sutran.gob.pe/infraccion-por-cinemometro/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SUTRAN"
       }
     ]
   },
@@ -529,7 +529,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Consulta de Tarjeta Única de Circulación (TUC)",
         description: "Verifica si un vehículo o taxi cuenta con autorización oficial vigente.",
-        url: "https://sistemas.atu.gob.pe/ConsultaVehiculo"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=ATU"
       }
     ]
   },
@@ -551,12 +551,12 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Consulta en Línea del Registro de Grados y Títulos",
         description: "Verifica si tu grado de bachiller o título profesional está registrado ante SUNEDU.",
-        url: "https://enlinea.sunedu.gob.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SUNEDU"
       },
       {
         title: "Constancia de Inscripción de Grado o Título",
         description: "Descarga el certificado digital oficial para concursos públicos o empleos.",
-        url: "https://enlinea.sunedu.gob.pe/constanciadeinscripcion"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SUNEDU"
       }
     ]
   },
@@ -575,7 +575,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Certificado Oficial de Estudios Escolares",
         description: "Solicita y descarga tu constancia de logros de aprendizaje de primaria y secundaria.",
-        url: "https://certificado.minedu.gob.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=MINEDU"
       }
     ]
   },
@@ -595,7 +595,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Postulación y Requisitos a Beca 18",
         description: "Bases, cronogramas y simulación de puntajes para becas integrales de pregrado.",
-        url: "https://www.pronabec.gob.pe/beca-18/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=PRONABEC"
       }
     ]
   },
@@ -615,12 +615,12 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Consulta de Programas e Instituciones Acreditadas",
         description: "Verifica carreras universitarias e institutos con acreditación oficial de calidad.",
-        url: "https://app.sineace.gob.pe/Reportes/Acreditacion.aspx"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SINEACE"
       },
       {
         title: "Instituciones y Carreras Acreditadas SINEACE",
         description: "Consulta si un programa universitario o instituto está acreditado.",
-        url: "https://app.sineace.gob.pe/Reportes/Acreditacion.aspx"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SINEACE"
       }
     ]
   },
@@ -642,12 +642,12 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Presentación de Reclamos en Reclama Virtual",
         description: "Inicia una mediación gratuita ante cobros indebidos, garantías o mal servicio.",
-        url: "https://enlinea.indecopi.gob.pe/reclamavirtual/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=INDECOPI"
       },
       {
         title: "Registro de Marcas y Nombres Comerciales",
         description: "Protege el nombre o logo de tu emprendimiento o empresa ante INDECOPI.",
-        url: "https://enlinea.indecopi.gob.pe/marcas/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=INDECOPI"
       }
     ]
   },
@@ -667,12 +667,12 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Checa tu IMEI (Consulta de Celular Robado o Bloqueado)",
         description: "Verifica si un celular está reportado por robo o hurto ante los operadores.",
-        url: "https://socio.osiptel.gob.pe/ChecaTuImei/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=OSIPTEL"
       },
       {
         title: "Orientación y Reclamos ante Empresas Operadoras (SOCIO)",
         description: "Presenta y da seguimiento a reclamos por cobros indebidos o fallas.",
-        url: "https://socio.osiptel.gob.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=OSIPTEL"
       }
     ]
   },
@@ -692,7 +692,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Facilito Balón de Gas y Combustibles",
         description: "Encuentra los precios más económicos y distribuidores formales de GLP y gasolina.",
-        url: "https://www.facilito.gob.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=OSINERGMIN"
       }
     ]
   },
@@ -712,7 +712,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Orientación y Reclamos por Servicio de Agua Potable",
         description: "Guía para denunciar cobros excesivos, falta de agua o cortes injustificados.",
-        url: "https://www.sunass.gob.pe/usuarios/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SUNASS"
       }
     ]
   },
@@ -732,7 +732,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Atención al Usuario y Reclamos de Infraestructura",
         description: "Reclamos sobre peajes, aeropuertos y carreteras concesionadas.",
-        url: "https://www.gob.pe/ositran"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=OSITRAN"
       }
     ]
   },
@@ -752,7 +752,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Consulta y Pago de Recibo SEDAPAL Virtual",
         description: "Revisa tu estado de cuenta y paga en línea con tu número de suministro.",
-        url: "https://aquanet.sedapal.com.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SEDAPAL"
       }
     ]
   },
@@ -770,7 +770,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Oficina Virtual SEDAPAR Arequipa",
         description: "Consulta de recibos y trámites de suministro de agua potable.",
-        url: "https://oficinavirtual.sedapar.com.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SEDAPAR"
       }
     ]
   },
@@ -817,12 +817,12 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Certificado de Antecedentes Policiales Digital (CERAP)",
         description: "Obtén tu certificado oficial de la PNP desde casa con pago en Págalo.pe.",
-        url: "https://sistemas.policia.gob.pe/cervirtual/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=PNP"
       },
       {
         title: "Denuncia Policial Digital por Pérdida de Documentos",
         description: "Constancia policial digital con firma electrónica válida para duplicados.",
-        url: "https://sistemas.policia.gob.pe/denuncias_digitales/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=PNP"
       }
     ]
   },
@@ -842,7 +842,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Certificado de Antecedentes Judiciales",
         description: "Constancia oficial expedida por el INPE para trámites legales o de empleo.",
-        url: "https://cejvirtual.inpe.gob.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=INPE"
       }
     ]
   },
@@ -861,7 +861,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Defensa Pública y Asesoría Legal Gratuita",
         description: "Abogados de oficio del Estado para personas de bajos recursos económicos.",
-        url: "https://www.gob.pe/346-solicitar-asistencia-legal-gratuita-defensa-publica"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=MINJUSDH"
       }
     ]
   },
@@ -881,12 +881,12 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Mesa de Partes Virtual y Denuncia Penal",
         description: "Presenta denuncias penales por delitos y adjunta pruebas digitales.",
-        url: "https://portal.mpfn.gob.pe/mesa-de-partes-virtual"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=MPFN"
       },
       {
         title: "Consulta de Estado de Casos Fiscales",
         description: "Seguimiento del trámite e investigación preliminar en fiscalías.",
-        url: "https://portal.mpfn.gob.pe/seguimiento-de-denuncias"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=MPFN"
       }
     ]
   },
@@ -906,7 +906,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Queja ante la Defensoría del Pueblo",
         description: "Presenta quejas por vulneración de derechos o mala atención del Estado.",
-        url: "https://www.defensoria.gob.pe/servicios-al-ciudadano/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=DEFENSORIA"
       }
     ]
   },
@@ -928,7 +928,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Consulta de Local de Votación y Miembros de Mesa",
         description: "Ubica tu mesa de sufragio y verifica si eres miembro de mesa.",
-        url: "https://consultaelectoral.onpe.gob.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=ONPE"
       }
     ]
   },
@@ -948,7 +948,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Consulta de Multas Electorales y Dispensas",
         description: "Revisa si tienes multas pendientes y solicita justificación o dispensa online.",
-        url: "https://multas.jne.gob.pe/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=JNE"
       }
     ]
   },
@@ -970,7 +970,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Plan Familiar de Emergencia y Mochila para Desastres",
         description: "Guía oficial de preparación ante sismos, inundaciones y tsunamis.",
-        url: "https://www.gob.pe/indeci"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=INDECI"
       }
     ]
   },
@@ -990,7 +990,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Denuncia Ambiental SINADA",
         description: "Reporta incidentes de contaminación sonora, de aguas, aire o residuos tóxicos.",
-        url: "https://sistemas.oefa.gob.pe/sifa/frontend/mf-registro-denuncias/#/bienvenida"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=OEFA"
       }
     ]
   },
@@ -1010,7 +1010,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Alerta SERFOR - Reporte de Tráfico de Fauna Silvestre",
         description: "Canal oficial para denunciar tenencia o venta ilegal de animales silvestres.",
-        url: "https://appweb.serfor.gob.pe/alertaserfor/"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SERFOR"
       }
     ]
   },
@@ -1030,7 +1030,7 @@ export const CIVIC_ENTITIES: CivicEntityInfo[] = [
       {
         title: "Certificado Sanitario para Viajes de Mascotas (Perros y Gatos)",
         description: "Requisitos de vacunas y emisión de certificado de exportación de mascotas.",
-        url: "https://servicios.senasa.gob.pe/consultaRequisitos/consultarRequisitos.action"
+        url: "https://www.gob.pe/busquedas?contenido=tramites&institucion=SENASA"
       }
     ]
   }
