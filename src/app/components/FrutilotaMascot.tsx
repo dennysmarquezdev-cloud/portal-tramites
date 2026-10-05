@@ -1441,62 +1441,80 @@ export function FrutilotaMascot({
             </div>
           )}
 
-          {/* Entidades Header con Buscador */}
+          {/* Entidades Header con Buscador (Estilo ChatGPT) */}
           <div style={{ padding: "14px 14px 8px", flexShrink: 0, display: "flex", flexDirection: "column", gap: 8 }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
                 <h2 style={{
                   margin: 0,
                   fontFamily: G,
-                  fontSize: 16,
-                  fontWeight: 800,
-                  color: D.text,
-                  letterSpacing: "-0.02em"
+                  fontSize: 14,
+                  fontWeight: 700,
+                  color: isDarkMode ? "#ECECEC" : "#0D0D0D",
+                  letterSpacing: "-0.015em"
                 }}>
                   Entidades
                 </h2>
                 <span style={{
-                  fontSize: 10,
-                  fontWeight: 700,
+                  fontSize: 10.5,
+                  fontWeight: 600,
                   padding: "1px 6px",
-                  borderRadius: 100,
-                  background: isDarkMode ? "rgba(255,255,255,0.08)" : "#E2E8F0",
-                  color: D.muted
+                  borderRadius: 6,
+                  background: isDarkMode ? "#2A2A2A" : "#F4F4F5",
+                  border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E7EB"}`,
+                  color: isDarkMode ? "#9CA3AF" : "#6B7280"
                 }}>
                   {displayEntitiesList.length}
                 </span>
               </div>
             </div>
 
-            {/* Buscador Rápido de Entidades en Sidebar */}
+            {/* Buscador Rápido de Entidades en Sidebar (Estilo ChatGPT) */}
             <div style={{ position: "relative", width: "100%" }}>
-              <SearchRegular 
+              <svg 
+                width="13" 
+                height="13" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
                 style={{ 
                   position: "absolute", 
-                  left: 8, 
+                  left: 9, 
                   top: "50%", 
                   transform: "translateY(-50%)", 
                   color: isDarkMode ? "#9CA3AF" : "#6B7280",
                   pointerEvents: "none" 
-                }} 
-                fontSize={12} 
-              />
+                }}
+              >
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
               <input 
                 value={sidebarEntitySearch}
                 onChange={e => setSidebarEntitySearch(e.target.value)}
                 placeholder="Buscar entidad (ej. SUNAT, RENIEC)..."
                 style={{
                   width: "100%",
-                  height: 28,
-                  padding: "0 22px 0 26px",
-                  borderRadius: 7,
-                  border: `1px solid ${D.border}`,
-                  background: isDarkMode ? "#262626" : "#FFFFFF",
-                  color: D.text,
+                  height: 32,
+                  padding: "0 26px 0 28px",
+                  borderRadius: 8,
+                  border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E5E7EB"}`,
+                  background: isDarkMode ? "#212121" : "#FFFFFF",
+                  color: isDarkMode ? "#ECECEC" : "#0D0D0D",
                   fontFamily: I,
-                  fontSize: 11,
+                  fontSize: 11.5,
                   outline: "none",
-                  boxSizing: "border-box"
+                  boxSizing: "border-box",
+                  transition: "border-color 0.15s ease"
+                }}
+                onFocus={e => {
+                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.28)" : "#0D0D0D";
+                }}
+                onBlur={e => {
+                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E5E7EB";
                 }}
               />
               {sidebarEntitySearch && (
@@ -1505,17 +1523,23 @@ export function FrutilotaMascot({
                   onClick={() => setSidebarEntitySearch("")}
                   style={{
                     position: "absolute",
-                    right: 6,
+                    right: 7,
                     top: "50%",
                     transform: "translateY(-50%)",
                     background: "none",
                     border: "none",
                     cursor: "pointer",
-                    color: D.muted,
-                    padding: 0
+                    color: isDarkMode ? "#9CA3AF" : "#6B7280",
+                    padding: 0,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
                   }}
                 >
-                  <DismissRegular fontSize={11} />
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
                 </button>
               )}
             </div>
@@ -1523,9 +1547,9 @@ export function FrutilotaMascot({
             {/* Hint sutil de arrastre y pulsación */}
             <div style={{
               fontSize: 10.5,
-              color: D.muted,
+              color: isDarkMode ? "#9CA3AF" : "#6B7280",
               padding: "2px 2px 0",
-              lineHeight: 1.3,
+              lineHeight: 1.35,
               userSelect: "none",
               letterSpacing: "-0.01em"
             }}>
