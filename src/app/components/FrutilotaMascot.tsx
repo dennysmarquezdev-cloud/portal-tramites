@@ -116,6 +116,8 @@ export interface CatalogItem {
   resumen_snippet?: string;
   url_guia?: string;
   action_url?: string;
+  image_url?: string;
+  banner_url?: string;
 }
 
 // Catálogo Oficial Multi-Entidad compilado para el Drawer (3,033 trámites del Estado Peruano)
@@ -129,6 +131,8 @@ const COMPILED_CATALOG: CatalogItem[] = ((multiCatalogRaw as any[]) || []).map((
   resumen_snippet: t.descripcion || t.summary || t.resumen_snippet || "",
   url_guia: t.url || t.url_guia || "",
   action_url: t.action_url || t.url || "",
+  image_url: t.image_url || t.banner_url || "",
+  banner_url: t.banner_url || "",
 }));
 
 export function matchEntityTramite(tramiteEntidad: string, actAcr: string, actId?: string, actName?: string): boolean {
@@ -711,6 +715,7 @@ export function FrutilotaMascot({
 
   const [sidebarProfileMenuOpen, setSidebarProfileMenuOpen] = useState(false);
   const sidebarProfileMenuRef = useRef<HTMLDivElement>(null);
+  const entityDropdownRef = useRef<HTMLDivElement>(null);
 
   const isDarkMode = theme === "dark";
 
@@ -1013,14 +1018,17 @@ export function FrutilotaMascot({
       if (sidebarProfileMenuRef.current && !sidebarProfileMenuRef.current.contains(e.target as Node)) {
         setSidebarProfileMenuOpen(false);
       }
+      if (entityDropdownRef.current && !entityDropdownRef.current.contains(e.target as Node)) {
+        setEntityDropdownOpen(false);
+      }
     };
-    if (sidebarProfileMenuOpen) {
+    if (sidebarProfileMenuOpen || entityDropdownOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [sidebarProfileMenuOpen]);
+  }, [sidebarProfileMenuOpen, entityDropdownOpen]);
 
   const handlePerformLogout = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
@@ -1386,14 +1394,8 @@ export function FrutilotaMascot({
           .mob-hide-entity-logo {
             display: none !important;
           }
-          .desktop-top-entities-header {
-            display: none !important;
-          }
           .dynamic-official-procedures-container {
             padding: 14px 14px 28px !important;
-          }
-          .proc-item-mobile-hidden {
-            display: none !important;
           }
           .chat-empty {
             padding: 38px 12px 16px !important;
@@ -1427,12 +1429,6 @@ export function FrutilotaMascot({
             grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)) !important;
             gap: 8px !important;
             padding: 8px !important;
-          }
-          .desktop-top-entities-header {
-            display: flex !important;
-          }
-          .proc-ver-mas-container {
-            display: none !important;
           }
         }
         .mob-entity-chip:active,
@@ -1504,6 +1500,8 @@ export function FrutilotaMascot({
             costo: string;
             acceso: string;
             url?: string;
+            image_url?: string;
+            banner_url?: string;
           }[] = [];
 
           const entityProcedures = COMPILED_CATALOG.filter(t => 
@@ -1517,7 +1515,9 @@ export function FrutilotaMascot({
               resumen: t.resumen_snippet || `Trámite normativo oficial de ${activeEntity.acronym || activeEntity.name}.`,
               costo: t.costo || "Gratuito",
               acceso: /clave sol/i.test(t.tipo_acceso || "") ? "Clave SOL" : (t.modalidad || "En línea"),
-              url: t.action_url || t.url_guia
+              url: t.action_url || t.url_guia,
+              image_url: t.image_url || t.banner_url || (activeEntity as any).bannerUrl || "",
+              banner_url: t.banner_url || (activeEntity as any).bannerUrl || ""
             }));
           } else {
             baseList = (activeEntity.popularProcedures || []).map((p, idx) => ({
@@ -1526,7 +1526,9 @@ export function FrutilotaMascot({
               resumen: p.description,
               costo: "Gratuito",
               acceso: "En línea",
-              url: p.url
+              url: p.url,
+              image_url: (activeEntity as any).bannerUrl || "",
+              banner_url: (activeEntity as any).bannerUrl || ""
             }));
           }
 
@@ -2051,6 +2053,32 @@ export function FrutilotaMascot({
                                     #{safePage * ITEMS_PER_PAGE + idx + 1}
                                   </span>
                                 </div>
+
+                                {/* Imagen / Banner Oficial del Trámite o Entidad */}
+                                {t.image_url && (
+                                  <div style={{
+                                    width: "100%",
+                                    height: 84,
+                                    borderRadius: 7,
+                                    overflow: "hidden",
+                                    marginBottom: 10,
+                                    background: isDarkMode ? "#0F172A" : "#F1F5F9",
+                                    border: `1px solid ${notion.cardBorder}`,
+                                    position: "relative"
+                                  }}>
+                                    <img
+                                      src={t.image_url}
+                                      alt={t.titulo}
+                                      style={{
+                                        width: "100%",
+                                        height: "100%",
+                                        objectFit: "cover",
+                                        display: "block"
+                                      }}
+                                      loading="lazy"
+                                    />
+                                  </div>
+                                )}
 
                                 {/* Título de Trámite Nítido con Alta Definición */}
                                 <h3 style={{
@@ -2626,16 +2654,26 @@ export function FrutilotaMascot({
               </div>
             ) : (
                 /* ── Vista 2: Catálogo de Trámites de la Entidad Seleccionada ── */
-              <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "100%" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "100%", maxWidth: 1100, margin: "0 auto" }}>
                 
-                {/* Botón Superior para Volver a Todas las Entidades */}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8 }}>
+                {/* ── Barra Superior de Control Institucional y Búsqueda en Tiempo Real ── */}
+                <div style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  flexWrap: "wrap",
+                  gap: 10,
+                  paddingBottom: 2
+                }}>
+                  {/* Botón Volver al Directorio */}
                   <button
                     type="button"
                     onClick={() => {
                       sound.playClick();
                       haptic.selection();
                       setSelectedEntity(null);
+                      setProcSearchQuery("");
+                      setEntityDropdownOpen(false);
                       const container = document.querySelector(".dynamic-official-procedures-container");
                       if (container) container.scrollTo({ top: 0, behavior: "smooth" });
                     }}
@@ -2644,12 +2682,12 @@ export function FrutilotaMascot({
                       display: "inline-flex",
                       alignItems: "center",
                       gap: 6,
-                      padding: "6px 14px",
+                      padding: "7px 14px",
                       borderRadius: 8,
-                      background: isDarkMode ? "#212121" : "#F4F4F5",
-                      border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E5E7EB"}`,
-                      color: isDarkMode ? "#ECECEC" : "#1F2937",
-                      fontFamily: I,
+                      background: isDarkMode ? "#212124" : "#FFFFFF",
+                      border: `1px solid ${isDarkMode ? "#3F3F46" : "#E4E4E7"}`,
+                      color: isDarkMode ? "#ECECEC" : "#18181B",
+                      fontFamily: G,
                       fontSize: 12.5,
                       fontWeight: 650,
                       cursor: "pointer",
@@ -2657,138 +2695,258 @@ export function FrutilotaMascot({
                       boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.03)"
                     }}
                   >
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                    <span>Ver todas las entidades</span>
-                  </button>
-                </div>
-
-                {/* ── Encabezado Superior de Entidades para Escritorio (Horizontal Scrollable Shelf) ── */}
-                <div 
-                  className="desktop-top-entities-header"
-                  style={{
-                    display: "none",
-                    alignItems: "center",
-                    gap: 8,
-                    overflowX: "auto",
-                    scrollbarWidth: "none",
-                    padding: "2px 0 10px",
-                    borderBottom: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`,
-                    marginBottom: 2
-                  }}
-                >
-                  <button
-                    type="button"
-                    onClick={() => {
-                      sound.playClick();
-                      haptic.selection();
-                      setSelectedEntity(null);
-                      clearChat();
-                    }}
-                    onMouseEnter={() => sound.playHoverKey()}
-                    style={{
-                      flexShrink: 0,
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 6,
-                      padding: "6px 12px",
-                      borderRadius: 999,
-                      background: !selectedEntity ? (isDarkMode ? "#ECECEC" : "#18181B") : (isDarkMode ? "#1F1F1F" : "#FFFFFF"),
-                      color: !selectedEntity ? (isDarkMode ? "#18181B" : "#FFFFFF") : (isDarkMode ? "#E2E8F0" : "#334155"),
-                      border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
-                      cursor: "pointer",
-                      fontFamily: I,
-                      fontSize: 12,
-                      fontWeight: 650
-                    }}
-                  >
-                    <span>🏛️ Todas</span>
+                    <ChevronLeftRegular fontSize={14} />
+                    <span>Volver al Directorio</span>
                   </button>
 
-                  {displayEntitiesList.map((c) => {
-                    const isSelected = selectedEntity && entity.toUpperCase() === c.acronym.toUpperCase();
-                    const logoSrc = getEntityLogo(c.acronym);
-
-                    return (
+                  {/* Acciones de Derecha: Selector de Entidad + Buscador de Trámites */}
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", flex: 1, justifyContent: "flex-end" }}>
+                    
+                    {/* Selector Desplegable de Entidad */}
+                    <div style={{ position: "relative" }} ref={entityDropdownRef}>
                       <button
-                        key={`desktop-head-${c.id || c.acronym}`}
                         type="button"
                         onClick={() => {
                           sound.playClick();
                           haptic.selection();
-                          setEntity(c.acronym);
-                          setSelectedEntity(c.acronym);
-                          clearChat();
+                          setEntityDropdownOpen(prev => !prev);
                         }}
                         onMouseEnter={() => sound.playHoverKey()}
                         style={{
-                          flexShrink: 0,
                           display: "inline-flex",
                           alignItems: "center",
                           gap: 7,
-                          padding: isSelected ? "7px 14px" : "6px 12px",
-                          borderRadius: 999,
-                          background: isSelected 
-                            ? (isDarkMode ? "#ECECEC" : "#18181B") 
-                            : (isDarkMode ? "#1F1F1F" : "#FFFFFF"),
-                          color: isSelected ? (isDarkMode ? "#18181B" : "#FFFFFF") : (isDarkMode ? "#E2E8F0" : "#334155"),
-                          border: isSelected 
-                            ? `1px solid ${isDarkMode ? "#FFFFFF" : "#18181B"}` 
-                            : `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
-                          boxShadow: isSelected 
-                            ? (isDarkMode ? "0 2px 8px rgba(255, 255, 255, 0.2)" : "0 2px 6px rgba(0, 0, 0, 0.15)") 
-                            : (isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.02)"),
-                          cursor: "pointer",
-                          fontFamily: I,
+                          padding: "7px 13px",
+                          borderRadius: 8,
+                          background: isDarkMode ? "#212124" : "#FFFFFF",
+                          border: `1px solid ${isDarkMode ? "#3F3F46" : "#E4E4E7"}`,
+                          color: isDarkMode ? "#ECECEC" : "#18181B",
+                          fontFamily: G,
                           fontSize: 12.5,
-                          fontWeight: isSelected ? 750 : 600,
+                          fontWeight: 700,
+                          cursor: "pointer",
+                          boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.03)",
                           transition: "all 0.15s ease"
                         }}
                       >
                         <div style={{
-                          width: 26,
-                          height: 18,
-                          borderRadius: 4,
+                          width: 22,
+                          height: 15,
+                          borderRadius: 3,
                           background: "#FFFFFF",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          padding: "1px 2px",
-                          boxSizing: "border-box",
                           overflow: "hidden",
                           flexShrink: 0
                         }}>
-                          {logoSrc ? (
-                            <img 
-                              src={logoSrc} 
-                              alt={c.acronym} 
-                              style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain", display: "block" }} 
-                            />
+                          {getEntityLogo(activeEntity.acronym) ? (
+                            <img src={getEntityLogo(activeEntity.acronym) || undefined} alt={activeEntity.acronym} style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
                           ) : (
-                            <span style={{ fontSize: 8.5, fontWeight: 800, color: "#1E293B" }}>{c.acronym.slice(0, 3)}</span>
+                            <span style={{ fontSize: 8, fontWeight: 800 }}>🏛️</span>
                           )}
                         </div>
-                        <span>{c.acronym}</span>
+                        <span>{activeEntity.acronym}</span>
+                        <ChevronDownRegular 
+                          fontSize={12} 
+                          style={{ 
+                            transform: entityDropdownOpen ? "rotate(180deg)" : "rotate(0deg)",
+                            transition: "transform 0.18s ease",
+                            color: isDarkMode ? "#A1A1AA" : "#71717A"
+                          }} 
+                        />
                       </button>
-                    );
-                  })}
+
+                      {/* Menú Desplegable con Búsqueda de Entidades */}
+                      <AnimatePresence>
+                        {entityDropdownOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, y: -4, scale: 0.97 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: -4, scale: 0.97 }}
+                            transition={{ duration: 0.15 }}
+                            style={{
+                              position: "absolute",
+                              top: "calc(100% + 6px)",
+                              right: 0,
+                              zIndex: 80,
+                              width: 290,
+                              maxHeight: 380,
+                              background: isDarkMode ? "#18181B" : "#FFFFFF",
+                              border: `1px solid ${isDarkMode ? "#3F3F46" : "#E4E4E7"}`,
+                              borderRadius: 10,
+                              boxShadow: isDarkMode ? "0 10px 30px rgba(0,0,0,0.65)" : "0 10px 30px rgba(0,0,0,0.12)",
+                              padding: 8,
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: 6
+                            }}
+                          >
+                            {/* Input de filtro de entidad */}
+                            <div style={{ position: "relative", width: "100%" }}>
+                              <input
+                                type="text"
+                                placeholder="Filtrar entidad..."
+                                value={entityFilterText}
+                                onChange={e => setEntityFilterText(e.target.value)}
+                                style={{
+                                  width: "100%",
+                                  padding: "6px 10px 6px 28px",
+                                  borderRadius: 6,
+                                  background: isDarkMode ? "#27272A" : "#F4F4F5",
+                                  border: `1px solid ${isDarkMode ? "#3F3F46" : "#E4E4E7"}`,
+                                  color: isDarkMode ? "#ECECEC" : "#18181B",
+                                  fontFamily: I,
+                                  fontSize: 12,
+                                  outline: "none",
+                                  boxSizing: "border-box"
+                                }}
+                                autoFocus
+                              />
+                              <SearchRegular 
+                                fontSize={12} 
+                                style={{ 
+                                  position: "absolute", 
+                                  left: 8, 
+                                  top: "50%", 
+                                  transform: "translateY(-50%)", 
+                                  color: isDarkMode ? "#A1A1AA" : "#71717A" 
+                                }} 
+                              />
+                            </div>
+
+                            {/* Lista scrollable de entidades */}
+                            <div style={{ overflowY: "auto", maxHeight: 290, display: "flex", flexDirection: "column", gap: 3 }}>
+                              {CIVIC_ENTITIES
+                                .filter(e => {
+                                  if (!entityFilterText.trim()) return true;
+                                  const q = cleanText(entityFilterText);
+                                  return cleanText(e.acronym).includes(q) || cleanText(e.name).includes(q);
+                                })
+                                .map(e => {
+                                  const isCurr = e.acronym.toUpperCase() === activeEntity.acronym.toUpperCase();
+                                  const eLogo = getEntityLogo(e.acronym);
+                                  return (
+                                    <button
+                                      key={e.acronym}
+                                      type="button"
+                                      onClick={() => handleSwitchEntity(e.acronym)}
+                                      style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        gap: 8,
+                                        padding: "6px 8px",
+                                        borderRadius: 6,
+                                        background: isCurr ? (isDarkMode ? "#27272A" : "#F4F4F5") : "transparent",
+                                        border: "none",
+                                        color: isDarkMode ? "#ECECEC" : "#18181B",
+                                        cursor: "pointer",
+                                        textAlign: "left",
+                                        width: "100%",
+                                        transition: "all 0.12s ease"
+                                      }}
+                                      onMouseEnter={ev => (ev.currentTarget.style.background = isDarkMode ? "#27272A" : "#F4F4F5")}
+                                      onMouseLeave={ev => (ev.currentTarget.style.background = isCurr ? (isDarkMode ? "#27272A" : "#F4F4F5") : "transparent")}
+                                    >
+                                      <div style={{ width: 22, height: 16, background: "#FFFFFF", borderRadius: 3, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", flexShrink: 0 }}>
+                                        {eLogo ? <img src={eLogo || undefined} alt={e.acronym} style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} /> : <span style={{ fontSize: 7, fontWeight: 700 }}>{e.acronym.slice(0, 2)}</span>}
+                                      </div>
+                                      <div style={{ minWidth: 0, flex: 1 }}>
+                                        <div style={{ fontSize: 12, fontWeight: 700, fontFamily: G }}>{e.acronym}</div>
+                                        <div style={{ fontSize: 10, color: isDarkMode ? "#A1A1AA" : "#71717A", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{e.name}</div>
+                                      </div>
+                                      {isCurr && <CheckmarkRegular fontSize={12} style={{ color: "#10A37F", flexShrink: 0 }} />}
+                                    </button>
+                                  );
+                                })}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+
+                    {/* Buscador Rápido de Trámites en Tiempo Real */}
+                    <div style={{ position: "relative", minWidth: 220, maxWidth: 360, flex: 1 }}>
+                      <input
+                        type="text"
+                        placeholder={`Buscar trámite en ${activeEntity.acronym}...`}
+                        value={procSearchQuery}
+                        onChange={e => setProcSearchQuery(e.target.value)}
+                        style={{
+                          width: "100%",
+                          padding: "7px 30px 7px 30px",
+                          borderRadius: 8,
+                          background: isDarkMode ? "#212124" : "#FFFFFF",
+                          border: `1px solid ${isDarkMode ? "#3F3F46" : "#E4E4E7"}`,
+                          color: isDarkMode ? "#ECECEC" : "#18181B",
+                          fontFamily: I,
+                          fontSize: 12.5,
+                          outline: "none",
+                          boxSizing: "border-box",
+                          boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.02)"
+                        }}
+                      />
+                      <SearchRegular 
+                        fontSize={13} 
+                        style={{ 
+                          position: "absolute", 
+                          left: 10, 
+                          top: "50%", 
+                          transform: "translateY(-50%)", 
+                          color: isDarkMode ? "#A1A1AA" : "#71717A",
+                          pointerEvents: "none"
+                        }} 
+                      />
+                      {procSearchQuery.trim().length > 0 && (
+                        <button
+                          type="button"
+                          onClick={() => setProcSearchQuery("")}
+                          style={{
+                            position: "absolute",
+                            right: 8,
+                            top: "50%",
+                            transform: "translateY(-50%)",
+                            background: "transparent",
+                            border: "none",
+                            color: isDarkMode ? "#A1A1AA" : "#71717A",
+                            cursor: "pointer",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            padding: 2
+                          }}
+                        >
+                          <DismissRegular fontSize={12} />
+                        </button>
+                      )}
+                    </div>
+
+                  </div>
                 </div>
 
                 {/* Banner de la Entidad Activa */}
                 {(() => {
                   const allProcs = getEntityOfficialProcedures(activeEntity.acronym);
                   const logoSrc = getEntityLogo(activeEntity.acronym);
+                  const q = cleanText(procSearchQuery);
 
-                  // Agrupación por subcategorías
+                  // Agrupación por subcategorías filtradas por la búsqueda si aplica
                   const categoriesMap = new Map<string, DirectProcedureItem[]>();
+                  let totalMatchedProcs = 0;
+
                   allProcs.forEach(p => {
                     const cat = p.category || "Trámites Generales";
-                    if (!categoriesMap.has(cat)) {
-                      categoriesMap.set(cat, []);
+                    const matches = !q || cleanText(p.title).includes(q) || cleanText(cat).includes(q);
+                    if (matches) {
+                      totalMatchedProcs++;
+                      if (!categoriesMap.has(cat)) {
+                        categoriesMap.set(cat, []);
+                      }
+                      categoriesMap.get(cat)!.push(p);
                     }
-                    categoriesMap.get(cat)!.push(p);
                   });
+
+                  const categoriesArray = Array.from(categoriesMap.entries());
 
                   return (
                     <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
@@ -2833,45 +2991,86 @@ export function FrutilotaMascot({
                             <span style={{ fontSize: 10.5, fontWeight: 800, color: "#0F172A" }}>{activeEntity.acronym}</span>
                           )}
                         </div>
-                        <div>
-                          <h2 style={{
-                            fontFamily: G,
-                            fontSize: 19,
-                            fontWeight: 850,
-                            color: isDarkMode ? "#F9FAFB" : "#0F172A",
-                            letterSpacing: "-0.02em",
-                            margin: 0
-                          }}>
-                            Trámites de {activeEntity.acronym}
-                          </h2>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                            <h2 style={{
+                              fontFamily: G,
+                              fontSize: 19,
+                              fontWeight: 850,
+                              color: isDarkMode ? "#F9FAFB" : "#0F172A",
+                              letterSpacing: "-0.02em",
+                              margin: 0
+                            }}>
+                              Trámites de {activeEntity.acronym}
+                            </h2>
+                            {q && (
+                              <span style={{
+                                fontFamily: I,
+                                fontSize: 11.5,
+                                fontWeight: 650,
+                                padding: "2px 9px",
+                                borderRadius: 12,
+                                background: isDarkMode ? "rgba(59, 130, 246, 0.2)" : "#EFF6FF",
+                                color: isDarkMode ? "#93C5FD" : "#2563EB",
+                                border: `1px solid ${isDarkMode ? "rgba(59, 130, 246, 0.4)" : "#BFDBFE"}`
+                              }}>
+                                {totalMatchedProcs} resultado{totalMatchedProcs === 1 ? "" : "s"}
+                              </span>
+                            )}
+                          </div>
                           <p style={{
                             fontFamily: I,
                             fontSize: 12,
                             color: isDarkMode ? "#9CA3AF" : "#64748B",
-                            margin: "2px 0 0"
+                            margin: "2px 0 0",
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis"
                           }}>
                             {activeEntity.name}
                           </p>
                         </div>
                       </div>
 
-                      {/* Renderizado de Categorías al Estilo ChatGPT */}
-                      {Array.from(categoriesMap.entries()).map(([catName, procsList], cIdx) => {
-                        const catKey = `${activeEntity.acronym}-${catName}`;
-                        const isExpanded = Boolean(expandedCategories[catKey]);
+                      {/* ── Cuadrícula de 2 Columnas de Conjuntos de Trámites (Grid Style) ── */}
+                      {categoriesArray.length > 0 ? (
+                        <div 
+                          style={{ 
+                            display: "grid", 
+                            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 460px), 1fr))", 
+                            gap: 16,
+                            alignItems: "start",
+                            width: "100%"
+                          }}
+                        >
+                          {categoriesArray.map(([catName, procsList], cIdx) => {
+                            const catKey = `${activeEntity.acronym}-${catName}`;
+                            const isSearching = q.length > 0;
+                            const isExpanded = isSearching || Boolean(expandedCategories[catKey]);
+                            const visibleProcs = isExpanded ? procsList : procsList.slice(0, 3);
+                            const subTheme = getSubcategoryTheme(catName, isDarkMode, cIdx);
 
-                        return (
-                          <div key={catName} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                            
-                            {/* Cabecera de Subcategoría con Color Serio e Institucional */}
-                            {(() => {
-                              const subTheme = getSubcategoryTheme(catName, isDarkMode, cIdx);
-                              return (
+                            return (
+                              <div 
+                                key={catName} 
+                                style={{ 
+                                  display: "flex", 
+                                  flexDirection: "column", 
+                                  gap: 10,
+                                  background: isDarkMode ? "#18181B" : "#FAFAFA",
+                                  border: `1px solid ${isDarkMode ? "#27272A" : "#E4E4E7"}`,
+                                  borderRadius: 12,
+                                  padding: "12px",
+                                  boxShadow: isDarkMode ? "0 2px 8px rgba(0,0,0,0.2)" : "0 1px 3px rgba(0,0,0,0.02)"
+                                }}
+                              >
+                                
+                                {/* Cabecera de Subcategoría con Color Serio e Institucional */}
                                 <div style={{
                                   display: "flex",
                                   alignItems: "center",
                                   justifyContent: "space-between",
-                                  padding: "9px 16px",
+                                  padding: "9px 14px",
                                   borderRadius: 8,
                                   background: isDarkMode ? "#1C1C1E" : subTheme.solidColor,
                                   border: isDarkMode ? "1px solid #2E2E33" : "none",
@@ -2901,167 +3100,195 @@ export function FrutilotaMascot({
                                     {procsList.length} {procsList.length === 1 ? "trámite" : "trámites"}
                                   </span>
                                 </div>
-                              );
-                            })()}
 
-                            {/* Cuadrícula de Tarjetas de esta Subcategoría */}
-                            <div 
-                              style={{ 
-                                display: "grid", 
-                                gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", 
-                                gap: 11,
-                                width: "100%"
-                              }}
-                            >
-                              {procsList.map((proc, pIdx) => {
-                                const isHiddenOnMobile = pIdx >= 3 && !isExpanded;
+                                {/* Lista Vertical de Tarjetas de esta Subcategoría */}
+                                <div style={{ display: "flex", flexDirection: "column", gap: 9, width: "100%" }}>
+                                  {visibleProcs.map((proc, pIdx) => {
+                                    return (
+                                      <motion.a
+                                        key={proc.id || `${catName}-${pIdx}`}
+                                        href={proc.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        initial={{ opacity: 0, y: 4 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.15, delay: Math.min(pIdx * 0.02, 0.15) }}
+                                        whileHover={{ y: -1.5, scale: 1.005 }}
+                                        whileTap={{ scale: 0.985 }}
+                                        onClick={() => {
+                                          sound.playClick();
+                                          haptic.selection();
+                                        }}
+                                        style={{
+                                          background: isDarkMode ? "#212124" : "#FFFFFF",
+                                          border: `1px solid ${isDarkMode ? "#2E2E33" : "#E4E4E7"}`,
+                                          borderRadius: 9,
+                                          padding: "12px 14px",
+                                          display: "flex",
+                                          flexDirection: "column",
+                                          justifyContent: "space-between",
+                                          gap: 9,
+                                          textDecoration: "none",
+                                          boxShadow: isDarkMode ? "0 2px 6px rgba(0,0,0,0.2)" : "0 1px 3px rgba(0,0,0,0.02)",
+                                          cursor: "pointer",
+                                          transition: "border-color 0.15s ease, box-shadow 0.15s ease"
+                                        }}
+                                        onMouseEnter={e => {
+                                          sound.playHoverKey();
+                                          e.currentTarget.style.borderColor = isDarkMode ? "#52525B" : "#18181B";
+                                          e.currentTarget.style.boxShadow = isDarkMode ? "0 4px 12px rgba(0,0,0,0.35)" : "0 3px 8px rgba(0,0,0,0.05)";
+                                        }}
+                                        onMouseLeave={e => {
+                                          e.currentTarget.style.borderColor = isDarkMode ? "#2E2E33" : "#E4E4E7";
+                                          e.currentTarget.style.boxShadow = isDarkMode ? "0 2px 6px rgba(0,0,0,0.2)" : "0 1px 3px rgba(0,0,0,0.02)";
+                                        }}
+                                      >
+                                        {/* Título Nítido del Trámite */}
+                                        <h4 style={{
+                                          fontFamily: G,
+                                          fontSize: 13.5,
+                                          fontWeight: 650,
+                                          color: isDarkMode ? "#F9FAFB" : "#0F172A",
+                                          margin: 0,
+                                          lineHeight: 1.35,
+                                          letterSpacing: "-0.015em",
+                                          WebkitFontSmoothing: "antialiased",
+                                          textRendering: "geometricPrecision"
+                                        }}>
+                                          {proc.title}
+                                        </h4>
 
-                                return (
-                                  <motion.a
-                                    key={proc.id || `${catName}-${pIdx}`}
-                                    href={proc.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={isHiddenOnMobile ? "proc-item-mobile-hidden" : ""}
-                                    initial={{ opacity: 0, y: 6 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.16, delay: Math.min(pIdx * 0.02, 0.2) }}
-                                    whileHover={{ y: -2, scale: 1.01 }}
-                                    whileTap={{ scale: 0.985 }}
-                                    onClick={() => {
-                                      sound.playClick();
-                                      haptic.selection();
-                                    }}
-                                    style={{
-                                      background: isDarkMode ? "#18181B" : "#FFFFFF",
-                                      border: `1px solid ${isDarkMode ? "#27272A" : "#E4E4E7"}`,
-                                      borderRadius: 10,
-                                      padding: "14px 15px",
-                                      display: "flex",
-                                      flexDirection: "column",
-                                      justifyContent: "space-between",
-                                      gap: 10,
-                                      textDecoration: "none",
-                                      boxShadow: isDarkMode ? "0 2px 8px rgba(0,0,0,0.25)" : "0 1px 3px rgba(0,0,0,0.03)",
-                                      cursor: "pointer",
-                                      transition: "border-color 0.15s ease, box-shadow 0.15s ease"
-                                    }}
-                                    onMouseEnter={e => {
-                                      sound.playHoverKey();
-                                      e.currentTarget.style.borderColor = isDarkMode ? "#52525B" : "#18181B";
-                                      e.currentTarget.style.boxShadow = isDarkMode ? "0 4px 14px rgba(0,0,0,0.4)" : "0 3px 10px rgba(0,0,0,0.06)";
-                                    }}
-                                    onMouseLeave={e => {
-                                      e.currentTarget.style.borderColor = isDarkMode ? "#27272A" : "#E4E4E7";
-                                      e.currentTarget.style.boxShadow = isDarkMode ? "0 2px 8px rgba(0,0,0,0.25)" : "0 1px 3px rgba(0,0,0,0.03)";
-                                    }}
-                                  >
-                                    {/* Título Nítido del Trámite */}
-                                    <h4 style={{
-                                      fontFamily: G,
-                                      fontSize: 14,
-                                      fontWeight: 700,
-                                      color: isDarkMode ? "#F9FAFB" : "#0F172A",
-                                      margin: 0,
-                                      lineHeight: 1.36,
-                                      letterSpacing: "-0.015em",
-                                      WebkitFontSmoothing: "antialiased",
-                                      textRendering: "geometricPrecision"
-                                    }}>
-                                      {proc.title}
-                                    </h4>
+                                        {/* Pie de Acción: Botón Directo al Portal Oficial Estilo OpenAI */}
+                                        <div style={{
+                                          display: "flex",
+                                          alignItems: "center",
+                                          justifyContent: "space-between",
+                                          paddingTop: 6,
+                                          borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.06)" : "#F1F5F9"}`
+                                        }}>
+                                          <span style={{
+                                            fontFamily: I,
+                                            fontSize: 10.5,
+                                            fontWeight: 550,
+                                            color: isDarkMode ? "#9CA3AF" : "#64748B"
+                                          }}>
+                                            Acceso directo
+                                          </span>
 
-                                    {/* Pie de Acción: Botón Directo al Portal Oficial Estilo OpenAI */}
-                                    <div style={{
-                                      display: "flex",
-                                      alignItems: "center",
-                                      justifyContent: "space-between",
-                                      paddingTop: 8,
-                                      borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.07)" : "#F1F5F9"}`
-                                    }}>
-                                      <span style={{
-                                        fontFamily: I,
-                                        fontSize: 11,
-                                        fontWeight: 600,
-                                        color: isDarkMode ? "#9CA3AF" : "#64748B"
-                                      }}>
-                                        Acceso directo
-                                      </span>
+                                          <span style={{
+                                            padding: "4px 10px",
+                                            borderRadius: 6,
+                                            background: isDarkMode ? "#ECECEC" : "#18181B",
+                                            color: isDarkMode ? "#18181B" : "#FFFFFF",
+                                            fontFamily: G,
+                                            fontSize: 11,
+                                            fontWeight: 700,
+                                            display: "inline-flex",
+                                            alignItems: "center",
+                                            gap: 4,
+                                            boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.4)" : "0 1px 2px rgba(0,0,0,0.1)",
+                                            transition: "all 0.15s ease"
+                                          }}>
+                                            <span>Ingresar</span>
+                                            <svg width="9.5" height="9.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                                              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                              <polyline points="15 3 21 3 21 9"/>
+                                              <line x1="10" y1="14" x2="21" y2="3"/>
+                                            </svg>
+                                          </span>
+                                        </div>
+                                      </motion.a>
+                                    );
+                                  })}
+                                </div>
 
-                                      <span style={{
-                                        padding: "5px 12px",
-                                        borderRadius: 6,
-                                        background: isDarkMode ? "#ECECEC" : "#18181B",
-                                        color: isDarkMode ? "#18181B" : "#FFFFFF",
-                                        fontFamily: G,
-                                        fontSize: 11.5,
-                                        fontWeight: 700,
+                                {/* Botón Ver Más / Ver Menos si hay más de 3 trámites */}
+                                {!isSearching && procsList.length > 3 && (
+                                  <div style={{ display: "flex", justifyContent: "center", paddingTop: 4 }}>
+                                    <button
+                                      type="button"
+                                      onClick={() => toggleCategoryExpand(catKey)}
+                                      style={{
                                         display: "inline-flex",
                                         alignItems: "center",
-                                        gap: 4,
-                                        boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.4)" : "0 1px 3px rgba(0,0,0,0.12)",
-                                        transition: "all 0.15s ease"
-                                      }}>
-                                        <span>Ingresar</span>
-                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                          <polyline points="15 3 21 3 21 9"/>
-                                          <line x1="10" y1="14" x2="21" y2="3"/>
-                                        </svg>
-                                      </span>
-                                    </div>
-                                  </motion.a>
-                                );
-                              })}
-                            </div>
+                                        gap: 6,
+                                        padding: "5px 14px",
+                                        borderRadius: 20,
+                                        background: isDarkMode ? "#212124" : "#FFFFFF",
+                                        border: `1px solid ${isDarkMode ? "#3F3F46" : "#E4E4E7"}`,
+                                        color: isDarkMode ? "#ECECEC" : "#18181B",
+                                        fontFamily: G,
+                                        fontSize: 11.5,
+                                        fontWeight: 650,
+                                        cursor: "pointer",
+                                        transition: "all 0.15s ease",
+                                        boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.25)" : "0 1px 2px rgba(0,0,0,0.03)"
+                                      }}
+                                    >
+                                      <span>{isExpanded ? "Ver menos" : `Ver más (${procsList.length - 3} trámites)`}</span>
+                                      <svg 
+                                        width="10" 
+                                        height="10" 
+                                        viewBox="0 0 24 24" 
+                                        fill="none" 
+                                        stroke="currentColor" 
+                                        strokeWidth="2.5" 
+                                        strokeLinecap="round" 
+                                        strokeLinejoin="round" 
+                                        style={{ 
+                                          transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)", 
+                                          transition: "transform 0.2s ease" 
+                                        }}
+                                      >
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                      </svg>
+                                    </button>
+                                  </div>
+                                )}
 
-                            {/* Botón Ver Más para Móviles si hay más de 3 trámites */}
-                            {procsList.length > 3 && (
-                              <div className="proc-ver-mas-container" style={{ display: "flex", justifyContent: "center", paddingTop: 3 }}>
-                                <button
-                                  type="button"
-                                  onClick={() => toggleCategoryExpand(catKey)}
-                                  style={{
-                                    display: "inline-flex",
-                                    alignItems: "center",
-                                    gap: 6,
-                                    padding: "6px 16px",
-                                    borderRadius: 20,
-                                    background: isDarkMode ? "#27272A" : "#F4F4F5",
-                                    border: `1px solid ${isDarkMode ? "#3F3F46" : "#E4E4E7"}`,
-                                    color: isDarkMode ? "#ECECEC" : "#18181B",
-                                    fontFamily: G,
-                                    fontSize: 12,
-                                    fontWeight: 700,
-                                    cursor: "pointer",
-                                    transition: "all 0.15s ease",
-                                    boxShadow: isDarkMode ? "0 1px 4px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.04)"
-                                  }}
-                                >
-                                  <span>{isExpanded ? "Ver menos" : `Ver más (${procsList.length - 3} trámites)`}</span>
-                                  <svg 
-                                    width="11" 
-                                    height="11" 
-                                    viewBox="0 0 24 24" 
-                                    fill="none" 
-                                    stroke="currentColor" 
-                                    strokeWidth="2.5" 
-                                    strokeLinecap="round" 
-                                    strokeLinejoin="round" 
-                                    style={{ 
-                                      transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)", 
-                                      transition: "transform 0.2s ease" 
-                                    }}
-                                  >
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                  </svg>
-                                </button>
                               </div>
-                            )}
-
-                          </div>
-                        );
-                      })}
+                            );
+                          })}
+                        </div>
+                      ) : (
+                        /* Estado Vacío de Búsqueda */
+                        <div style={{
+                          padding: "40px 20px",
+                          textAlign: "center",
+                          background: isDarkMode ? "#18181B" : "#FAFAFA",
+                          border: `1px solid ${isDarkMode ? "#27272A" : "#E4E4E7"}`,
+                          borderRadius: 12,
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          gap: 10
+                        }}>
+                          <p style={{ margin: 0, fontFamily: G, fontSize: 15, fontWeight: 700, color: isDarkMode ? "#ECECEC" : "#18181B" }}>
+                            No se encontraron trámites para &ldquo;{procSearchQuery}&rdquo;
+                          </p>
+                          <p style={{ margin: 0, fontFamily: I, fontSize: 12.5, color: isDarkMode ? "#9CA3AF" : "#64748B" }}>
+                            Prueba buscando con otros términos o limpia el filtro.
+                          </p>
+                          <button
+                            type="button"
+                            onClick={() => setProcSearchQuery("")}
+                            style={{
+                              marginTop: 4,
+                              padding: "6px 14px",
+                              borderRadius: 8,
+                              background: isDarkMode ? "#27272A" : "#09090B",
+                              color: "#FFFFFF",
+                              border: "none",
+                              fontFamily: G,
+                              fontSize: 12,
+                              fontWeight: 650,
+                              cursor: "pointer"
+                            }}
+                          >
+                            Limpiar filtro
+                          </button>
+                        </div>
+                      )}
                     </div>
                   );
                 })()}
