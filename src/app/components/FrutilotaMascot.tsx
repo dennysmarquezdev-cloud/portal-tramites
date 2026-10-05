@@ -1172,715 +1172,8 @@ export function FrutilotaMascot({
         }
       `}</style>
       
-      {/* ── Backdrop para Sidebar Móvil ── */}
-      {chatSidebarOpen && (
-        <div 
-          className="chat-sidebar-backdrop" 
-          onClick={() => setChatSidebarOpen(false)} 
-        />
-      )}
 
-      {/* ── 1. Sidebar Izquierdo Colapsable (264px) ── */}
-      <aside 
-        className={`chat-sidebar ${chatSidebarOpen ? "chat-sidebar--open" : ""}`} 
-        style={{
-          width: chatSidebarOpen ? 264 : 0,
-          flexShrink: 0,
-          background: D.sidebar,
-          borderRight: chatSidebarOpen ? `1px solid ${D.border}` : "none",
-          display: "flex",
-          flexDirection: "column",
-          overflow: "hidden",
-          transition: "width 0.22s ease, background 0.25s, border-color 0.25s",
-          zIndex: 60
-        }}
-      >
-        {/* Header Usuario */}
-        <div style={{ padding: "14px 14px 12px", borderBottom: `1px solid ${D.border}`, flexShrink: 0 }}>
-          {/* Perfil + Botón Minimizar */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", position: "relative" }} ref={sidebarProfileMenuRef}>
-            <div 
-              onClick={() => {
-                if (user) {
-                  sound.playHoverKey();
-                  haptic.selection();
-                  setSidebarProfileMenuOpen(prev => !prev);
-                } else {
-                  onOpenLogin?.();
-                }
-              }}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 9,
-                minWidth: 0,
-                cursor: "pointer",
-                padding: "4px 6px",
-                borderRadius: 8,
-                transition: "background 0.15s ease"
-              }}
-              title={user ? "Ver opciones de cuenta" : "Iniciar sesión"}
-            >
-              <div style={{
-                width: 32,
-                height: 32,
-                borderRadius: "50%",
-                flexShrink: 0,
-                overflow: "hidden",
-                background: isDarkMode ? "#2F2F2F" : "#E5E7EB",
-                border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #D1D5DB",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontFamily: I,
-                fontWeight: 700,
-                fontSize: 13,
-                color: isDarkMode ? "#ECECEC" : "#1F2937",
-                boxShadow: isDarkMode ? "0 1px 3px rgba(0, 0, 0, 0.4)" : "0 1px 2px rgba(0, 0, 0, 0.06)"
-              }}>
-                {user?.photoURL ? (
-                  <img 
-                    src={user.photoURL} 
-                    alt={user.displayName || "Google Avatar"} 
-                    referrerPolicy="no-referrer"
-                    onError={(e) => {
-                      (e.currentTarget as HTMLElement).style.display = 'none';
-                    }}
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }} 
-                  />
-                ) : null}
-                <span style={{ display: user?.photoURL ? "none" : "block" }}>{initial}</span>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", minWidth: 0 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                  <span style={{ fontFamily: I, fontWeight: 600, fontSize: 13, color: isDarkMode ? "#ECECEC" : "#0D0D0D", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                    {displayName}
-                  </span>
-                  {isPlus && (
-                    <span 
-                      title="Cuenta Premium Activa"
-                      style={{
-                        fontFamily: I,
-                        fontSize: 9,
-                        fontWeight: 700,
-                        color: isDarkMode ? "#ECECEC" : "#374151",
-                        background: isDarkMode ? "rgba(255, 255, 255, 0.10)" : "#F3F4F6",
-                        border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #E5E7EB",
-                        padding: "1px 6px",
-                        borderRadius: 5,
-                        letterSpacing: "0.02em",
-                        cursor: "default"
-                      }}
-                    >
-                      PLUS
-                    </span>
-                  )}
-                </div>
-              </div>
-              {user && (
-                <ChevronDownRegular 
-                  fontSize={11} 
-                  style={{ 
-                    color: D.muted,
-                    transform: sidebarProfileMenuOpen ? "rotate(180deg)" : "rotate(0deg)",
-                    transition: "transform 0.2s ease"
-                  }} 
-                />
-              )}
-            </div>
-
-            {/* Menú Desplegable Flotante en el Sidebar Estilo ChatGPT */}
-            <AnimatePresence>
-              {sidebarProfileMenuOpen && user && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.96, y: 6 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.96, y: 6 }}
-                  transition={{ duration: 0.15 }}
-                  style={{
-                    position: "absolute",
-                    top: "calc(100% + 6px)",
-                    left: 0,
-                    width: 240,
-                    borderRadius: 14,
-                    background: isDarkMode ? "#212121" : "#FFFFFF",
-                    border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #E5E7EB",
-                    boxShadow: isDarkMode ? "0 16px 40px rgba(0,0,0,0.7)" : "0 12px 30px rgba(0,0,0,0.08)",
-                    padding: 6,
-                    zIndex: 1000,
-                    fontFamily: "'Inter', sans-serif"
-                  }}
-                >
-                  <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-                    {toggleTheme && (
-                      <button
-                        type="button"
-                        onClick={handleToggleThemeFromMenu}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                          gap: 8,
-                          padding: "8px 10px",
-                          borderRadius: 8,
-                          background: "transparent",
-                          border: "none",
-                          color: isDarkMode ? "#ECECEC" : "#1F2937",
-                          fontSize: 13,
-                          fontWeight: 500,
-                          cursor: "pointer",
-                          textAlign: "left",
-                          width: "100%",
-                          transition: "background 0.15s ease"
-                        }}
-                        onMouseEnter={(e) => (e.currentTarget.style.background = isDarkMode ? "#2F2F2F" : "#F4F4F5")}
-                        onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-                      >
-                        <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
-                          {isDarkMode ? (
-                            <WeatherSunnyRegular fontSize={16} style={{ color: "#A3A3A3" }} />
-                          ) : (
-                            <WeatherMoonRegular fontSize={16} style={{ color: "#6B7280" }} />
-                          )}
-                          <span>{isDarkMode ? "Modo Claro" : "Modo Oscuro"}</span>
-                        </div>
-                        <span style={{
-                          fontSize: 10.5,
-                          fontWeight: 600,
-                          padding: "2px 7px",
-                          borderRadius: 6,
-                          background: isDarkMode ? "#2F2F2F" : "#F3F4F6",
-                          color: isDarkMode ? "#A3A3A3" : "#6B7280",
-                          border: isDarkMode ? "1px solid rgba(255,255,255,0.08)" : "1px solid #E5E7EB"
-                        }}>
-                          {isDarkMode ? "Oscuro" : "Claro"}
-                        </span>
-                      </button>
-                    )}
-
-                    <div style={{ height: 1, background: isDarkMode ? "rgba(255,255,255,0.08)" : "#F3F4F6", margin: "3px 0" }} />
-
-                    <button
-                      type="button"
-                      onClick={handlePerformLogout}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 9,
-                        padding: "8px 10px",
-                        borderRadius: 8,
-                        background: "transparent",
-                        border: "none",
-                        color: isDarkMode ? "#ECECEC" : "#1F2937",
-                        fontSize: 13,
-                        fontWeight: 500,
-                        cursor: "pointer",
-                        textAlign: "left",
-                        width: "100%",
-                        transition: "all 0.15s ease"
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = isDarkMode ? "rgba(239, 68, 68, 0.12)" : "#FEF2F2";
-                        e.currentTarget.style.color = "#EF4444";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = "transparent";
-                        e.currentTarget.style.color = isDarkMode ? "#ECECEC" : "#1F2937";
-                      }}
-                    >
-                      <SignOutRegular fontSize={16} style={{ color: "inherit" }} />
-                      <span>Cerrar sesión</span>
-                    </button>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-              {/* Botón Minimizar */}
-              <motion.button 
-                type="button"
-                whileHover={{ 
-                  scale: 1.05,
-                  backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.12)" : "rgba(0, 0, 0, 0.06)",
-                  borderColor: isDarkMode ? "rgba(255, 255, 255, 0.28)" : "rgba(0, 0, 0, 0.18)",
-                  color: isDarkMode ? "#FFFFFF" : "#111827"
-                }}
-                whileTap={{ scale: 0.92 }}
-                onClick={() => {
-                  haptic.selection();
-                  setChatSidebarOpen(false);
-                }} 
-                title="Minimizar panel lateral" 
-                aria-label="Minimizar panel lateral"
-                className="chat-sidebar-minimize-btn"
-                style={{
-                  width: 32,
-                  height: 32,
-                  padding: 0,
-                  background: isDarkMode ? "rgba(255, 255, 255, 0.08)" : "rgba(255, 255, 255, 0.70)",
-                  border: isDarkMode 
-                    ? "1px solid rgba(255, 255, 255, 0.16)" 
-                    : "1px solid rgba(0, 0, 0, 0.10)",
-                  cursor: "pointer",
-                  color: isDarkMode ? "#ECECEC" : "#374151",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderRadius: 8,
-                  backdropFilter: "blur(8px)",
-                  WebkitBackdropFilter: "blur(8px)",
-                  outline: "none",
-                  transition: "border-color 0.18s ease, background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease",
-                  boxShadow: isDarkMode ? "0 1px 3px rgba(0, 0, 0, 0.25)" : "0 1px 2px rgba(0, 0, 0, 0.05)"
-                }}
-              >
-                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" style={{ display: "block" }}>
-                  <rect x="1.5" y="2" width="13" height="12" rx="2.5" stroke="currentColor" strokeWidth="1.3" />
-                  <line x1="5.5" y1="2" x2="5.5" y2="14" stroke="currentColor" strokeWidth="1.3" />
-                  <path d="M11 6L9 8L11 10" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </motion.button>
-            </div>
-          </div>
-        </div>
-
-        {/* ── Contenedor Scrollable del Sidebar (Estilo YouTube) ── */}
-        <div 
-          className="chat-sidebar-scroll" 
-          style={{ 
-            flex: 1, 
-            overflowY: "auto", 
-            display: "flex", 
-            flexDirection: "column",
-            minHeight: 0
-          }}
-        >
-          {/* Banner para Suscripción si no es PLUS */}
-          {!isPlus && (
-            <div style={{ padding: "10px 12px 0", flexShrink: 0 }}>
-              <button
-                onClick={() => {
-                  sound.playClick();
-                  haptic.medium();
-                  setShowPaywallModal(true);
-                }}
-                onMouseEnter={(e) => {
-                  sound.playHoverKey();
-                  e.currentTarget.style.background = isDarkMode ? "#2A2A2A" : "#F3F4F6";
-                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.18)" : "#D1D5DB";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = isDarkMode ? "#212121" : "#FFFFFF";
-                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.10)" : "#E5E7EB";
-                }}
-                style={{
-                  width: "100%",
-                  padding: "9px 12px",
-                  background: isDarkMode ? "#212121" : "#FFFFFF",
-                  border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.10)" : "1px solid #E5E7EB",
-                  borderRadius: 10,
-                  color: isDarkMode ? "#ECECEC" : "#1F2937",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  cursor: "pointer",
-                  transition: "all 0.15s ease",
-                  boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.04)"
-                }}
-              >
-                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <span style={{
-                    width: 7,
-                    height: 7,
-                    borderRadius: "50%",
-                    background: "#10A37F",
-                    display: "inline-block"
-                  }} />
-                  <span style={{ fontFamily: I, fontSize: 12, fontWeight: 600, color: isDarkMode ? "#ECECEC" : "#111827" }}>
-                    Activar LOTA AI PLUS
-                  </span>
-                </div>
-                <ChevronRightRegular fontSize={13} style={{ color: D.muted }} />
-              </button>
-            </div>
-          )}
-
-          {/* Entidades Header con Buscador (Estilo ChatGPT) */}
-          <div style={{ padding: "14px 14px 8px", flexShrink: 0, display: "flex", flexDirection: "column", gap: 8 }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
-                <h2 style={{
-                  margin: 0,
-                  fontFamily: G,
-                  fontSize: 14,
-                  fontWeight: 700,
-                  color: isDarkMode ? "#ECECEC" : "#0D0D0D",
-                  letterSpacing: "-0.015em"
-                }}>
-                  Entidades
-                </h2>
-                <span style={{
-                  fontSize: 10.5,
-                  fontWeight: 600,
-                  padding: "1px 6px",
-                  borderRadius: 6,
-                  background: isDarkMode ? "#2A2A2A" : "#F4F4F5",
-                  border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E7EB"}`,
-                  color: isDarkMode ? "#9CA3AF" : "#6B7280"
-                }}>
-                  {displayEntitiesList.length}
-                </span>
-              </div>
-            </div>
-
-            {/* Buscador Rápido de Entidades en Sidebar (Estilo ChatGPT) */}
-            <div style={{ position: "relative", width: "100%" }}>
-              <svg 
-                width="13" 
-                height="13" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                style={{ 
-                  position: "absolute", 
-                  left: 9, 
-                  top: "50%", 
-                  transform: "translateY(-50%)", 
-                  color: isDarkMode ? "#9CA3AF" : "#6B7280",
-                  pointerEvents: "none" 
-                }}
-              >
-                <circle cx="11" cy="11" r="8"/>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              </svg>
-              <input 
-                value={sidebarEntitySearch}
-                onChange={e => setSidebarEntitySearch(e.target.value)}
-                placeholder="Buscar entidad (ej. SUNAT, RENIEC)..."
-                style={{
-                  width: "100%",
-                  height: 32,
-                  padding: "0 26px 0 28px",
-                  borderRadius: 8,
-                  border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E5E7EB"}`,
-                  background: isDarkMode ? "#212121" : "#FFFFFF",
-                  color: isDarkMode ? "#ECECEC" : "#0D0D0D",
-                  fontFamily: I,
-                  fontSize: 11.5,
-                  outline: "none",
-                  boxSizing: "border-box",
-                  transition: "border-color 0.15s ease"
-                }}
-                onFocus={e => {
-                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.28)" : "#0D0D0D";
-                }}
-                onBlur={e => {
-                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E5E7EB";
-                }}
-              />
-              {sidebarEntitySearch && (
-                <button
-                  type="button"
-                  onClick={() => setSidebarEntitySearch("")}
-                  style={{
-                    position: "absolute",
-                    right: 7,
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    color: isDarkMode ? "#9CA3AF" : "#6B7280",
-                    padding: 0,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center"
-                  }}
-                >
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-                </button>
-              )}
-            </div>
-
-            {/* Hint sutil de arrastre y pulsación */}
-            <div style={{
-              fontSize: 10.5,
-              color: isDarkMode ? "#9CA3AF" : "#6B7280",
-              padding: "2px 2px 0",
-              lineHeight: 1.35,
-              userSelect: "none",
-              letterSpacing: "-0.01em"
-            }}>
-              Mantén presionada una entidad para moverla de lugar.
-            </div>
-          </div>
-
-          {/* Lista de Entidades en Formato Cuadrícula de Cubos con Reordenamiento por Presión / Arrastre */}
-          <div style={{ 
-            padding: "0 10px",
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
-            gap: 7,
-            alignContent: "start",
-            touchAction: draggedEntityAcronym ? "none" : "pan-y",
-            userSelect: "none",
-            WebkitUserSelect: "none"
-          }}>
-            {displayEntitiesList.map((c) => {
-              const isSelected = entity.toUpperCase() === c.acronym.toUpperCase();
-              const isPinned = pinnedEntities.includes(c.acronym);
-              const isBeingDragged = draggedEntityAcronym?.toUpperCase() === c.acronym.toUpperCase();
-              const catColor = c.categoryColor || c.color || T.violet;
-              const bgLight = c.categoryBgLight || "#F1F5F9";
-              const logoSrc = getEntityLogo(c.acronym);
-              const badgeText = formatBadgeAcronym(c.acronym);
-
-              return (
-                <motion.div
-                  key={c.id || c.acronym}
-                  layout
-                  layoutId={`entity-card-${c.acronym}`}
-                  transition={{ type: "spring", stiffness: 450, damping: 32 }}
-                  data-entity-acronym={c.acronym}
-                  draggable={true}
-                  onDragStart={(e) => handleDragStart(c.acronym, e as unknown as React.DragEvent)}
-                  onDragOver={(e) => handleDragOver(c.acronym, e as unknown as React.DragEvent)}
-                  onDragEnd={handleDragEnd}
-                  onTouchStart={(e) => handleTouchStart(c.acronym, e as unknown as React.TouchEvent)}
-                  onTouchMove={(e) => handleTouchMove(e as unknown as React.TouchEvent)}
-                  onTouchEnd={() => handleTouchEnd(c.acronym)}
-                  onTouchCancel={handleTouchCancel}
-                  style={{
-                    position: "relative",
-                    zIndex: isBeingDragged ? 50 : 1,
-                    transform: isBeingDragged ? "scale(1.08)" : "scale(1)",
-                    opacity: isBeingDragged ? 0.95 : 1,
-                    transition: isBeingDragged ? "none" : "transform 0.15s ease, opacity 0.15s ease",
-                    cursor: isBeingDragged ? "grabbing" : "grab",
-                    userSelect: "none",
-                    WebkitUserSelect: "none",
-                    touchAction: isBeingDragged ? "none" : "pan-y"
-                  }}
-                >
-                  <button 
-                    type="button"
-                    onMouseEnter={() => sound.playHoverKey()}
-                    onClick={() => {
-                      if (Date.now() - lastTouchTimeRef.current < 500) return;
-                      sound.playClick();
-                      haptic.selection();
-                      setEntity(c.acronym);
-                      clearChat();
-                      if (typeof window !== "undefined" && window.innerWidth <= 768) {
-                        setChatSidebarOpen(false);
-                      }
-                    }}
-                    className="chat-collection-cube-btn"
-                    title={`Arrastra o mantén presionado para mover ${c.name || c.acronym}`}
-                    style={{
-                      width: "100%",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      padding: "10px 6px 8px",
-                      borderRadius: 10,
-                      border: isBeingDragged
-                        ? `1.5px solid ${isDarkMode ? "rgba(255, 255, 255, 0.35)" : "#9CA3AF"}`
-                        : isSelected 
-                        ? `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.22)" : "#D1D5DB"}` 
-                        : `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E7EB"}`,
-                      background: isBeingDragged
-                        ? (isDarkMode ? "#333333" : "#E5E7EB")
-                        : isSelected 
-                        ? (isDarkMode ? "#2F2F2F" : "#F4F4F5") 
-                        : (isDarkMode ? "#212121" : "#FFFFFF"),
-                      cursor: "inherit",
-                      textAlign: "center",
-                      transition: "all 0.16s ease",
-                      boxShadow: isBeingDragged
-                        ? (isDarkMode ? "0 14px 34px rgba(0,0,0,0.8)" : "0 12px 28px rgba(0,0,0,0.14)")
-                        : isSelected 
-                        ? (isDarkMode ? "0 2px 8px rgba(0,0,0,0.4)" : "0 2px 6px rgba(0,0,0,0.05)")
-                        : (isDarkMode ? "none" : "0 1px 2px rgba(0,0,0,0.03)"),
-                      position: "relative",
-                      boxSizing: "border-box",
-                      minHeight: 84,
-                      pointerEvents: isBeingDragged ? "none" : "auto",
-                      WebkitUserSelect: "none",
-                      userSelect: "none"
-                    }}
-                  >
-                    {/* Logo / Badge de la Entidad */}
-                    <div style={{
-                      width: "84%",
-                      maxWidth: 64,
-                      height: 34,
-                      borderRadius: 7,
-                      background: "#FFFFFF",
-                      border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.10)" : "1px solid #E5E7EB",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      padding: "2px 5px",
-                      marginBottom: 5,
-                      boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.04)",
-                      boxSizing: "border-box",
-                      overflow: "hidden",
-                      pointerEvents: "none"
-                    }}>
-                      {logoSrc ? (
-                        <img
-                          src={logoSrc}
-                          alt={c.acronym}
-                          style={{ 
-                            maxHeight: "100%", 
-                            maxWidth: "100%", 
-                            width: "auto", 
-                            height: "auto", 
-                            objectFit: "contain", 
-                            imageRendering: "-webkit-optimize-contrast",
-                            display: "block" 
-                          }}
-                          loading="lazy"
-                        />
-                      ) : (
-                        <span style={{
-                          color: isDarkMode ? "#ECECEC" : "#1F2937",
-                          fontWeight: 800,
-                          fontFamily: G,
-                          fontSize: 10.5,
-                          textAlign: "center",
-                          letterSpacing: badgeText.length > 4 ? "-0.03em" : "0",
-                        }}>
-                          {badgeText}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Acrónimo / Nombre Prominente */}
-                    <span style={{ 
-                      fontFamily: G, 
-                      fontSize: 11.5, 
-                      color: isSelected ? (isDarkMode ? "#FFFFFF" : "#0D0D0D") : (isDarkMode ? "#ECECEC" : "#374151"), 
-                      fontWeight: isSelected ? 800 : 600, 
-                      lineHeight: 1.2,
-                      textAlign: "center",
-                      maxWidth: "100%",
-                      overflow: "hidden", 
-                      textOverflow: "ellipsis", 
-                      whiteSpace: "nowrap",
-                      display: "block",
-                      padding: "0 2px",
-                      pointerEvents: "none",
-                      letterSpacing: "-0.01em"
-                    }}>
-                      {c.acronym}
-                    </span>
-                  </button>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          {/* Línea Separadora después de las Entidades */}
-          <div style={{
-            height: 1,
-            background: D.border,
-            margin: "18px 14px 14px",
-            flexShrink: 0
-          }} />
-
-          {/* ── Footer Informativo y Legal Estilo YouTube ── */}
-          <div style={{ padding: "0 14px 24px", display: "flex", flexDirection: "column", gap: 11, flexShrink: 0 }}>
-
-            {/* Grupo 1: Información, Derechos de autor, Contactar, Creadores */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 9px" }}>
-              {[
-                { label: "Información", docKey: "informacion" },
-                { label: "Derechos de autor", docKey: "derechos" },
-                { label: "Contactar", docKey: "contactar" },
-                { label: "Creadores", docKey: "creadores" }
-              ].map((item, idx) => (
-                <span
-                  key={idx}
-                  onClick={() => {
-                    sound.playClick();
-                    haptic.selection();
-                    setActiveFooterDoc(FOOTER_DOCS[item.docKey]);
-                  }}
-                  onMouseEnter={() => sound.playHoverKey()}
-                  style={{
-                    fontFamily: I,
-                    fontSize: 11.5,
-                    fontWeight: 600,
-                    color: D.muted,
-                    cursor: "pointer",
-                    transition: "color 0.15s ease",
-                    lineHeight: 1.3
-                  }}
-                  className="youtube-sidebar-link"
-                >
-                  {item.label}
-                </span>
-              ))}
-            </div>
-
-            {/* Grupo 2: Términos, Privacidad, Política y Seguridad, Cómo funciona */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 9px" }}>
-              {[
-                { label: "Términos", docKey: "terminos" },
-                { label: "Privacidad", docKey: "privacidad" },
-                { label: "Política y seguridad", docKey: "seguridad" },
-                { label: "Cómo funciona ahorratiempo", docKey: "comofunciona" }
-              ].map((item, idx) => (
-                <span
-                  key={idx}
-                  onClick={() => {
-                    sound.playClick();
-                    haptic.selection();
-                    setActiveFooterDoc(FOOTER_DOCS[item.docKey]);
-                  }}
-                  onMouseEnter={() => sound.playHoverKey()}
-                  style={{
-                    fontFamily: I,
-                    fontSize: 11.5,
-                    fontWeight: 600,
-                    color: D.muted,
-                    cursor: "pointer",
-                    transition: "color 0.15s ease",
-                    lineHeight: 1.3
-                  }}
-                  className="youtube-sidebar-link"
-                >
-                  {item.label}
-                </span>
-              ))}
-            </div>
-
-            {/* Copyright */}
-            <div style={{ marginTop: 2 }}>
-              <span style={{
-                fontFamily: I,
-                fontSize: 11,
-                fontWeight: 450,
-                color: isDarkMode ? "#64748B" : "#94A3B8",
-                lineHeight: 1.4,
-                display: "block"
-              }}>
-                © 2026 ahorratiempo
-              </span>
-            </div>
-          </div>
-        </div>
-      </aside>
+        
 
       {/* ── 2. Modal de Catálogo Completo (Ventana Universal en 2 Columnas con Deslizamiento Automático / Paginado) ── */}
       <AnimatePresence>
@@ -2588,49 +1881,314 @@ export function FrutilotaMascot({
         })()}
       </AnimatePresence>
 
-      {/* ── 3. Chat Area Principal ── */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", minWidth: 0, background: D.bg, transition: "background 0.25s", position: "relative" }}>
+      {/* ── 3. Contenedor Principal a Pantalla Completa (Sin Sidebar) ── */}
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", minWidth: 0, background: D.bg, transition: "background 0.25s", position: "relative", height: "100%", overflow: "hidden" }}>
         
-        {/* Botón Reabrir/Expandir Sidebar (cuando está colapsado) */}
-        {!chatSidebarOpen && (
-          <button 
-            onClick={() => {
-              haptic.selection();
-              setChatSidebarOpen(true);
-            }} 
-            title="Abrir menú de entidades" 
-            aria-label="Abrir menú de entidades"
-            className="chat-sidebar-reopen" 
-            style={{
-              position: "absolute",
-              top: 12,
-              left: 12,
-              zIndex: 25,
+        {/* ── Top Bar Sutil: Branding ahorratiempo + Perfil de Google Disimulado ── */}
+        <header style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "10px 18px",
+          borderBottom: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E7EB"}`,
+          background: isDarkMode ? "#171717" : "#FFFFFF",
+          flexShrink: 0,
+          zIndex: 40,
+          boxShadow: isDarkMode ? "0 1px 4px rgba(0,0,0,0.4)" : "0 1px 3px rgba(0,0,0,0.02)"
+        }}>
+          {/* Logo / Marca Discreta */}
+          <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
+            <div style={{
+              width: 28,
+              height: 28,
+              borderRadius: 7,
+              background: "#0F172A",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              width: 36,
-              height: 36,
-              minWidth: 36,
-              background: isDarkMode ? "#212121" : "#FFFFFF",
-              border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.16)" : "#E5E5E5"}`,
-              borderRadius: 8,
-              padding: 0,
-              cursor: "pointer",
-              color: isDarkMode ? "#ECECEC" : "#1F2937",
-              boxShadow: isDarkMode ? "0 2px 8px rgba(0,0,0,0.5)" : "0 2px 8px rgba(0,0,0,0.06)",
-              transition: "all 0.15s ease"
-            }}
-          >
-            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" style={{ display: "block", color: isDarkMode ? "#ECECEC" : "#1F2937", shapeRendering: "geometricPrecision" }}>
-              <rect x="1.5" y="2" width="13" height="12" rx="2.5" stroke="currentColor" strokeWidth="1.3" />
-              <line x1="5.5" y1="2" x2="5.5" y2="14" stroke="currentColor" strokeWidth="1.3" />
-              <path d="M9 6L11 8L9 10" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-        )}
+              color: "#FFFFFF",
+              fontWeight: 800,
+              fontSize: 14,
+              fontFamily: G,
+              letterSpacing: "-0.03em"
+            }}>
+              a
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <span style={{
+                fontFamily: G,
+                fontSize: 15.5,
+                fontWeight: 800,
+                color: isDarkMode ? "#F9FAFB" : "#0F172A",
+                letterSpacing: "-0.02em"
+              }}>
+                ahorratiempo
+              </span>
+              <span style={{
+                fontSize: 9.5,
+                fontWeight: 750,
+                fontFamily: I,
+                padding: "1px 6px",
+                borderRadius: 4,
+                background: isDarkMode ? "rgba(56, 189, 248, 0.12)" : "rgba(2, 132, 199, 0.08)",
+                color: isDarkMode ? "#38BDF8" : "#0284C7",
+                border: `1px solid ${isDarkMode ? "rgba(56, 189, 248, 0.25)" : "rgba(2, 132, 199, 0.18)"}`
+              }}>
+                OFICIAL
+              </span>
+            </div>
+          </div>
 
+          {/* Perfil de Google Disimulado */}
+          <div style={{ position: "relative" }} ref={sidebarProfileMenuRef}>
+            {user ? (
+              /* Usuario conectado con Google */
+              <div
+                onClick={() => {
+                  sound.playHoverKey();
+                  haptic.selection();
+                  setSidebarProfileMenuOpen(prev => !prev);
+                }}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  padding: "4px 8px 4px 5px",
+                  borderRadius: 20,
+                  background: isDarkMode ? "#262626" : "#F1F5F9",
+                  border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
+                  cursor: "pointer",
+                  transition: "all 0.15s ease",
+                  userSelect: "none"
+                }}
+                title="Opciones de tu cuenta Google"
+              >
+                {/* Avatar Google */}
+                <div style={{
+                  width: 25,
+                  height: 25,
+                  borderRadius: "50%",
+                  overflow: "hidden",
+                  background: isDarkMode ? "#333333" : "#E2E8F0",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                  border: "1.5px solid #10B981"
+                }}>
+                  {user.photoURL ? (
+                    <img 
+                      src={user.photoURL} 
+                      alt={user.displayName || "Google"} 
+                      referrerPolicy="no-referrer"
+                      style={{ width: "100%", height: "100%", objectFit: "cover" }} 
+                    />
+                  ) : (
+                    <span style={{ fontSize: 11, fontWeight: 700, color: isDarkMode ? "#ECECEC" : "#1F2937" }}>{initial}</span>
+                  )}
+                </div>
 
+                {/* Nombre & Badge Conectado */}
+                <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                  <span style={{
+                    fontFamily: I,
+                    fontSize: 12,
+                    fontWeight: 600,
+                    color: isDarkMode ? "#ECECEC" : "#0F172A",
+                    maxWidth: 110,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap"
+                  }}>
+                    {displayName}
+                  </span>
+                  <span style={{
+                    fontSize: 9,
+                    fontWeight: 750,
+                    padding: "1px 5px",
+                    borderRadius: 4,
+                    background: isDarkMode ? "rgba(16, 185, 129, 0.15)" : "#ECFDF5",
+                    color: isDarkMode ? "#34D399" : "#059669",
+                    border: `1px solid ${isDarkMode ? "rgba(16, 185, 129, 0.3)" : "#A7F3D0"}`
+                  }}>
+                    CONECTADO
+                  </span>
+                </div>
+
+                <ChevronDownRegular 
+                  fontSize={11} 
+                  style={{ 
+                    color: isDarkMode ? "#9CA3AF" : "#64748B",
+                    transform: sidebarProfileMenuOpen ? "rotate(180deg)" : "rotate(0deg)",
+                    transition: "transform 0.18s ease"
+                  }} 
+                />
+              </div>
+            ) : (
+              /* Usuario invitado -> Botón Conectar con Google disimulado */
+              <button
+                type="button"
+                onClick={() => {
+                  sound.playClick();
+                  haptic.medium();
+                  onOpenLogin?.();
+                }}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 7,
+                  padding: "5px 12px",
+                  borderRadius: 7,
+                  background: isDarkMode ? "#262626" : "#FFFFFF",
+                  border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.14)" : "#D1D5DB"}`,
+                  color: isDarkMode ? "#ECECEC" : "#1F2937",
+                  fontFamily: I,
+                  fontSize: 12,
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  transition: "all 0.15s ease",
+                  boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.04)"
+                }}
+              >
+                {/* SVG Google */}
+                <svg width="14" height="14" viewBox="0 0 24 24">
+                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
+                </svg>
+                <span>Acceder con Google</span>
+              </button>
+            )}
+
+            {/* Dropdown del Menú de Perfil */}
+            <AnimatePresence>
+              {sidebarProfileMenuOpen && user && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.96, y: 6 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.96, y: 6 }}
+                  transition={{ duration: 0.15 }}
+                  style={{
+                    position: "absolute",
+                    top: "calc(100% + 8px)",
+                    right: 0,
+                    width: 240,
+                    borderRadius: 12,
+                    background: isDarkMode ? "#212121" : "#FFFFFF",
+                    border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.14)" : "1px solid #E5E7EB",
+                    boxShadow: isDarkMode ? "0 16px 40px rgba(0,0,0,0.7)" : "0 12px 30px rgba(0,0,0,0.12)",
+                    padding: 8,
+                    zIndex: 1000,
+                    fontFamily: I
+                  }}
+                >
+                  {/* Header Info */}
+                  <div style={{ padding: "8px 10px 10px", borderBottom: `1px solid ${isDarkMode ? "rgba(255,255,255,0.08)" : "#F1F5F9"}` }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
+                      <div style={{
+                        width: 32,
+                        height: 32,
+                        borderRadius: "50%",
+                        overflow: "hidden",
+                        background: isDarkMode ? "#333333" : "#E2E8F0",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0
+                      }}>
+                        {user.photoURL ? (
+                          <img src={user.photoURL} alt={fullDisplayName} referrerPolicy="no-referrer" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                        ) : (
+                          <span style={{ fontSize: 13, fontWeight: 700 }}>{initial}</span>
+                        )}
+                      </div>
+                      <div style={{ minWidth: 0 }}>
+                        <p style={{ margin: 0, fontSize: 13, fontWeight: 700, color: isDarkMode ? "#F9FAFB" : "#0F172A", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                          {fullDisplayName}
+                        </p>
+                        <p style={{ margin: "2px 0 0", fontSize: 11, color: isDarkMode ? "#9CA3AF" : "#64748B", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                          {user.email}
+                        </p>
+                      </div>
+                    </div>
+                    <div style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 5 }}>
+                      <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#10B981" }} />
+                      <span style={{ fontSize: 10.5, fontWeight: 600, color: isDarkMode ? "#34D399" : "#059669" }}>
+                        Catálogo Activo y Ordenado
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Opciones */}
+                  <div style={{ display: "flex", flexDirection: "column", gap: 3, paddingTop: 6 }}>
+                    {toggleTheme && (
+                      <button
+                        type="button"
+                        onClick={handleToggleThemeFromMenu}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          padding: "8px 10px",
+                          borderRadius: 8,
+                          background: "transparent",
+                          border: "none",
+                          color: isDarkMode ? "#ECECEC" : "#1F2937",
+                          fontSize: 12.5,
+                          fontWeight: 500,
+                          cursor: "pointer",
+                          textAlign: "left",
+                          width: "100%",
+                          transition: "background 0.15s ease"
+                        }}
+                        onMouseEnter={(e) => (e.currentTarget.style.background = isDarkMode ? "#2F2F2F" : "#F4F4F5")}
+                        onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                      >
+                        <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
+                          {isDarkMode ? <WeatherSunnyRegular fontSize={15} style={{ color: "#A3A3A3" }} /> : <WeatherMoonRegular fontSize={15} style={{ color: "#6B7280" }} />}
+                          <span>{isDarkMode ? "Modo Claro" : "Modo Oscuro"}</span>
+                        </div>
+                      </button>
+                    )}
+
+                    <button
+                      type="button"
+                      onClick={handlePerformLogout}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 9,
+                        padding: "8px 10px",
+                        borderRadius: 8,
+                        background: "transparent",
+                        border: "none",
+                        color: isDarkMode ? "#ECECEC" : "#1F2937",
+                        fontSize: 12.5,
+                        fontWeight: 500,
+                        cursor: "pointer",
+                        textAlign: "left",
+                        width: "100%",
+                        transition: "all 0.15s ease"
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = isDarkMode ? "rgba(239, 68, 68, 0.12)" : "#FEF2F2";
+                        e.currentTarget.style.color = "#EF4444";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = "transparent";
+                        e.currentTarget.style.color = isDarkMode ? "#ECECEC" : "#1F2937";
+                      }}
+                    >
+                      <SignOutRegular fontSize={15} style={{ color: "inherit" }} />
+                      <span>Cerrar sesión</span>
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </header>
 
         {/* ── Navegador Dinámico de Trámites Oficiales (100% Directo, Sin Chat) ── */}
         <div 
@@ -3236,21 +2794,71 @@ export function FrutilotaMascot({
               </div>
             )}
 
-            {/* Disclaimer Oficial */}
-            <div style={{
-              textAlign: "center",
-              padding: "14px 16px",
-              borderRadius: 10,
-              background: isDarkMode ? "rgba(255, 255, 255, 0.03)" : "#F8FAFC",
-              border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.06)" : "#E2E8F0"}`,
-              color: isDarkMode ? "#64748B" : "#94A3B8",
-              fontFamily: I,
-              fontSize: 11.5,
-              lineHeight: 1.45,
-              marginTop: 6
+            {/* ── Footer Oficial: Copyright y Términos con Condiciones ── */}
+            <footer style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 10,
+              padding: "24px 16px 20px",
+              marginTop: 20,
+              borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`
             }}>
-              🔒 <strong>ahorratiempo</strong> te conecta directamente con las plataformas y sedes oficiales de cada institución.
-            </div>
+              {/* Enlaces Legales e Informativos */}
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexWrap: "wrap",
+                gap: "8px 18px"
+              }}>
+                {[
+                  { label: "Términos y condiciones", docKey: "terminos" },
+                  { label: "Política de privacidad", docKey: "privacidad" },
+                  { label: "Política y seguridad", docKey: "seguridad" },
+                  { label: "Cómo funciona", docKey: "comofunciona" }
+                ].map((item, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => {
+                      sound.playClick();
+                      haptic.selection();
+                      setActiveFooterDoc(FOOTER_DOCS[item.docKey]);
+                    }}
+                    onMouseEnter={() => sound.playHoverKey()}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      padding: 0,
+                      fontFamily: I,
+                      fontSize: 12,
+                      fontWeight: 550,
+                      color: isDarkMode ? "#9CA3AF" : "#64748B",
+                      cursor: "pointer",
+                      transition: "color 0.15s ease",
+                      textDecoration: "none"
+                    }}
+                    onMouseOver={e => (e.currentTarget.style.color = isDarkMode ? "#F9FAFB" : "#0F172A")}
+                    onMouseOut={e => (e.currentTarget.style.color = isDarkMode ? "#9CA3AF" : "#64748B")}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Copyright */}
+              <p style={{
+                margin: 0,
+                fontFamily: I,
+                fontSize: 11.5,
+                color: isDarkMode ? "#64748B" : "#94A3B8",
+                textAlign: "center"
+              }}>
+                © 2026 ahorratiempo. Todos los derechos reservados.
+              </p>
+            </footer>
           </div>
         </div>
 
@@ -3489,190 +3097,7 @@ export function FrutilotaMascot({
         }}
       />
 
-      {/* ── Menú Inferior Móvil: Carrusel Horizontal de Entidades en Estilo Cubo ── */}
-      <nav 
-        ref={mobileEntitiesBarRef}
-        className="mobile-bottom-entities-bar"
-        aria-label="Selector horizontal de entidades oficiales"
-        style={{
-          position: "fixed",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: 68,
-          background: isDarkMode ? "rgba(18, 18, 20, 0.94)" : "rgba(255, 255, 255, 0.96)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
-          boxShadow: isDarkMode ? "0 -4px 24px rgba(0, 0, 0, 0.6)" : "0 -4px 18px rgba(0, 0, 0, 0.06)",
-          zIndex: 90,
-          display: "none",
-          alignItems: "center",
-          overflowX: "auto",
-          WebkitOverflowScrolling: "touch",
-          scrollbarWidth: "none",
-          gap: 7,
-          padding: "0 10px calc(env(safe-area-inset-bottom, 0px) + 4px)",
-          boxSizing: "border-box"
-        }}
-      >
-        {/* Cubo 1: Todas las Entidades */}
-        <button
-          type="button"
-          onClick={() => {
-            sound.playClick();
-            haptic.selection();
-            setSelectedEntity(null);
-            const container = document.querySelector(".dynamic-official-procedures-container");
-            if (container) container.scrollTo({ top: 0, behavior: "smooth" });
-          }}
-          className="mob-entity-cube"
-          style={{
-            flexShrink: 0,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            minWidth: 58,
-            height: 52,
-            padding: "4px 5px",
-            borderRadius: 9,
-            background: !selectedEntity
-              ? (isDarkMode ? "#2F2F2F" : "#F4F4F5")
-              : (isDarkMode ? "rgba(255, 255, 255, 0.06)" : "#FFFFFF"),
-            border: !selectedEntity
-              ? `1.5px solid ${isDarkMode ? "rgba(255, 255, 255, 0.35)" : "#0F172A"}`
-              : `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.10)" : "#E2E8F0"}`,
-            boxShadow: !selectedEntity
-              ? (isDarkMode ? "0 2px 8px rgba(0,0,0,0.5)" : "0 2px 6px rgba(15, 23, 42, 0.12)")
-              : "none",
-            cursor: "pointer",
-            transition: "all 0.16s ease",
-            userSelect: "none",
-            WebkitUserSelect: "none"
-          }}
-        >
-          <div style={{
-            width: 34,
-            height: 20,
-            borderRadius: 4,
-            background: isDarkMode ? "rgba(255,255,255,0.12)" : "#F1F5F9",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginBottom: 3
-          }}>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: isDarkMode ? "#ECECEC" : "#1E293B" }}>
-              <rect x="3" y="3" width="7" height="7" rx="1.5" />
-              <rect x="14" y="3" width="7" height="7" rx="1.5" />
-              <rect x="3" y="14" width="7" height="7" rx="1.5" />
-              <rect x="14" y="14" width="7" height="7" rx="1.5" />
-            </svg>
-          </div>
-          <span style={{
-            fontFamily: G,
-            fontSize: 9.5,
-            fontWeight: 700,
-            color: !selectedEntity ? (isDarkMode ? "#FFFFFF" : "#0F172A") : (isDarkMode ? "#9CA3AF" : "#64748B"),
-            lineHeight: 1
-          }}>
-            Todas
-          </span>
-        </button>
-
-        {/* Cubos de Entidades */}
-        {displayEntitiesList.map((c) => {
-          const isSelected = Boolean(selectedEntity && entity.toUpperCase() === c.acronym.toUpperCase());
-          const logoSrc = getEntityLogo(c.acronym);
-
-          return (
-            <button
-              key={c.id || c.acronym}
-              data-mobile-entity={c.acronym.toUpperCase()}
-              type="button"
-              onClick={(e) => {
-                sound.playClick();
-                haptic.selection();
-                setEntity(c.acronym);
-                setSelectedEntity(c.acronym);
-                clearChat();
-                e.currentTarget.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-                const container = document.querySelector(".dynamic-official-procedures-container");
-                if (container) {
-                  container.scrollTo({ top: 0, behavior: "smooth" });
-                }
-              }}
-              className="mob-entity-cube"
-              style={{
-                flexShrink: 0,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                minWidth: 58,
-                height: 52,
-                padding: "4px 5px",
-                borderRadius: 9,
-                background: isSelected 
-                  ? (isDarkMode ? "#2F2F2F" : "#F4F4F5") 
-                  : (isDarkMode ? "rgba(255, 255, 255, 0.06)" : "#FFFFFF"),
-                border: isSelected 
-                  ? `1.5px solid ${isDarkMode ? "rgba(255, 255, 255, 0.4)" : "#0F172A"}` 
-                  : `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.10)" : "#E2E8F0"}`,
-                boxShadow: isSelected 
-                  ? (isDarkMode ? "0 2px 8px rgba(0,0,0,0.5)" : "0 2px 6px rgba(15, 23, 42, 0.12)") 
-                  : "none",
-                cursor: "pointer",
-                transition: "all 0.16s ease",
-                userSelect: "none",
-                WebkitUserSelect: "none"
-              }}
-            >
-              {/* Logo en Caja Blanca Rectangular */}
-              <div style={{
-                width: 36,
-                height: 20,
-                borderRadius: 4,
-                background: "#FFFFFF",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "1px 2px",
-                boxSizing: "border-box",
-                overflow: "hidden",
-                flexShrink: 0,
-                marginBottom: 3,
-                border: "1px solid rgba(0,0,0,0.06)"
-              }}>
-                {logoSrc ? (
-                  <img 
-                    src={logoSrc} 
-                    alt={c.acronym} 
-                    style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain", display: "block" }} 
-                  />
-                ) : (
-                  <span style={{ fontSize: 8, fontWeight: 800, color: "#1E293B" }}>{c.acronym.slice(0, 3)}</span>
-                )}
-              </div>
-
-              {/* Nombre / Sigla de la Entidad */}
-              <span style={{
-                fontFamily: G,
-                fontSize: 9.5,
-                fontWeight: isSelected ? 800 : 600,
-                color: isSelected ? (isDarkMode ? "#FFFFFF" : "#0F172A") : (isDarkMode ? "#9CA3AF" : "#64748B"),
-                lineHeight: 1,
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                whiteSpace: "nowrap",
-                maxWidth: 54
-              }}>
-                {c.acronym}
-              </span>
-            </button>
-          );
-        })}
-      </nav>
+      
 
     </div>
   );
