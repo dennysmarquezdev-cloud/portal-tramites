@@ -1329,7 +1329,60 @@ export function FrutilotaMascot({
         .desktop-top-entities-header::-webkit-scrollbar {
           display: none;
         }
+        /* ── Adaptación de Tarjetas de Categorías: Móvil (Top Bar) vs Escritorio (Vertical Left Bar) ── */
+        .entity-category-card {
+          display: flex;
+          align-items: stretch;
+          width: 100%;
+          border-radius: 8px;
+          overflow: hidden;
+          transition: all 0.15s ease;
+        }
+        .entity-category-header-bar {
+          display: flex;
+          align-items: center;
+          box-sizing: border-box;
+          user-select: none;
+          flex-shrink: 0;
+          transition: all 0.15s ease;
+        }
+        .entity-category-header-title {
+          font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          font-weight: 700;
+          letter-spacing: 0.02em;
+          white-space: nowrap;
+          color: #FFFFFF;
+        }
+        .entity-category-cards-grid {
+          flex: 1;
+          display: grid;
+          min-width: 0;
+          box-sizing: border-box;
+        }
+
         @media (max-width: 768px) {
+          .entity-category-card {
+            flex-direction: column !important;
+          }
+          .entity-category-header-bar {
+            width: 100% !important;
+            min-width: 100% !important;
+            max-width: 100% !important;
+            padding: 9px 14px !important;
+            border-radius: 8px 8px 0 0 !important;
+            justify-content: flex-start !important;
+          }
+          .entity-category-header-title {
+            writing-mode: horizontal-tb !important;
+            transform: none !important;
+            text-align: left !important;
+            font-size: 13.5px !important;
+          }
+          .entity-category-cards-grid {
+            grid-template-columns: repeat(auto-fill, minmax(135px, 1fr)) !important;
+            gap: 7px !important;
+            padding: 7px !important;
+          }
           .mob-hide-entity-logo {
             display: none !important;
           }
@@ -1353,6 +1406,28 @@ export function FrutilotaMascot({
           }
         }
         @media (min-width: 769px) {
+          .entity-category-card {
+            flex-direction: row !important;
+          }
+          .entity-category-header-bar {
+            width: clamp(34px, 4vw, 42px) !important;
+            min-width: clamp(34px, 4vw, 42px) !important;
+            max-width: 44px !important;
+            padding: 16px 2px !important;
+            border-radius: 8px 0 0 8px !important;
+            justify-content: center !important;
+          }
+          .entity-category-header-title {
+            writing-mode: vertical-rl !important;
+            transform: rotate(180deg) !important;
+            text-align: center !important;
+            font-size: clamp(11px, 1.1vw, 12.5px) !important;
+          }
+          .entity-category-cards-grid {
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)) !important;
+            gap: 8px !important;
+            padding: 8px !important;
+          }
           .desktop-top-entities-header {
             display: flex !important;
           }
@@ -2420,62 +2495,27 @@ export function FrutilotaMascot({
                     return (
                       <div
                         key={catGroup.id}
+                        className="entity-category-card"
                         style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          alignItems: "stretch",
-                          width: "100%",
-                          borderRadius: 8,
-                          overflow: "hidden",
                           border: `1.5px solid ${isDarkMode ? catGroup.borderDark : catGroup.borderLight}`,
                           background: isDarkMode ? catGroup.bgDark : catGroup.bgLight,
                           boxShadow: isDarkMode ? "0 2px 10px rgba(0,0,0,0.25)" : "0 1px 4px rgba(0,0,0,0.03)"
                         }}
                       >
-                        {/* Barra Vertical Izquierda (Estilo Mockup) */}
+                        {/* Barra de Categoría: Superior en Móvil, Lateral Vertical en Escritorio */}
                         <div
+                          className="entity-category-header-bar"
                           style={{
-                            width: "clamp(34px, 4vw, 42px)",
-                            minWidth: "clamp(34px, 4vw, 42px)",
-                            background: isDarkMode ? catGroup.color : catGroup.barColor,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            padding: "16px 2px",
-                            boxSizing: "border-box",
-                            userSelect: "none",
-                            flexShrink: 0
+                            background: isDarkMode ? catGroup.color : catGroup.barColor
                           }}
                         >
-                          <span
-                            style={{
-                              writingMode: "vertical-rl",
-                              transform: "rotate(180deg)",
-                              fontFamily: G,
-                              fontSize: "clamp(11px, 1.1vw, 12.5px)",
-                              fontWeight: 700,
-                              letterSpacing: "0.02em",
-                              textAlign: "center",
-                              whiteSpace: "nowrap",
-                              color: "#FFFFFF"
-                            }}
-                          >
+                          <span className="entity-category-header-title">
                             {catGroup.name}
                           </span>
                         </div>
 
-                        {/* Grid de Entidades a la Derecha */}
-                        <div
-                          style={{
-                            flex: 1,
-                            display: "grid",
-                            gridTemplateColumns: "repeat(auto-fill, minmax(170px, 1fr))",
-                            gap: 8,
-                            padding: 8,
-                            minWidth: 0,
-                            boxSizing: "border-box"
-                          }}
-                        >
+                        {/* Grid de Entidades a la Derecha / Abajo */}
+                        <div className="entity-category-cards-grid">
                           {groupEntities.map((c) => {
                             const logoSrc = getEntityLogo(c.acronym);
 
@@ -2839,26 +2879,16 @@ export function FrutilotaMascot({
                                   boxShadow: `0 2px 8px ${subTheme.solidColor}35`,
                                   transition: "all 0.15s ease"
                                 }}>
-                                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                    <div style={{
-                                      width: 7,
-                                      height: 7,
-                                      borderRadius: "50%",
-                                      background: "#FFFFFF",
-                                      opacity: 0.95,
-                                      flexShrink: 0
-                                    }} />
-                                    <h3 style={{
-                                      fontFamily: G,
-                                      fontSize: 14,
-                                      fontWeight: 750,
-                                      color: "#FFFFFF",
-                                      margin: 0,
-                                      letterSpacing: "-0.015em"
-                                    }}>
-                                      {catName}
-                                    </h3>
-                                  </div>
+                                  <h3 style={{
+                                    fontFamily: G,
+                                    fontSize: 14.5,
+                                    fontWeight: 750,
+                                    color: "#FFFFFF",
+                                    margin: 0,
+                                    letterSpacing: "-0.015em"
+                                  }}>
+                                    {catName}
+                                  </h3>
                                   <span style={{
                                     fontFamily: I,
                                     fontSize: 11,
