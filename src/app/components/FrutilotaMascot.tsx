@@ -2636,185 +2636,106 @@ export function FrutilotaMascot({
                 borderRadius: 16,
                 padding: "20px 24px",
                 display: "flex",
-                flexDirection: "column",
-                gap: 14,
+                alignItems: "center",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
+                gap: 16,
                 boxShadow: isDarkMode ? "0 4px 16px rgba(0,0,0,0.3)" : "0 2px 10px rgba(0,0,0,0.04)"
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                  {/* Logo Oficial de la Entidad */}
-                  <div 
-                    style={{
-                      width: 54,
-                      height: 54,
-                      borderRadius: 12,
-                      background: "#FFFFFF",
-                      border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.16)" : "#E5E7EB"}`,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      padding: 5,
-                      boxShadow: isDarkMode ? "0 4px 12px rgba(0,0,0,0.5)" : "0 2px 8px rgba(0,0,0,0.08)",
-                      flexShrink: 0
-                    }}
-                  >
-                    {getEntityLogo(activeEntity.acronym) ? (
-                      <img
-                        src={getEntityLogo(activeEntity.acronym)!}
-                        alt={activeEntity.acronym}
-                        style={{ width: "100%", height: "100%", objectFit: "contain" }}
-                      />
-                    ) : (
-                      <span style={{ fontFamily: G, fontSize: 14, fontWeight: 850, color: "#1F2937" }}>
-                        {activeEntity.acronym.slice(0, 3)}
-                      </span>
-                    )}
-                  </div>
-
-                  <div>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                      <h1 style={{
-                        fontFamily: G,
-                        fontSize: "clamp(20px, 3.2vw, 26px)",
-                        fontWeight: 850,
-                        color: isDarkMode ? "#F8FAFC" : "#0A101D",
-                        letterSpacing: "-0.03em",
-                        margin: 0,
-                        lineHeight: 1.2
-                      }}>
-                        {activeEntity.acronym}
-                      </h1>
-
-                      <span style={{
-                        fontFamily: I,
-                        fontSize: 11.5,
-                        fontWeight: 650,
-                        padding: "3px 8px",
-                        borderRadius: 6,
-                        background: isDarkMode ? "rgba(16, 185, 129, 0.15)" : "#ECFDF5",
-                        color: isDarkMode ? "#34D399" : "#065F46",
-                        border: `1px solid ${isDarkMode ? "rgba(52, 211, 153, 0.25)" : "#A7F3D0"}`,
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: 4
-                      }}>
-                        <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#10B981" }} />
-                        Sede Digital Oficial .gob.pe
-                      </span>
-                    </div>
-
-                    <p style={{
-                      fontFamily: I,
-                      fontSize: 13,
-                      fontWeight: 500,
-                      color: isDarkMode ? "#94A3B8" : "#64748B",
-                      margin: "3px 0 0",
-                      lineHeight: 1.3
-                    }}>
-                      {activeEntity.name}
-                    </p>
-                  </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                {/* Logo Oficial de la Entidad */}
+                <div 
+                  style={{
+                    width: 54,
+                    height: 54,
+                    borderRadius: 12,
+                    background: "#FFFFFF",
+                    border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.16)" : "#E5E7EB"}`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: 5,
+                    boxShadow: isDarkMode ? "0 4px 12px rgba(0,0,0,0.5)" : "0 2px 8px rgba(0,0,0,0.08)",
+                    flexShrink: 0
+                  }}
+                >
+                  {getEntityLogo(activeEntity.acronym) ? (
+                    <img
+                      src={getEntityLogo(activeEntity.acronym)!}
+                      alt={activeEntity.acronym}
+                      style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                    />
+                  ) : (
+                    <span style={{ fontFamily: G, fontSize: 14, fontWeight: 850, color: "#1F2937" }}>
+                      {activeEntity.acronym.slice(0, 3)}
+                    </span>
+                  )}
                 </div>
 
-                {/* Badge Categoría */}
-                <div style={{
-                  padding: "6px 12px",
-                  borderRadius: 8,
-                  background: isDarkMode ? "rgba(255, 255, 255, 0.06)" : "#F1F5F9",
-                  border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.1)" : "#E2E8F0"}`,
-                  color: isDarkMode ? "#D1D5DB" : "#475569",
-                  fontFamily: I,
-                  fontSize: 12,
-                  fontWeight: 600
-                }}>
-                  {activeEntity.category}
+                <div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                    <h1 style={{
+                      fontFamily: G,
+                      fontSize: "clamp(20px, 3.2vw, 26px)",
+                      fontWeight: 850,
+                      color: isDarkMode ? "#F8FAFC" : "#0A101D",
+                      letterSpacing: "-0.03em",
+                      margin: 0,
+                      lineHeight: 1.2
+                    }}>
+                      {activeEntity.acronym}
+                    </h1>
+
+                    <span style={{
+                      fontFamily: I,
+                      fontSize: 11.5,
+                      fontWeight: 650,
+                      padding: "3px 8px",
+                      borderRadius: 6,
+                      background: isDarkMode ? "rgba(16, 185, 129, 0.15)" : "#ECFDF5",
+                      color: isDarkMode ? "#34D399" : "#065F46",
+                      border: `1px solid ${isDarkMode ? "rgba(52, 211, 153, 0.25)" : "#A7F3D0"}`,
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 4
+                    }}>
+                      <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#10B981" }} />
+                      Sede Oficial Activa
+                    </span>
+                  </div>
+
+                  <p style={{
+                    fontFamily: I,
+                    fontSize: 13,
+                    fontWeight: 500,
+                    color: isDarkMode ? "#94A3B8" : "#64748B",
+                    margin: "3px 0 0",
+                    lineHeight: 1.3
+                  }}>
+                    {activeEntity.name}
+                  </p>
                 </div>
               </div>
 
-              {/* Barra de Filtro / Búsqueda Rápida de Trámites */}
-              <div style={{ position: "relative", width: "100%", marginTop: 4 }}>
-                <svg 
-                  width="16" 
-                  height="16" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  style={{
-                    position: "absolute",
-                    left: 12,
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    color: isDarkMode ? "#94A3B8" : "#64748B",
-                    pointerEvents: "none"
-                  }}
-                >
-                  <circle cx="11" cy="11" r="8"/>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                </svg>
-
-                <input
-                  type="text"
-                  value={procSearchQuery}
-                  onChange={(e) => setProcSearchQuery(e.target.value)}
-                  placeholder={`Buscar trámites o servicios oficiales de ${activeEntity.acronym}...`}
-                  style={{
-                    width: "100%",
-                    padding: "11px 36px 11px 36px",
-                    background: isDarkMode ? "#242424" : "#F8FAFC",
-                    border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.14)" : "#E2E8F0"}`,
-                    borderRadius: 10,
-                    fontFamily: I,
-                    fontSize: 13.5,
-                    color: isDarkMode ? "#F9FAFB" : "#0F172A",
-                    outline: "none",
-                    boxSizing: "border-box",
-                    transition: "border-color 0.15s ease"
-                  }}
-                />
-
-                {procSearchQuery && (
-                  <button
-                    type="button"
-                    onClick={() => setProcSearchQuery("")}
-                    title="Limpiar búsqueda"
-                    style={{
-                      position: "absolute",
-                      right: 10,
-                      top: "50%",
-                      transform: "translateY(-50%)",
-                      background: "transparent",
-                      border: "none",
-                      color: isDarkMode ? "#94A3B8" : "#64748B",
-                      cursor: "pointer",
-                      padding: 4,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center"
-                    }}
-                  >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="18" y1="6" x2="6" y2="18"/>
-                      <line x1="6" y1="6" x2="18" y2="18"/>
-                    </svg>
-                  </button>
-                )}
+              {/* Badge Categoría */}
+              <div style={{
+                padding: "6px 12px",
+                borderRadius: 8,
+                background: isDarkMode ? "rgba(255, 255, 255, 0.06)" : "#F1F5F9",
+                border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.1)" : "#E2E8F0"}`,
+                color: isDarkMode ? "#D1D5DB" : "#475569",
+                fontFamily: I,
+                fontSize: 12,
+                fontWeight: 600
+              }}>
+                {activeEntity.category}
               </div>
             </div>
 
-            {/* 3. Trámites Oficiales de la Entidad (Título Nítido + 1-Clic Directo) */}
+            {/* Trámites Oficiales de la Entidad (Directos en 1 Clic) */}
             {(() => {
               const allProcs = getEntityOfficialProcedures(activeEntity.acronym);
-              const searchQuery = procSearchQuery.toLowerCase().trim();
-              const filteredProcs = searchQuery
-                ? allProcs.filter(p =>
-                    p.title.toLowerCase().includes(searchQuery) ||
-                    (p.category && p.category.toLowerCase().includes(searchQuery))
-                  )
-                : allProcs;
 
               return (
                 <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -2841,11 +2762,11 @@ export function FrutilotaMascot({
                       color: isDarkMode ? "#9CA3AF" : "#64748B",
                       border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`
                     }}>
-                      {filteredProcs.length} {filteredProcs.length === 1 ? "trámite oficial" : "trámites oficiales"}
+                      {allProcs.length} {allProcs.length === 1 ? "trámite oficial" : "trámites oficiales"}
                     </span>
                   </div>
 
-                  {/* Cuadrícula Nítida: Tarjeta con Título Claro + 1-Clic (Sin imágenes, Sin Costos, Sin Tiempos) */}
+                  {/* Cuadrícula Nítida: Tarjetas con Título Claro + 1-Clic Directo */}
                   <div 
                     style={{ 
                       display: "grid", 
@@ -2853,7 +2774,7 @@ export function FrutilotaMascot({
                       gap: 14 
                     }}
                   >
-                    {filteredProcs.map((proc, pIdx) => (
+                    {allProcs.map((proc, pIdx) => (
                       <motion.a
                         key={proc.id || pIdx}
                         href={proc.url}
@@ -2884,7 +2805,7 @@ export function FrutilotaMascot({
                           transition: "border-color 0.15s ease, box-shadow 0.15s ease"
                         }}
                       >
-                        {/* Cabecera de la Tarjeta: Categoría y Sello .gob.pe */}
+                        {/* Cabecera de la Tarjeta: Categoría Oficial */}
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
                           <span style={{
                             padding: "3px 8px",
@@ -2898,20 +2819,16 @@ export function FrutilotaMascot({
                             letterSpacing: "0.01em",
                             textTransform: "uppercase"
                           }}>
-                            {proc.category || activeEntity.category || "Oficial"}
+                            {proc.category || activeEntity.category || "Trámite Oficial"}
                           </span>
 
                           <span style={{
-                            padding: "2px 7px",
-                            borderRadius: 6,
-                            background: isDarkMode ? "rgba(16, 185, 129, 0.12)" : "#ECFDF5",
-                            border: `1px solid ${isDarkMode ? "rgba(16, 185, 129, 0.25)" : "#A7F3D0"}`,
-                            color: isDarkMode ? "#34D399" : "#047857",
+                            fontSize: 11,
                             fontFamily: I,
-                            fontSize: 10.5,
-                            fontWeight: 750
+                            fontWeight: 650,
+                            color: isDarkMode ? "#64748B" : "#94A3B8"
                           }}>
-                            .gob.pe
+                            #{pIdx + 1}
                           </span>
                         </div>
 
@@ -2944,7 +2861,7 @@ export function FrutilotaMascot({
                             fontWeight: 600,
                             color: isDarkMode ? "#9CA3AF" : "#64748B"
                           }}>
-                            Plataforma oficial
+                            Acceso directo
                           </span>
 
                           <span style={{
@@ -2971,26 +2888,11 @@ export function FrutilotaMascot({
                       </motion.a>
                     ))}
                   </div>
-
-                  {/* Estado vacío si no hay coincidencias de búsqueda */}
-                  {filteredProcs.length === 0 && (
-                    <div style={{
-                      textAlign: "center",
-                      padding: "40px 20px",
-                      background: isDarkMode ? "#1E1E1E" : "#FFFFFF",
-                      borderRadius: 12,
-                      border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.1)" : "#E5E7EB"}`
-                    }}>
-                      <p style={{ fontFamily: I, fontSize: 14, color: isDarkMode ? "#9CA3AF" : "#6B7280", margin: 0 }}>
-                        No se encontraron trámites con "{procSearchQuery}". Prueba con otro término de búsqueda.
-                      </p>
-                    </div>
-                  )}
                 </div>
               );
             })()}
 
-            {/* Disclaimer Oficial del Estado */}
+            {/* Disclaimer Oficial */}
             <div style={{
               textAlign: "center",
               padding: "14px 16px",
@@ -3002,7 +2904,7 @@ export function FrutilotaMascot({
               fontSize: 11.5,
               lineHeight: 1.45
             }}>
-              🔒 <strong>ahorratiempo</strong> te conecta directamente con las plataformas oficiales y sedes electrónicas del Estado peruano (.gob.pe).
+              🔒 <strong>ahorratiempo</strong> te conecta directamente con las plataformas y sedes oficiales de cada institución.
             </div>
           </div>
         </div>
