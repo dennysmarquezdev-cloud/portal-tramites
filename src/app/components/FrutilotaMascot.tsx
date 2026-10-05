@@ -2628,39 +2628,7 @@ export function FrutilotaMascot({
         >
           <div style={{ maxWidth: 1040, width: "100%", margin: "0 auto", display: "flex", flexDirection: "column", gap: 18 }}>
             
-            {/* 1. Selector Superior Nítido de Entidades Oficiales */}
-            <div style={{ width: "100%" }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8, padding: "0 2px" }}>
-                <span style={{
-                  fontFamily: G,
-                  fontSize: 13,
-                  fontWeight: 750,
-                  color: isDarkMode ? "#9CA3AF" : "#475569",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.04em"
-                }}>
-                  Instituciones Oficiales del Estado
-                </span>
-                <span style={{
-                  fontFamily: I,
-                  fontSize: 12,
-                  fontWeight: 650,
-                  color: isDarkMode ? "#60A5FA" : "#2563EB"
-                }}>
-                  {CIVIC_ENTITIES.length} entidades disponibles
-                </span>
-              </div>
-
-              <EmbeddedEntitiesCarousel
-                entities={CIVIC_ENTITIES}
-                activeEntityAcronym={entity}
-                onSelectEntity={handleSwitchEntity}
-                isDarkMode={isDarkMode}
-                D={D}
-              />
-            </div>
-
-            {/* 2. Header Institucional de la Entidad Activa */}
+            {/* Header Institucional de la Entidad Activa */}
             <div 
               style={{ 
                 background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
