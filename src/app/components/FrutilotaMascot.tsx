@@ -56,7 +56,7 @@ import { PaywallView } from "./PaywallView";
 import { OnboardingGuideModal } from "./OnboardingGuideModal";
 import { CIVIC_ENTITIES, findCivicEntity, buildEntityWelcomeMessage, getEntityVoiceExample } from "../data/civicEntities";
 import { getEntityLogo } from "../data/entityLogos";
-import { getEntityOfficialProcedures, getTramiteChatGPTIcon, DirectProcedureItem } from "../data/directProcedures";
+import { getEntityOfficialProcedures, getEntityCategoryGroups, getTramiteChatGPTIcon, DirectProcedureItem, ProcedureCategoryGroup } from "../data/directProcedures";
 import multiCatalogRaw from "../data/multi_entidades_catalogo.json";
 import { AnimatedThemeIcon } from "./AnimatedThemeToggle";
 
@@ -438,6 +438,8 @@ export function FrutilotaMascot({
     const matched = findCivicEntity(newAcronym);
     setEntity(matched.acronym);
     setEntityDropdownOpen(false);
+    setProcSearchQuery("");
+    setSelectedCategory("all");
     clearChat();
   };
 
@@ -453,6 +455,7 @@ export function FrutilotaMascot({
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [activeFooterDoc, setActiveFooterDoc] = useState<{ title: string; badge: string; content: React.ReactNode } | null>(null);
   const [procSearchQuery, setProcSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   const [sidebarProfileMenuOpen, setSidebarProfileMenuOpen] = useState(false);
   const sidebarProfileMenuRef = useRef<HTMLDivElement>(null);
@@ -2813,310 +2816,237 @@ export function FrutilotaMascot({
               />
             )}
 
-            {/* Obtener Trámites Oficiales de la Entidad */}
+            {/* ── Categorías y Trámites Oficiales de la Entidad ── */}
             {(() => {
-              const allEntityProcs = getEntityOfficialProcedures(activeEntity.acronym);
-              const filteredProcs = procSearchQuery.trim()
-                ? allEntityProcs.filter(p => 
-                    p.title.toLowerCase().includes(procSearchQuery.toLowerCase()) || 
-                    p.description.toLowerCase().includes(procSearchQuery.toLowerCase()) ||
-                    p.visualTag.toLowerCase().includes(procSearchQuery.toLowerCase())
-                  )
-                : allEntityProcs;
+              const allCategoryGroups = getEntityCategoryGroups(activeEntity.acronym);
+              const isSearching = procSearchQuery.trim().length > 0;
+              const searchQuery = procSearchQuery.toLowerCase().trim();
 
-              const featuredProc = filteredProcs.find(p => p.isFeatured) || (!procSearchQuery.trim() ? filteredProcs[0] : null);
-              const regularProcs = featuredProc && !procSearchQuery.trim()
-                ? filteredProcs.filter(p => p.id !== featuredProc.id)
-                : filteredProcs;
+              // Contar total de trámites
+              let totalProcsCount = 0;
+              allCategoryGroups.forEach(g => { totalProcsCount += g.items.length; });
+
+              // Filtrar según búsqueda o categoría seleccionada
+              const displayedGroups = allCategoryGroups.map(group => {
+                let matchingItems = group.items;
+                if (isSearching) {
+                  matchingItems = group.items.filter(item =>
+                    item.title.toLowerCase().includes(searchQuery) ||
+                    item.description.toLowerCase().includes(searchQuery) ||
+                    item.visualTag.toLowerCase().includes(searchQuery) ||
+                    (item.shortTitle && item.shortTitle.toLowerCase().includes(searchQuery))
+                  );
+                }
+                return {
+                  ...group,
+                  items: matchingItems
+                };
+              }).filter(group => {
+                if (selectedCategory !== "all" && !isSearching) {
+                  return group.id === selectedCategory;
+                }
+                return group.items.length > 0;
+              });
+
+              const totalVisibleItems = displayedGroups.reduce((acc, g) => acc + g.items.length, 0);
 
               return (
-                <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
                   
-                  {/* ── TRÁMITE DESTACADO PRINCIPAL (HERO CARD) ── */}
-                  {featuredProc && (
-                    <motion.div
-                      key={featuredProc.id}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.25 }}
+                  {/* Barra de Pastillas / Filtro Rápido de Categorías */}
+                  {!isSearching && allCategoryGroups.length > 1 && (
+                    <div 
+                      className="category-pills-bar"
                       style={{
-                        background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
-                        border: `1.5px solid ${isDarkMode ? "rgba(255, 255, 255, 0.16)" : "#D1D5DB"}`,
-                        borderRadius: 16,
-                        overflow: "hidden",
-                        boxShadow: isDarkMode ? "0 6px 24px rgba(0,0,0,0.45)" : "0 4px 18px rgba(0,0,0,0.06)",
                         display: "flex",
-                        flexDirection: "column"
+                        alignItems: "center",
+                        gap: 8,
+                        overflowX: "auto",
+                        paddingBottom: 4,
+                        scrollbarWidth: "none",
+                        msOverflowStyle: "none"
                       }}
                     >
-                      {/* Banner Visual Superior del Trámite Destacado */}
-                      <div 
+                      <button
+                        type="button"
+                        onClick={() => {
+                          haptic.selection();
+                          setSelectedCategory("all");
+                        }}
                         style={{
-                          background: featuredProc.bannerGradient,
-                          padding: "16px 20px",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                          flexWrap: "wrap",
-                          gap: 10,
-                          color: "#FFFFFF"
+                          padding: "7px 14px",
+                          borderRadius: 20,
+                          border: `1px solid ${selectedCategory === "all" ? (isDarkMode ? "#FFFFFF" : "#0F172A") : (isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0")}`,
+                          background: selectedCategory === "all" ? (isDarkMode ? "#FFFFFF" : "#0F172A") : (isDarkMode ? "#222222" : "#F8FAFC"),
+                          color: selectedCategory === "all" ? (isDarkMode ? "#0F172A" : "#FFFFFF") : (isDarkMode ? "#D1D5DB" : "#475569"),
+                          fontFamily: I,
+                          fontSize: 12.5,
+                          fontWeight: 700,
+                          cursor: "pointer",
+                          whiteSpace: "nowrap",
+                          transition: "all 0.15s ease",
+                          flexShrink: 0
                         }}
                       >
-                        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                          <div 
-                            style={{
-                              width: 38,
-                              height: 38,
-                              borderRadius: 10,
-                              background: "rgba(255, 255, 255, 0.18)",
-                              backdropFilter: "blur(6px)",
-                              border: "1px solid rgba(255, 255, 255, 0.3)",
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              color: "#FFFFFF",
-                              flexShrink: 0
-                            }}
-                          >
-                            {getTramiteChatGPTIcon(featuredProc.iconType, featuredProc.title)}
-                          </div>
-                          <div>
-                            <span style={{
-                              fontFamily: I,
-                              fontSize: 11,
-                              fontWeight: 700,
-                              letterSpacing: "0.04em",
-                              textTransform: "uppercase",
-                              opacity: 0.9
-                            }}>
-                              {featuredProc.visualTag}
-                            </span>
-                            <div style={{
-                              fontFamily: G,
-                              fontSize: 16,
-                              fontWeight: 800,
-                              letterSpacing: "-0.01em"
-                            }}>
-                              {featuredProc.shortTitle || featuredProc.title}
-                            </div>
-                          </div>
-                        </div>
+                        Todos ({totalProcsCount})
+                      </button>
 
-                        {featuredProc.featuredBadge && (
-                          <span style={{
-                            fontFamily: I,
-                            fontSize: 12,
-                            fontWeight: 700,
-                            padding: "4px 10px",
-                            borderRadius: 20,
-                            background: "rgba(255, 255, 255, 0.22)",
-                            backdropFilter: "blur(6px)",
-                            border: "1px solid rgba(255, 255, 255, 0.4)",
-                            color: "#FFFFFF"
-                          }}>
-                            {featuredProc.featuredBadge}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Cuerpo del Trámite Destacado */}
-                      <div style={{ padding: "20px 22px", display: "flex", flexDirection: "column", gap: 16 }}>
-                        <div>
-                          <h2 style={{
-                            fontFamily: G,
-                            fontSize: "clamp(16px, 2.4vw, 19px)",
-                            fontWeight: 800,
-                            color: isDarkMode ? "#F9FAFB" : "#0F172A",
-                            margin: "0 0 6px",
-                            lineHeight: 1.3
-                          }}>
-                            {featuredProc.title}
-                          </h2>
-
-                          <p style={{
-                            fontFamily: I,
-                            fontSize: 14,
-                            fontWeight: 450,
-                            color: isDarkMode ? "#9CA3AF" : "#4B5563",
-                            margin: 0,
-                            lineHeight: 1.5
-                          }}>
-                            {featuredProc.description}
-                          </p>
-                        </div>
-
-                        {/* Pills de Metadatos: Costo y Tiempo */}
-                        <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-                          <div style={{
-                            display: "inline-flex",
-                            alignItems: "center",
-                            gap: 6,
-                            padding: "5px 12px",
-                            borderRadius: 8,
-                            background: isDarkMode ? "#262626" : "#F3F4F6",
-                            border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E7EB"}`,
-                            fontFamily: I,
-                            fontSize: 12.5,
-                            fontWeight: 600,
-                            color: isDarkMode ? "#ECECEC" : "#1F2937"
-                          }}>
-                            <span style={{ color: "#10B981", fontWeight: 800 }}>●</span>
-                            <span>Costo: <strong>{featuredProc.cost}</strong></span>
-                          </div>
-
-                          <div style={{
-                            display: "inline-flex",
-                            alignItems: "center",
-                            gap: 6,
-                            padding: "5px 12px",
-                            borderRadius: 8,
-                            background: isDarkMode ? "#262626" : "#F3F4F6",
-                            border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E7EB"}`,
-                            fontFamily: I,
-                            fontSize: 12.5,
-                            fontWeight: 600,
-                            color: isDarkMode ? "#ECECEC" : "#1F2937"
-                          }}>
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <circle cx="12" cy="12" r="10"/>
-                              <polyline points="12 6 12 12 16 14"/>
-                            </svg>
-                            <span>Tiempo: <strong>{featuredProc.timeEstimate}</strong></span>
-                          </div>
-                        </div>
-
-                        {/* Requisitos Rápidos */}
-                        {featuredProc.requirements && featuredProc.requirements.length > 0 && (
-                          <div style={{
-                            background: isDarkMode ? "rgba(255, 255, 255, 0.04)" : "#F9FAFB",
-                            borderRadius: 10,
-                            padding: "10px 14px",
-                            border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F3F4F6"}`
-                          }}>
-                            <span style={{ fontFamily: I, fontSize: 11.5, fontWeight: 700, color: isDarkMode ? "#D1D5DB" : "#374151", textTransform: "uppercase", letterSpacing: "0.04em" }}>
-                              Requisitos clave:
-                            </span>
-                            <div style={{ display: "flex", flexDirection: "column", gap: 4, marginTop: 5 }}>
-                              {featuredProc.requirements.map((req, rIdx) => (
-                                <div key={rIdx} style={{ display: "flex", alignItems: "center", gap: 6, fontFamily: I, fontSize: 12.5, color: isDarkMode ? "#9CA3AF" : "#4B5563" }}>
-                                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                    <polyline points="20 6 9 17 4 12"/>
-                                  </svg>
-                                  <span>{req}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-
-                        {/* Botón CTA Grande 1-Clic al Trámite Oficial */}
-                        <a
-                          href={featuredProc.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                      {allCategoryGroups.map(cat => (
+                        <button
+                          key={cat.id}
+                          type="button"
                           onClick={() => {
-                            sound.playClick();
                             haptic.selection();
+                            setSelectedCategory(cat.id);
                           }}
-                          onMouseEnter={() => sound.playHoverKey()}
                           style={{
-                            width: "100%",
-                            padding: "12px 18px",
-                            background: isDarkMode ? "#2D2D2D" : "#0F172A",
-                            border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.18)" : "transparent"}`,
-                            borderRadius: 10,
-                            color: "#FFFFFF",
-                            fontFamily: G,
-                            fontSize: 14,
-                            fontWeight: 750,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            gap: 8,
-                            textDecoration: "none",
+                            padding: "7px 14px",
+                            borderRadius: 20,
+                            border: `1px solid ${selectedCategory === cat.id ? (isDarkMode ? "#FFFFFF" : "#0F172A") : (isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0")}`,
+                            background: selectedCategory === cat.id ? (isDarkMode ? "#FFFFFF" : "#0F172A") : (isDarkMode ? "#222222" : "#F8FAFC"),
+                            color: selectedCategory === cat.id ? (isDarkMode ? "#0F172A" : "#FFFFFF") : (isDarkMode ? "#D1D5DB" : "#475569"),
+                            fontFamily: I,
+                            fontSize: 12.5,
+                            fontWeight: 700,
                             cursor: "pointer",
-                            boxShadow: isDarkMode ? "0 4px 14px rgba(0,0,0,0.4)" : "0 3px 10px rgba(0,0,0,0.15)",
-                            boxSizing: "border-box",
-                            transition: "all 0.15s ease"
+                            whiteSpace: "nowrap",
+                            transition: "all 0.15s ease",
+                            flexShrink: 0,
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: 5
                           }}
                         >
-                          <span>Ingresar al Trámite Oficial en {activeEntity.acronym}</span>
-                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                            <polyline points="15 3 21 3 21 9"/>
-                            <line x1="10" y1="14" x2="21" y2="3"/>
-                          </svg>
-                        </a>
-                      </div>
-                    </motion.div>
+                          <span>{cat.title}</span>
+                          <span style={{
+                            opacity: 0.75,
+                            fontSize: 11
+                          }}>
+                            ({cat.items.length})
+                          </span>
+                        </button>
+                      ))}
+                    </div>
                   )}
 
-                  {/* ── CUADRÍCULA DE OTROS TRÁMITES OFICIALES ── */}
-                  {regularProcs.length > 0 && (
-                    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                        <span style={{ fontFamily: G, fontSize: 15, fontWeight: 800, color: isDarkMode ? "#F9FAFB" : "#0F172A" }}>
-                          {featuredProc && !procSearchQuery.trim() ? "Otros trámites oficiales de " + activeEntity.acronym : "Trámites disponibles"}
-                        </span>
-                        <span style={{ fontFamily: I, fontSize: 12, fontWeight: 600, color: isDarkMode ? "#9CA3AF" : "#64748B" }}>
-                          ({regularProcs.length})
-                        </span>
+                  {/* Listado de Secciones de Categorías con sus Tarjetas */}
+                  {displayedGroups.map((group, gIdx) => (
+                    <div 
+                      key={group.id || gIdx} 
+                      style={{ 
+                        display: "flex", 
+                        flexDirection: "column", 
+                        gap: 12 
+                      }}
+                    >
+                      {/* Cabecera de la Sección / Categoría */}
+                      <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                          <h2 style={{
+                            fontFamily: G,
+                            fontSize: "clamp(16px, 2.2vw, 19px)",
+                            fontWeight: 800,
+                            color: isDarkMode ? "#F9FAFB" : "#0F172A",
+                            margin: 0,
+                            lineHeight: 1.25,
+                            letterSpacing: "-0.015em"
+                          }}>
+                            {group.title}
+                          </h2>
+                          <span style={{
+                            fontFamily: I,
+                            fontSize: 11.5,
+                            fontWeight: 650,
+                            padding: "2px 8px",
+                            borderRadius: 6,
+                            background: isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9",
+                            color: isDarkMode ? "#9CA3AF" : "#64748B",
+                            border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`
+                          }}>
+                            {group.items.length} {group.items.length === 1 ? "servicio" : "servicios"}
+                          </span>
+                        </div>
+
+                        {group.subtitle && (
+                          <p style={{
+                            fontFamily: I,
+                            fontSize: 13.5,
+                            fontWeight: 450,
+                            color: isDarkMode ? "#9CA3AF" : "#64748B",
+                            margin: "2px 0 6px",
+                            lineHeight: 1.45
+                          }}>
+                            {group.subtitle}
+                          </p>
+                        )}
                       </div>
 
+                      {/* Cuadrícula de Tarjetas Oficiales (Diseño Exacto media_1791164968423.png) */}
                       <div 
                         style={{ 
                           display: "grid", 
-                          gridTemplateColumns: "repeat(auto-fit, minmax(290px, 1fr))", 
-                          gap: 14 
+                          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", 
+                          gap: 16 
                         }}
                       >
-                        {regularProcs.map((proc, pIdx) => (
+                        {group.items.map((item, pIdx) => (
                           <motion.div
-                            key={proc.id || pIdx}
+                            key={item.id || pIdx}
                             initial={{ opacity: 0, y: 8 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.22, delay: pIdx * 0.04 }}
+                            transition={{ duration: 0.22, delay: pIdx * 0.03 }}
                             whileHover={{ y: -2 }}
                             style={{
-                              background: isDarkMode ? "#1E1E1E" : "#FFFFFF",
-                              border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E5E7EB"}`,
+                              background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
+                              border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
                               borderRadius: 14,
                               overflow: "hidden",
                               display: "flex",
                               flexDirection: "column",
                               justifyContent: "space-between",
-                              boxShadow: isDarkMode ? "0 2px 8px rgba(0,0,0,0.3)" : "0 2px 6px rgba(0,0,0,0.04)",
+                              boxShadow: isDarkMode ? "0 3px 12px rgba(0,0,0,0.35)" : "0 2px 8px rgba(0,0,0,0.04)",
                               transition: "border-color 0.15s ease, box-shadow 0.15s ease"
                             }}
                           >
-                            {/* Cabecera Visual */}
+                            {/* Cabecera Visual con Degradado, Icono, Tag y .gob.pe */}
                             <div 
                               style={{
-                                background: proc.bannerGradient,
-                                padding: "12px 14px",
+                                background: item.bannerGradient,
+                                padding: "12px 16px",
                                 display: "flex",
                                 alignItems: "center",
                                 justifyContent: "space-between",
                                 color: "#FFFFFF"
                               }}
                             >
-                              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                              <div style={{ display: "flex", alignItems: "center", gap: 9, minWidth: 0 }}>
                                 <div 
                                   style={{
                                     width: 28,
                                     height: 28,
                                     borderRadius: 7,
                                     background: "rgba(255, 255, 255, 0.2)",
+                                    border: "1px solid rgba(255, 255, 255, 0.28)",
                                     display: "flex",
                                     alignItems: "center",
                                     justifyContent: "center",
-                                    color: "#FFFFFF"
+                                    color: "#FFFFFF",
+                                    flexShrink: 0
                                   }}
                                 >
-                                  {getTramiteChatGPTIcon(proc.iconType, proc.title)}
+                                  {getTramiteChatGPTIcon(item.iconType, item.title)}
                                 </div>
-                                <span style={{ fontFamily: I, fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.03em" }}>
-                                  {proc.visualTag}
+                                <span style={{
+                                  fontFamily: I,
+                                  fontSize: 11,
+                                  fontWeight: 750,
+                                  textTransform: "uppercase",
+                                  letterSpacing: "0.04em",
+                                  whiteSpace: "nowrap",
+                                  overflow: "hidden",
+                                  textOverflow: "ellipsis"
+                                }}>
+                                  {item.visualTag}
                                 </span>
                               </div>
 
@@ -3127,65 +3057,84 @@ export function FrutilotaMascot({
                                 padding: "2px 7px",
                                 borderRadius: 6,
                                 background: "rgba(255, 255, 255, 0.22)",
-                                color: "#FFFFFF"
+                                backdropFilter: "blur(4px)",
+                                color: "#FFFFFF",
+                                flexShrink: 0
                               }}>
                                 .gob.pe
                               </span>
                             </div>
 
-                            {/* Contenido de la Tarjeta */}
-                            <div style={{ padding: "14px 16px", display: "flex", flexDirection: "column", gap: 10, flex: 1, justifyContent: "space-between" }}>
+                            {/* Cuerpo de la Tarjeta */}
+                            <div style={{
+                              padding: "16px 18px",
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: 12,
+                              flex: 1,
+                              justifyContent: "space-between"
+                            }}>
                               <div>
                                 <h3 style={{
                                   fontFamily: G,
-                                  fontSize: 14.5,
+                                  fontSize: 15,
                                   fontWeight: 750,
-                                  color: isDarkMode ? "#F9FAFB" : "#111827",
-                                  margin: "0 0 5px",
+                                  color: isDarkMode ? "#F9FAFB" : "#0F172A",
+                                  margin: "0 0 6px",
                                   lineHeight: 1.35
                                 }}>
-                                  {proc.title}
+                                  {item.title}
                                 </h3>
 
                                 <p style={{
                                   fontFamily: I,
-                                  fontSize: 12.5,
+                                  fontSize: 12.8,
                                   fontWeight: 450,
-                                  color: isDarkMode ? "#9CA3AF" : "#6B7280",
+                                  color: isDarkMode ? "#9CA3AF" : "#64748B",
                                   margin: 0,
-                                  lineHeight: 1.45
+                                  lineHeight: 1.48
                                 }}>
-                                  {proc.description}
+                                  {item.description}
                                 </p>
                               </div>
 
-                              {/* Info de Costo y Tiempo */}
-                              <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", fontSize: 11.5 }}>
+                              {/* Badges de Costo y Tiempo */}
+                              <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", fontSize: 12 }}>
                                 <span style={{
-                                  padding: "3px 8px",
+                                  padding: "4px 9px",
                                   borderRadius: 6,
-                                  background: isDarkMode ? "#2A2A2A" : "#F3F4F6",
+                                  background: isDarkMode ? "#262626" : "#F3F4F6",
                                   color: isDarkMode ? "#D1D5DB" : "#374151",
+                                  border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E7EB"}`,
                                   fontFamily: I,
-                                  fontWeight: 600
+                                  fontWeight: 600,
+                                  display: "inline-flex",
+                                  alignItems: "center",
+                                  gap: 4
                                 }}>
-                                  💰 {proc.cost}
+                                  <span>💰</span>
+                                  <span>{item.cost}</span>
                                 </span>
                                 <span style={{
-                                  padding: "3px 8px",
+                                  padding: "4px 9px",
                                   borderRadius: 6,
-                                  background: isDarkMode ? "#2A2A2A" : "#F3F4F6",
+                                  background: isDarkMode ? "#262626" : "#F3F4F6",
                                   color: isDarkMode ? "#D1D5DB" : "#374151",
+                                  border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E7EB"}`,
                                   fontFamily: I,
-                                  fontWeight: 600
+                                  fontWeight: 600,
+                                  display: "inline-flex",
+                                  alignItems: "center",
+                                  gap: 4
                                 }}>
-                                  ⏱️ {proc.timeEstimate}
+                                  <span>⏱️</span>
+                                  <span>{item.timeEstimate}</span>
                                 </span>
                               </div>
 
-                              {/* Botón 1-Clic */}
+                              {/* Botón 1-Clic "Ir al trámite oficial ↗" */}
                               <a
-                                href={proc.url}
+                                href={item.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={() => {
@@ -3195,14 +3144,14 @@ export function FrutilotaMascot({
                                 onMouseEnter={() => sound.playHoverKey()}
                                 style={{
                                   width: "100%",
-                                  padding: "9px 12px",
-                                  background: isDarkMode ? "#2F2F2F" : "#18181B",
-                                  border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.14)" : "transparent"}`,
+                                  padding: "10px 14px",
+                                  background: isDarkMode ? "#2B2B2B" : "#111827",
+                                  border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.16)" : "transparent"}`,
                                   borderRadius: 8,
                                   color: "#FFFFFF",
-                                  fontFamily: I,
-                                  fontSize: 12.5,
-                                  fontWeight: 650,
+                                  fontFamily: G,
+                                  fontSize: 13,
+                                  fontWeight: 700,
                                   display: "flex",
                                   alignItems: "center",
                                   justifyContent: "center",
@@ -3210,13 +3159,13 @@ export function FrutilotaMascot({
                                   textDecoration: "none",
                                   cursor: "pointer",
                                   boxSizing: "border-box",
-                                  boxShadow: isDarkMode ? "0 2px 6px rgba(0,0,0,0.3)" : "0 1px 3px rgba(0,0,0,0.1)",
+                                  boxShadow: isDarkMode ? "0 2px 6px rgba(0,0,0,0.3)" : "0 1px 3px rgba(0,0,0,0.12)",
                                   transition: "all 0.15s ease",
                                   marginTop: 4
                                 }}
                               >
                                 <span>Ir al trámite oficial</span>
-                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
                                   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
                                   <polyline points="15 3 21 3 21 9"/>
                                   <line x1="10" y1="14" x2="21" y2="3"/>
@@ -3227,18 +3176,19 @@ export function FrutilotaMascot({
                         ))}
                       </div>
                     </div>
-                  )}
+                  ))}
 
-                  {filteredProcs.length === 0 && (
+                  {/* Estado Vacío cuando la búsqueda no da resultados */}
+                  {totalVisibleItems === 0 && (
                     <div style={{
                       textAlign: "center",
-                      padding: "36px 20px",
+                      padding: "40px 20px",
                       background: isDarkMode ? "#1E1E1E" : "#FFFFFF",
                       borderRadius: 12,
                       border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.1)" : "#E5E7EB"}`
                     }}>
                       <p style={{ fontFamily: I, fontSize: 14, color: isDarkMode ? "#9CA3AF" : "#6B7280", margin: 0 }}>
-                        No se encontraron trámites con "{procSearchQuery}". Prueba con otro término.
+                        No se encontraron trámites con "{procSearchQuery}". Prueba con otro término de búsqueda.
                       </p>
                     </div>
                   )}
