@@ -40,7 +40,9 @@ import {
   ArrowUpRegular,
   ArrowDownRegular,
   ArrowSortRegular,
-  SettingsRegular
+  SettingsRegular,
+  BookOpenRegular,
+  QuestionCircleRegular
 } from '@fluentui/react-icons';
 import { useFrutilotaAI } from "../hooks/useFrutilotaAI";
 import { useSpeechRecognition } from "../hooks/useSpeechRecognition";
@@ -1410,28 +1412,43 @@ export function FrutilotaMascot({
                   haptic.medium();
                   setShowPaywallModal(true);
                 }}
-                onMouseEnter={() => sound.playHoverKey()}
+                onMouseEnter={(e) => {
+                  sound.playHoverKey();
+                  e.currentTarget.style.background = isDarkMode ? "#2A2A2A" : "#F3F4F6";
+                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.18)" : "#D1D5DB";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = isDarkMode ? "#212121" : "#FFFFFF";
+                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.10)" : "#E5E7EB";
+                }}
                 style={{
                   width: "100%",
-                  padding: "8px 10px",
-                  background: "transparent",
-                  border: `1px solid ${isDarkMode ? "rgba(56, 189, 248, 0.45)" : "rgba(2, 132, 199, 0.4)"}`,
-                  borderRadius: 9,
-                  color: isDarkMode ? "#38BDF8" : "#0284C7",
+                  padding: "9px 12px",
+                  background: isDarkMode ? "#212121" : "#FFFFFF",
+                  border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.10)" : "1px solid #E5E7EB",
+                  borderRadius: 10,
+                  color: isDarkMode ? "#ECECEC" : "#1F2937",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
                   cursor: "pointer",
-                  transition: "all 0.15s ease"
+                  transition: "all 0.15s ease",
+                  boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.04)"
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                  <SparkleFilled style={{ fontSize: 13 }} />
-                  <span style={{ fontFamily: G, fontSize: 11.5, fontWeight: 750 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <span style={{
+                    width: 7,
+                    height: 7,
+                    borderRadius: "50%",
+                    background: "#10A37F",
+                    display: "inline-block"
+                  }} />
+                  <span style={{ fontFamily: I, fontSize: 12, fontWeight: 600, color: isDarkMode ? "#ECECEC" : "#111827" }}>
                     Activar LOTA AI PLUS
                   </span>
                 </div>
-                <ArrowRightRegular fontSize={11} />
+                <ChevronRightRegular fontSize={13} style={{ color: D.muted }} />
               </button>
             </div>
           )}
@@ -1552,17 +1569,14 @@ export function FrutilotaMascot({
 
             {/* Hint sutil de arrastre y pulsación */}
             <div style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 4,
-              fontSize: 10,
+              fontSize: 10.5,
               color: D.muted,
-              padding: "1px 2px",
-              lineHeight: 1.2,
-              userSelect: "none"
+              padding: "2px 2px 0",
+              lineHeight: 1.3,
+              userSelect: "none",
+              letterSpacing: "-0.01em"
             }}>
-              <span>💡</span>
-              <span>Mantén presionada una entidad para moverla de lugar.</span>
+              Mantén presionada una entidad para moverla de lugar.
             </div>
           </div>
 
@@ -1743,7 +1757,7 @@ export function FrutilotaMascot({
 
           {/* ── Footer Informativo y Legal Estilo YouTube ── */}
           <div style={{ padding: "0 14px 24px", display: "flex", flexDirection: "column", gap: 11, flexShrink: 0 }}>
-            {/* Botón Destacado: Ver Guía Interactiva de Bienvenida */}
+            {/* Botón Destacado: Ver Guía Interactiva de Bienvenida (Estilo ChatGPT) */}
             <button
               type="button"
               onClick={() => {
@@ -1751,28 +1765,38 @@ export function FrutilotaMascot({
                 haptic.selection();
                 setShowOnboardingModal(true);
               }}
+              onMouseEnter={(e) => {
+                sound.playHoverKey();
+                e.currentTarget.style.background = isDarkMode ? "#2A2A2A" : "#F3F4F6";
+                e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.18)" : "#D1D5DB";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = isDarkMode ? "#212121" : "#FFFFFF";
+                e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.10)" : "#E5E7EB";
+              }}
               style={{
                 width: "100%",
-                padding: "8px 10px",
-                borderRadius: 9,
-                border: `1px solid ${isDarkMode ? "rgba(56, 189, 248, 0.35)" : "rgba(2, 132, 199, 0.3)"}`,
-                background: isDarkMode ? "rgba(56, 189, 248, 0.08)" : "#F0F9FF",
-                color: isDarkMode ? "#38BDF8" : "#0284C7",
+                padding: "9px 12px",
+                borderRadius: 10,
+                border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.10)" : "1px solid #E5E7EB",
+                background: isDarkMode ? "#212121" : "#FFFFFF",
+                color: isDarkMode ? "#ECECEC" : "#1F2937",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
                 cursor: "pointer",
-                fontFamily: G,
-                fontSize: 11.5,
-                fontWeight: 700,
-                transition: "all 0.15s ease"
+                fontFamily: I,
+                fontSize: 12,
+                fontWeight: 600,
+                transition: "all 0.15s ease",
+                boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.04)"
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                <SparkleRegular fontSize={13} />
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <QuestionCircleRegular fontSize={14} style={{ color: D.muted }} />
                 <span>¿Cómo usar ahorratiempo?</span>
               </div>
-              <ArrowRightRegular fontSize={11} />
+              <ChevronRightRegular fontSize={13} style={{ color: D.muted }} />
             </button>
 
             {/* Grupo 1: Información, Derechos de autor, Contactar, Creadores */}
@@ -2708,7 +2732,7 @@ export function FrutilotaMascot({
                   style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", maxWidth: 660, marginTop: 4 }}
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
-                    <SparkleRegular fontSize={13} style={{ color: isDarkMode ? "#38BDF8" : "#10A37F" }} />
+                    <SearchRegular fontSize={12} style={{ color: D.muted }} />
                     <span style={{ fontFamily: I, fontSize: 12, fontWeight: 650, color: D.muted }}>
                       Consultas frecuentes de {activeEntity.acronym}:
                     </span>
