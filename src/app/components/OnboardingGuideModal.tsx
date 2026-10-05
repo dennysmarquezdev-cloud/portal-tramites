@@ -84,18 +84,18 @@ export function OnboardingGuideModal({
     textSecondary: isDarkMode ? "#A3A3A3" : "#6B7280",
     textMuted: isDarkMode ? "#737373" : "#9CA3AF",
     
-    // Tonos sobrios desaturados
-    sage: isDarkMode ? "#34D399" : "#059669",
-    sageBg: isDarkMode ? "rgba(16, 163, 127, 0.12)" : "#ECFDF5",
-    sageBorder: isDarkMode ? "rgba(16, 163, 127, 0.25)" : "#D1FAE5",
+    // Tonos sobrios, suaves y desaturados (estilo editorial / Apple / Claude)
+    sage: isDarkMode ? "#A7F3D0" : "#047857",
+    sageBg: isDarkMode ? "rgba(255, 255, 255, 0.04)" : "#F4FBF7",
+    sageBorder: isDarkMode ? "rgba(255, 255, 255, 0.09)" : "#E2E8F0",
 
-    ochre: isDarkMode ? "#FBBF24" : "#D97706",
-    ochreBg: isDarkMode ? "rgba(217, 119, 6, 0.12)" : "#FFFBEB",
-    ochreBorder: isDarkMode ? "rgba(217, 119, 6, 0.25)" : "#FEF3C7",
+    ochre: isDarkMode ? "#FDE68A" : "#B45309",
+    ochreBg: isDarkMode ? "rgba(255, 255, 255, 0.04)" : "#FFFDF8",
+    ochreBorder: isDarkMode ? "rgba(255, 255, 255, 0.09)" : "#E2E8F0",
 
-    iris: isDarkMode ? "#A5B4FC" : "#6366F1",
-    irisBg: isDarkMode ? "rgba(99, 102, 241, 0.12)" : "#EEF2FF",
-    irisBorder: isDarkMode ? "rgba(99, 102, 241, 0.25)" : "#E0E7FF"
+    iris: isDarkMode ? "#C7D2FE" : "#4F46E5",
+    irisBg: isDarkMode ? "rgba(255, 255, 255, 0.04)" : "#F8FAFC",
+    irisBorder: isDarkMode ? "rgba(255, 255, 255, 0.09)" : "#E2E8F0"
   };
 
   // Reiniciar paso al abrir
@@ -166,14 +166,14 @@ export function OnboardingGuideModal({
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        background: C.sageBg,
-        border: `1px solid ${C.sageBorder}`,
+        background: C.surfaceCard,
+        border: `1px solid ${C.border}`,
         borderRadius: 8,
         padding: "8px 12px"
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <span style={{ fontSize: 13, color: C.sage, fontWeight: 800 }}>✓</span>
-          <span style={{ fontSize: 12, fontWeight: 700, color: C.sage }}>
+          <span style={{ fontSize: 12, fontWeight: 700, color: C.textPrimary }}>
             Catálogo oficial 100% gratuito y libre
           </span>
         </div>
@@ -296,7 +296,7 @@ export function OnboardingGuideModal({
 
         {/* Tarjeta 2: En movimiento sostenido */}
         <div style={{
-          background: C.ochreBg,
+          background: C.surfaceCard,
           border: `1.5px solid ${C.ochreBorder}`,
           borderRadius: 10,
           padding: "8px 10px",
@@ -304,7 +304,7 @@ export function OnboardingGuideModal({
           alignItems: "center",
           justifyContent: "space-between",
           transform: "scale(1.02)",
-          boxShadow: isDarkMode ? "0 4px 12px rgba(0,0,0,0.4)" : "0 3px 10px rgba(217, 119, 6, 0.12)"
+          boxShadow: isDarkMode ? "0 4px 12px rgba(0,0,0,0.3)" : "0 3px 10px rgba(0, 0, 0, 0.05)"
         }}>
           <div>
             <div style={{ fontSize: 12, fontWeight: 800, color: C.ochre }}>SUNAT</div>
@@ -314,7 +314,8 @@ export function OnboardingGuideModal({
             fontSize: 10,
             fontWeight: 700,
             color: C.ochre,
-            background: isDarkMode ? "rgba(217, 119, 6, 0.2)" : "#FEF3C7",
+            background: C.ochreBg,
+            border: `1px solid ${C.ochreBorder}`,
             padding: "2px 6px",
             borderRadius: 4
           }}>
@@ -379,6 +380,7 @@ export function OnboardingGuideModal({
               fontWeight: 750,
               color: C.sage,
               background: C.sageBg,
+              border: `1px solid ${C.sageBorder}`,
               padding: "1px 6px",
               borderRadius: 4
             }}>
@@ -417,7 +419,7 @@ export function OnboardingGuideModal({
 
         {/* Columna Derecha: LOTA AI Orientador (Plan PLUS) */}
         <div style={{
-          background: C.irisBg,
+          background: C.surfaceCard,
           border: `1px solid ${C.irisBorder}`,
           borderRadius: 10,
           padding: "12px 10px",
@@ -426,14 +428,15 @@ export function OnboardingGuideModal({
           gap: 8
         }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <span style={{ fontSize: 12, fontWeight: 800, color: isDarkMode ? "#C7D2FE" : "#4338CA" }}>
+            <span style={{ fontSize: 12, fontWeight: 750, color: C.textPrimary }}>
               LOTA AI Orientador
             </span>
             <span style={{
               fontSize: 9.5,
-              fontWeight: 800,
-              color: isDarkMode ? "#EEF2FF" : "#4338CA",
-              background: isDarkMode ? "rgba(99, 102, 241, 0.3)" : "#E0E7FF",
+              fontWeight: 750,
+              color: isDarkMode ? "#C7D2FE" : "#4F46E5",
+              background: C.irisBg,
+              border: `1px solid ${C.irisBorder}`,
               padding: "1px 6px",
               borderRadius: 4
             }}>
@@ -441,7 +444,7 @@ export function OnboardingGuideModal({
             </span>
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 5, fontSize: 11, color: isDarkMode ? "#E2E8F0" : "#4B5563" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 5, fontSize: 11, color: C.textSecondary }}>
             <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
               <span style={{ color: C.iris, fontSize: 11 }}>✦</span>
               <span>Orientación interactiva 24/7</span>
@@ -460,11 +463,11 @@ export function OnboardingGuideModal({
             marginTop: "auto",
             padding: "4px",
             textAlign: "center",
-            background: isDarkMode ? "rgba(99, 102, 241, 0.25)" : "#E0E7FF",
+            background: isDarkMode ? "rgba(255,255,255,0.04)" : "#F3F4F6",
             borderRadius: 6,
             fontSize: 10,
-            fontWeight: 750,
-            color: isDarkMode ? "#E0E7FF" : "#4338CA"
+            fontWeight: 650,
+            color: C.textMuted
           }}>
             Consultas guiadas personalizadas
           </div>

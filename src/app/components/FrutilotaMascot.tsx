@@ -1185,18 +1185,19 @@ export function FrutilotaMascot({
               <div style={{
                 width: 32,
                 height: 32,
-                borderRadius: 9,
+                borderRadius: "50%",
                 flexShrink: 0,
                 overflow: "hidden",
-                background: `linear-gradient(135deg, ${T.violet} 0%, #7C3AED 100%)`,
+                background: isDarkMode ? "#2F2F2F" : "#E5E7EB",
+                border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #D1D5DB",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontFamily: G,
+                fontFamily: I,
                 fontWeight: 700,
-                fontSize: 13.5,
-                color: "#fff",
-                boxShadow: "0 2px 6px rgba(47, 108, 181, 0.25)"
+                fontSize: 13,
+                color: isDarkMode ? "#ECECEC" : "#1F2937",
+                boxShadow: isDarkMode ? "0 1px 3px rgba(0, 0, 0, 0.4)" : "0 1px 2px rgba(0, 0, 0, 0.06)"
               }}>
                 {user?.photoURL ? (
                   <img 
@@ -1213,7 +1214,7 @@ export function FrutilotaMascot({
               </div>
               <div style={{ display: "flex", flexDirection: "column", minWidth: 0 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                  <span style={{ fontFamily: G, fontWeight: 650, fontSize: 13.5, color: D.text, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                  <span style={{ fontFamily: I, fontWeight: 600, fontSize: 13, color: isDarkMode ? "#ECECEC" : "#0D0D0D", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                     {displayName}
                   </span>
                   {isPlus && (
@@ -1221,13 +1222,14 @@ export function FrutilotaMascot({
                       title="Cuenta Premium Activa"
                       style={{
                         fontFamily: I,
-                        fontSize: 8.5,
-                        fontWeight: 800,
-                        color: T.violet,
-                        background: T.lilac,
+                        fontSize: 9,
+                        fontWeight: 700,
+                        color: isDarkMode ? "#ECECEC" : "#374151",
+                        background: isDarkMode ? "rgba(255, 255, 255, 0.10)" : "#F3F4F6",
+                        border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #E5E7EB",
                         padding: "1px 6px",
-                        borderRadius: 100,
-                        letterSpacing: "0.03em",
+                        borderRadius: 5,
+                        letterSpacing: "0.02em",
                         cursor: "default"
                       }}
                     >
@@ -1248,23 +1250,23 @@ export function FrutilotaMascot({
               )}
             </div>
 
-            {/* Menú Desplegable Flotante en el Sidebar */}
+            {/* Menú Desplegable Flotante en el Sidebar Estilo ChatGPT */}
             <AnimatePresence>
               {sidebarProfileMenuOpen && user && (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.95, y: 6 }}
+                  initial={{ opacity: 0, scale: 0.96, y: 6 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95, y: 6 }}
+                  exit={{ opacity: 0, scale: 0.96, y: 6 }}
                   transition={{ duration: 0.15 }}
                   style={{
                     position: "absolute",
                     top: "calc(100% + 6px)",
                     left: 0,
                     width: 240,
-                    borderRadius: 12,
-                    background: isDarkMode ? "#0F172A" : "#FFFFFF",
-                    border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.14)" : "1.5px solid #E2E8F0",
-                    boxShadow: isDarkMode ? "0 16px 40px rgba(0,0,0,0.8)" : "0 12px 30px rgba(11,30,56,0.14)",
+                    borderRadius: 14,
+                    background: isDarkMode ? "#212121" : "#FFFFFF",
+                    border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #E5E7EB",
+                    boxShadow: isDarkMode ? "0 16px 40px rgba(0,0,0,0.7)" : "0 12px 30px rgba(0,0,0,0.08)",
                     padding: 6,
                     zIndex: 1000,
                     fontFamily: "'Inter', sans-serif"
@@ -1284,35 +1286,40 @@ export function FrutilotaMascot({
                           borderRadius: 8,
                           background: "transparent",
                           border: "none",
-                          color: isDarkMode ? "#E2E8F0" : "#1E293B",
-                          fontSize: 12.5,
-                          fontWeight: 650,
+                          color: isDarkMode ? "#ECECEC" : "#1F2937",
+                          fontSize: 13,
+                          fontWeight: 500,
                           cursor: "pointer",
                           textAlign: "left",
                           width: "100%",
                           transition: "background 0.15s ease"
                         }}
-                        onMouseEnter={(e) => (e.currentTarget.style.background = isDarkMode ? "rgba(255, 255, 255, 0.06)" : "#F1F5F9")}
+                        onMouseEnter={(e) => (e.currentTarget.style.background = isDarkMode ? "#2F2F2F" : "#F4F4F5")}
                         onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                       >
-                        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                          <AnimatedThemeIcon isDark={!isDarkMode} size={16} />
+                        <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
+                          {isDarkMode ? (
+                            <WeatherSunnyRegular fontSize={16} style={{ color: "#A3A3A3" }} />
+                          ) : (
+                            <WeatherMoonRegular fontSize={16} style={{ color: "#6B7280" }} />
+                          )}
                           <span>{isDarkMode ? "Modo Claro" : "Modo Oscuro"}</span>
                         </div>
                         <span style={{
-                          fontSize: 10,
-                          fontWeight: 700,
+                          fontSize: 10.5,
+                          fontWeight: 600,
                           padding: "2px 7px",
                           borderRadius: 6,
-                          background: isDarkMode ? "rgba(255,255,255,0.12)" : "#E2E8F0",
-                          color: isDarkMode ? "#CBD5E1" : "#475569"
+                          background: isDarkMode ? "#2F2F2F" : "#F3F4F6",
+                          color: isDarkMode ? "#A3A3A3" : "#6B7280",
+                          border: isDarkMode ? "1px solid rgba(255,255,255,0.08)" : "1px solid #E5E7EB"
                         }}>
                           {isDarkMode ? "Oscuro" : "Claro"}
                         </span>
                       </button>
                     )}
 
-                    <div style={{ height: 1, background: isDarkMode ? "rgba(255,255,255,0.08)" : "#F1F5F9", margin: "2px 0" }} />
+                    <div style={{ height: 1, background: isDarkMode ? "rgba(255,255,255,0.08)" : "#F3F4F6", margin: "3px 0" }} />
 
                     <button
                       type="button"
@@ -1320,23 +1327,29 @@ export function FrutilotaMascot({
                       style={{
                         display: "flex",
                         alignItems: "center",
-                        gap: 8,
+                        gap: 9,
                         padding: "8px 10px",
                         borderRadius: 8,
                         background: "transparent",
                         border: "none",
-                        color: "#EF4444",
-                        fontSize: 12.5,
-                        fontWeight: 650,
+                        color: isDarkMode ? "#ECECEC" : "#1F2937",
+                        fontSize: 13,
+                        fontWeight: 500,
                         cursor: "pointer",
                         textAlign: "left",
                         width: "100%",
                         transition: "all 0.15s ease"
                       }}
-                      onMouseEnter={(e) => (e.currentTarget.style.background = isDarkMode ? "rgba(239, 68, 68, 0.12)" : "#FEF2F2")}
-                      onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = isDarkMode ? "rgba(239, 68, 68, 0.12)" : "#FEF2F2";
+                        e.currentTarget.style.color = "#EF4444";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = "transparent";
+                        e.currentTarget.style.color = isDarkMode ? "#ECECEC" : "#1F2937";
+                      }}
                     >
-                      <SignOutRegular fontSize={16} style={{ color: "#EF4444" }} />
+                      <SignOutRegular fontSize={16} style={{ color: "inherit" }} />
                       <span>Cerrar sesión</span>
                     </button>
                   </div>
