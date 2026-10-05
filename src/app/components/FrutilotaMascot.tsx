@@ -416,24 +416,24 @@ export interface SubcategoryTheme {
 }
 
 const STRONG_SUBCATEGORY_PALETTES = [
-  // 0. Azul Real Fuerte (Identidad, DNI, Pasaportes, RUC & Clave SOL, Ciudadanía)
-  { solid: "#1D4ED8", hover: "#1E40AF", text: "#FFFFFF", dot: "#93C5FD" },
-  // 1. Verde Esmeralda Fuerte (Tributos, Declaraciones, Impuestos, Renta, Finanzas)
-  { solid: "#059669", hover: "#047857", text: "#FFFFFF", dot: "#6EE7B7" },
-  // 2. Ámbar / Ocre Fuerte (Propiedad, Registros Públicos, Predios, Vehicular, Placas)
-  { solid: "#D97706", hover: "#B45309", text: "#FFFFFF", dot: "#FDE68A" },
-  // 3. Carmesí / Rojo Fuerte (Salud, Citas Médicas, Hospitales, Seguros, Emergencias)
-  { solid: "#E11D48", hover: "#BE123C", text: "#FFFFFF", dot: "#FECDD3" },
-  // 4. Violeta / Púrpura Fuerte (Transporte, Brevetes, Licencias, Tránsito, Conducir)
-  { solid: "#7C3AED", hover: "#6D28D9", text: "#FFFFFF", dot: "#DDD6FE" },
-  // 5. Índigo Fuerte (Educación, Becas, Títulos, Grados, Constancias Académicas)
-  { solid: "#4F46E5", hover: "#4338CA", text: "#FFFFFF", dot: "#C7D2FE" },
-  // 6. Cian Profundo Fuerte (Justicia, Legalidad, Certificados Civiles, Judicial)
-  { solid: "#0891B2", hover: "#0E7490", text: "#FFFFFF", dot: "#A5F3FC" },
-  // 7. Naranja Fuerte (Riesgos, Seguridad, Biometría, Alertas, Garantías)
-  { solid: "#EA580C", hover: "#C2410C", text: "#FFFFFF", dot: "#FED7AA" },
-  // 8. Verde Azulado / Teal Fuerte (Servicios Básicos, Regulación, Agua, Luz, Consultas)
-  { solid: "#0D9488", hover: "#0F766E", text: "#FFFFFF", dot: "#99F6E4" }
+  // 0. Deep Oxford Navy (Identidad, DNI, Pasaportes, RUC & Clave SOL, Ciudadanía)
+  { solid: "#0F2038", hover: "#182E4D", text: "#FFFFFF", dot: "#94A3B8" },
+  // 1. Deep Forest Slate (Tributos, Declaraciones, Impuestos, Renta, Finanzas)
+  { solid: "#0D382B", hover: "#134E3C", text: "#FFFFFF", dot: "#94A3B8" },
+  // 2. Deep Bronze Slate (Propiedad, Registros Públicos, Predios, Vehicular, Placas)
+  { solid: "#332115", hover: "#483020", text: "#FFFFFF", dot: "#94A3B8" },
+  // 3. Deep Burgundy Slate (Salud, Citas Médicas, Hospitales, Seguros, Emergencias)
+  { solid: "#361218", hover: "#4C1D24", text: "#FFFFFF", dot: "#94A3B8" },
+  // 4. Deep Midnight Indigo (Transporte, Brevetes, Licencias, Tránsito, Conducir)
+  { solid: "#191C38", hover: "#24284F", text: "#FFFFFF", dot: "#94A3B8" },
+  // 5. Deep Plum Charcoal (Educación, Becas, Títulos, Grados, Constancias Académicas)
+  { solid: "#281834", hover: "#3A244A", text: "#FFFFFF", dot: "#94A3B8" },
+  // 6. Deep Slate Teal (Justicia, Legalidad, Certificados Civiles, Judicial)
+  { solid: "#0D2F35", hover: "#14424A", text: "#FFFFFF", dot: "#94A3B8" },
+  // 7. Deep Charcoal Graphite (Riesgos, Seguridad, Biometría, Alertas, Garantías)
+  { solid: "#1E232A", hover: "#2B323C", text: "#FFFFFF", dot: "#94A3B8" },
+  // 8. Deep Steel Navy (Servicios Básicos, Regulación, Agua, Luz, Consultas)
+  { solid: "#122438", hover: "#1B334E", text: "#FFFFFF", dot: "#94A3B8" }
 ];
 
 function getSubcategoryTheme(catName: string, isDarkMode: boolean, index: number): SubcategoryTheme {
@@ -441,23 +441,23 @@ function getSubcategoryTheme(catName: string, isDarkMode: boolean, index: number
   let paletteIdx = index % STRONG_SUBCATEGORY_PALETTES.length;
 
   if (/identidad|dni|pasaporte|ciudadan|extranjer|ruc|clave sol/i.test(norm)) {
-    paletteIdx = 0; // Azul Real
+    paletteIdx = 0; // Deep Oxford Navy
   } else if (/tribut|impuesto|finanz|econom|factur|pago|honorario|renta|declaraci/i.test(norm)) {
-    paletteIdx = 1; // Verde Esmeralda
+    paletteIdx = 1; // Deep Forest Slate
   } else if (/propiedad|inmueble|predio|vehicul|placa|partida|titul|registral/i.test(norm)) {
-    paletteIdx = 2; // Ámbar
+    paletteIdx = 2; // Deep Bronze Slate
   } else if (/salud|cita|medic|seguro|essalud|minsa|hospital|subsidio/i.test(norm)) {
-    paletteIdx = 3; // Carmesí
+    paletteIdx = 3; // Deep Burgundy Slate
   } else if (/transporte|brevete|licencia|transit|conducir|mtc|sutran/i.test(norm)) {
-    paletteIdx = 4; // Violeta
+    paletteIdx = 4; // Deep Midnight Indigo
   } else if (/educac|beca|titul|grado|estudio|colegio|minedu|pronabec|sunedu/i.test(norm)) {
-    paletteIdx = 5; // Índigo
+    paletteIdx = 5; // Deep Plum Charcoal
   } else if (/actas|registro civil|justic|legal|poder|judicial|penal|polic/i.test(norm)) {
-    paletteIdx = 6; // Cian
+    paletteIdx = 6; // Deep Slate Teal
   } else if (/riesgo|seguridad|alerta|biometr|c4|garant|prevenci/i.test(norm)) {
-    paletteIdx = 7; // Naranja
+    paletteIdx = 7; // Deep Charcoal Graphite
   } else if (/servicio|extra|agua|luz|general|consumo|regulaci/i.test(norm)) {
-    paletteIdx = 8; // Teal
+    paletteIdx = 8; // Deep Steel Navy
   }
 
   const p = STRONG_SUBCATEGORY_PALETTES[paletteIdx];
@@ -466,7 +466,7 @@ function getSubcategoryTheme(catName: string, isDarkMode: boolean, index: number
     hoverColor: p.hover,
     textColor: p.text,
     dotColor: p.dot,
-    headerBg: p.solid,
+    headerBg: isDarkMode ? "#1C1C1E" : p.solid,
     headerText: "#FFFFFF"
   };
 }
@@ -492,140 +492,140 @@ export const NATIONAL_CATEGORIES: GroupedCategory[] = [
     id: "economia-finanzas",
     name: "Economía, Impuestos y Registros",
     icon: "💰",
-    barColor: "#006039",
-    color: "#059669",
-    bgLight: "#F0FDF4",
-    borderLight: "#A7F3D0",
-    textLight: "#064E3B",
-    bgDark: "rgba(6, 95, 70, 0.22)",
-    borderDark: "rgba(52, 211, 153, 0.4)",
-    textDark: "#6EE7B7",
+    barColor: "#0D382B",
+    color: "#0A2B21",
+    bgLight: "#FAFAFA",
+    borderLight: "#E4E4E7",
+    textLight: "#09090B",
+    bgDark: "#18181B",
+    borderDark: "#27272A",
+    textDark: "#F4F4F5",
     entityAcronyms: ["SUNAT", "SUNARP", "SBS", "BN", "SMV"]
   },
   {
     id: "identidad",
     name: "Identidad, Trámites Civiles y Migración",
     icon: "🪪",
-    barColor: "#0B2F86",
-    color: "#1E40AF",
-    bgLight: "#EFF6FF",
-    borderLight: "#BFDBFE",
-    textLight: "#1E3A8A",
-    bgDark: "rgba(30, 58, 138, 0.22)",
-    borderDark: "rgba(96, 165, 250, 0.4)",
-    textDark: "#93C5FD",
+    barColor: "#0F2038",
+    color: "#0B1B30",
+    bgLight: "#FAFAFA",
+    borderLight: "#E4E4E7",
+    textLight: "#09090B",
+    bgDark: "#18181B",
+    borderDark: "#27272A",
+    textDark: "#F4F4F5",
     entityAcronyms: ["RENIEC", "MIGRACIONES"]
   },
   {
     id: "salud",
     name: "Salud y Seguridad Social",
     icon: "🏥",
-    barColor: "#0E7490",
-    color: "#0284C7",
-    bgLight: "#ECFEFF",
-    borderLight: "#A5F3FC",
-    textLight: "#155E75",
-    bgDark: "rgba(14, 116, 144, 0.22)",
-    borderDark: "rgba(34, 211, 238, 0.4)",
-    textDark: "#67E8F9",
+    barColor: "#0D2F35",
+    color: "#092328",
+    bgLight: "#FAFAFA",
+    borderLight: "#E4E4E7",
+    textLight: "#09090B",
+    bgDark: "#18181B",
+    borderDark: "#27272A",
+    textDark: "#F4F4F5",
     entityAcronyms: ["ESSALUD", "SIS", "MINSA", "SUSALUD"]
   },
   {
     id: "trabajo-pensiones",
     name: "Trabajo, Empleo y Pensiones",
     icon: "💼",
-    barColor: "#9A3412",
-    color: "#EA580C",
-    bgLight: "#FFF7ED",
-    borderLight: "#FED7AA",
-    textLight: "#9A3412",
-    bgDark: "rgba(154, 52, 18, 0.22)",
-    borderDark: "rgba(251, 146, 60, 0.4)",
-    textDark: "#FDBA74",
+    barColor: "#332115",
+    color: "#281A10",
+    bgLight: "#FAFAFA",
+    borderLight: "#E4E4E7",
+    textLight: "#09090B",
+    bgDark: "#18181B",
+    borderDark: "#27272A",
+    textDark: "#F4F4F5",
     entityAcronyms: ["ONP", "SUNAFIL", "MTPE", "AFP"]
   },
   {
     id: "transporte-nacional",
     name: "Transporte y Tránsito Nacional",
     icon: "🚗",
-    barColor: "#334155",
-    color: "#0D9488",
-    bgLight: "#F8FAFC",
-    borderLight: "#CBD5E1",
-    textLight: "#1E293B",
-    bgDark: "rgba(51, 65, 85, 0.3)",
-    borderDark: "rgba(148, 163, 184, 0.4)",
-    textDark: "#CBD5E1",
+    barColor: "#1E232A",
+    color: "#161A20",
+    bgLight: "#FAFAFA",
+    borderLight: "#E4E4E7",
+    textLight: "#09090B",
+    bgDark: "#18181B",
+    borderDark: "#27272A",
+    textDark: "#F4F4F5",
     entityAcronyms: ["MTC", "SUTRAN"]
   },
   {
     id: "educacion",
     name: "Educación, Becas y Formación",
     icon: "🎓",
-    barColor: "#3730A3",
-    color: "#4F46E5",
-    bgLight: "#EEF2FF",
-    borderLight: "#C7D2FE",
-    textLight: "#3730A3",
-    bgDark: "rgba(55, 48, 163, 0.22)",
-    borderDark: "rgba(129, 140, 248, 0.4)",
-    textDark: "#A5B4FC",
+    barColor: "#191C38",
+    color: "#13152C",
+    bgLight: "#FAFAFA",
+    borderLight: "#E4E4E7",
+    textLight: "#09090B",
+    bgDark: "#18181B",
+    borderDark: "#27272A",
+    textDark: "#F4F4F5",
     entityAcronyms: ["SUNEDU", "MINEDU", "PRONABEC"]
   },
   {
     id: "justicia-orden",
     name: "Justicia, Legalidad y Orden Policial",
     icon: "⚖️",
-    barColor: "#1F2937",
-    color: "#475569",
-    bgLight: "#F3F4F6",
-    borderLight: "#D1D5DB",
-    textLight: "#111827",
-    bgDark: "rgba(31, 41, 55, 0.35)",
-    borderDark: "rgba(156, 163, 175, 0.4)",
-    textDark: "#E5E7EB",
+    barColor: "#18181B",
+    color: "#121215",
+    bgLight: "#FAFAFA",
+    borderLight: "#E4E4E7",
+    textLight: "#09090B",
+    bgDark: "#18181B",
+    borderDark: "#27272A",
+    textDark: "#F4F4F5",
     entityAcronyms: ["PODER JUDICIAL", "PNP", "MINJUSDH", "INPE"]
   },
   {
     id: "electoral",
     name: "Sistema Electoral",
     icon: "🗳️",
-    barColor: "#991B1B",
-    color: "#DC2626",
-    bgLight: "#FEF2F2",
-    borderLight: "#FECACA",
-    textLight: "#991B1B",
-    bgDark: "rgba(153, 27, 27, 0.22)",
-    borderDark: "rgba(248, 113, 113, 0.4)",
-    textDark: "#FCA5A5",
+    barColor: "#361218",
+    color: "#2B0E13",
+    bgLight: "#FAFAFA",
+    borderLight: "#E4E4E7",
+    textLight: "#09090B",
+    bgDark: "#18181B",
+    borderDark: "#27272A",
+    textDark: "#F4F4F5",
     entityAcronyms: ["ONPE", "JNE"]
   },
   {
     id: "consumo-regulacion",
     name: "Consumo y Regulación de Servicios",
     icon: "🏢",
-    barColor: "#5B21B6",
-    color: "#7C3AED",
-    bgLight: "#FAF5FF",
-    borderLight: "#DDD6FE",
-    textLight: "#5B21B6",
-    bgDark: "rgba(91, 33, 182, 0.22)",
-    borderDark: "rgba(192, 132, 252, 0.4)",
-    textDark: "#DDD6FE",
+    barColor: "#281834",
+    color: "#20132A",
+    bgLight: "#FAFAFA",
+    borderLight: "#E4E4E7",
+    textLight: "#09090B",
+    bgDark: "#18181B",
+    borderDark: "#27272A",
+    textDark: "#F4F4F5",
     entityAcronyms: ["INDECOPI", "OSIPTEL", "OSINERGMIN"]
   },
   {
     id: "recursos-emergencias",
     name: "Recursos Naturales, Producción y Emergencias",
     icon: "🌿",
-    barColor: "#166534",
-    color: "#16A34A",
-    bgLight: "#F0FDF4",
-    borderLight: "#BBF7D0",
-    textLight: "#166534",
-    bgDark: "rgba(22, 101, 52, 0.22)",
-    borderDark: "rgba(74, 222, 128, 0.4)",
-    textDark: "#86EFAC",
+    barColor: "#0E2E1C",
+    color: "#0A2315",
+    bgLight: "#FAFAFA",
+    borderLight: "#E4E4E7",
+    textLight: "#09090B",
+    bgDark: "#18181B",
+    borderDark: "#27272A",
+    textDark: "#F4F4F5",
     entityAcronyms: ["INDECI", "OEFA", "SERFOR", "SENASA", "PRODUCE"]
   }
 ];
@@ -635,14 +635,14 @@ export const REGIONAL_CATEGORIES: GroupedCategory[] = [
     id: "servicios-regionales",
     name: "Servicios Regionales y Entidades Locales",
     icon: "🏙️",
-    barColor: "#1E40AF",
-    color: "#0284C7",
-    bgLight: "#EFF6FF",
-    borderLight: "#BFDBFE",
-    textLight: "#1E40AF",
-    bgDark: "rgba(30, 64, 175, 0.22)",
-    borderDark: "rgba(96, 165, 250, 0.4)",
-    textDark: "#93C5FD",
+    barColor: "#122438",
+    color: "#0D1C2E",
+    bgLight: "#FAFAFA",
+    borderLight: "#E4E4E7",
+    textLight: "#09090B",
+    bgDark: "#18181B",
+    borderDark: "#27272A",
+    textDark: "#F4F4F5",
     entityAcronyms: ["SEDAPAL", "SEDAPAR", "SAT LIMA", "ATU"]
   }
 ];
@@ -2497,16 +2497,16 @@ export function FrutilotaMascot({
                         key={catGroup.id}
                         className="entity-category-card"
                         style={{
-                          border: `1.5px solid ${isDarkMode ? catGroup.borderDark : catGroup.borderLight}`,
-                          background: isDarkMode ? catGroup.bgDark : catGroup.bgLight,
-                          boxShadow: isDarkMode ? "0 2px 10px rgba(0,0,0,0.25)" : "0 1px 4px rgba(0,0,0,0.03)"
+                          border: `1px solid ${isDarkMode ? "#27272A" : "#E4E4E7"}`,
+                          background: isDarkMode ? "#18181B" : "#FAFAFA",
+                          boxShadow: isDarkMode ? "0 2px 10px rgba(0,0,0,0.25)" : "0 1px 3px rgba(0,0,0,0.02)"
                         }}
                       >
                         {/* Barra de Categoría: Superior en Móvil, Lateral Vertical en Escritorio */}
                         <div
                           className="entity-category-header-bar"
                           style={{
-                            background: isDarkMode ? catGroup.color : catGroup.barColor
+                            background: isDarkMode ? "#121215" : catGroup.barColor
                           }}
                         >
                           <span className="entity-category-header-title">
@@ -2534,8 +2534,8 @@ export function FrutilotaMascot({
                                   if (container) container.scrollTo({ top: 0, behavior: "smooth" });
                                 }}
                                 style={{
-                                  background: isDarkMode ? "rgba(255, 255, 255, 0.04)" : "#FFFFFF",
-                                  border: `1.5px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : catGroup.borderLight}`,
+                                  background: isDarkMode ? "#212124" : "#FFFFFF",
+                                  border: `1px solid ${isDarkMode ? "#2E2E33" : "#E4E4E7"}`,
                                   borderRadius: 8,
                                   padding: "16px 12px 14px",
                                   display: "flex",
@@ -2552,11 +2552,11 @@ export function FrutilotaMascot({
                                 }}
                                 onMouseEnter={e => {
                                   sound.playHoverKey();
-                                  e.currentTarget.style.borderColor = isDarkMode ? "#FFFFFF" : catGroup.barColor;
-                                  e.currentTarget.style.boxShadow = isDarkMode ? "0 4px 14px rgba(0,0,0,0.4)" : "0 3px 10px rgba(0,0,0,0.08)";
+                                  e.currentTarget.style.borderColor = isDarkMode ? "#71717A" : catGroup.barColor;
+                                  e.currentTarget.style.boxShadow = isDarkMode ? "0 4px 14px rgba(0,0,0,0.4)" : "0 3px 10px rgba(0,0,0,0.06)";
                                 }}
                                 onMouseLeave={e => {
-                                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.12)" : catGroup.borderLight;
+                                  e.currentTarget.style.borderColor = isDarkMode ? "#2E2E33" : "#E4E4E7";
                                   e.currentTarget.style.boxShadow = isDarkMode ? "0 1px 4px rgba(0,0,0,0.2)" : "0 1px 2px rgba(0,0,0,0.02)";
                                 }}
                               >
@@ -2586,14 +2586,14 @@ export function FrutilotaMascot({
                                   </div>
                                 )}
 
-                                {/* Acrónimo Oficial en Grande (Estilo Mockup) */}
+                                {/* Acrónimo Oficial en Grande (Estilo OpenAI / Swiss) */}
                                 <h3 style={{
                                   fontFamily: G,
                                   fontSize: "clamp(17px, 2.2vw, 22px)",
-                                  fontWeight: 850,
-                                  color: isDarkMode ? catGroup.textDark : catGroup.textLight,
+                                  fontWeight: 800,
+                                  color: isDarkMode ? "#F4F4F5" : "#09090B",
                                   margin: 0,
-                                  letterSpacing: "-0.01em",
+                                  letterSpacing: "-0.02em",
                                   lineHeight: 1.15
                                 }}>
                                   {c.acronym}
@@ -2603,9 +2603,8 @@ export function FrutilotaMascot({
                                 <p style={{
                                   fontFamily: I,
                                   fontSize: 10.5,
-                                  fontWeight: 550,
-                                  color: isDarkMode ? catGroup.textDark : catGroup.textLight,
-                                  opacity: 0.8,
+                                  fontWeight: 500,
+                                  color: isDarkMode ? "#A1A1AA" : "#71717A",
                                   margin: 0,
                                   lineHeight: 1.25,
                                   display: "-webkit-box",
@@ -2695,8 +2694,8 @@ export function FrutilotaMascot({
                       gap: 6,
                       padding: "6px 12px",
                       borderRadius: 999,
-                      background: !selectedEntity ? (isDarkMode ? "#2563EB" : "#0F172A") : (isDarkMode ? "#1F1F1F" : "#FFFFFF"),
-                      color: !selectedEntity ? "#FFFFFF" : (isDarkMode ? "#E2E8F0" : "#334155"),
+                      background: !selectedEntity ? (isDarkMode ? "#ECECEC" : "#18181B") : (isDarkMode ? "#1F1F1F" : "#FFFFFF"),
+                      color: !selectedEntity ? (isDarkMode ? "#18181B" : "#FFFFFF") : (isDarkMode ? "#E2E8F0" : "#334155"),
                       border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
                       cursor: "pointer",
                       fontFamily: I,
@@ -2731,15 +2730,15 @@ export function FrutilotaMascot({
                           padding: isSelected ? "7px 14px" : "6px 12px",
                           borderRadius: 999,
                           background: isSelected 
-                            ? (isDarkMode ? "#2563EB" : "#0F172A") 
+                            ? (isDarkMode ? "#ECECEC" : "#18181B") 
                             : (isDarkMode ? "#1F1F1F" : "#FFFFFF"),
-                          color: isSelected ? "#FFFFFF" : (isDarkMode ? "#E2E8F0" : "#334155"),
+                          color: isSelected ? (isDarkMode ? "#18181B" : "#FFFFFF") : (isDarkMode ? "#E2E8F0" : "#334155"),
                           border: isSelected 
-                            ? `1px solid ${isDarkMode ? "#3B82F6" : "#0F172A"}` 
+                            ? `1px solid ${isDarkMode ? "#FFFFFF" : "#18181B"}` 
                             : `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
                           boxShadow: isSelected 
-                            ? (isDarkMode ? "0 2px 10px rgba(37, 99, 235, 0.4)" : "0 2px 6px rgba(15, 23, 42, 0.15)") 
-                            : (isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.03)"),
+                            ? (isDarkMode ? "0 2px 8px rgba(255, 255, 255, 0.2)" : "0 2px 6px rgba(0, 0, 0, 0.15)") 
+                            : (isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.02)"),
                           cursor: "pointer",
                           fontFamily: I,
                           fontSize: 12.5,
@@ -2802,8 +2801,8 @@ export function FrutilotaMascot({
                         gap: 14,
                         padding: "14px 18px",
                         borderRadius: 12,
-                        background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
-                        border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
+                        background: isDarkMode ? "#18181B" : "#FFFFFF",
+                        border: `1px solid ${isDarkMode ? "#27272A" : "#E4E4E7"}`,
                         boxShadow: isDarkMode ? "0 2px 8px rgba(0,0,0,0.3)" : "0 1px 4px rgba(0,0,0,0.03)"
                       }}>
                         <div 
@@ -2864,7 +2863,7 @@ export function FrutilotaMascot({
                         return (
                           <div key={catName} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                             
-                            {/* Cabecera de Subcategoría con Color Fuerte y Sólido según el Conjunto de Trámites */}
+                            {/* Cabecera de Subcategoría con Color Serio e Institucional */}
                             {(() => {
                               const subTheme = getSubcategoryTheme(catName, isDarkMode, cIdx);
                               return (
@@ -2874,14 +2873,15 @@ export function FrutilotaMascot({
                                   justifyContent: "space-between",
                                   padding: "9px 16px",
                                   borderRadius: 8,
-                                  background: subTheme.solidColor,
+                                  background: isDarkMode ? "#1C1C1E" : subTheme.solidColor,
+                                  border: isDarkMode ? "1px solid #2E2E33" : "none",
                                   color: "#FFFFFF",
-                                  boxShadow: `0 2px 8px ${subTheme.solidColor}35`,
+                                  boxShadow: isDarkMode ? "0 1px 4px rgba(0,0,0,0.4)" : "0 1px 3px rgba(0,0,0,0.08)",
                                   transition: "all 0.15s ease"
                                 }}>
                                   <h3 style={{
                                     fontFamily: G,
-                                    fontSize: 14.5,
+                                    fontSize: 14,
                                     fontWeight: 750,
                                     color: "#FFFFFF",
                                     margin: 0,
@@ -2892,11 +2892,11 @@ export function FrutilotaMascot({
                                   <span style={{
                                     fontFamily: I,
                                     fontSize: 11,
-                                    fontWeight: 650,
-                                    color: "rgba(255, 255, 255, 0.92)",
-                                    background: "rgba(0, 0, 0, 0.18)",
+                                    fontWeight: 600,
+                                    color: isDarkMode ? "#A1A1AA" : "rgba(255, 255, 255, 0.92)",
+                                    background: isDarkMode ? "#27272A" : "rgba(0, 0, 0, 0.22)",
                                     padding: "2px 9px",
-                                    borderRadius: 12
+                                    borderRadius: 6
                                   }}>
                                     {procsList.length} {procsList.length === 1 ? "trámite" : "trámites"}
                                   </span>
@@ -2915,7 +2915,6 @@ export function FrutilotaMascot({
                             >
                               {procsList.map((proc, pIdx) => {
                                 const isHiddenOnMobile = pIdx >= 3 && !isExpanded;
-                                const subTheme = getSubcategoryTheme(catName, isDarkMode, cIdx);
 
                                 return (
                                   <motion.a
@@ -2933,20 +2932,28 @@ export function FrutilotaMascot({
                                       sound.playClick();
                                       haptic.selection();
                                     }}
-                                    onMouseEnter={() => sound.playHoverKey()}
                                     style={{
-                                      background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
-                                      border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
-                                      borderRadius: 12,
+                                      background: isDarkMode ? "#18181B" : "#FFFFFF",
+                                      border: `1px solid ${isDarkMode ? "#27272A" : "#E4E4E7"}`,
+                                      borderRadius: 10,
                                       padding: "14px 15px",
                                       display: "flex",
                                       flexDirection: "column",
                                       justifyContent: "space-between",
                                       gap: 10,
                                       textDecoration: "none",
-                                      boxShadow: isDarkMode ? "0 3px 12px rgba(0,0,0,0.3)" : "0 1px 6px rgba(0,0,0,0.04)",
+                                      boxShadow: isDarkMode ? "0 2px 8px rgba(0,0,0,0.25)" : "0 1px 3px rgba(0,0,0,0.03)",
                                       cursor: "pointer",
                                       transition: "border-color 0.15s ease, box-shadow 0.15s ease"
+                                    }}
+                                    onMouseEnter={e => {
+                                      sound.playHoverKey();
+                                      e.currentTarget.style.borderColor = isDarkMode ? "#52525B" : "#18181B";
+                                      e.currentTarget.style.boxShadow = isDarkMode ? "0 4px 14px rgba(0,0,0,0.4)" : "0 3px 10px rgba(0,0,0,0.06)";
+                                    }}
+                                    onMouseLeave={e => {
+                                      e.currentTarget.style.borderColor = isDarkMode ? "#27272A" : "#E4E4E7";
+                                      e.currentTarget.style.boxShadow = isDarkMode ? "0 2px 8px rgba(0,0,0,0.25)" : "0 1px 3px rgba(0,0,0,0.03)";
                                     }}
                                   >
                                     {/* Título Nítido del Trámite */}
@@ -2964,7 +2971,7 @@ export function FrutilotaMascot({
                                       {proc.title}
                                     </h4>
 
-                                    {/* Pie de Acción: Botón Directo al Portal Oficial con Color Fuerte de la Categoría */}
+                                    {/* Pie de Acción: Botón Directo al Portal Oficial Estilo OpenAI */}
                                     <div style={{
                                       display: "flex",
                                       alignItems: "center",
@@ -2984,15 +2991,15 @@ export function FrutilotaMascot({
                                       <span style={{
                                         padding: "5px 12px",
                                         borderRadius: 6,
-                                        background: subTheme.solidColor,
-                                        color: "#FFFFFF",
+                                        background: isDarkMode ? "#ECECEC" : "#18181B",
+                                        color: isDarkMode ? "#18181B" : "#FFFFFF",
                                         fontFamily: G,
                                         fontSize: 11.5,
                                         fontWeight: 700,
                                         display: "inline-flex",
                                         alignItems: "center",
                                         gap: 4,
-                                        boxShadow: `0 2px 6px ${subTheme.solidColor}40`,
+                                        boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.4)" : "0 1px 3px rgba(0,0,0,0.12)",
                                         transition: "all 0.15s ease"
                                       }}>
                                         <span>Ingresar</span>
@@ -3020,9 +3027,9 @@ export function FrutilotaMascot({
                                     gap: 6,
                                     padding: "6px 16px",
                                     borderRadius: 20,
-                                    background: isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9",
-                                    border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#CBD5E1"}`,
-                                    color: isDarkMode ? "#60A5FA" : "#2563EB",
+                                    background: isDarkMode ? "#27272A" : "#F4F4F5",
+                                    border: `1px solid ${isDarkMode ? "#3F3F46" : "#E4E4E7"}`,
+                                    color: isDarkMode ? "#ECECEC" : "#18181B",
                                     fontFamily: G,
                                     fontSize: 12,
                                     fontWeight: 700,
