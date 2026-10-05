@@ -2630,24 +2630,35 @@ export function FrutilotaMascot({
             
 
 
-            {/* Trámites Oficiales de la Entidad (Directos en 1 Clic) */}
+            {/* Trámites Oficiales de la Entidad Organizados por Subcategorías */}
             {(() => {
               const allProcs = getEntityOfficialProcedures(activeEntity.acronym);
 
+              // Agrupación por subcategorías en orden de aparición
+              const categoriesMap = new Map<string, DirectProcedureItem[]>();
+              allProcs.forEach(p => {
+                const cat = p.category || "Trámites Generales";
+                if (!categoriesMap.has(cat)) {
+                  categoriesMap.set(cat, []);
+                }
+                categoriesMap.get(cat)!.push(p);
+              });
+
               return (
-                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
                   
-                  {/* Conteo de Trámites Disponibles */}
+                  {/* Título Principal de la Entidad */}
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8, padding: "0 2px" }}>
-                    <span style={{
+                    <h2 style={{
                       fontFamily: G,
-                      fontSize: 16,
-                      fontWeight: 800,
+                      fontSize: 20,
+                      fontWeight: 850,
                       color: isDarkMode ? "#F9FAFB" : "#0F172A",
-                      letterSpacing: "-0.01em"
+                      letterSpacing: "-0.02em",
+                      margin: 0
                     }}>
-                      Trámites oficiales de {activeEntity.acronym}
-                    </span>
+                      Trámites de {activeEntity.acronym}
+                    </h2>
 
                     <span style={{
                       fontFamily: I,
@@ -2659,132 +2670,146 @@ export function FrutilotaMascot({
                       color: isDarkMode ? "#9CA3AF" : "#64748B",
                       border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`
                     }}>
-                      {allProcs.length} {allProcs.length === 1 ? "trámite oficial" : "trámites oficiales"}
+                      {allProcs.length} trámites en {categoriesMap.size} {categoriesMap.size === 1 ? "categoría" : "categorías"}
                     </span>
                   </div>
 
-                  {/* Cuadrícula Nítida: Tarjetas con Título Claro + 1-Clic Directo */}
-                  <div 
-                    style={{ 
-                      display: "grid", 
-                      gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", 
-                      gap: 14 
-                    }}
-                  >
-                    {allProcs.map((proc, pIdx) => (
-                      <motion.a
-                        key={proc.id || pIdx}
-                        href={proc.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.18, delay: Math.min(pIdx * 0.02, 0.3) }}
-                        whileHover={{ y: -3, scale: 1.01 }}
-                        whileTap={{ scale: 0.985 }}
-                        onClick={() => {
-                          sound.playClick();
-                          haptic.selection();
-                        }}
-                        onMouseEnter={() => sound.playHoverKey()}
-                        style={{
-                          background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
-                          border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
-                          borderRadius: 12,
-                          padding: "16px 18px",
-                          display: "flex",
-                          flexDirection: "column",
-                          justifyContent: "space-between",
-                          gap: 14,
-                          textDecoration: "none",
-                          boxShadow: isDarkMode ? "0 4px 14px rgba(0,0,0,0.35)" : "0 2px 8px rgba(0,0,0,0.04)",
-                          cursor: "pointer",
-                          transition: "border-color 0.15s ease, box-shadow 0.15s ease"
-                        }}
-                      >
-                        {/* Cabecera de la Tarjeta: Categoría Oficial */}
-                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
-                          <span style={{
-                            padding: "3px 8px",
-                            borderRadius: 6,
-                            background: isDarkMode ? "rgba(255, 255, 255, 0.07)" : "#F1F5F9",
-                            border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.1)" : "#E2E8F0"}`,
-                            color: isDarkMode ? "#9CA3AF" : "#475569",
-                            fontFamily: I,
-                            fontSize: 11,
-                            fontWeight: 650,
-                            letterSpacing: "0.01em",
-                            textTransform: "uppercase"
-                          }}>
-                            {proc.category || activeEntity.category || "Trámite Oficial"}
-                          </span>
-
-                          <span style={{
-                            fontSize: 11,
-                            fontFamily: I,
-                            fontWeight: 650,
-                            color: isDarkMode ? "#64748B" : "#94A3B8"
-                          }}>
-                            #{pIdx + 1}
-                          </span>
-                        </div>
-
-                        {/* Título Nítido del Trámite */}
+                  {/* Renderizado por Cada Subcategoría */}
+                  {Array.from(categoriesMap.entries()).map(([catName, procsList], cIdx) => (
+                    <div key={catName} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                      
+                      {/* Cabecera de la Subcategoría */}
+                      <div style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 10,
+                        paddingBottom: 8,
+                        borderBottom: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`
+                      }}>
+                        <div style={{
+                          width: 8,
+                          height: 8,
+                          borderRadius: "50%",
+                          background: isDarkMode ? "#60A5FA" : "#2563EB",
+                          flexShrink: 0
+                        }} />
                         <h3 style={{
                           fontFamily: G,
                           fontSize: 15.5,
-                          fontWeight: 700,
-                          color: isDarkMode ? "#F9FAFB" : "#0F172A",
+                          fontWeight: 750,
+                          color: isDarkMode ? "#E2E8F0" : "#1E293B",
                           margin: 0,
-                          lineHeight: 1.38,
-                          letterSpacing: "-0.015em",
-                          WebkitFontSmoothing: "antialiased",
-                          textRendering: "geometricPrecision"
+                          letterSpacing: "-0.01em"
                         }}>
-                          {proc.title}
+                          {catName}
                         </h3>
-
-                        {/* Pie de Acción: Botón Directo al Portal Oficial */}
-                        <div style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                          paddingTop: 10,
-                          borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9"}`
+                        <span style={{
+                          fontFamily: I,
+                          fontSize: 11.5,
+                          fontWeight: 600,
+                          color: isDarkMode ? "#64748B" : "#94A3B8"
                         }}>
-                          <span style={{
-                            fontFamily: I,
-                            fontSize: 12,
-                            fontWeight: 600,
-                            color: isDarkMode ? "#9CA3AF" : "#64748B"
-                          }}>
-                            Acceso directo
-                          </span>
+                          ({procsList.length})
+                        </span>
+                      </div>
 
-                          <span style={{
-                            padding: "6px 12px",
-                            borderRadius: 8,
-                            background: isDarkMode ? "#2D2D2D" : "#0F172A",
-                            color: "#FFFFFF",
-                            fontFamily: G,
-                            fontSize: 12,
-                            fontWeight: 700,
-                            display: "inline-flex",
-                            alignItems: "center",
-                            gap: 5,
-                            boxShadow: isDarkMode ? "0 2px 6px rgba(0,0,0,0.3)" : "0 1px 3px rgba(0,0,0,0.1)"
-                          }}>
-                            <span>Ingresar</span>
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                              <polyline points="15 3 21 3 21 9"/>
-                              <line x1="10" y1="14" x2="21" y2="3"/>
-                            </svg>
-                          </span>
-                        </div>
-                      </motion.a>
-                    ))}
-                  </div>
+                      {/* Cuadrícula de Tarjetas de esta Subcategoría */}
+                      <div 
+                        style={{ 
+                          display: "grid", 
+                          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", 
+                          gap: 12 
+                        }}
+                      >
+                        {procsList.map((proc, pIdx) => (
+                          <motion.a
+                            key={proc.id || `${catName}-${pIdx}`}
+                            href={proc.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            initial={{ opacity: 0, y: 6 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.16, delay: Math.min(pIdx * 0.02, 0.2) }}
+                            whileHover={{ y: -2, scale: 1.01 }}
+                            whileTap={{ scale: 0.985 }}
+                            onClick={() => {
+                              sound.playClick();
+                              haptic.selection();
+                            }}
+                            onMouseEnter={() => sound.playHoverKey()}
+                            style={{
+                              background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
+                              border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
+                              borderRadius: 12,
+                              padding: "15px 16px",
+                              display: "flex",
+                              flexDirection: "column",
+                              justifyContent: "space-between",
+                              gap: 12,
+                              textDecoration: "none",
+                              boxShadow: isDarkMode ? "0 3px 12px rgba(0,0,0,0.3)" : "0 1px 6px rgba(0,0,0,0.04)",
+                              cursor: "pointer",
+                              transition: "border-color 0.15s ease, box-shadow 0.15s ease"
+                            }}
+                          >
+                            {/* Título Nítido del Trámite */}
+                            <h4 style={{
+                              fontFamily: G,
+                              fontSize: 14.5,
+                              fontWeight: 700,
+                              color: isDarkMode ? "#F9FAFB" : "#0F172A",
+                              margin: 0,
+                              lineHeight: 1.36,
+                              letterSpacing: "-0.015em",
+                              WebkitFontSmoothing: "antialiased",
+                              textRendering: "geometricPrecision"
+                            }}>
+                              {proc.title}
+                            </h4>
+
+                            {/* Pie de Acción: Botón Directo al Portal Oficial */}
+                            <div style={{
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "space-between",
+                              paddingTop: 8,
+                              borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.07)" : "#F1F5F9"}`
+                            }}>
+                              <span style={{
+                                fontFamily: I,
+                                fontSize: 11.5,
+                                fontWeight: 600,
+                                color: isDarkMode ? "#9CA3AF" : "#64748B"
+                              }}>
+                                Acceso directo
+                              </span>
+
+                              <span style={{
+                                padding: "5px 11px",
+                                borderRadius: 7,
+                                background: isDarkMode ? "#2D2D2D" : "#0F172A",
+                                color: "#FFFFFF",
+                                fontFamily: G,
+                                fontSize: 11.5,
+                                fontWeight: 700,
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: 4,
+                                boxShadow: isDarkMode ? "0 2px 6px rgba(0,0,0,0.3)" : "0 1px 3px rgba(0,0,0,0.1)"
+                              }}>
+                                <span>Ingresar</span>
+                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                  <polyline points="15 3 21 3 21 9"/>
+                                  <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                              </span>
+                            </div>
+                          </motion.a>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               );
             })()}
