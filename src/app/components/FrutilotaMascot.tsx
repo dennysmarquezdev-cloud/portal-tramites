@@ -56,7 +56,7 @@ import { PaywallView } from "./PaywallView";
 import { OnboardingGuideModal } from "./OnboardingGuideModal";
 import { CIVIC_ENTITIES, findCivicEntity, buildEntityWelcomeMessage, getEntityVoiceExample } from "../data/civicEntities";
 import { getEntityLogo } from "../data/entityLogos";
-import { getEntityOfficialProcedures, renderProcedureIllustration, DirectProcedureItem } from "../data/directProcedures";
+import { getEntityOfficialProcedures, DirectProcedureItem } from "../data/directProcedures";
 import multiCatalogRaw from "../data/multi_entidades_catalogo.json";
 import { AnimatedThemeIcon } from "./AnimatedThemeToggle";
 
@@ -2623,12 +2623,44 @@ export function FrutilotaMascot({
             minWidth: 0, 
             boxSizing: "border-box",
             overflowY: "auto",
-            padding: "24px 20px 48px"
+            padding: "20px 20px 48px"
           }}
         >
-          <div style={{ maxWidth: 880, width: "100%", margin: "0 auto", display: "flex", flexDirection: "column", gap: 18 }}>
+          <div style={{ maxWidth: 1040, width: "100%", margin: "0 auto", display: "flex", flexDirection: "column", gap: 18 }}>
             
-            {/* Header Institucional de la Entidad Activa */}
+            {/* 1. Selector Superior Nítido de Entidades Oficiales */}
+            <div style={{ width: "100%" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8, padding: "0 2px" }}>
+                <span style={{
+                  fontFamily: G,
+                  fontSize: 13,
+                  fontWeight: 750,
+                  color: isDarkMode ? "#9CA3AF" : "#475569",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.04em"
+                }}>
+                  Instituciones Oficiales del Estado
+                </span>
+                <span style={{
+                  fontFamily: I,
+                  fontSize: 12,
+                  fontWeight: 650,
+                  color: isDarkMode ? "#60A5FA" : "#2563EB"
+                }}>
+                  {CIVIC_ENTITIES.length} entidades disponibles
+                </span>
+              </div>
+
+              <EmbeddedEntitiesCarousel
+                entities={CIVIC_ENTITIES}
+                activeEntityAcronym={entity}
+                onSelectEntity={handleSwitchEntity}
+                isDarkMode={isDarkMode}
+                D={D}
+              />
+            </div>
+
+            {/* 2. Header Institucional de la Entidad Activa */}
             <div 
               style={{ 
                 background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
@@ -2646,8 +2678,8 @@ export function FrutilotaMascot({
                   {/* Logo Oficial de la Entidad */}
                   <div 
                     style={{
-                      width: 52,
-                      height: 52,
+                      width: 54,
+                      height: 54,
                       borderRadius: 12,
                       background: "#FFFFFF",
                       border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.16)" : "#E5E7EB"}`,
@@ -2760,10 +2792,10 @@ export function FrutilotaMascot({
                   type="text"
                   value={procSearchQuery}
                   onChange={(e) => setProcSearchQuery(e.target.value)}
-                  placeholder={`Buscar trámites o servicios de ${activeEntity.acronym}...`}
+                  placeholder={`Buscar trámites o servicios oficiales de ${activeEntity.acronym}...`}
                   style={{
                     width: "100%",
-                    padding: "10px 36px 10px 36px",
+                    padding: "11px 36px 11px 36px",
                     background: isDarkMode ? "#242424" : "#F8FAFC",
                     border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.14)" : "#E2E8F0"}`,
                     borderRadius: 10,
@@ -2805,25 +2837,14 @@ export function FrutilotaMascot({
               </div>
             </div>
 
-            {/* Carrusel de Selección Rápida de Entidades cuando el sidebar está cerrado */}
-            {!chatSidebarOpen && (
-              <EmbeddedEntitiesCarousel
-                entities={CIVIC_ENTITIES}
-                activeEntityAcronym={entity}
-                onSelectEntity={handleSwitchEntity}
-                isDarkMode={isDarkMode}
-                D={D}
-              />
-            )}
-
-            {/* ── Trámites Oficiales de la Entidad (Imagen Representativa + Título + 1-Clic Directo) ── */}
+            {/* 3. Trámites Oficiales de la Entidad (Título Nítido + 1-Clic Directo) */}
             {(() => {
               const allProcs = getEntityOfficialProcedures(activeEntity.acronym);
               const searchQuery = procSearchQuery.toLowerCase().trim();
               const filteredProcs = searchQuery
                 ? allProcs.filter(p =>
                     p.title.toLowerCase().includes(searchQuery) ||
-                    p.tag.toLowerCase().includes(searchQuery)
+                    (p.category && p.category.toLowerCase().includes(searchQuery))
                   )
                 : allProcs;
 
@@ -2834,7 +2855,7 @@ export function FrutilotaMascot({
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8, padding: "0 2px" }}>
                     <span style={{
                       fontFamily: G,
-                      fontSize: 15,
+                      fontSize: 16,
                       fontWeight: 800,
                       color: isDarkMode ? "#F9FAFB" : "#0F172A",
                       letterSpacing: "-0.01em"
@@ -2846,22 +2867,22 @@ export function FrutilotaMascot({
                       fontFamily: I,
                       fontSize: 12,
                       fontWeight: 650,
-                      padding: "2px 9px",
+                      padding: "3px 10px",
                       borderRadius: 20,
                       background: isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9",
                       color: isDarkMode ? "#9CA3AF" : "#64748B",
                       border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`
                     }}>
-                      {filteredProcs.length} {filteredProcs.length === 1 ? "trámite disponible" : "trámites disponibles"}
+                      {filteredProcs.length} {filteredProcs.length === 1 ? "trámite oficial" : "trámites oficiales"}
                     </span>
                   </div>
 
-                  {/* Cuadrícula Visual: Imagen Representativa + Título Claro + 1-Clic */}
+                  {/* Cuadrícula Nítida: Tarjeta con Título Claro + 1-Clic (Sin imágenes, Sin Costos, Sin Tiempos) */}
                   <div 
                     style={{ 
                       display: "grid", 
-                      gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", 
-                      gap: 16 
+                      gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", 
+                      gap: 14 
                     }}
                   >
                     {filteredProcs.map((proc, pIdx) => (
@@ -2870,9 +2891,9 @@ export function FrutilotaMascot({
                         href={proc.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        initial={{ opacity: 0, y: 10 }}
+                        initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.22, delay: pIdx * 0.03 }}
+                        transition={{ duration: 0.18, delay: Math.min(pIdx * 0.02, 0.3) }}
                         whileHover={{ y: -3, scale: 1.01 }}
                         whileTap={{ scale: 0.985 }}
                         onClick={() => {
@@ -2883,121 +2904,101 @@ export function FrutilotaMascot({
                         style={{
                           background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
                           border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
-                          borderRadius: 14,
-                          overflow: "hidden",
+                          borderRadius: 12,
+                          padding: "16px 18px",
                           display: "flex",
                           flexDirection: "column",
                           justifyContent: "space-between",
+                          gap: 14,
                           textDecoration: "none",
-                          boxShadow: isDarkMode ? "0 4px 14px rgba(0,0,0,0.4)" : "0 2px 8px rgba(0,0,0,0.05)",
+                          boxShadow: isDarkMode ? "0 4px 14px rgba(0,0,0,0.35)" : "0 2px 8px rgba(0,0,0,0.04)",
                           cursor: "pointer",
                           transition: "border-color 0.15s ease, box-shadow 0.15s ease"
                         }}
                       >
-                        {/* 1. Imagen Representativa Oficial del Trámite */}
-                        <div style={{ position: "relative", width: "100%", height: 132, overflow: "hidden", background: "#0F172A" }}>
-                          {renderProcedureIllustration(proc.illustrationType)}
-                          
-                          {/* Badge de Categoría y Sello .gob.pe en Esquinas */}
-                          <div style={{
-                            position: "absolute",
-                            top: 8,
-                            left: 8,
+                        {/* Cabecera de la Tarjeta: Categoría y Sello .gob.pe */}
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
+                          <span style={{
                             padding: "3px 8px",
                             borderRadius: 6,
-                            background: "rgba(0, 0, 0, 0.65)",
-                            backdropFilter: "blur(6px)",
-                            border: "1px solid rgba(255, 255, 255, 0.2)",
-                            color: "#FFFFFF",
+                            background: isDarkMode ? "rgba(255, 255, 255, 0.07)" : "#F1F5F9",
+                            border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.1)" : "#E2E8F0"}`,
+                            color: isDarkMode ? "#9CA3AF" : "#475569",
                             fontFamily: I,
-                            fontSize: 10.5,
-                            fontWeight: 700,
-                            letterSpacing: "0.02em",
+                            fontSize: 11,
+                            fontWeight: 650,
+                            letterSpacing: "0.01em",
                             textTransform: "uppercase"
                           }}>
-                            {proc.tag}
-                          </div>
+                            {proc.category || activeEntity.category || "Oficial"}
+                          </span>
 
-                          <div style={{
-                            position: "absolute",
-                            top: 8,
-                            right: 8,
+                          <span style={{
                             padding: "2px 7px",
                             borderRadius: 6,
-                            background: "rgba(255, 255, 255, 0.25)",
-                            backdropFilter: "blur(6px)",
-                            border: "1px solid rgba(255, 255, 255, 0.35)",
-                            color: "#FFFFFF",
+                            background: isDarkMode ? "rgba(16, 185, 129, 0.12)" : "#ECFDF5",
+                            border: `1px solid ${isDarkMode ? "rgba(16, 185, 129, 0.25)" : "#A7F3D0"}`,
+                            color: isDarkMode ? "#34D399" : "#047857",
                             fontFamily: I,
-                            fontSize: 10,
-                            fontWeight: 800
+                            fontSize: 10.5,
+                            fontWeight: 750
                           }}>
                             .gob.pe
-                          </div>
+                          </span>
                         </div>
 
-                        {/* 2. Título Nítido y Botón de Ingreso Directo */}
-                        <div style={{
-                          padding: "14px 16px",
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: 12,
-                          flex: 1,
-                          justifyContent: "space-between"
+                        {/* Título Nítido del Trámite */}
+                        <h3 style={{
+                          fontFamily: G,
+                          fontSize: 15.5,
+                          fontWeight: 700,
+                          color: isDarkMode ? "#F9FAFB" : "#0F172A",
+                          margin: 0,
+                          lineHeight: 1.38,
+                          letterSpacing: "-0.015em",
+                          WebkitFontSmoothing: "antialiased",
+                          textRendering: "geometricPrecision"
                         }}>
-                          <div>
-                            <h3 style={{
-                              fontFamily: G,
-                              fontSize: 15,
-                              fontWeight: 750,
-                              color: isDarkMode ? "#F9FAFB" : "#0F172A",
-                              margin: 0,
-                              lineHeight: 1.35,
-                              letterSpacing: "-0.01em"
-                            }}>
-                              {proc.title}
-                            </h3>
-                          </div>
+                          {proc.title}
+                        </h3>
 
-                          {/* Fila Inferior: Costo y Botón 1-Clic */}
-                          <div style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "space-between",
-                            gap: 8,
-                            paddingTop: 8,
-                            borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9"}`
+                        {/* Pie de Acción: Botón Directo al Portal Oficial */}
+                        <div style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          paddingTop: 10,
+                          borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9"}`
+                        }}>
+                          <span style={{
+                            fontFamily: I,
+                            fontSize: 12,
+                            fontWeight: 600,
+                            color: isDarkMode ? "#9CA3AF" : "#64748B"
                           }}>
-                            <span style={{
-                              fontFamily: I,
-                              fontSize: 11.5,
-                              fontWeight: 650,
-                              color: isDarkMode ? "#9CA3AF" : "#64748B"
-                            }}>
-                              💰 {proc.cost}
-                            </span>
+                            Plataforma oficial
+                          </span>
 
-                            <span style={{
-                              padding: "6px 12px",
-                              borderRadius: 8,
-                              background: isDarkMode ? "#2D2D2D" : "#0F172A",
-                              color: "#FFFFFF",
-                              fontFamily: G,
-                              fontSize: 12.5,
-                              fontWeight: 700,
-                              display: "inline-flex",
-                              alignItems: "center",
-                              gap: 5,
-                              boxShadow: isDarkMode ? "0 2px 6px rgba(0,0,0,0.3)" : "0 1px 3px rgba(0,0,0,0.12)"
-                            }}>
-                              <span>Ingresar</span>
-                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                <polyline points="15 3 21 3 21 9"/>
-                                <line x1="10" y1="14" x2="21" y2="3"/>
-                              </svg>
-                            </span>
-                          </div>
+                          <span style={{
+                            padding: "6px 12px",
+                            borderRadius: 8,
+                            background: isDarkMode ? "#2D2D2D" : "#0F172A",
+                            color: "#FFFFFF",
+                            fontFamily: G,
+                            fontSize: 12,
+                            fontWeight: 700,
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: 5,
+                            boxShadow: isDarkMode ? "0 2px 6px rgba(0,0,0,0.3)" : "0 1px 3px rgba(0,0,0,0.1)"
+                          }}>
+                            <span>Ingresar</span>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                              <polyline points="15 3 21 3 21 9"/>
+                              <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                          </span>
                         </div>
                       </motion.a>
                     ))}
@@ -3354,7 +3355,7 @@ function EmbeddedEntitiesCarousel({
   };
 
   return (
-    <div style={{ position: "relative", width: "100%", maxWidth: 660, marginBottom: 14 }}>
+    <div style={{ position: "relative", width: "100%", maxWidth: "100%", marginBottom: 10 }}>
       {/* Botón Flecha Izquierda para Navegación con Mouse */}
       <AnimatePresence>
         {canScrollLeft && (
