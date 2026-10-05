@@ -488,7 +488,14 @@ export function FrutilotaMascot({
 
   const [sidebarEntitySearch, setSidebarEntitySearch] = useState("");
   const [showOnboardingModal, setShowOnboardingModal] = useState(false);
+  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
   const mobileEntitiesBarRef = useRef<HTMLDivElement>(null);
+
+  const toggleCategoryExpand = (catKey: string) => {
+    sound.playClick();
+    haptic.selection();
+    setExpandedCategories(prev => ({ ...prev, [catKey]: !prev[catKey] }));
+  };
 
   useEffect(() => {
     if (mobileEntitiesBarRef.current) {
@@ -1044,17 +1051,24 @@ export function FrutilotaMascot({
           scrollbar-width: none;
           -webkit-overflow-scrolling: touch;
         }
-        .mobile-bottom-entities-bar::-webkit-scrollbar {
+        .mobile-bottom-entities-bar::-webkit-scrollbar,
+        .desktop-top-entities-header::-webkit-scrollbar {
           display: none;
         }
         @media (max-width: 768px) {
           .mobile-bottom-entities-bar {
             display: flex !important;
           }
+          .desktop-top-entities-header {
+            display: none !important;
+          }
           .dynamic-official-procedures-container {
-            padding: 16px 14px calc(74px + env(safe-area-inset-bottom, 12px)) !important;
+            padding: 16px 14px calc(76px + env(safe-area-inset-bottom, 12px)) !important;
           }
           .chat-sidebar-reopen {
+            display: none !important;
+          }
+          .proc-item-mobile-hidden {
             display: none !important;
           }
           .chat-empty {
@@ -1065,6 +1079,14 @@ export function FrutilotaMascot({
           .embedded-entities-shelf {
             padding: 4px 2px 10px;
             margin-bottom: 10px;
+          }
+        }
+        @media (min-width: 769px) {
+          .desktop-top-entities-header {
+            display: flex !important;
+          }
+          .proc-ver-mas-container {
+            display: none !important;
           }
         }
         .mob-entity-chip:active {
@@ -2593,7 +2615,87 @@ export function FrutilotaMascot({
         >
           <div style={{ maxWidth: 1040, width: "100%", margin: "0 auto", display: "flex", flexDirection: "column", gap: 18 }}>
             
+            {/* ── Encabezado Superior de Entidades para Escritorio (Horizontal Scrollable Shelf) ── */}
+            <div 
+              className="desktop-top-entities-header"
+              style={{
+                display: "none",
+                alignItems: "center",
+                gap: 8,
+                overflowX: "auto",
+                scrollbarWidth: "none",
+                padding: "2px 0 14px",
+                borderBottom: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`,
+                marginBottom: 4
+              }}
+            >
+              {displayEntitiesList.map((c) => {
+                const isSelected = entity.toUpperCase() === c.acronym.toUpperCase();
+                const logoSrc = getEntityLogo(c.acronym);
 
+                return (
+                  <button
+                    key={`desktop-head-${c.id || c.acronym}`}
+                    type="button"
+                    onClick={() => {
+                      sound.playClick();
+                      haptic.selection();
+                      setEntity(c.acronym);
+                      clearChat();
+                    }}
+                    onMouseEnter={() => sound.playHoverKey()}
+                    style={{
+                      flexShrink: 0,
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 7,
+                      padding: isSelected ? "7px 14px" : "6px 12px",
+                      borderRadius: 999,
+                      background: isSelected 
+                        ? (isDarkMode ? "#2563EB" : "#0F172A") 
+                        : (isDarkMode ? "#1F1F1F" : "#FFFFFF"),
+                      color: isSelected ? "#FFFFFF" : (isDarkMode ? "#E2E8F0" : "#334155"),
+                      border: isSelected 
+                        ? `1px solid ${isDarkMode ? "#3B82F6" : "#0F172A"}` 
+                        : `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
+                      boxShadow: isSelected 
+                        ? (isDarkMode ? "0 2px 10px rgba(37, 99, 235, 0.4)" : "0 2px 6px rgba(15, 23, 42, 0.15)") 
+                        : (isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.03)"),
+                      cursor: "pointer",
+                      fontFamily: I,
+                      fontSize: 12.5,
+                      fontWeight: isSelected ? 750 : 600,
+                      transition: "all 0.15s ease"
+                    }}
+                  >
+                    <div style={{
+                      width: 26,
+                      height: 18,
+                      borderRadius: 4,
+                      background: "#FFFFFF",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "1px 2px",
+                      boxSizing: "border-box",
+                      overflow: "hidden",
+                      flexShrink: 0
+                    }}>
+                      {logoSrc ? (
+                        <img 
+                          src={logoSrc} 
+                          alt={c.acronym} 
+                          style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain", display: "block" }} 
+                        />
+                      ) : (
+                        <span style={{ fontSize: 8.5, fontWeight: 800, color: "#1E293B" }}>{c.acronym.slice(0, 3)}</span>
+                      )}
+                    </div>
+                    <span>{c.acronym}</span>
+                  </button>
+                );
+              })}
+            </div>
 
             {/* Trámites Oficiales de la Entidad Organizados por Subcategorías */}
             {(() => {
@@ -2609,8 +2711,19 @@ export function FrutilotaMascot({
                 categoriesMap.get(cat)!.push(p);
               });
 
+              // Paleta de colores vibrantes para destacar subtítulos
+              const accentPalettes = [
+                { border: "#2563EB", bgLight: "#EFF6FF", bgDark: "rgba(37, 99, 235, 0.15)", textLight: "#1D4ED8", textDark: "#93C5FD", dot: "#3B82F6" },
+                { border: "#059669", bgLight: "#ECFDF5", bgDark: "rgba(5, 150, 105, 0.15)", textLight: "#047857", textDark: "#6EE7B7", dot: "#10B981" },
+                { border: "#7C3AED", bgLight: "#F5F3FF", bgDark: "rgba(124, 58, 237, 0.15)", textLight: "#6D28D9", textDark: "#C4B5FD", dot: "#8B5CF6" },
+                { border: "#D97706", bgLight: "#FFFBEB", bgDark: "rgba(217, 119, 6, 0.15)", textLight: "#B45309", textDark: "#FCD34D", dot: "#F59E0B" },
+                { border: "#DB2777", bgLight: "#FDF2F8", bgDark: "rgba(219, 39, 119, 0.15)", textLight: "#BE185D", textDark: "#F472B6", dot: "#EC4899" },
+                { border: "#0891B2", bgLight: "#ECFEFF", bgDark: "rgba(8, 145, 178, 0.15)", textLight: "#0E7490", textDark: "#67E8F9", dot: "#06B6D4" },
+                { border: "#4F46E5", bgLight: "#EEF2FF", bgDark: "rgba(79, 70, 229, 0.15)", textLight: "#4338CA", textDark: "#A5B4FC", dot: "#6366F1" }
+              ];
+
               return (
-                <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>
                   
                   {/* Título Principal de la Entidad */}
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8, padding: "0 2px" }}>
@@ -2640,141 +2753,207 @@ export function FrutilotaMascot({
                   </div>
 
                   {/* Renderizado por Cada Subcategoría */}
-                  {Array.from(categoriesMap.entries()).map(([catName, procsList], cIdx) => (
-                    <div key={catName} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                      
-                      {/* Cabecera de la Subcategoría */}
-                      <div style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 10,
-                        paddingBottom: 8,
-                        borderBottom: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`
-                      }}>
+                  {Array.from(categoriesMap.entries()).map(([catName, procsList], cIdx) => {
+                    const catKey = `${activeEntity.acronym}-${catName}`;
+                    const isExpanded = Boolean(expandedCategories[catKey]);
+                    const themeAccent = accentPalettes[cIdx % accentPalettes.length];
+
+                    return (
+                      <div key={catName} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                        
+                        {/* Cabecera de la Subcategoría con Color Resaltado */}
                         <div style={{
-                          width: 8,
-                          height: 8,
-                          borderRadius: "50%",
-                          background: isDarkMode ? "#60A5FA" : "#2563EB",
-                          flexShrink: 0
-                        }} />
-                        <h3 style={{
-                          fontFamily: G,
-                          fontSize: 15.5,
-                          fontWeight: 750,
-                          color: isDarkMode ? "#E2E8F0" : "#1E293B",
-                          margin: 0,
-                          letterSpacing: "-0.01em"
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          padding: "8px 12px",
+                          borderRadius: 10,
+                          background: isDarkMode ? themeAccent.bgDark : themeAccent.bgLight,
+                          border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 0, 0, 0.05)"}`,
+                          borderLeft: `4px solid ${themeAccent.border}`
                         }}>
-                          {catName}
-                        </h3>
-                        <span style={{
-                          fontFamily: I,
-                          fontSize: 11.5,
-                          fontWeight: 600,
-                          color: isDarkMode ? "#64748B" : "#94A3B8"
-                        }}>
-                          ({procsList.length})
-                        </span>
-                      </div>
-
-                      {/* Cuadrícula de Tarjetas de esta Subcategoría */}
-                      <div 
-                        style={{ 
-                          display: "grid", 
-                          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", 
-                          gap: 12 
-                        }}
-                      >
-                        {procsList.map((proc, pIdx) => (
-                          <motion.a
-                            key={proc.id || `${catName}-${pIdx}`}
-                            href={proc.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            initial={{ opacity: 0, y: 6 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.16, delay: Math.min(pIdx * 0.02, 0.2) }}
-                            whileHover={{ y: -2, scale: 1.01 }}
-                            whileTap={{ scale: 0.985 }}
-                            onClick={() => {
-                              sound.playClick();
-                              haptic.selection();
-                            }}
-                            onMouseEnter={() => sound.playHoverKey()}
-                            style={{
-                              background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
-                              border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
-                              borderRadius: 12,
-                              padding: "15px 16px",
-                              display: "flex",
-                              flexDirection: "column",
-                              justifyContent: "space-between",
-                              gap: 12,
-                              textDecoration: "none",
-                              boxShadow: isDarkMode ? "0 3px 12px rgba(0,0,0,0.3)" : "0 1px 6px rgba(0,0,0,0.04)",
-                              cursor: "pointer",
-                              transition: "border-color 0.15s ease, box-shadow 0.15s ease"
-                            }}
-                          >
-                            {/* Título Nítido del Trámite */}
-                            <h4 style={{
-                              fontFamily: G,
-                              fontSize: 14.5,
-                              fontWeight: 700,
-                              color: isDarkMode ? "#F9FAFB" : "#0F172A",
-                              margin: 0,
-                              lineHeight: 1.36,
-                              letterSpacing: "-0.015em",
-                              WebkitFontSmoothing: "antialiased",
-                              textRendering: "geometricPrecision"
-                            }}>
-                              {proc.title}
-                            </h4>
-
-                            {/* Pie de Acción: Botón Directo al Portal Oficial */}
+                          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                             <div style={{
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "space-between",
-                              paddingTop: 8,
-                              borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.07)" : "#F1F5F9"}`
+                              width: 8,
+                              height: 8,
+                              borderRadius: "50%",
+                              background: themeAccent.dot,
+                              flexShrink: 0
+                            }} />
+                            <h3 style={{
+                              fontFamily: G,
+                              fontSize: 15.5,
+                              fontWeight: 800,
+                              color: isDarkMode ? themeAccent.textDark : themeAccent.textLight,
+                              margin: 0,
+                              letterSpacing: "-0.015em"
                             }}>
-                              <span style={{
-                                fontFamily: I,
-                                fontSize: 11.5,
-                                fontWeight: 600,
-                                color: isDarkMode ? "#9CA3AF" : "#64748B"
-                              }}>
-                                Acceso directo
-                              </span>
+                              {catName}
+                            </h3>
+                          </div>
 
-                              <span style={{
-                                padding: "5px 11px",
-                                borderRadius: 7,
-                                background: isDarkMode ? "#2D2D2D" : "#0F172A",
-                                color: "#FFFFFF",
-                                fontFamily: G,
-                                fontSize: 11.5,
-                                fontWeight: 700,
+                          <span style={{
+                            fontFamily: I,
+                            fontSize: 11.5,
+                            fontWeight: 700,
+                            padding: "2px 8px",
+                            borderRadius: 12,
+                            background: isDarkMode ? "rgba(255, 255, 255, 0.08)" : "rgba(255, 255, 255, 0.8)",
+                            color: isDarkMode ? themeAccent.textDark : themeAccent.textLight,
+                            border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 0, 0, 0.06)"}`
+                          }}>
+                            {procsList.length} {procsList.length === 1 ? "trámite" : "trámites"}
+                          </span>
+                        </div>
+
+                        {/* Cuadrícula de Tarjetas de esta Subcategoría */}
+                        <div 
+                          style={{ 
+                            display: "grid", 
+                            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", 
+                            gap: 12 
+                          }}
+                        >
+                          {procsList.map((proc, pIdx) => {
+                            const isHiddenOnMobile = pIdx >= 3 && !isExpanded;
+
+                            return (
+                              <motion.a
+                                key={proc.id || `${catName}-${pIdx}`}
+                                href={proc.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={isHiddenOnMobile ? "proc-item-mobile-hidden" : ""}
+                                initial={{ opacity: 0, y: 6 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.16, delay: Math.min(pIdx * 0.02, 0.2) }}
+                                whileHover={{ y: -2, scale: 1.01 }}
+                                whileTap={{ scale: 0.985 }}
+                                onClick={() => {
+                                  sound.playClick();
+                                  haptic.selection();
+                                }}
+                                onMouseEnter={() => sound.playHoverKey()}
+                                style={{
+                                  background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
+                                  border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
+                                  borderRadius: 12,
+                                  padding: "15px 16px",
+                                  display: "flex",
+                                  flexDirection: "column",
+                                  justifyContent: "space-between",
+                                  gap: 12,
+                                  textDecoration: "none",
+                                  boxShadow: isDarkMode ? "0 3px 12px rgba(0,0,0,0.3)" : "0 1px 6px rgba(0,0,0,0.04)",
+                                  cursor: "pointer",
+                                  transition: "border-color 0.15s ease, box-shadow 0.15s ease"
+                                }}
+                              >
+                                {/* Título Nítido del Trámite */}
+                                <h4 style={{
+                                  fontFamily: G,
+                                  fontSize: 14.5,
+                                  fontWeight: 700,
+                                  color: isDarkMode ? "#F9FAFB" : "#0F172A",
+                                  margin: 0,
+                                  lineHeight: 1.36,
+                                  letterSpacing: "-0.015em",
+                                  WebkitFontSmoothing: "antialiased",
+                                  textRendering: "geometricPrecision"
+                                }}>
+                                  {proc.title}
+                                </h4>
+
+                                {/* Pie de Acción: Botón Directo al Portal Oficial */}
+                                <div style={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "space-between",
+                                  paddingTop: 8,
+                                  borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.07)" : "#F1F5F9"}`
+                                }}>
+                                  <span style={{
+                                    fontFamily: I,
+                                    fontSize: 11.5,
+                                    fontWeight: 600,
+                                    color: isDarkMode ? "#9CA3AF" : "#64748B"
+                                  }}>
+                                    Acceso directo
+                                  </span>
+
+                                  <span style={{
+                                    padding: "5px 11px",
+                                    borderRadius: 7,
+                                    background: isDarkMode ? "#2D2D2D" : "#0F172A",
+                                    color: "#FFFFFF",
+                                    fontFamily: G,
+                                    fontSize: 11.5,
+                                    fontWeight: 700,
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    gap: 4,
+                                    boxShadow: isDarkMode ? "0 2px 6px rgba(0,0,0,0.3)" : "0 1px 3px rgba(0,0,0,0.1)"
+                                  }}>
+                                    <span>Ingresar</span>
+                                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                      <polyline points="15 3 21 3 21 9"/>
+                                      <line x1="10" y1="14" x2="21" y2="3"/>
+                                    </svg>
+                                  </span>
+                                </div>
+                              </motion.a>
+                            );
+                          })}
+                        </div>
+
+                        {/* Botón Ver Más para Móviles si hay más de 3 trámites */}
+                        {procsList.length > 3 && (
+                          <div className="proc-ver-mas-container" style={{ display: "flex", justifyContent: "center", paddingTop: 4 }}>
+                            <button
+                              type="button"
+                              onClick={() => toggleCategoryExpand(catKey)}
+                              style={{
                                 display: "inline-flex",
                                 alignItems: "center",
-                                gap: 4,
-                                boxShadow: isDarkMode ? "0 2px 6px rgba(0,0,0,0.3)" : "0 1px 3px rgba(0,0,0,0.1)"
-                              }}>
-                                <span>Ingresar</span>
-                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                  <polyline points="15 3 21 3 21 9"/>
-                                  <line x1="10" y1="14" x2="21" y2="3"/>
-                                </svg>
-                              </span>
-                            </div>
-                          </motion.a>
-                        ))}
+                                gap: 6,
+                                padding: "7px 18px",
+                                borderRadius: 20,
+                                background: isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9",
+                                border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#CBD5E1"}`,
+                                color: isDarkMode ? "#60A5FA" : "#2563EB",
+                                fontFamily: G,
+                                fontSize: 12.5,
+                                fontWeight: 700,
+                                cursor: "pointer",
+                                transition: "all 0.15s ease",
+                                boxShadow: isDarkMode ? "0 1px 4px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.04)"
+                              }}
+                            >
+                              <span>{isExpanded ? "Ver menos" : `Ver más (${procsList.length - 3} trámites)`}</span>
+                              <svg 
+                                width="12" 
+                                height="12" 
+                                viewBox="0 0 24 24" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                strokeWidth="2.5" 
+                                strokeLinecap="round" 
+                                strokeLinejoin="round" 
+                                style={{ 
+                                  transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)", 
+                                  transition: "transform 0.2s ease" 
+                                }}
+                              >
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                              </svg>
+                            </button>
+                          </div>
+                        )}
+
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               );
             })()}
@@ -3061,6 +3240,7 @@ export function FrutilotaMascot({
         {displayEntitiesList.map((c) => {
           const isSelected = entity.toUpperCase() === c.acronym.toUpperCase();
           const catColor = c.categoryColor || c.color || "#2563EB";
+          const logoSrc = getEntityLogo(c.acronym);
 
           return (
             <button
@@ -3084,7 +3264,7 @@ export function FrutilotaMascot({
                 display: "inline-flex",
                 alignItems: "center",
                 gap: 7,
-                padding: isSelected ? "7px 15px" : "7px 13px",
+                padding: isSelected ? "7px 14px" : "6px 12px",
                 borderRadius: 999,
                 background: isSelected 
                   ? (isDarkMode ? "#2563EB" : "#0F172A") 
@@ -3108,15 +3288,30 @@ export function FrutilotaMascot({
                 WebkitUserSelect: "none"
               }}
             >
-              {/* Indicador de Color / Categoría */}
-              <span style={{
-                width: isSelected ? 7 : 6,
-                height: isSelected ? 7 : 6,
-                borderRadius: "50%",
-                background: isSelected ? "#FFFFFF" : catColor,
-                flexShrink: 0,
-                transition: "all 0.15s ease"
-              }} />
+              {/* Logo / Badge de la Entidad */}
+              <div style={{
+                width: 24,
+                height: 17,
+                borderRadius: 4,
+                background: "#FFFFFF",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "1px 2px",
+                boxSizing: "border-box",
+                overflow: "hidden",
+                flexShrink: 0
+              }}>
+                {logoSrc ? (
+                  <img 
+                    src={logoSrc} 
+                    alt={c.acronym} 
+                    style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain", display: "block" }} 
+                  />
+                ) : (
+                  <span style={{ fontSize: 8, fontWeight: 800, color: "#1E293B" }}>{c.acronym.slice(0, 3)}</span>
+                )}
+              </div>
 
               {/* Nombre / Sigla de la Entidad */}
               <span>{c.acronym}</span>
