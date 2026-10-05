@@ -486,7 +486,8 @@ function getSubcategoryTheme(catName: string, isDarkMode: boolean, index: number
 export interface GroupedCategory {
   id: string;
   name: string;
-  icon: string;
+  icon?: string;
+  barColor: string;
   color: string;
   bgLight: string;
   borderLight: string;
@@ -499,54 +500,58 @@ export interface GroupedCategory {
 
 export const NATIONAL_CATEGORIES: GroupedCategory[] = [
   {
+    id: "economia-finanzas",
+    name: "Economía, Impuestos y Registros",
+    icon: "💰",
+    barColor: "#006039",
+    color: "#059669",
+    bgLight: "#F0FDF4",
+    borderLight: "#A7F3D0",
+    textLight: "#064E3B",
+    bgDark: "rgba(6, 95, 70, 0.22)",
+    borderDark: "rgba(52, 211, 153, 0.4)",
+    textDark: "#6EE7B7",
+    entityAcronyms: ["SUNAT", "SUNARP", "SBS", "BN", "SMV"]
+  },
+  {
     id: "identidad",
     name: "Identidad, Trámites Civiles y Migración",
     icon: "🪪",
-    color: "#2563EB",
+    barColor: "#0B2F86",
+    color: "#1E40AF",
     bgLight: "#EFF6FF",
     borderLight: "#BFDBFE",
-    textLight: "#1E40AF",
-    bgDark: "rgba(37, 99, 235, 0.14)",
-    borderDark: "rgba(59, 130, 246, 0.35)",
+    textLight: "#1E3A8A",
+    bgDark: "rgba(30, 58, 138, 0.22)",
+    borderDark: "rgba(96, 165, 250, 0.4)",
     textDark: "#93C5FD",
     entityAcronyms: ["RENIEC", "MIGRACIONES"]
-  },
-  {
-    id: "economia-finanzas",
-    name: "Economía, Finanzas, Impuestos y Registros",
-    icon: "💰",
-    color: "#059669",
-    bgLight: "#ECFDF5",
-    borderLight: "#A7F3D0",
-    textLight: "#065F46",
-    bgDark: "rgba(16, 185, 129, 0.14)",
-    borderDark: "rgba(16, 185, 129, 0.35)",
-    textDark: "#6EE7B7",
-    entityAcronyms: ["SUNAT", "SUNARP", "SBS", "BN", "SMV"]
   },
   {
     id: "salud",
     name: "Salud y Seguridad Social",
     icon: "🏥",
+    barColor: "#0E7490",
     color: "#0284C7",
-    bgLight: "#F0F9FF",
-    borderLight: "#BAE6FD",
-    textLight: "#075985",
-    bgDark: "rgba(2, 132, 199, 0.14)",
-    borderDark: "rgba(14, 165, 233, 0.35)",
-    textDark: "#7DD3FC",
+    bgLight: "#ECFEFF",
+    borderLight: "#A5F3FC",
+    textLight: "#155E75",
+    bgDark: "rgba(14, 116, 144, 0.22)",
+    borderDark: "rgba(34, 211, 238, 0.4)",
+    textDark: "#67E8F9",
     entityAcronyms: ["ESSALUD", "SIS", "MINSA", "SUSALUD"]
   },
   {
     id: "trabajo-pensiones",
     name: "Trabajo, Empleo y Pensiones",
     icon: "💼",
+    barColor: "#9A3412",
     color: "#EA580C",
     bgLight: "#FFF7ED",
     borderLight: "#FED7AA",
     textLight: "#9A3412",
-    bgDark: "rgba(234, 88, 12, 0.14)",
-    borderDark: "rgba(249, 115, 22, 0.35)",
+    bgDark: "rgba(154, 52, 18, 0.22)",
+    borderDark: "rgba(251, 146, 60, 0.4)",
     textDark: "#FDBA74",
     entityAcronyms: ["ONP", "SUNAFIL", "MTPE", "AFP"]
   },
@@ -554,25 +559,27 @@ export const NATIONAL_CATEGORIES: GroupedCategory[] = [
     id: "transporte-nacional",
     name: "Transporte y Tránsito Nacional",
     icon: "🚗",
+    barColor: "#334155",
     color: "#0D9488",
-    bgLight: "#F0FDFA",
-    borderLight: "#99F6E4",
-    textLight: "#115E59",
-    bgDark: "rgba(13, 148, 136, 0.14)",
-    borderDark: "rgba(20, 184, 166, 0.35)",
-    textDark: "#5EEAD4",
+    bgLight: "#F8FAFC",
+    borderLight: "#CBD5E1",
+    textLight: "#1E293B",
+    bgDark: "rgba(51, 65, 85, 0.3)",
+    borderDark: "rgba(148, 163, 184, 0.4)",
+    textDark: "#CBD5E1",
     entityAcronyms: ["MTC", "SUTRAN"]
   },
   {
     id: "educacion",
     name: "Educación, Becas y Formación",
     icon: "🎓",
+    barColor: "#3730A3",
     color: "#4F46E5",
     bgLight: "#EEF2FF",
     borderLight: "#C7D2FE",
     textLight: "#3730A3",
-    bgDark: "rgba(79, 70, 229, 0.14)",
-    borderDark: "rgba(99, 102, 241, 0.35)",
+    bgDark: "rgba(55, 48, 163, 0.22)",
+    borderDark: "rgba(129, 140, 248, 0.4)",
     textDark: "#A5B4FC",
     entityAcronyms: ["SUNEDU", "MINEDU", "PRONABEC"]
   },
@@ -580,25 +587,27 @@ export const NATIONAL_CATEGORIES: GroupedCategory[] = [
     id: "justicia-orden",
     name: "Justicia, Legalidad y Orden Policial",
     icon: "⚖️",
+    barColor: "#1F2937",
     color: "#475569",
-    bgLight: "#F8FAFC",
-    borderLight: "#CBD5E1",
-    textLight: "#334155",
-    bgDark: "rgba(71, 85, 105, 0.18)",
-    borderDark: "rgba(148, 163, 184, 0.35)",
-    textDark: "#CBD5E1",
+    bgLight: "#F3F4F6",
+    borderLight: "#D1D5DB",
+    textLight: "#111827",
+    bgDark: "rgba(31, 41, 55, 0.35)",
+    borderDark: "rgba(156, 163, 175, 0.4)",
+    textDark: "#E5E7EB",
     entityAcronyms: ["PODER JUDICIAL", "PNP", "MINJUSDH", "INPE"]
   },
   {
     id: "electoral",
     name: "Sistema Electoral",
     icon: "🗳️",
+    barColor: "#991B1B",
     color: "#DC2626",
     bgLight: "#FEF2F2",
     borderLight: "#FECACA",
     textLight: "#991B1B",
-    bgDark: "rgba(220, 38, 38, 0.14)",
-    borderDark: "rgba(239, 68, 68, 0.35)",
+    bgDark: "rgba(153, 27, 27, 0.22)",
+    borderDark: "rgba(248, 113, 113, 0.4)",
     textDark: "#FCA5A5",
     entityAcronyms: ["ONPE", "JNE"]
   },
@@ -606,25 +615,27 @@ export const NATIONAL_CATEGORIES: GroupedCategory[] = [
     id: "consumo-regulacion",
     name: "Consumo y Regulación de Servicios",
     icon: "🏢",
+    barColor: "#5B21B6",
     color: "#7C3AED",
     bgLight: "#FAF5FF",
     borderLight: "#DDD6FE",
     textLight: "#5B21B6",
-    bgDark: "rgba(124, 58, 237, 0.14)",
-    borderDark: "rgba(139, 92, 246, 0.35)",
-    textDark: "#C4B5FD",
+    bgDark: "rgba(91, 33, 182, 0.22)",
+    borderDark: "rgba(192, 132, 252, 0.4)",
+    textDark: "#DDD6FE",
     entityAcronyms: ["INDECOPI", "OSIPTEL", "OSINERGMIN"]
   },
   {
     id: "recursos-emergencias",
     name: "Recursos Naturales, Producción y Emergencias",
     icon: "🌿",
+    barColor: "#166534",
     color: "#16A34A",
     bgLight: "#F0FDF4",
     borderLight: "#BBF7D0",
     textLight: "#166534",
-    bgDark: "rgba(22, 163, 74, 0.14)",
-    borderDark: "rgba(34, 197, 94, 0.35)",
+    bgDark: "rgba(22, 101, 52, 0.22)",
+    borderDark: "rgba(74, 222, 128, 0.4)",
     textDark: "#86EFAC",
     entityAcronyms: ["INDECI", "OEFA", "SERFOR", "SENASA", "PRODUCE"]
   }
@@ -635,13 +646,14 @@ export const REGIONAL_CATEGORIES: GroupedCategory[] = [
     id: "servicios-regionales",
     name: "Servicios Regionales y Entidades Locales",
     icon: "🏙️",
+    barColor: "#1E40AF",
     color: "#0284C7",
-    bgLight: "#F0F9FF",
-    borderLight: "#BAE6FD",
-    textLight: "#075985",
-    bgDark: "rgba(2, 132, 199, 0.14)",
-    borderDark: "rgba(14, 165, 233, 0.35)",
-    textDark: "#7DD3FC",
+    bgLight: "#EFF6FF",
+    borderLight: "#BFDBFE",
+    textLight: "#1E40AF",
+    bgDark: "rgba(30, 64, 175, 0.22)",
+    borderDark: "rgba(96, 165, 250, 0.4)",
+    textDark: "#93C5FD",
     entityAcronyms: ["SEDAPAL", "SEDAPAR", "SAT LIMA", "ATU"]
   }
 ];
@@ -2382,250 +2394,26 @@ export function FrutilotaMascot({
         >
           <div style={{ width: "100%", maxWidth: "100%", margin: "0 auto", display: "flex", flexDirection: "column", gap: 18 }}>
             
-            {/* ── Vista 1: Directorio General de Entidades Agrupadas por Categorías Oficiales ── */}
+            {/* ── Vista 1: Directorio General de Entidades Agrupadas en Grid Oficial (Estilo Mockup) ── */}
             {!selectedEntity ? (
-              <div style={{ display: "flex", flexDirection: "column", gap: 28, width: "100%" }}>
-                {/* Encabezado Principal */}
-                <div style={{ textAlign: "center", padding: "6px 0 0", display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
-                  <h1 style={{
-                    fontFamily: G,
-                    fontSize: "clamp(22px, 3.5vw, 28px)",
-                    fontWeight: 850,
-                    color: isDarkMode ? "#F9FAFB" : "#0F172A",
-                    letterSpacing: "-0.03em",
-                    margin: 0,
-                    lineHeight: 1.2
-                  }}>
-                    Trámites y Servicios del Estado Peruano
-                  </h1>
-
-                  <p style={{
-                    fontFamily: I,
-                    fontSize: 14,
-                    color: isDarkMode ? "#9CA3AF" : "#64748B",
-                    maxWidth: 620,
-                    margin: 0,
-                    lineHeight: 1.45
-                  }}>
-                    Explora las instituciones públicas agrupadas por su sector oficial y accede directamente a sus trámites en 1 clic.
-                  </p>
-                </div>
-
-                {/* ── Sección A: Entidades de Alcance Nacional por Categorías ── */}
-                <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%" }}>
-                  {NATIONAL_CATEGORIES.map((catGroup) => {
-                    const groupEntities = catGroup.entityAcronyms
-                      .map(acr => findCivicEntity(acr))
-                      .filter(Boolean);
-
-                    if (groupEntities.length === 0) return null;
-
-                    return (
-                      <div key={catGroup.id} style={{ display: "flex", flexDirection: "column", gap: 12, width: "100%" }}>
-                        {/* Cabecera de Categoría Principal con Fondo de Color Estilo ChatGPT */}
-                        <div style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "flex-start",
-                          padding: "10px 16px",
-                          borderRadius: 10,
-                          background: isDarkMode ? catGroup.bgDark : catGroup.bgLight,
-                          border: `1px solid ${isDarkMode ? catGroup.borderDark : catGroup.borderLight}`,
-                          boxShadow: isDarkMode ? "0 1px 4px rgba(0,0,0,0.25)" : "0 1px 3px rgba(0,0,0,0.02)"
-                        }}>
-                          <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
-                            <span style={{ fontSize: 16 }}>{catGroup.icon}</span>
-                            <div style={{
-                              width: 6,
-                              height: 6,
-                              borderRadius: "50%",
-                              background: isDarkMode ? catGroup.textDark : catGroup.color,
-                              flexShrink: 0
-                            }} />
-                            <h2 style={{
-                              fontFamily: G,
-                              fontSize: 14.5,
-                              fontWeight: 800,
-                              color: isDarkMode ? catGroup.textDark : catGroup.textLight,
-                              margin: 0,
-                              letterSpacing: "-0.015em"
-                            }}>
-                              {catGroup.name}
-                            </h2>
-                          </div>
-                        </div>
-
-                        {/* Cuadrícula de Entidades de esta Categoría */}
-                        <div style={{
-                          display: "grid",
-                          gridTemplateColumns: "repeat(auto-fill, minmax(170px, 1fr))",
-                          gap: 12,
-                          width: "100%"
-                        }}>
-                          {groupEntities.map((c, idx) => {
-                            const logoSrc = getEntityLogo(c.acronym);
-
-                            return (
-                              <motion.div
-                                key={c.id || c.acronym}
-                                initial={{ opacity: 0, y: 8 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.16, delay: Math.min(idx * 0.012, 0.18) }}
-                                whileHover={{ y: -3, scale: 1.015 }}
-                                whileTap={{ scale: 0.98 }}
-                                onClick={() => {
-                                  sound.playClick();
-                                  haptic.selection();
-                                  setEntity(c.acronym);
-                                  setSelectedEntity(c.acronym);
-                                  clearChat();
-                                  const container = document.querySelector(".dynamic-official-procedures-container");
-                                  if (container) container.scrollTo({ top: 0, behavior: "smooth" });
-                                }}
-                                style={{
-                                  background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
-                                  border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
-                                  borderRadius: 12,
-                                  padding: "14px 12px 12px",
-                                  display: "flex",
-                                  flexDirection: "column",
-                                  alignItems: "center",
-                                  justifyContent: "space-between",
-                                  textAlign: "center",
-                                  cursor: "pointer",
-                                  boxShadow: isDarkMode ? "0 4px 14px rgba(0,0,0,0.35)" : "0 2px 8px rgba(0,0,0,0.04)",
-                                  transition: "border-color 0.15s ease, box-shadow 0.15s ease",
-                                  minHeight: 135,
-                                  boxSizing: "border-box"
-                                }}
-                                onMouseEnter={e => {
-                                  sound.playHoverKey();
-                                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.28)" : "#0F172A";
-                                }}
-                                onMouseLeave={e => {
-                                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0";
-                                }}
-                              >
-                                {/* Logo en Caja Blanca Rectangular (Oculto en Móviles) */}
-                                <div 
-                                  className="mob-hide-entity-logo"
-                                  style={{
-                                    width: "100%",
-                                    maxWidth: 86,
-                                    height: 42,
-                                    borderRadius: 8,
-                                    background: "#FFFFFF",
-                                    border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #E2E8F0",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    padding: "2px 5px",
-                                    boxSizing: "border-box",
-                                    overflow: "hidden",
-                                    marginBottom: 8,
-                                    boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.05)"
-                                  }}
-                                >
-                                  {logoSrc ? (
-                                    <img 
-                                      src={logoSrc} 
-                                      alt={c.acronym} 
-                                      style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain", display: "block" }} 
-                                    />
-                                  ) : (
-                                    <span style={{ fontSize: 11, fontWeight: 800, color: "#0F172A" }}>{c.acronym}</span>
-                                  )}
-                                </div>
-
-                                {/* Acrónimo y Nombre Oficial */}
-                                <div style={{ display: "flex", flexDirection: "column", gap: 2, width: "100%" }}>
-                                  <h3 style={{
-                                    fontFamily: G,
-                                    fontSize: 14,
-                                    fontWeight: 800,
-                                    color: isDarkMode ? "#F9FAFB" : "#0F172A",
-                                    margin: 0,
-                                    letterSpacing: "-0.015em"
-                                  }}>
-                                    {c.acronym}
-                                  </h3>
-                                  <p style={{
-                                    fontFamily: I,
-                                    fontSize: 10.5,
-                                    color: isDarkMode ? "#9CA3AF" : "#64748B",
-                                    margin: 0,
-                                    lineHeight: 1.3,
-                                    display: "-webkit-box",
-                                    WebkitLineClamp: 2,
-                                    WebkitBoxOrient: "vertical",
-                                    overflow: "hidden"
-                                  }}>
-                                    {c.name}
-                                  </p>
-                                </div>
-
-                                {/* Pie de Acción: Ver Trámites */}
-                                <div style={{
-                                  display: "flex",
-                                  alignItems: "center",
-                                  justifyContent: "center",
-                                  width: "100%",
-                                  marginTop: 8,
-                                  paddingTop: 6,
-                                  borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9"}`
-                                }}>
-                                  <span style={{
-                                    fontFamily: G,
-                                    fontSize: 11,
-                                    fontWeight: 700,
-                                    color: isDarkMode ? "#38BDF8" : "#0284C7",
-                                    display: "inline-flex",
-                                    alignItems: "center",
-                                    gap: 2
-                                  }}>
-                                    <span>Ver trámites</span>
-                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                      <polyline points="9 18 15 12 9 6"></polyline>
-                                    </svg>
-                                  </span>
-                                </div>
-                              </motion.div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-
-                {/* ── Separador Visual para Servicios Regionales ── */}
-                <div style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 14,
-                  margin: "8px 0 0",
-                  width: "100%"
+              <div style={{ display: "flex", flexDirection: "column", gap: 20, width: "100%", maxWidth: 1100, margin: "0 auto" }}>
+                {/* Título Oficial Principal */}
+                <h1 style={{
+                  fontFamily: G,
+                  fontSize: "clamp(26px, 4vw, 36px)",
+                  fontWeight: 850,
+                  letterSpacing: "-0.025em",
+                  textAlign: "center",
+                  margin: "8px 0 16px",
+                  color: isDarkMode ? "#F9FAFB" : "#0D0D0D",
+                  textTransform: "uppercase"
                 }}>
-                  <div style={{ flex: 1, height: 1, background: isDarkMode ? "rgba(255, 255, 255, 0.10)" : "#E2E8F0" }} />
-                  <span style={{
-                    fontFamily: G,
-                    fontSize: 11.5,
-                    fontWeight: 800,
-                    letterSpacing: "0.05em",
-                    textTransform: "uppercase",
-                    color: isDarkMode ? "#9CA3AF" : "#64748B",
-                    padding: "3px 10px",
-                    borderRadius: 20,
-                    background: isDarkMode ? "rgba(255, 255, 255, 0.05)" : "#F1F5F9"
-                  }}>
-                    Ámbito Regional y Local
-                  </span>
-                  <div style={{ flex: 1, height: 1, background: isDarkMode ? "rgba(255, 255, 255, 0.10)" : "#E2E8F0" }} />
-                </div>
+                  ENTIDADES
+                </h1>
 
-                {/* ── Sección B: Servicios Regionales y Entidades Locales ── */}
-                <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%", paddingBottom: 16 }}>
-                  {REGIONAL_CATEGORIES.map((catGroup) => {
+                {/* ── Cuadrícula de Categorías (Bloques con Barra Vertical + Grid de Entidades) ── */}
+                <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "100%" }}>
+                  {[...NATIONAL_CATEGORIES, ...REGIONAL_CATEGORIES].map((catGroup) => {
                     const groupEntities = catGroup.entityAcronyms
                       .map(acr => findCivicEntity(acr))
                       .filter(Boolean);
@@ -2633,58 +2421,72 @@ export function FrutilotaMascot({
                     if (groupEntities.length === 0) return null;
 
                     return (
-                      <div key={catGroup.id} style={{ display: "flex", flexDirection: "column", gap: 12, width: "100%" }}>
-                        {/* Cabecera de Categoría Regional con Fondo de Color */}
-                        <div style={{
+                      <div
+                        key={catGroup.id}
+                        style={{
                           display: "flex",
-                          alignItems: "center",
-                          justifyContent: "flex-start",
-                          padding: "10px 16px",
-                          borderRadius: 10,
+                          flexDirection: "row",
+                          alignItems: "stretch",
+                          width: "100%",
+                          borderRadius: 8,
+                          overflow: "hidden",
+                          border: `1.5px solid ${isDarkMode ? catGroup.borderDark : catGroup.borderLight}`,
                           background: isDarkMode ? catGroup.bgDark : catGroup.bgLight,
-                          border: `1px solid ${isDarkMode ? catGroup.borderDark : catGroup.borderLight}`,
-                          boxShadow: isDarkMode ? "0 1px 4px rgba(0,0,0,0.25)" : "0 1px 3px rgba(0,0,0,0.02)"
-                        }}>
-                          <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
-                            <span style={{ fontSize: 16 }}>{catGroup.icon}</span>
-                            <div style={{
-                              width: 6,
-                              height: 6,
-                              borderRadius: "50%",
-                              background: isDarkMode ? catGroup.textDark : catGroup.color,
-                              flexShrink: 0
-                            }} />
-                            <h2 style={{
+                          boxShadow: isDarkMode ? "0 2px 10px rgba(0,0,0,0.25)" : "0 1px 4px rgba(0,0,0,0.03)"
+                        }}
+                      >
+                        {/* Barra Vertical Izquierda (Estilo Mockup) */}
+                        <div
+                          style={{
+                            width: "clamp(34px, 4vw, 42px)",
+                            minWidth: "clamp(34px, 4vw, 42px)",
+                            background: isDarkMode ? catGroup.color : catGroup.barColor,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            padding: "16px 2px",
+                            boxSizing: "border-box",
+                            userSelect: "none",
+                            flexShrink: 0
+                          }}
+                        >
+                          <span
+                            style={{
+                              writingMode: "vertical-rl",
+                              transform: "rotate(180deg)",
                               fontFamily: G,
-                              fontSize: 14.5,
-                              fontWeight: 800,
-                              color: isDarkMode ? catGroup.textDark : catGroup.textLight,
-                              margin: 0,
-                              letterSpacing: "-0.015em"
-                            }}>
-                              {catGroup.name}
-                            </h2>
-                          </div>
+                              fontSize: "clamp(11px, 1.1vw, 12.5px)",
+                              fontWeight: 700,
+                              letterSpacing: "0.02em",
+                              textAlign: "center",
+                              whiteSpace: "nowrap",
+                              color: "#FFFFFF"
+                            }}
+                          >
+                            {catGroup.name}
+                          </span>
                         </div>
 
-                        {/* Cuadrícula de Entidades Regionales */}
-                        <div style={{
-                          display: "grid",
-                          gridTemplateColumns: "repeat(auto-fill, minmax(170px, 1fr))",
-                          gap: 12,
-                          width: "100%"
-                        }}>
-                          {groupEntities.map((c, idx) => {
+                        {/* Grid de Entidades a la Derecha */}
+                        <div
+                          style={{
+                            flex: 1,
+                            display: "grid",
+                            gridTemplateColumns: "repeat(auto-fill, minmax(170px, 1fr))",
+                            gap: 8,
+                            padding: 8,
+                            minWidth: 0,
+                            boxSizing: "border-box"
+                          }}
+                        >
+                          {groupEntities.map((c) => {
                             const logoSrc = getEntityLogo(c.acronym);
 
                             return (
                               <motion.div
                                 key={c.id || c.acronym}
-                                initial={{ opacity: 0, y: 8 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.16, delay: Math.min(idx * 0.012, 0.18) }}
-                                whileHover={{ y: -3, scale: 1.015 }}
-                                whileTap={{ scale: 0.98 }}
+                                whileHover={{ y: -2, scale: 1.01 }}
+                                whileTap={{ scale: 0.985 }}
                                 onClick={() => {
                                   sound.playClick();
                                   haptic.selection();
@@ -2695,112 +2497,88 @@ export function FrutilotaMascot({
                                   if (container) container.scrollTo({ top: 0, behavior: "smooth" });
                                 }}
                                 style={{
-                                  background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
-                                  border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
-                                  borderRadius: 12,
-                                  padding: "14px 12px 12px",
+                                  background: isDarkMode ? "rgba(255, 255, 255, 0.04)" : "#FFFFFF",
+                                  border: `1.5px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : catGroup.borderLight}`,
+                                  borderRadius: 8,
+                                  padding: "16px 12px 14px",
                                   display: "flex",
                                   flexDirection: "column",
                                   alignItems: "center",
-                                  justifyContent: "space-between",
+                                  justifyContent: "center",
                                   textAlign: "center",
                                   cursor: "pointer",
-                                  boxShadow: isDarkMode ? "0 4px 14px rgba(0,0,0,0.35)" : "0 2px 8px rgba(0,0,0,0.04)",
-                                  transition: "border-color 0.15s ease, box-shadow 0.15s ease",
-                                  minHeight: 135,
-                                  boxSizing: "border-box"
+                                  minHeight: 90,
+                                  boxSizing: "border-box",
+                                  gap: 6,
+                                  transition: "border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease",
+                                  boxShadow: isDarkMode ? "0 1px 4px rgba(0,0,0,0.2)" : "0 1px 2px rgba(0,0,0,0.02)"
                                 }}
                                 onMouseEnter={e => {
                                   sound.playHoverKey();
-                                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.28)" : "#0F172A";
+                                  e.currentTarget.style.borderColor = isDarkMode ? "#FFFFFF" : catGroup.barColor;
+                                  e.currentTarget.style.boxShadow = isDarkMode ? "0 4px 14px rgba(0,0,0,0.4)" : "0 3px 10px rgba(0,0,0,0.08)";
                                 }}
                                 onMouseLeave={e => {
-                                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0";
+                                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.12)" : catGroup.borderLight;
+                                  e.currentTarget.style.boxShadow = isDarkMode ? "0 1px 4px rgba(0,0,0,0.2)" : "0 1px 2px rgba(0,0,0,0.02)";
                                 }}
                               >
-                                {/* Logo en Caja Blanca Rectangular (Oculto en Móviles) */}
-                                <div 
-                                  className="mob-hide-entity-logo"
-                                  style={{
-                                    width: "100%",
-                                    maxWidth: 86,
-                                    height: 42,
-                                    borderRadius: 8,
-                                    background: "#FFFFFF",
-                                    border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #E2E8F0",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    padding: "2px 5px",
-                                    boxSizing: "border-box",
-                                    overflow: "hidden",
-                                    marginBottom: 8,
-                                    boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.05)"
-                                  }}
-                                >
-                                  {logoSrc ? (
+                                {/* Logo institucional si existe */}
+                                {logoSrc && (
+                                  <div 
+                                    style={{
+                                      width: 44,
+                                      height: 28,
+                                      borderRadius: 5,
+                                      background: "#FFFFFF",
+                                      border: "1px solid rgba(0,0,0,0.08)",
+                                      display: "flex",
+                                      alignItems: "center",
+                                      justifyContent: "center",
+                                      padding: "2px 4px",
+                                      boxSizing: "border-box",
+                                      overflow: "hidden",
+                                      marginBottom: 2
+                                    }}
+                                  >
                                     <img 
                                       src={logoSrc} 
                                       alt={c.acronym} 
                                       style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain", display: "block" }} 
                                     />
-                                  ) : (
-                                    <span style={{ fontSize: 11, fontWeight: 800, color: "#0F172A" }}>{c.acronym}</span>
-                                  )}
-                                </div>
+                                  </div>
+                                )}
 
-                                {/* Acrónimo y Nombre Oficial */}
-                                <div style={{ display: "flex", flexDirection: "column", gap: 2, width: "100%" }}>
-                                  <h3 style={{
-                                    fontFamily: G,
-                                    fontSize: 14,
-                                    fontWeight: 800,
-                                    color: isDarkMode ? "#F9FAFB" : "#0F172A",
-                                    margin: 0,
-                                    letterSpacing: "-0.015em"
-                                  }}>
-                                    {c.acronym}
-                                  </h3>
-                                  <p style={{
-                                    fontFamily: I,
-                                    fontSize: 10.5,
-                                    color: isDarkMode ? "#9CA3AF" : "#64748B",
-                                    margin: 0,
-                                    lineHeight: 1.3,
-                                    display: "-webkit-box",
-                                    WebkitLineClamp: 2,
-                                    WebkitBoxOrient: "vertical",
-                                    overflow: "hidden"
-                                  }}>
-                                    {c.name}
-                                  </p>
-                                </div>
-
-                                {/* Pie de Acción: Ver Trámites */}
-                                <div style={{
-                                  display: "flex",
-                                  alignItems: "center",
-                                  justifyContent: "center",
-                                  width: "100%",
-                                  marginTop: 8,
-                                  paddingTop: 6,
-                                  borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9"}`
+                                {/* Acrónimo Oficial en Grande (Estilo Mockup) */}
+                                <h3 style={{
+                                  fontFamily: G,
+                                  fontSize: "clamp(17px, 2.2vw, 22px)",
+                                  fontWeight: 850,
+                                  color: isDarkMode ? catGroup.textDark : catGroup.textLight,
+                                  margin: 0,
+                                  letterSpacing: "-0.01em",
+                                  lineHeight: 1.15
                                 }}>
-                                  <span style={{
-                                    fontFamily: G,
-                                    fontSize: 11,
-                                    fontWeight: 700,
-                                    color: isDarkMode ? "#38BDF8" : "#0284C7",
-                                    display: "inline-flex",
-                                    alignItems: "center",
-                                    gap: 2
-                                  }}>
-                                    <span>Ver trámites</span>
-                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                      <polyline points="9 18 15 12 9 6"></polyline>
-                                    </svg>
-                                  </span>
-                                </div>
+                                  {c.acronym}
+                                </h3>
+
+                                {/* Subtítulo breve del nombre oficial */}
+                                <p style={{
+                                  fontFamily: I,
+                                  fontSize: 10.5,
+                                  fontWeight: 550,
+                                  color: isDarkMode ? catGroup.textDark : catGroup.textLight,
+                                  opacity: 0.8,
+                                  margin: 0,
+                                  lineHeight: 1.25,
+                                  display: "-webkit-box",
+                                  WebkitLineClamp: 1,
+                                  WebkitBoxOrient: "vertical",
+                                  overflow: "hidden",
+                                  maxWidth: "100%"
+                                }}>
+                                  {c.name}
+                                </p>
                               </motion.div>
                             );
                           })}
