@@ -56,7 +56,7 @@ import { PaywallView } from "./PaywallView";
 import { OnboardingGuideModal } from "./OnboardingGuideModal";
 import { CIVIC_ENTITIES, findCivicEntity, buildEntityWelcomeMessage, getEntityVoiceExample } from "../data/civicEntities";
 import { getEntityLogo } from "../data/entityLogos";
-import { getEntityOfficialProcedures, getEntityCategoryGroups, getTramiteChatGPTIcon, DirectProcedureItem, ProcedureCategoryGroup } from "../data/directProcedures";
+import { getEntityOfficialProcedures, renderProcedureIllustration, DirectProcedureItem } from "../data/directProcedures";
 import multiCatalogRaw from "../data/multi_entidades_catalogo.json";
 import { AnimatedThemeIcon } from "./AnimatedThemeToggle";
 
@@ -2816,370 +2816,195 @@ export function FrutilotaMascot({
               />
             )}
 
-            {/* ── Categorías y Trámites Oficiales de la Entidad ── */}
+            {/* ── Trámites Oficiales de la Entidad (Imagen Representativa + Título + 1-Clic Directo) ── */}
             {(() => {
-              const allCategoryGroups = getEntityCategoryGroups(activeEntity.acronym);
-              const isSearching = procSearchQuery.trim().length > 0;
+              const allProcs = getEntityOfficialProcedures(activeEntity.acronym);
               const searchQuery = procSearchQuery.toLowerCase().trim();
-
-              // Contar total de trámites
-              let totalProcsCount = 0;
-              allCategoryGroups.forEach(g => { totalProcsCount += g.items.length; });
-
-              // Filtrar según búsqueda o categoría seleccionada
-              const displayedGroups = allCategoryGroups.map(group => {
-                let matchingItems = group.items;
-                if (isSearching) {
-                  matchingItems = group.items.filter(item =>
-                    item.title.toLowerCase().includes(searchQuery) ||
-                    item.description.toLowerCase().includes(searchQuery) ||
-                    item.visualTag.toLowerCase().includes(searchQuery) ||
-                    (item.shortTitle && item.shortTitle.toLowerCase().includes(searchQuery))
-                  );
-                }
-                return {
-                  ...group,
-                  items: matchingItems
-                };
-              }).filter(group => {
-                if (selectedCategory !== "all" && !isSearching) {
-                  return group.id === selectedCategory;
-                }
-                return group.items.length > 0;
-              });
-
-              const totalVisibleItems = displayedGroups.reduce((acc, g) => acc + g.items.length, 0);
+              const filteredProcs = searchQuery
+                ? allProcs.filter(p =>
+                    p.title.toLowerCase().includes(searchQuery) ||
+                    p.tag.toLowerCase().includes(searchQuery)
+                  )
+                : allProcs;
 
               return (
-                <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                   
-                  {/* Barra de Pastillas / Filtro Rápido de Categorías */}
-                  {!isSearching && allCategoryGroups.length > 1 && (
-                    <div 
-                      className="category-pills-bar"
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 8,
-                        overflowX: "auto",
-                        paddingBottom: 4,
-                        scrollbarWidth: "none",
-                        msOverflowStyle: "none"
-                      }}
-                    >
-                      <button
-                        type="button"
+                  {/* Conteo de Trámites Disponibles */}
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8, padding: "0 2px" }}>
+                    <span style={{
+                      fontFamily: G,
+                      fontSize: 15,
+                      fontWeight: 800,
+                      color: isDarkMode ? "#F9FAFB" : "#0F172A",
+                      letterSpacing: "-0.01em"
+                    }}>
+                      Trámites oficiales de {activeEntity.acronym}
+                    </span>
+
+                    <span style={{
+                      fontFamily: I,
+                      fontSize: 12,
+                      fontWeight: 650,
+                      padding: "2px 9px",
+                      borderRadius: 20,
+                      background: isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9",
+                      color: isDarkMode ? "#9CA3AF" : "#64748B",
+                      border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`
+                    }}>
+                      {filteredProcs.length} {filteredProcs.length === 1 ? "trámite disponible" : "trámites disponibles"}
+                    </span>
+                  </div>
+
+                  {/* Cuadrícula Visual: Imagen Representativa + Título Claro + 1-Clic */}
+                  <div 
+                    style={{ 
+                      display: "grid", 
+                      gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", 
+                      gap: 16 
+                    }}
+                  >
+                    {filteredProcs.map((proc, pIdx) => (
+                      <motion.a
+                        key={proc.id || pIdx}
+                        href={proc.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.22, delay: pIdx * 0.03 }}
+                        whileHover={{ y: -3, scale: 1.01 }}
+                        whileTap={{ scale: 0.985 }}
                         onClick={() => {
+                          sound.playClick();
                           haptic.selection();
-                          setSelectedCategory("all");
                         }}
+                        onMouseEnter={() => sound.playHoverKey()}
                         style={{
-                          padding: "7px 14px",
-                          borderRadius: 20,
-                          border: `1px solid ${selectedCategory === "all" ? (isDarkMode ? "#FFFFFF" : "#0F172A") : (isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0")}`,
-                          background: selectedCategory === "all" ? (isDarkMode ? "#FFFFFF" : "#0F172A") : (isDarkMode ? "#222222" : "#F8FAFC"),
-                          color: selectedCategory === "all" ? (isDarkMode ? "#0F172A" : "#FFFFFF") : (isDarkMode ? "#D1D5DB" : "#475569"),
-                          fontFamily: I,
-                          fontSize: 12.5,
-                          fontWeight: 700,
+                          background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
+                          border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
+                          borderRadius: 14,
+                          overflow: "hidden",
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "space-between",
+                          textDecoration: "none",
+                          boxShadow: isDarkMode ? "0 4px 14px rgba(0,0,0,0.4)" : "0 2px 8px rgba(0,0,0,0.05)",
                           cursor: "pointer",
-                          whiteSpace: "nowrap",
-                          transition: "all 0.15s ease",
-                          flexShrink: 0
+                          transition: "border-color 0.15s ease, box-shadow 0.15s ease"
                         }}
                       >
-                        Todos ({totalProcsCount})
-                      </button>
-
-                      {allCategoryGroups.map(cat => (
-                        <button
-                          key={cat.id}
-                          type="button"
-                          onClick={() => {
-                            haptic.selection();
-                            setSelectedCategory(cat.id);
-                          }}
-                          style={{
-                            padding: "7px 14px",
-                            borderRadius: 20,
-                            border: `1px solid ${selectedCategory === cat.id ? (isDarkMode ? "#FFFFFF" : "#0F172A") : (isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0")}`,
-                            background: selectedCategory === cat.id ? (isDarkMode ? "#FFFFFF" : "#0F172A") : (isDarkMode ? "#222222" : "#F8FAFC"),
-                            color: selectedCategory === cat.id ? (isDarkMode ? "#0F172A" : "#FFFFFF") : (isDarkMode ? "#D1D5DB" : "#475569"),
-                            fontFamily: I,
-                            fontSize: 12.5,
-                            fontWeight: 700,
-                            cursor: "pointer",
-                            whiteSpace: "nowrap",
-                            transition: "all 0.15s ease",
-                            flexShrink: 0,
-                            display: "inline-flex",
-                            alignItems: "center",
-                            gap: 5
-                          }}
-                        >
-                          <span>{cat.title}</span>
-                          <span style={{
-                            opacity: 0.75,
-                            fontSize: 11
-                          }}>
-                            ({cat.items.length})
-                          </span>
-                        </button>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Listado de Secciones de Categorías con sus Tarjetas */}
-                  {displayedGroups.map((group, gIdx) => (
-                    <div 
-                      key={group.id || gIdx} 
-                      style={{ 
-                        display: "flex", 
-                        flexDirection: "column", 
-                        gap: 12 
-                      }}
-                    >
-                      {/* Cabecera de la Sección / Categoría */}
-                      <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                          <h2 style={{
-                            fontFamily: G,
-                            fontSize: "clamp(16px, 2.2vw, 19px)",
-                            fontWeight: 800,
-                            color: isDarkMode ? "#F9FAFB" : "#0F172A",
-                            margin: 0,
-                            lineHeight: 1.25,
-                            letterSpacing: "-0.015em"
-                          }}>
-                            {group.title}
-                          </h2>
-                          <span style={{
-                            fontFamily: I,
-                            fontSize: 11.5,
-                            fontWeight: 650,
-                            padding: "2px 8px",
+                        {/* 1. Imagen Representativa Oficial del Trámite */}
+                        <div style={{ position: "relative", width: "100%", height: 132, overflow: "hidden", background: "#0F172A" }}>
+                          {renderProcedureIllustration(proc.illustrationType)}
+                          
+                          {/* Badge de Categoría y Sello .gob.pe en Esquinas */}
+                          <div style={{
+                            position: "absolute",
+                            top: 8,
+                            left: 8,
+                            padding: "3px 8px",
                             borderRadius: 6,
-                            background: isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9",
-                            color: isDarkMode ? "#9CA3AF" : "#64748B",
-                            border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`
+                            background: "rgba(0, 0, 0, 0.65)",
+                            backdropFilter: "blur(6px)",
+                            border: "1px solid rgba(255, 255, 255, 0.2)",
+                            color: "#FFFFFF",
+                            fontFamily: I,
+                            fontSize: 10.5,
+                            fontWeight: 700,
+                            letterSpacing: "0.02em",
+                            textTransform: "uppercase"
                           }}>
-                            {group.items.length} {group.items.length === 1 ? "servicio" : "servicios"}
-                          </span>
+                            {proc.tag}
+                          </div>
+
+                          <div style={{
+                            position: "absolute",
+                            top: 8,
+                            right: 8,
+                            padding: "2px 7px",
+                            borderRadius: 6,
+                            background: "rgba(255, 255, 255, 0.25)",
+                            backdropFilter: "blur(6px)",
+                            border: "1px solid rgba(255, 255, 255, 0.35)",
+                            color: "#FFFFFF",
+                            fontFamily: I,
+                            fontSize: 10,
+                            fontWeight: 800
+                          }}>
+                            .gob.pe
+                          </div>
                         </div>
 
-                        {group.subtitle && (
-                          <p style={{
-                            fontFamily: I,
-                            fontSize: 13.5,
-                            fontWeight: 450,
-                            color: isDarkMode ? "#9CA3AF" : "#64748B",
-                            margin: "2px 0 6px",
-                            lineHeight: 1.45
-                          }}>
-                            {group.subtitle}
-                          </p>
-                        )}
-                      </div>
-
-                      {/* Cuadrícula de Tarjetas Oficiales (Diseño Exacto media_1791164968423.png) */}
-                      <div 
-                        style={{ 
-                          display: "grid", 
-                          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", 
-                          gap: 16 
-                        }}
-                      >
-                        {group.items.map((item, pIdx) => (
-                          <motion.div
-                            key={item.id || pIdx}
-                            initial={{ opacity: 0, y: 8 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.22, delay: pIdx * 0.03 }}
-                            whileHover={{ y: -2 }}
-                            style={{
-                              background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
-                              border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
-                              borderRadius: 14,
-                              overflow: "hidden",
-                              display: "flex",
-                              flexDirection: "column",
-                              justifyContent: "space-between",
-                              boxShadow: isDarkMode ? "0 3px 12px rgba(0,0,0,0.35)" : "0 2px 8px rgba(0,0,0,0.04)",
-                              transition: "border-color 0.15s ease, box-shadow 0.15s ease"
-                            }}
-                          >
-                            {/* Cabecera Visual con Degradado, Icono, Tag y .gob.pe */}
-                            <div 
-                              style={{
-                                background: item.bannerGradient,
-                                padding: "12px 16px",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "space-between",
-                                color: "#FFFFFF"
-                              }}
-                            >
-                              <div style={{ display: "flex", alignItems: "center", gap: 9, minWidth: 0 }}>
-                                <div 
-                                  style={{
-                                    width: 28,
-                                    height: 28,
-                                    borderRadius: 7,
-                                    background: "rgba(255, 255, 255, 0.2)",
-                                    border: "1px solid rgba(255, 255, 255, 0.28)",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    color: "#FFFFFF",
-                                    flexShrink: 0
-                                  }}
-                                >
-                                  {getTramiteChatGPTIcon(item.iconType, item.title)}
-                                </div>
-                                <span style={{
-                                  fontFamily: I,
-                                  fontSize: 11,
-                                  fontWeight: 750,
-                                  textTransform: "uppercase",
-                                  letterSpacing: "0.04em",
-                                  whiteSpace: "nowrap",
-                                  overflow: "hidden",
-                                  textOverflow: "ellipsis"
-                                }}>
-                                  {item.visualTag}
-                                </span>
-                              </div>
-
-                              <span style={{
-                                fontFamily: I,
-                                fontSize: 10.5,
-                                fontWeight: 700,
-                                padding: "2px 7px",
-                                borderRadius: 6,
-                                background: "rgba(255, 255, 255, 0.22)",
-                                backdropFilter: "blur(4px)",
-                                color: "#FFFFFF",
-                                flexShrink: 0
-                              }}>
-                                .gob.pe
-                              </span>
-                            </div>
-
-                            {/* Cuerpo de la Tarjeta */}
-                            <div style={{
-                              padding: "16px 18px",
-                              display: "flex",
-                              flexDirection: "column",
-                              gap: 12,
-                              flex: 1,
-                              justifyContent: "space-between"
+                        {/* 2. Título Nítido y Botón de Ingreso Directo */}
+                        <div style={{
+                          padding: "14px 16px",
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: 12,
+                          flex: 1,
+                          justifyContent: "space-between"
+                        }}>
+                          <div>
+                            <h3 style={{
+                              fontFamily: G,
+                              fontSize: 15,
+                              fontWeight: 750,
+                              color: isDarkMode ? "#F9FAFB" : "#0F172A",
+                              margin: 0,
+                              lineHeight: 1.35,
+                              letterSpacing: "-0.01em"
                             }}>
-                              <div>
-                                <h3 style={{
-                                  fontFamily: G,
-                                  fontSize: 15,
-                                  fontWeight: 750,
-                                  color: isDarkMode ? "#F9FAFB" : "#0F172A",
-                                  margin: "0 0 6px",
-                                  lineHeight: 1.35
-                                }}>
-                                  {item.title}
-                                </h3>
+                              {proc.title}
+                            </h3>
+                          </div>
 
-                                <p style={{
-                                  fontFamily: I,
-                                  fontSize: 12.8,
-                                  fontWeight: 450,
-                                  color: isDarkMode ? "#9CA3AF" : "#64748B",
-                                  margin: 0,
-                                  lineHeight: 1.48
-                                }}>
-                                  {item.description}
-                                </p>
-                              </div>
+                          {/* Fila Inferior: Costo y Botón 1-Clic */}
+                          <div style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                            gap: 8,
+                            paddingTop: 8,
+                            borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9"}`
+                          }}>
+                            <span style={{
+                              fontFamily: I,
+                              fontSize: 11.5,
+                              fontWeight: 650,
+                              color: isDarkMode ? "#9CA3AF" : "#64748B"
+                            }}>
+                              💰 {proc.cost}
+                            </span>
 
-                              {/* Badges de Costo y Tiempo */}
-                              <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", fontSize: 12 }}>
-                                <span style={{
-                                  padding: "4px 9px",
-                                  borderRadius: 6,
-                                  background: isDarkMode ? "#262626" : "#F3F4F6",
-                                  color: isDarkMode ? "#D1D5DB" : "#374151",
-                                  border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E7EB"}`,
-                                  fontFamily: I,
-                                  fontWeight: 600,
-                                  display: "inline-flex",
-                                  alignItems: "center",
-                                  gap: 4
-                                }}>
-                                  <span>💰</span>
-                                  <span>{item.cost}</span>
-                                </span>
-                                <span style={{
-                                  padding: "4px 9px",
-                                  borderRadius: 6,
-                                  background: isDarkMode ? "#262626" : "#F3F4F6",
-                                  color: isDarkMode ? "#D1D5DB" : "#374151",
-                                  border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E7EB"}`,
-                                  fontFamily: I,
-                                  fontWeight: 600,
-                                  display: "inline-flex",
-                                  alignItems: "center",
-                                  gap: 4
-                                }}>
-                                  <span>⏱️</span>
-                                  <span>{item.timeEstimate}</span>
-                                </span>
-                              </div>
+                            <span style={{
+                              padding: "6px 12px",
+                              borderRadius: 8,
+                              background: isDarkMode ? "#2D2D2D" : "#0F172A",
+                              color: "#FFFFFF",
+                              fontFamily: G,
+                              fontSize: 12.5,
+                              fontWeight: 700,
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: 5,
+                              boxShadow: isDarkMode ? "0 2px 6px rgba(0,0,0,0.3)" : "0 1px 3px rgba(0,0,0,0.12)"
+                            }}>
+                              <span>Ingresar</span>
+                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                              </svg>
+                            </span>
+                          </div>
+                        </div>
+                      </motion.a>
+                    ))}
+                  </div>
 
-                              {/* Botón 1-Clic "Ir al trámite oficial ↗" */}
-                              <a
-                                href={item.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={() => {
-                                  sound.playClick();
-                                  haptic.selection();
-                                }}
-                                onMouseEnter={() => sound.playHoverKey()}
-                                style={{
-                                  width: "100%",
-                                  padding: "10px 14px",
-                                  background: isDarkMode ? "#2B2B2B" : "#111827",
-                                  border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.16)" : "transparent"}`,
-                                  borderRadius: 8,
-                                  color: "#FFFFFF",
-                                  fontFamily: G,
-                                  fontSize: 13,
-                                  fontWeight: 700,
-                                  display: "flex",
-                                  alignItems: "center",
-                                  justifyContent: "center",
-                                  gap: 6,
-                                  textDecoration: "none",
-                                  cursor: "pointer",
-                                  boxSizing: "border-box",
-                                  boxShadow: isDarkMode ? "0 2px 6px rgba(0,0,0,0.3)" : "0 1px 3px rgba(0,0,0,0.12)",
-                                  transition: "all 0.15s ease",
-                                  marginTop: 4
-                                }}
-                              >
-                                <span>Ir al trámite oficial</span>
-                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
-                                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                  <polyline points="15 3 21 3 21 9"/>
-                                  <line x1="10" y1="14" x2="21" y2="3"/>
-                                </svg>
-                              </a>
-                            </div>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-
-                  {/* Estado Vacío cuando la búsqueda no da resultados */}
-                  {totalVisibleItems === 0 && (
+                  {/* Estado vacío si no hay coincidencias de búsqueda */}
+                  {filteredProcs.length === 0 && (
                     <div style={{
                       textAlign: "center",
                       padding: "40px 20px",
