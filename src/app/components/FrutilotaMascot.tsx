@@ -405,81 +405,70 @@ export interface FrutilotaMascotProps {
   onGoToCatalog?: () => void;
 }
 
-// ── Paletas Temáticas Estilo ChatGPT para Subcategorías de Trámites ──
-const CHATGPT_SUBCATEGORY_PALETTES = [
-  // 0. Azul Cobalto (Identidad, DNI, Pasaportes, Ciudadanía)
-  {
-    light: { bg: "#EFF6FF", border: "#BFDBFE", text: "#1E40AF", dot: "#2563EB" },
-    dark:  { bg: "rgba(37, 99, 235, 0.16)", border: "rgba(37, 99, 235, 0.38)", text: "#93C5FD", dot: "#3B82F6" }
-  },
-  // 1. Verde Esmeralda (Tributos, RUC, Impuestos, Finanzas)
-  {
-    light: { bg: "#ECFDF5", border: "#A7F3D0", text: "#065F46", dot: "#10B981" },
-    dark:  { bg: "rgba(16, 185, 129, 0.16)", border: "rgba(16, 185, 129, 0.38)", text: "#6EE7B7", dot: "#10B981" }
-  },
-  // 2. Ámbar / Naranja Cálido (Propiedad, Registros, Predios, Inmuebles, Vehicular)
-  {
-    light: { bg: "#FFFBEB", border: "#FDE68A", text: "#92400E", dot: "#F59E0B" },
-    dark:  { bg: "rgba(245, 158, 11, 0.16)", border: "rgba(245, 158, 11, 0.38)", text: "#FDE68A", dot: "#F59E0B" }
-  },
-  // 3. Rosa / Carmesí Suave (Salud, Citas Médicas, Seguros, Hospital)
-  {
-    light: { bg: "#FFF1F2", border: "#FECDD3", text: "#9F1239", dot: "#F43F5E" },
-    dark:  { bg: "rgba(244, 63, 94, 0.16)", border: "rgba(244, 63, 94, 0.38)", text: "#FECDD3", dot: "#FB7185" }
-  },
-  // 4. Violeta / Púrpura (Transporte, Brevetes, Licencias, Tránsito)
-  {
-    light: { bg: "#F5F3FF", border: "#DDD6FE", text: "#5B21B6", dot: "#8B5CF6" },
-    dark:  { bg: "rgba(139, 92, 246, 0.16)", border: "rgba(139, 92, 246, 0.38)", text: "#DDD6FE", dot: "#A78BFA" }
-  },
-  // 5. Índigo Profundo (Educación, Becas, Títulos, Constancias)
-  {
-    light: { bg: "#EEF2FF", border: "#C7D2FE", text: "#3730A3", dot: "#6366F1" },
-    dark:  { bg: "rgba(99, 102, 241, 0.16)", border: "rgba(99, 102, 241, 0.38)", text: "#C7D2FE", dot: "#818CF8" }
-  },
-  // 6. Cian / Turquesa (Justicia, Legalidad, Certificados, Registros Civiles)
-  {
-    light: { bg: "#ECFEFF", border: "#A5F3FC", text: "#155E75", dot: "#06B6D4" },
-    dark:  { bg: "rgba(6, 182, 212, 0.16)", border: "rgba(6, 182, 212, 0.38)", text: "#A5F3FC", dot: "#22D3EE" }
-  },
-  // 7. Amarillo Dorado / Ámbar (Riesgos, Seguridad, Biometría, Alertas)
-  {
-    light: { bg: "#FEF3C7", border: "#FDE047", text: "#854D0E", dot: "#EAB308" },
-    dark:  { bg: "rgba(234, 179, 8, 0.16)", border: "rgba(234, 179, 8, 0.38)", text: "#FEF08A", dot: "#FACC15" }
-  },
-  // 8. Verde Azulado / Teal (Servicios, Extras, Agua, Consultas Generales)
-  {
-    light: { bg: "#F0FDFA", border: "#99F6E4", text: "#115E59", dot: "#14B8A6" },
-    dark:  { bg: "rgba(20, 184, 166, 0.16)", border: "rgba(20, 184, 166, 0.38)", text: "#99F6E4", dot: "#2DD4BF" }
-  }
+// ── Paletas Temáticas con Colores Fuertes y Sólidos por Conjunto de Trámites ──
+export interface SubcategoryTheme {
+  solidColor: string;
+  hoverColor: string;
+  textColor: string;
+  dotColor: string;
+  headerBg: string;
+  headerText: string;
+}
+
+const STRONG_SUBCATEGORY_PALETTES = [
+  // 0. Azul Real Fuerte (Identidad, DNI, Pasaportes, RUC & Clave SOL, Ciudadanía)
+  { solid: "#1D4ED8", hover: "#1E40AF", text: "#FFFFFF", dot: "#93C5FD" },
+  // 1. Verde Esmeralda Fuerte (Tributos, Declaraciones, Impuestos, Renta, Finanzas)
+  { solid: "#059669", hover: "#047857", text: "#FFFFFF", dot: "#6EE7B7" },
+  // 2. Ámbar / Ocre Fuerte (Propiedad, Registros Públicos, Predios, Vehicular, Placas)
+  { solid: "#D97706", hover: "#B45309", text: "#FFFFFF", dot: "#FDE68A" },
+  // 3. Carmesí / Rojo Fuerte (Salud, Citas Médicas, Hospitales, Seguros, Emergencias)
+  { solid: "#E11D48", hover: "#BE123C", text: "#FFFFFF", dot: "#FECDD3" },
+  // 4. Violeta / Púrpura Fuerte (Transporte, Brevetes, Licencias, Tránsito, Conducir)
+  { solid: "#7C3AED", hover: "#6D28D9", text: "#FFFFFF", dot: "#DDD6FE" },
+  // 5. Índigo Fuerte (Educación, Becas, Títulos, Grados, Constancias Académicas)
+  { solid: "#4F46E5", hover: "#4338CA", text: "#FFFFFF", dot: "#C7D2FE" },
+  // 6. Cian Profundo Fuerte (Justicia, Legalidad, Certificados Civiles, Judicial)
+  { solid: "#0891B2", hover: "#0E7490", text: "#FFFFFF", dot: "#A5F3FC" },
+  // 7. Naranja Fuerte (Riesgos, Seguridad, Biometría, Alertas, Garantías)
+  { solid: "#EA580C", hover: "#C2410C", text: "#FFFFFF", dot: "#FED7AA" },
+  // 8. Verde Azulado / Teal Fuerte (Servicios Básicos, Regulación, Agua, Luz, Consultas)
+  { solid: "#0D9488", hover: "#0F766E", text: "#FFFFFF", dot: "#99F6E4" }
 ];
 
-function getSubcategoryTheme(catName: string, isDarkMode: boolean, index: number) {
+function getSubcategoryTheme(catName: string, isDarkMode: boolean, index: number): SubcategoryTheme {
   const norm = (catName || "").toLowerCase();
-  let paletteIdx = index % CHATGPT_SUBCATEGORY_PALETTES.length;
+  let paletteIdx = index % STRONG_SUBCATEGORY_PALETTES.length;
 
-  if (/identidad|dni|pasaporte|ciudadan|extranjer/i.test(norm)) {
-    paletteIdx = 0; // Azul
-  } else if (/tribut|ruc|impuesto|finanz|econom|factur|pago|honorario/i.test(norm)) {
-    paletteIdx = 1; // Verde
-  } else if (/propiedad|inmueble|predio|vehicul|placa|partida|titul/i.test(norm)) {
-    paletteIdx = 2; // Ámbar/Naranja
-  } else if (/salud|cita|medic|seguro|essalud|minsa|hospital/i.test(norm)) {
-    paletteIdx = 3; // Rosa
-  } else if (/transporte|brevete|licencia|transit|conducir|mtc/i.test(norm)) {
+  if (/identidad|dni|pasaporte|ciudadan|extranjer|ruc|clave sol/i.test(norm)) {
+    paletteIdx = 0; // Azul Real
+  } else if (/tribut|impuesto|finanz|econom|factur|pago|honorario|renta|declaraci/i.test(norm)) {
+    paletteIdx = 1; // Verde Esmeralda
+  } else if (/propiedad|inmueble|predio|vehicul|placa|partida|titul|registral/i.test(norm)) {
+    paletteIdx = 2; // Ámbar
+  } else if (/salud|cita|medic|seguro|essalud|minsa|hospital|subsidio/i.test(norm)) {
+    paletteIdx = 3; // Carmesí
+  } else if (/transporte|brevete|licencia|transit|conducir|mtc|sutran/i.test(norm)) {
     paletteIdx = 4; // Violeta
-  } else if (/educac|beca|titul|grado|estudio|colegio|minedu/i.test(norm)) {
+  } else if (/educac|beca|titul|grado|estudio|colegio|minedu|pronabec|sunedu/i.test(norm)) {
     paletteIdx = 5; // Índigo
-  } else if (/actas|registro civil|justic|legal|poder|judicial/i.test(norm)) {
+  } else if (/actas|registro civil|justic|legal|poder|judicial|penal|polic/i.test(norm)) {
     paletteIdx = 6; // Cian
-  } else if (/riesgo|seguridad|alerta|biometr|c4|garant/i.test(norm)) {
-    paletteIdx = 7; // Dorado
-  } else if (/servicio|extra|agua|luz|general/i.test(norm)) {
+  } else if (/riesgo|seguridad|alerta|biometr|c4|garant|prevenci/i.test(norm)) {
+    paletteIdx = 7; // Naranja
+  } else if (/servicio|extra|agua|luz|general|consumo|regulaci/i.test(norm)) {
     paletteIdx = 8; // Teal
   }
 
-  const p = CHATGPT_SUBCATEGORY_PALETTES[paletteIdx];
-  return isDarkMode ? p.dark : p.light;
+  const p = STRONG_SUBCATEGORY_PALETTES[paletteIdx];
+  return {
+    solidColor: p.solid,
+    hoverColor: p.hover,
+    textColor: p.text,
+    dotColor: p.dot,
+    headerBg: p.solid,
+    headerText: "#FFFFFF"
+  };
 }
 
 
@@ -2405,10 +2394,9 @@ export function FrutilotaMascot({
                   letterSpacing: "-0.025em",
                   textAlign: "center",
                   margin: "8px 0 16px",
-                  color: isDarkMode ? "#F9FAFB" : "#0D0D0D",
-                  textTransform: "uppercase"
+                  color: isDarkMode ? "#F9FAFB" : "#0D0D0D"
                 }}>
-                  ENTIDADES
+                  Entidades
                 </h1>
 
                 {/* ── Cuadrícula de Categorías (Bloques con Barra Vertical + Grid de Entidades) ── */}
@@ -2827,19 +2815,19 @@ export function FrutilotaMascot({
                         return (
                           <div key={catName} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                             
-                            {/* Cabecera de Subcategoría con Fondo de Color y Puntito Estilo ChatGPT */}
+                            {/* Cabecera de Subcategoría con Color Fuerte y Sólido según el Conjunto de Trámites */}
                             {(() => {
                               const subTheme = getSubcategoryTheme(catName, isDarkMode, cIdx);
                               return (
                                 <div style={{
                                   display: "flex",
                                   alignItems: "center",
-                                  justifyContent: "flex-start",
-                                  padding: "9px 14px",
-                                  borderRadius: 10,
-                                  background: subTheme.bg,
-                                  border: `1px solid ${subTheme.border}`,
-                                  boxShadow: isDarkMode ? "0 1px 4px rgba(0,0,0,0.25)" : "0 1px 3px rgba(0,0,0,0.02)",
+                                  justifyContent: "space-between",
+                                  padding: "9px 16px",
+                                  borderRadius: 8,
+                                  background: subTheme.solidColor,
+                                  color: "#FFFFFF",
+                                  boxShadow: `0 2px 8px ${subTheme.solidColor}35`,
                                   transition: "all 0.15s ease"
                                 }}>
                                   <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
@@ -2847,21 +2835,32 @@ export function FrutilotaMascot({
                                       width: 7,
                                       height: 7,
                                       borderRadius: "50%",
-                                      background: subTheme.dot,
-                                      
+                                      background: "#FFFFFF",
+                                      opacity: 0.95,
                                       flexShrink: 0
                                     }} />
                                     <h3 style={{
                                       fontFamily: G,
                                       fontSize: 14,
                                       fontWeight: 750,
-                                      color: subTheme.text,
+                                      color: "#FFFFFF",
                                       margin: 0,
                                       letterSpacing: "-0.015em"
                                     }}>
                                       {catName}
                                     </h3>
                                   </div>
+                                  <span style={{
+                                    fontFamily: I,
+                                    fontSize: 11,
+                                    fontWeight: 650,
+                                    color: "rgba(255, 255, 255, 0.92)",
+                                    background: "rgba(0, 0, 0, 0.18)",
+                                    padding: "2px 9px",
+                                    borderRadius: 12
+                                  }}>
+                                    {procsList.length} {procsList.length === 1 ? "trámite" : "trámites"}
+                                  </span>
                                 </div>
                               );
                             })()}
@@ -2877,6 +2876,7 @@ export function FrutilotaMascot({
                             >
                               {procsList.map((proc, pIdx) => {
                                 const isHiddenOnMobile = pIdx >= 3 && !isExpanded;
+                                const subTheme = getSubcategoryTheme(catName, isDarkMode, cIdx);
 
                                 return (
                                   <motion.a
@@ -2925,7 +2925,7 @@ export function FrutilotaMascot({
                                       {proc.title}
                                     </h4>
 
-                                    {/* Pie de Acción: Botón Directo al Portal Oficial */}
+                                    {/* Pie de Acción: Botón Directo al Portal Oficial con Color Fuerte de la Categoría */}
                                     <div style={{
                                       display: "flex",
                                       alignItems: "center",
@@ -2943,17 +2943,18 @@ export function FrutilotaMascot({
                                       </span>
 
                                       <span style={{
-                                        padding: "4px 10px",
+                                        padding: "5px 12px",
                                         borderRadius: 6,
-                                        background: isDarkMode ? "#2D2D2D" : "#0F172A",
+                                        background: subTheme.solidColor,
                                         color: "#FFFFFF",
                                         fontFamily: G,
-                                        fontSize: 11,
+                                        fontSize: 11.5,
                                         fontWeight: 700,
                                         display: "inline-flex",
                                         alignItems: "center",
                                         gap: 4,
-                                        boxShadow: isDarkMode ? "0 2px 6px rgba(0,0,0,0.3)" : "0 1px 3px rgba(0,0,0,0.1)"
+                                        boxShadow: `0 2px 6px ${subTheme.solidColor}40`,
+                                        transition: "all 0.15s ease"
                                       }}>
                                         <span>Ingresar</span>
                                         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
