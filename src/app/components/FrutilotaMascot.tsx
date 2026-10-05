@@ -487,13 +487,7 @@ export function FrutilotaMascot({
   const lastTouchTimeRef = useRef<number>(0);
 
   const [sidebarEntitySearch, setSidebarEntitySearch] = useState("");
-  const [showOnboardingModal, setShowOnboardingModal] = useState(() => {
-    try {
-      return !localStorage.getItem("ahorratiempo_onboarding_v1");
-    } catch {
-      return false;
-    }
-  });
+  const [showOnboardingModal, setShowOnboardingModal] = useState(false);
 
   const savePinnedEntities = (newList: string[]) => {
     setPinnedEntities(newList);
@@ -1740,47 +1734,6 @@ export function FrutilotaMascot({
 
           {/* ── Footer Informativo y Legal Estilo YouTube ── */}
           <div style={{ padding: "0 14px 24px", display: "flex", flexDirection: "column", gap: 11, flexShrink: 0 }}>
-            {/* Botón Destacado: Ver Guía Interactiva de Bienvenida (Estilo ChatGPT) */}
-            <button
-              type="button"
-              onClick={() => {
-                sound.playClick();
-                haptic.selection();
-                setShowOnboardingModal(true);
-              }}
-              onMouseEnter={(e) => {
-                sound.playHoverKey();
-                e.currentTarget.style.background = isDarkMode ? "#2A2A2A" : "#F3F4F6";
-                e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.18)" : "#D1D5DB";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = isDarkMode ? "#212121" : "#FFFFFF";
-                e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.10)" : "#E5E7EB";
-              }}
-              style={{
-                width: "100%",
-                padding: "9px 12px",
-                borderRadius: 10,
-                border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.10)" : "1px solid #E5E7EB",
-                background: isDarkMode ? "#212121" : "#FFFFFF",
-                color: isDarkMode ? "#ECECEC" : "#1F2937",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                cursor: "pointer",
-                fontFamily: I,
-                fontSize: 12,
-                fontWeight: 600,
-                transition: "all 0.15s ease",
-                boxShadow: isDarkMode ? "0 1px 3px rgba(0,0,0,0.3)" : "0 1px 2px rgba(0,0,0,0.04)"
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <QuestionCircleRegular fontSize={14} style={{ color: D.muted }} />
-                <span>¿Cómo usar ahorratiempo?</span>
-              </div>
-              <ChevronRightRegular fontSize={13} style={{ color: D.muted }} />
-            </button>
 
             {/* Grupo 1: Información, Derechos de autor, Contactar, Creadores */}
             <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 9px" }}>
