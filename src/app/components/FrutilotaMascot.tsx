@@ -2642,36 +2642,19 @@ export function FrutilotaMascot({
             minWidth: 0, 
             boxSizing: "border-box",
             overflowY: "auto",
-            padding: "20px 20px 48px"
+            padding: "20px 24px 48px"
           }}
         >
-          <div style={{ maxWidth: 1040, width: "100%", margin: "0 auto", display: "flex", flexDirection: "column", gap: 18 }}>
+          <div style={{ width: "100%", maxWidth: "100%", margin: "0 auto", display: "flex", flexDirection: "column", gap: 18 }}>
             
             {/* ── Vista 1: Directorio General de Entidades (Al ingresar a ahorratiempo) ── */}
             {!selectedEntity ? (
-              <div style={{ display: "flex", flexDirection: "column", gap: 20, width: "100%" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "100%" }}>
                 {/* Encabezado Principal */}
-                <div style={{ textAlign: "center", padding: "8px 0 4px", display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
-                  <div style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 6,
-                    padding: "4px 12px",
-                    borderRadius: 20,
-                    background: isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9",
-                    border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
-                    fontSize: 12,
-                    fontFamily: I,
-                    fontWeight: 650,
-                    color: isDarkMode ? "#93C5FD" : "#2563EB"
-                  }}>
-                    <span>🏛️</span>
-                    <span>Directorio Oficial de Entidades del Estado</span>
-                  </div>
-
+                <div style={{ textAlign: "center", padding: "6px 0 2px", display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
                   <h1 style={{
                     fontFamily: G,
-                    fontSize: "clamp(22px, 4vw, 30px)",
+                    fontSize: "clamp(22px, 3.5vw, 28px)",
                     fontWeight: 850,
                     color: isDarkMode ? "#F9FAFB" : "#0F172A",
                     letterSpacing: "-0.03em",
@@ -2687,156 +2670,29 @@ export function FrutilotaMascot({
                     color: isDarkMode ? "#9CA3AF" : "#64748B",
                     maxWidth: 620,
                     margin: 0,
-                    lineHeight: 1.5
+                    lineHeight: 1.45
                   }}>
                     Elige una institución pública para explorar todos sus trámites oficiales y acceder directamente en 1 clic.
                   </p>
-
-                  {/* Buscador de Entidades */}
-                  <div style={{ position: "relative", width: "100%", maxWidth: 500, marginTop: 8 }}>
-                    <svg 
-                      width="15" 
-                      height="15" 
-                      viewBox="0 0 24 24" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      strokeWidth="2.2" 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      style={{ 
-                        position: "absolute", 
-                        left: 14, 
-                        top: "50%", 
-                        transform: "translateY(-50%)", 
-                        color: isDarkMode ? "#9CA3AF" : "#64748B",
-                        pointerEvents: "none" 
-                      }}
-                    >
-                      <circle cx="11" cy="11" r="8"/>
-                      <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                    </svg>
-                    <input 
-                      value={directorySearch}
-                      onChange={e => setDirectorySearch(e.target.value)}
-                      placeholder="Buscar entidad (ej. SUNAT, RENIEC, MTC, MINEDU, ESSALUD)..."
-                      style={{
-                        width: "100%",
-                        height: 42,
-                        padding: "0 36px 0 40px",
-                        borderRadius: 10,
-                        border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.14)" : "#CBD5E1"}`,
-                        background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
-                        color: isDarkMode ? "#ECECEC" : "#0F172A",
-                        fontFamily: I,
-                        fontSize: 13.5,
-                        outline: "none",
-                        boxSizing: "border-box",
-                        boxShadow: isDarkMode ? "0 2px 8px rgba(0,0,0,0.4)" : "0 2px 8px rgba(0,0,0,0.04)",
-                        transition: "border-color 0.15s ease"
-                      }}
-                      onFocus={e => {
-                        e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.35)" : "#0F172A";
-                      }}
-                      onBlur={e => {
-                        e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.14)" : "#CBD5E1";
-                      }}
-                    />
-                    {directorySearch && (
-                      <button
-                        type="button"
-                        onClick={() => setDirectorySearch("")}
-                        style={{
-                          position: "absolute",
-                          right: 12,
-                          top: "50%",
-                          transform: "translateY(-50%)",
-                          background: "none",
-                          border: "none",
-                          cursor: "pointer",
-                          color: isDarkMode ? "#9CA3AF" : "#64748B",
-                          padding: 0,
-                          display: "flex",
-                          alignItems: "center"
-                        }}
-                      >
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                          <line x1="18" y1="6" x2="6" y2="18"></line>
-                          <line x1="6" y1="6" x2="18" y2="18"></line>
-                        </svg>
-                      </button>
-                    )}
-                  </div>
-
-                  {/* Chips de Filtro por Categorías */}
-                  <div style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexWrap: "wrap",
-                    gap: 6,
-                    marginTop: 6
-                  }}>
-                    {[
-                      { id: "all", label: "Todas las entidades" },
-                      { id: "identidad", label: "Identidad y Migración" },
-                      { id: "tributos", label: "Tributos y Registros" },
-                      { id: "salud", label: "Salud y Bienestar" },
-                      { id: "transporte", label: "Transporte" },
-                      { id: "justicia", label: "Justicia y Trabajo" },
-                      { id: "educacion", label: "Educación" },
-                      { id: "servicios", label: "Servicios Públicos" },
-                    ].map(cat => {
-                      const isCatSelected = directoryCategory === cat.id;
-                      return (
-                        <button
-                          key={cat.id}
-                          type="button"
-                          onClick={() => {
-                            sound.playHoverKey();
-                            haptic.selection();
-                            setDirectoryCategory(cat.id);
-                          }}
-                          style={{
-                            padding: "5px 12px",
-                            borderRadius: 20,
-                            background: isCatSelected 
-                              ? (isDarkMode ? "#2563EB" : "#0F172A") 
-                              : (isDarkMode ? "#1F1F1F" : "#F1F5F9"),
-                            color: isCatSelected ? "#FFFFFF" : (isDarkMode ? "#9CA3AF" : "#64748B"),
-                            border: isCatSelected 
-                              ? `1px solid ${isDarkMode ? "#3B82F6" : "#0F172A"}` 
-                              : `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`,
-                            fontFamily: I,
-                            fontSize: 12,
-                            fontWeight: isCatSelected ? 700 : 550,
-                            cursor: "pointer",
-                            transition: "all 0.15s ease"
-                          }}
-                        >
-                          {cat.label}
-                        </button>
-                      );
-                    })}
-                  </div>
                 </div>
 
-                {/* Cuadrícula de Entidades en Formato Cubo/Tarjeta */}
+                {/* Cuadrícula de Entidades en Formato Cubo/Tarjeta Abundante a Pantalla Completa */}
                 <div style={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+                  gridTemplateColumns: "repeat(auto-fill, minmax(170px, 1fr))",
                   gap: 12,
-                  padding: "4px 0 20px"
+                  padding: "4px 0 20px",
+                  width: "100%"
                 }}>
-                  {filteredDirectoryEntities.map((c, idx) => {
+                  {displayEntitiesList.map((c, idx) => {
                     const logoSrc = getEntityLogo(c.acronym);
-                    const procsCount = getEntityOfficialProcedures(c.acronym).length;
 
                     return (
                       <motion.div
                         key={c.id || c.acronym}
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.18, delay: Math.min(idx * 0.015, 0.2) }}
+                        transition={{ duration: 0.16, delay: Math.min(idx * 0.012, 0.18) }}
                         whileHover={{ y: -3, scale: 1.015 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => {
@@ -2852,7 +2708,7 @@ export function FrutilotaMascot({
                           background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
                           border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
                           borderRadius: 12,
-                          padding: "15px 14px 12px",
+                          padding: "14px 12px 12px",
                           display: "flex",
                           flexDirection: "column",
                           alignItems: "center",
@@ -2861,7 +2717,7 @@ export function FrutilotaMascot({
                           cursor: "pointer",
                           boxShadow: isDarkMode ? "0 4px 14px rgba(0,0,0,0.35)" : "0 2px 8px rgba(0,0,0,0.04)",
                           transition: "border-color 0.15s ease, box-shadow 0.15s ease",
-                          minHeight: 145,
+                          minHeight: 135,
                           boxSizing: "border-box"
                         }}
                         onMouseEnter={e => {
@@ -2875,15 +2731,15 @@ export function FrutilotaMascot({
                         {/* Logo en Caja Blanca Rectangular */}
                         <div style={{
                           width: "100%",
-                          maxWidth: 90,
-                          height: 44,
+                          maxWidth: 86,
+                          height: 42,
                           borderRadius: 8,
                           background: "#FFFFFF",
                           border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #E2E8F0",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          padding: "2px 6px",
+                          padding: "2px 5px",
                           boxSizing: "border-box",
                           overflow: "hidden",
                           marginBottom: 8,
@@ -2904,7 +2760,7 @@ export function FrutilotaMascot({
                         <div style={{ display: "flex", flexDirection: "column", gap: 2, width: "100%" }}>
                           <h3 style={{
                             fontFamily: G,
-                            fontSize: 14.5,
+                            fontSize: 14,
                             fontWeight: 800,
                             color: isDarkMode ? "#F9FAFB" : "#0F172A",
                             margin: 0,
@@ -2914,7 +2770,7 @@ export function FrutilotaMascot({
                           </h3>
                           <p style={{
                             fontFamily: I,
-                            fontSize: 11,
+                            fontSize: 10.5,
                             color: isDarkMode ? "#9CA3AF" : "#64748B",
                             margin: 0,
                             lineHeight: 1.3,
@@ -2927,38 +2783,26 @@ export function FrutilotaMascot({
                           </p>
                         </div>
 
-                        {/* Conteo de Trámites y Flecha */}
+                        {/* Pie de Acción: Ver Trámites */}
                         <div style={{
                           display: "flex",
                           alignItems: "center",
-                          justifyContent: "space-between",
+                          justifyContent: "center",
                           width: "100%",
                           marginTop: 8,
-                          paddingTop: 7,
+                          paddingTop: 6,
                           borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9"}`
                         }}>
-                          <span style={{
-                            fontFamily: I,
-                            fontSize: 10.5,
-                            fontWeight: 650,
-                            color: isDarkMode ? "#38BDF8" : "#0284C7",
-                            background: isDarkMode ? "rgba(56, 189, 248, 0.12)" : "rgba(2, 132, 199, 0.08)",
-                            padding: "2px 6px",
-                            borderRadius: 6
-                          }}>
-                            {procsCount} {procsCount === 1 ? "trámite" : "trámites"}
-                          </span>
-
                           <span style={{
                             fontFamily: G,
                             fontSize: 11,
                             fontWeight: 700,
-                            color: isDarkMode ? "#ECECEC" : "#0F172A",
+                            color: isDarkMode ? "#38BDF8" : "#0284C7",
                             display: "inline-flex",
                             alignItems: "center",
                             gap: 2
                           }}>
-                            <span>Ver</span>
+                            <span>Ver trámites</span>
                             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                               <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
@@ -3136,81 +2980,65 @@ export function FrutilotaMascot({
                   });
 
                   return (
-                    <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
                       
                       {/* Banner Principal de la Entidad */}
                       <div style={{
                         display: "flex",
                         alignItems: "center",
-                        justifyContent: "space-between",
-                        flexWrap: "wrap",
-                        gap: 12,
-                        padding: "14px 16px",
+                        justifyContent: "flex-start",
+                        gap: 14,
+                        padding: "14px 18px",
                         borderRadius: 12,
                         background: isDarkMode ? "#1C1C1C" : "#FFFFFF",
                         border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.12)" : "#E2E8F0"}`,
                         boxShadow: isDarkMode ? "0 2px 8px rgba(0,0,0,0.3)" : "0 1px 4px rgba(0,0,0,0.03)"
                       }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 12, minWidth: 0 }}>
-                          <div style={{
-                            width: 54,
-                            height: 36,
-                            borderRadius: 7,
-                            background: "#FFFFFF",
-                            border: "1px solid #E2E8F0",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            padding: "2px 4px",
-                            boxSizing: "border-box",
-                            overflow: "hidden",
-                            flexShrink: 0,
-                            boxShadow: "0 1px 3px rgba(0,0,0,0.06)"
-                          }}>
-                            {logoSrc ? (
-                              <img 
-                                src={logoSrc} 
-                                alt={activeEntity.acronym} 
-                                style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain", display: "block" }} 
-                              />
-                            ) : (
-                              <span style={{ fontSize: 10, fontWeight: 800, color: "#0F172A" }}>{activeEntity.acronym}</span>
-                            )}
-                          </div>
-                          <div>
-                            <h2 style={{
-                              fontFamily: G,
-                              fontSize: 19,
-                              fontWeight: 850,
-                              color: isDarkMode ? "#F9FAFB" : "#0F172A",
-                              letterSpacing: "-0.02em",
-                              margin: 0
-                            }}>
-                              Trámites de {activeEntity.acronym}
-                            </h2>
-                            <p style={{
-                              fontFamily: I,
-                              fontSize: 12,
-                              color: isDarkMode ? "#9CA3AF" : "#64748B",
-                              margin: "2px 0 0"
-                            }}>
-                              {activeEntity.name}
-                            </p>
-                          </div>
-                        </div>
-
-                        <span style={{
-                          fontFamily: I,
-                          fontSize: 12,
-                          fontWeight: 650,
-                          padding: "4px 11px",
-                          borderRadius: 20,
-                          background: isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#F1F5F9",
-                          color: isDarkMode ? "#9CA3AF" : "#64748B",
-                          border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E2E8F0"}`
+                        <div style={{
+                          width: 56,
+                          height: 38,
+                          borderRadius: 7,
+                          background: "#FFFFFF",
+                          border: "1px solid #E2E8F0",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          padding: "2px 5px",
+                          boxSizing: "border-box",
+                          overflow: "hidden",
+                          flexShrink: 0,
+                          boxShadow: "0 1px 3px rgba(0,0,0,0.06)"
                         }}>
-                          {allProcs.length} trámites oficiales
-                        </span>
+                          {logoSrc ? (
+                            <img 
+                              src={logoSrc} 
+                              alt={activeEntity.acronym} 
+                              style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain", display: "block" }} 
+                            />
+                          ) : (
+                            <span style={{ fontSize: 10.5, fontWeight: 800, color: "#0F172A" }}>{activeEntity.acronym}</span>
+                          )}
+                        </div>
+                        <div>
+                          <h2 style={{
+                            fontFamily: G,
+                            fontSize: 19,
+                            fontWeight: 850,
+                            color: isDarkMode ? "#F9FAFB" : "#0F172A",
+                            letterSpacing: "-0.02em",
+                            margin: 0
+                          }}>
+                            Trámites de {activeEntity.acronym}
+                          </h2>
+                          <p style={{
+                            fontFamily: I,
+                            fontSize: 12,
+                            color: isDarkMode ? "#9CA3AF" : "#64748B",
+                            margin: "2px 0 0"
+                          }}>
+                            {activeEntity.name}
+                          </p>
+                        </div>
                       </div>
 
                       {/* Renderizado de Categorías al Estilo ChatGPT */}
@@ -3225,7 +3053,7 @@ export function FrutilotaMascot({
                             <div style={{
                               display: "flex",
                               alignItems: "center",
-                              justifyContent: "space-between",
+                              justifyContent: "flex-start",
                               padding: "9px 14px",
                               borderRadius: 10,
                               background: isDarkMode ? "#212121" : "#F4F4F5",
@@ -3250,19 +3078,6 @@ export function FrutilotaMascot({
                                   {catName}
                                 </h3>
                               </div>
-
-                              <span style={{
-                                fontFamily: I,
-                                fontSize: 11,
-                                fontWeight: 650,
-                                padding: "2px 8px",
-                                borderRadius: 6,
-                                background: isDarkMode ? "#2A2A2A" : "#FFFFFF",
-                                color: isDarkMode ? "#A3A3A3" : "#6B7280",
-                                border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.08)" : "#E5E7EB"}`
-                              }}>
-                                {procsList.length} {procsList.length === 1 ? "trámite" : "trámites"}
-                              </span>
                             </div>
 
                             {/* Cuadrícula de Tarjetas de esta Subcategoría */}
@@ -3270,7 +3085,8 @@ export function FrutilotaMascot({
                               style={{ 
                                 display: "grid", 
                                 gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", 
-                                gap: 11 
+                                gap: 11,
+                                width: "100%"
                               }}
                             >
                               {procsList.map((proc, pIdx) => {
