@@ -490,14 +490,6 @@ export function FrutilotaMascot({
     }
   });
 
-  const isCustomizedOrder = useMemo(() => {
-    try {
-      return !!localStorage.getItem("ahorratiempo_sidebar_order");
-    } catch {
-      return false;
-    }
-  }, [customOrder]);
-
   const savePinnedEntities = (newList: string[]) => {
     setPinnedEntities(newList);
     try {
@@ -685,20 +677,6 @@ export function FrutilotaMascot({
       toast.success(`📌 ${acronym} fijada como favorita`);
     }
     savePinnedEntities(nextPinned);
-  };
-
-  const handleResetEntityOrder = (e?: React.MouseEvent) => {
-    if (e) e.stopPropagation();
-    haptic.medium();
-    sound.playClick();
-    const defaultPinned = ["SUNAT", "RENIEC", "MIGRACIONES", "MTC"];
-    const defaultOrder = CIVIC_ENTITIES.map(c => c.acronym);
-    savePinnedEntities(defaultPinned);
-    saveCustomOrder(defaultOrder);
-    try {
-      localStorage.removeItem("ahorratiempo_sidebar_order");
-    } catch {}
-    toast.success("Orden de entidades restablecido por defecto");
   };
 
   const displayEntitiesList = useMemo(() => {
@@ -1363,8 +1341,9 @@ export function FrutilotaMascot({
                 type="button"
                 whileHover={{ 
                   scale: 1.05,
-                  backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 0, 0, 0.05)",
-                  borderColor: isDarkMode ? "rgba(255, 255, 255, 0.22)" : "rgba(0, 0, 0, 0.15)"
+                  backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.12)" : "rgba(0, 0, 0, 0.06)",
+                  borderColor: isDarkMode ? "rgba(255, 255, 255, 0.28)" : "rgba(0, 0, 0, 0.18)",
+                  color: isDarkMode ? "#FFFFFF" : "#111827"
                 }}
                 whileTap={{ scale: 0.92 }}
                 onClick={() => {
@@ -1378,12 +1357,12 @@ export function FrutilotaMascot({
                   width: 32,
                   height: 32,
                   padding: 0,
-                  background: isDarkMode ? "rgba(255, 255, 255, 0.04)" : "rgba(255, 255, 255, 0.70)",
+                  background: isDarkMode ? "rgba(255, 255, 255, 0.08)" : "rgba(255, 255, 255, 0.70)",
                   border: isDarkMode 
-                    ? "1px solid rgba(255, 255, 255, 0.12)" 
+                    ? "1px solid rgba(255, 255, 255, 0.16)" 
                     : "1px solid rgba(0, 0, 0, 0.10)",
                   cursor: "pointer",
-                  color: D.muted,
+                  color: isDarkMode ? "#ECECEC" : "#374151",
                   display: "inline-flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -1491,41 +1470,6 @@ export function FrutilotaMascot({
                   {displayEntitiesList.length}
                 </span>
               </div>
-
-              {/* Botón Reset si el usuario personalizó el orden */}
-              {isCustomizedOrder && (
-                <button
-                  type="button"
-                  onClick={handleResetEntityOrder}
-                  title="Restablecer orden por defecto"
-                  style={{
-                    background: "transparent",
-                    border: `1px solid ${D.border}`,
-                    color: D.muted,
-                    cursor: "pointer",
-                    padding: "2px 7px",
-                    borderRadius: 6,
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 4,
-                    fontSize: 10.5,
-                    fontFamily: I,
-                    fontWeight: 600,
-                    transition: "all 0.15s ease"
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#EF4444";
-                    e.currentTarget.style.borderColor = "rgba(239, 68, 68, 0.4)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = D.muted;
-                    e.currentTarget.style.borderColor = D.border;
-                  }}
-                >
-                  <ArrowResetRegular fontSize={11} />
-                  <span>Restablecer</span>
-                </button>
-              )}
             </div>
 
             {/* Buscador Rápido de Entidades en Sidebar */}
@@ -1536,7 +1480,7 @@ export function FrutilotaMascot({
                   left: 8, 
                   top: "50%", 
                   transform: "translateY(-50%)", 
-                  color: D.muted,
+                  color: isDarkMode ? "#9CA3AF" : "#6B7280",
                   pointerEvents: "none" 
                 }} 
                 fontSize={12} 
@@ -2623,20 +2567,20 @@ export function FrutilotaMascot({
               width: 36,
               height: 36,
               minWidth: 36,
-              background: D.sidebar,
-              border: `1.5px solid ${D.border}`,
-              borderRadius: 9,
+              background: isDarkMode ? "#212121" : "#FFFFFF",
+              border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.16)" : "#E5E5E5"}`,
+              borderRadius: 8,
               padding: 0,
               cursor: "pointer",
-              color: D.ink,
-              boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
+              color: isDarkMode ? "#ECECEC" : "#1F2937",
+              boxShadow: isDarkMode ? "0 2px 8px rgba(0,0,0,0.5)" : "0 2px 8px rgba(0,0,0,0.06)",
               transition: "all 0.15s ease"
             }}
           >
-            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" style={{ display: "block", color: T.violet, shapeRendering: "geometricPrecision" }}>
-              <rect x="1.5" y="2" width="13" height="12" rx="2.5" stroke="currentColor" strokeWidth="1.5" />
-              <line x1="5.5" y1="2" x2="5.5" y2="14" stroke="currentColor" strokeWidth="1.5" />
-              <path d="M9 6L11 8L9 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" style={{ display: "block", color: isDarkMode ? "#ECECEC" : "#1F2937", shapeRendering: "geometricPrecision" }}>
+              <rect x="1.5" y="2" width="13" height="12" rx="2.5" stroke="currentColor" strokeWidth="1.3" />
+              <line x1="5.5" y1="2" x2="5.5" y2="14" stroke="currentColor" strokeWidth="1.3" />
+              <path d="M9 6L11 8L9 10" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         )}
@@ -2745,8 +2689,8 @@ export function FrutilotaMascot({
                   style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", maxWidth: 660, marginTop: 4 }}
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
-                    <SearchRegular fontSize={12} style={{ color: D.muted }} />
-                    <span style={{ fontFamily: I, fontSize: 12, fontWeight: 650, color: D.muted }}>
+                    <SearchRegular fontSize={12} style={{ color: isDarkMode ? "#9CA3AF" : "#6B7280" }} />
+                    <span style={{ fontFamily: I, fontSize: 12, fontWeight: 650, color: isDarkMode ? "#D1D5DB" : "#4B5563" }}>
                       Consultas frecuentes de {activeEntity.acronym}:
                     </span>
                   </div>
@@ -3026,6 +2970,8 @@ export function FrutilotaMascot({
                   isThinking={isThinking}
                   onStop={stopGeneration}
                   D={D}
+                  activeEntity={activeEntity}
+                  isDarkMode={isDarkMode}
                 />
               </div>
             </div>
@@ -3881,7 +3827,7 @@ function ChatInputCard({
               border: `1.5px solid ${D.border}`,
               borderRadius: 16,
               overflow: "hidden",
-              boxShadow: "0 2px 14px rgba(0,0,0,0.08)",
+              boxShadow: isDarkMode ? "0 2px 14px rgba(0,0,0,0.35)" : "0 2px 14px rgba(0,0,0,0.08)",
             }}
           >
             <textarea
@@ -3895,6 +3841,7 @@ function ChatInputCard({
               }}
               placeholder={`Pregunta a LOTA AI sobre trámites de ${active.acronym}...`}
               rows={2}
+              className="chat-textarea-composer"
               style={{
                 width: "100%",
                 padding: "14px 18px 6px",
@@ -3903,7 +3850,7 @@ function ChatInputCard({
                 resize: "none",
                 fontFamily: I,
                 fontSize: 14.5,
-                color: D.ink,
+                color: isDarkMode ? "#ECECEC" : "#0D0D0D",
                 background: "transparent",
                 lineHeight: 1.5,
                 boxSizing: "border-box",
@@ -3921,15 +3868,23 @@ function ChatInputCard({
                   width: 32,
                   height: 32,
                   borderRadius: 8,
-                  border: `1.5px solid ${D.border}`,
-                  background: "transparent",
+                  border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.14)" : "1.5px solid #E5E5E5",
+                  background: isDarkMode ? "#212121" : "transparent",
                   cursor: "pointer",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: D.muted,
+                  color: isDarkMode ? "#D1D5DB" : "#4B5563",
                   flexShrink: 0,
                   transition: "all 0.15s ease"
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.3)" : "#CBD5E1";
+                  e.currentTarget.style.color = isDarkMode ? "#FFFFFF" : "#111827";
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.14)" : "#E5E5E5";
+                  e.currentTarget.style.color = isDarkMode ? "#D1D5DB" : "#4B5563";
                 }}
               >
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -3950,20 +3905,26 @@ function ChatInputCard({
                   gap: 6,
                   padding: "5px 10px",
                   borderRadius: 8,
-                  background: D.bg,
-                  border: `1.5px solid ${D.border}`,
+                  background: isDarkMode ? "#212121" : "#FFFFFF",
+                  border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.14)" : "1.5px solid #E5E5E5",
                   cursor: "pointer",
                   fontFamily: I,
                   fontWeight: 650,
                   fontSize: 12.5,
-                  color: D.text,
+                  color: isDarkMode ? "#ECECEC" : "#0D0D0D",
                   minWidth: 0,
                   maxWidth: 160,
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.3)" : "#CBD5E1";
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.14)" : "#E5E5E5";
                 }}
               >
                 <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{active.acronym}</span>
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style={{ flexShrink: 0 }}>
-                  <path d="M2 3.5l3 3 3-3" stroke={D.muted} strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M2 3.5l3 3 3-3" stroke={isDarkMode ? "#D1D5DB" : "#6B7280"} strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </button>
 
@@ -3980,15 +3941,21 @@ function ChatInputCard({
                     gap: 5,
                     padding: "5px 10px",
                     borderRadius: 8,
-                    background: D.bg,
-                    border: `1.5px solid ${D.border}`,
+                    background: isDarkMode ? "#212121" : "#FFFFFF",
+                    border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.14)" : "1.5px solid #E5E5E5",
                     cursor: "pointer",
                     fontFamily: I,
                     fontWeight: 650,
                     fontSize: 12.5,
-                    color: D.text,
+                    color: isDarkMode ? "#ECECEC" : "#0D0D0D",
                     flexShrink: 0,
                     transition: "all 0.15s ease"
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.3)" : "#CBD5E1";
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.14)" : "#E5E5E5";
                   }}
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -4014,15 +3981,23 @@ function ChatInputCard({
                   width: 34,
                   height: 34,
                   borderRadius: 8,
-                  border: `1.5px solid ${D.border}`,
-                  background: "transparent",
+                  border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.14)" : "1.5px solid #E5E5E5",
+                  background: isDarkMode ? "#212121" : "transparent",
                   cursor: "pointer",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: D.muted,
+                  color: isDarkMode ? "#D1D5DB" : "#4B5563",
                   flexShrink: 0,
                   transition: "all 0.15s ease"
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.3)" : "#CBD5E1";
+                  e.currentTarget.style.color = isDarkMode ? "#FFFFFF" : "#111827";
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.borderColor = isDarkMode ? "rgba(255, 255, 255, 0.14)" : "#E5E5E5";
+                  e.currentTarget.style.color = isDarkMode ? "#D1D5DB" : "#4B5563";
                 }}
               >
                 <MicRegular fontSize={16} />

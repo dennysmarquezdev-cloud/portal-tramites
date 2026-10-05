@@ -785,6 +785,28 @@ svg {
   backface-visibility: hidden;
 }
 
+/* ── Estilos de Contraste y Nitidez para el Compositor de Chat (Estilo ChatGPT) ── */
+.chat-textarea-composer {
+  color: #0D0D0D;
+}
 
+.chat-textarea-composer::placeholder {
+  color: #6B7280 !important;
+  opacity: 1 !important;
+}
 
+.dark .chat-textarea-composer,
+[data-theme="dark"] .chat-textarea-composer {
+  color: #ECECEC !important;
+}
 
+.dark .chat-textarea-composer::placeholder,
+[data-theme="dark"] .chat-textarea-composer::placeholder {
+  color: #9CA3AF !important;
+  opacity: 1 !important;
+}
+
+/* Focus state del compositor de chat */
+.chat-textarea-composer:focus {
+  outline: none;
+}
